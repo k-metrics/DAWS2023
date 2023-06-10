@@ -8,13 +8,19 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## スケージュールなど
-　詳細は[勉強会ページ](https://sites.google.com/view/kanto-metrics/2022%E5%B9%B4%E5%BA%A6)にてご確認ください。
+詳細は[勉強会ページ](https://sites.google.com/view/kanto-metrics/2023%E5%B9%B4%E5%BA%A6)にてご確認ください。
 
 ## 本年度テキスト
-　[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)
+* [『統計ソフト「R」超入門 〈最新版〉』逸見功著](https://gendai.media/list/books/bluebacks/9784065318164)  
+* [同サンプルデータ](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)
 
 ### サンプルデータに関して
-　本リポジトリには本年度テキストに記載されているデータをフォルダに格納してありますが、データ自体の著作権は原著作者にあります。また、著作権を侵害する意図で格納しているものではありません。  
+本リポジトリには本年度テキストに記載されているデータを格納してあります。データ自体の著作権は原著作者にあり、著作権を侵害する意図で格納しているものではありません。指摘などがあった場合は予告なしに削除いたします。
+
+## R/Rcommanderのインストール
+勉強会で必要になるR/R Commanderのインストール方法は[こちら](https://k-metrics.github.io/DAWS2023/)。
+
+　  
 
 ---
 [CC 4.0 BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja), Sampo Suzuki (Update: `r lubridate::now()`)
