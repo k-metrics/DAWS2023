@@ -1,7 +1,7 @@
 # 環境構築 {.unnumbered}
-本資料では[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象です。他のOSを利用したい場合は[CRAN](https://cran.r-project.org/index.html)にてインストール方法を確認してください。
+本資料では[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は[CRAN](https://cran.r-project.org/index.html)にてインストール方法を確認してください。
 
-環境構築は大きく以下の手順に分かれます
+環境構築はインターネットに接続された環境で行う必要があります。イントラネットなどで外部に接続する際にプロキシサーバーが必要な環境ではR Commanderがインストールできませんのでご注意ください。  
 
 1. Rのインストール
 1. R Commanderのインストール
@@ -16,6 +16,7 @@ Rをインストールする際に利用するWinodwsのユーザアカウント
 　  
 
 ## Rのインストール
+
 
 ### ダウンロード
 
