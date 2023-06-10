@@ -1,0 +1,74 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "『統計ソフト「R」超入門』"
+  author: "Sampo Suzuki, CC 4.0 BY-NC-SA"
+  date: today
+  # description: "本書はデータ分析勉強会で学んだ成果をまとめたものです。"
+  language: ja
+  # site-url: https://k-metrics.github.io/DAWS2023/
+  # repo-url: https://github.com/k-metrics/DAWS2023/
+  # repo-branch: main
+  # repo-actions: [issue] # edit, issue or source
+  # downloads: [pdf]
+  search: 
+    location: sidebar # navbar or sidebar
+    type: textbox     # overlay or textbox
+  sharing: [twitter, facebook]
+  sidebar:
+    style: floating   # floating or docked
+    background: dark  # light or dark
+  page-footer: 
+    left: "Sampo Suzuki, CC 4.0 BY-NC-SA"
+    # center: 
+    # right: 
+    #   - icon: github
+    #     href: https://github.com/k-metrics/DAWS2023/
+    background: dark # or light
+  chapters:
+    - index.qmd
+    - chapter00.qmd
+    # - chapter01.qmd
+    # - chapter02.qmd
+    # - chapter03.qmd
+    # - chapter04.qmd
+    # - chapter05.qmd
+    # - chapter06.qmd
+
+# bibliography: references.bib
+
+format:
+  html:
+    # Toggle light and dark
+    theme:
+      light: minty
+      dark: superhero
+    # theme - Boothswatch 
+    #   https://quarto.org/docs/output-formats/html-themes.html
+    # Light theme: default, cerulean, cosmo, flatly, journal, litera, lumen,
+    #       lux, materia, minty, morph, pulse, quartz, sandstone, simplex,
+    #       sketchy, spacelab, united, yeti, zephyr
+    # Dark theme: cyborg, darkly, slate, solar, superhero, vapor
+    code-block-bg: true
+    code-block-border-left: "#77C2AD"
+    code-copy: true
+    code-fold: show
+    code-link: true
+    # code-tools: 
+    #   source: true   # 各ページのソースを表示するか否か
+    #   toggle: true   # 
+    #   caption: none  # 
+    highlight-style: gruvbox
+    # highlight-style - highlight.js
+    #   https://quarto.org/docs/output-formats/html-code.html
+    # Automatically switch type
+    #  a11y, arrow, atom-one, ayu, breeze, github, gruvbox
+    title-block-banner: true
+    reference-location: margin
+    # citation-location: margin
+    # Margin Refernces
+    #   https://quarto.org/docs/authoring/article-layout.html#margin-references
+
+editor: source

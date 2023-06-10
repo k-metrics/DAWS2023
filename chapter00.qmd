@@ -1,0 +1,111 @@
+# 図解版 {.unnumbered}
+
+　本資料では[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)で利用するR Commander環境を構築する方法を紹介しています。
+
+　環境構築は大きく以下の手順に分かれます
+
+1. Rのインストール
+1. R Commanderのインストール
+1. 動作確認
+
+
+:::{.callout-warning}
+## ユーザーアカウントについて
+　Winodwsのアカウント名は日本語および空白を含まず、数字から始まらないアカウントを使用してください。  
+　上記以外のアカウント名を使用するとRがパスを処理できずエラーになる可能性があります。
+:::
+
+
+## Rのインストール {.unnumbered}
+　Windows10/11環境を前提としています。他のOSを利用の場合は[CRAN](https://cran.r-project.org/index.html)でインストール方法を確認してください。
+
+
+### ダウンロード
+
+1. [CRAN](https://cran.r-project.org/bin/windows/base/)からRの最新版をダウンロードします
+1. ダウンロードしたファイルのウィルスチェックをします
+
+:::{.callout-tip}
+## Tip: Version
+　書籍と同じR4.2.2を使いたい場合は[R4.2.2](https://cran.r-project.org/bin/windows/base/old/4.2.2/)からダウンロードしてください。
+:::
+
+
+### インストール
+　Rのインストールは基本的にデフォルトを選択しますが、R Commnderを使いやすくするために起動時オプションだけ変更してください。
+
+
+1. ダウンロードした「R-4.3.x-win」ファイルを実行
+1. インストール言語の選択  
+![](./fig/00.LanguageSelector.png)
+1. ライセンスの確認  
+![](./fig/01.Setup.png)
+1. インストール先の指定  
+![](./fig/02.DirectoryToInstall.png)
+1. コンポーネントの選択  
+![](./fig/03.ComponentSelector.png)
+1. 起動時オプション
+    * 「**はい(カスタマイズする)**」を選択  
+![](./fig/04.OptionSelector.png)
+    1. 表示モード
+        * 「**SDI(複数のウィンドウを使用して表示)**」を選択  
+![](./fig/05.WindowMode.png)
+    1. ヘルプの表示方法
+       * 「**HTMLヘルプ**」を選択  
+![](./fig/06.HelpFormat.png)
+1. スタートメニューフォルダーの指定  
+![](./fig/07.StartMenu.png)
+1. 追加タスクの選択  
+    * お好みで  
+![](./fig/08.Others.png)
+1. 完了  
+![](./fig/10.done.png)
+
+
+:::{.callout-tip}
+## Tip: MDI or SDI
+　R Commanderを利用する場合は、操作ウィンドウやグラフ表示に個々のウィンドウを割り当てるSDIモードが便利です。  
+　インストール時にMDIを選択してもオプションで変更できます。
+:::
+
+
+### 起動確認
+　スタートメニューから［R］-［R 4.3.x］を選んでRが起動することを確認します。  
+![](./fig/11.R.png)
+
+
+## R Commanderのインストール
+
+
+### インストール
+R CommanderのインストールはRから行います。
+
+1. Rのメニューから［パッケージ］-［パッケージのインストール...］を実行
+![](./fig/21.InstallPackage.png)
+1. パッケージをダウンロードするミラーサイトを選択
+    * デフォルトの「0-Cloud(https)」  
+![](./fig/22.ChoseCRAN.png)
+1. パッケージ選択画面から「Rcmdr」を選択  
+![](./fig/23.SelectRcmdr.png)
+1. インストールの確認  
+![](./fig/24.Question.png)
+1. インストール先の確認  
+![](./fig/25.Confirm.png)
+1. R Commanderのインストール完了  
+![](./fig/26.RcmdrInstalled.png)
+
+
+### 起動確認
+
+1. Rのメニューから［パッケージ］-［パッケージの読み込み...］を実行  
+![](./fig/31.LoadRcmder.png)
+1. 「Rcmdr」を選択  
+![](./fig/32.PackageSelector.png)
+1. 不足パッケージのインストール  
+![](./fig/33.InstallRequiredPackages.png)
+1. ダウンロード先の選択  
+![](./fig/34.SelectMirror.png)
+1. 起動完了  
+![](./fig/35.LoadedRcmdr.png)
+
+---
