@@ -178,6 +178,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#インストール-2" id="toc-インストール-2" class="nav-link" data-scroll-target="#インストール-2">インストール</a></li>
   <li><a href="#起動確認-1" id="toc-起動確認-1" class="nav-link" data-scroll-target="#起動確認-1">起動確認</a></li>
   </ul></li>
+  <li><a href="#動作確認" id="toc-動作確認" class="nav-link" data-scroll-target="#動作確認">動作確認</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -190,8 +191,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="インストール" class="level1 unnumbered">
 <h1 class="unnumbered">インストール</h1>
-<p>　本資料では<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>で利用するR Commander環境を構築する方法を紹介しています。</p>
-<p>　環境構築は大きく以下の手順に分かれます</p>
+<p>本資料では<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象です。他のOSを利用したい場合は<a href="https://cran.r-project.org/index.html">CRAN</a>にてインストール方法を確認してください。</p>
+<p>環境構築は大きく以下の手順に分かれます</p>
 <ol type="1">
 <li>Rのインストール</li>
 <li>R Commanderのインストール</li>
@@ -203,17 +204,16 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ユーザーアカウントについて
+ユーザーアカウント名について
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>　Winodwsのアカウント名は日本語および空白を含まず、数字から始まらないアカウントを使用してください。<br>
-　上記以外のアカウント名を使用するとRがパスを処理できずエラーになる可能性があります。</p>
+<p>Rをインストールする際に利用するWinodwsのユーザアカウント名は<strong>日本語および空白を含まず数字から始まらない</strong>アカウントを使用してください。日本語や空白などを含んだアカウント名や数字から始まるアカウント名を使用するとRがパスを処理できず起動しなかったり正しく動作しない場合があります。</p>
 </div>
 </div>
-<section id="rのインストール" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="rのインストール">Rのインストール</h2>
-<p>　Windows10/11環境を前提としています。他のOSを利用の場合は<a href="https://cran.r-project.org/index.html">CRAN</a>でインストール方法を確認してください。</p>
+<p>　</p>
+<section id="rのインストール" class="level2">
+<h2 class="anchored" data-anchor-id="rのインストール">Rのインストール</h2>
 <section id="ダウンロード" class="level3">
 <h3 class="anchored" data-anchor-id="ダウンロード">ダウンロード</h3>
 <ol type="1">
@@ -230,23 +230,19 @@ Tip: Version
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>　書籍と同じR4.2.2を使いたい場合は<a href="https://cran.r-project.org/bin/windows/base/old/4.2.2/">R4.2.2</a>からダウンロードしてください。</p>
+<p>書籍と同じバージョンを利用したい場合は<a href="https://cran.r-project.org/bin/windows/base/old/4.2.2/">こちらからR4.2.2</a>をダウンロードしてください。</p>
 </div>
 </div>
 </section>
 <section id="インストール-1" class="level3">
 <h3 class="anchored" data-anchor-id="インストール-1">インストール</h3>
-<p>　Rのインストールは基本的にデフォルトを選択しますが、R Commnderを使いやすくするために起動時オプションだけ変更してください。</p>
+<p>Rのインストールではダイアログでの問い合わせに対して基本的にデフォルトを選択します。ただし、R Commnderを使いやすくするために起動時オプションの選択だけはデフォルトから変更します。</p>
 <ol type="1">
-<li>ダウンロードした「R-4.3.x-win」ファイルを実行</li>
-<li>インストール言語の選択<br>
-</li>
-<li>ライセンスの確認<br>
-</li>
-<li>インストール先の指定<br>
-</li>
-<li>コンポーネントの選択<br>
-</li>
+<li>ダウンロードしたファイルを実行</li>
+<li>インストール言語を選択</li>
+<li>ライセンスの確認</li>
+<li>インストール先の指定</li>
+<li>コンポーネントの選択</li>
 <li>起動時オプション
 <ul>
 <li>「<strong>はい(カスタマイズする)</strong>」を選択<br>
@@ -264,13 +260,12 @@ Tip: Version
 </li>
 </ul></li>
 </ol></li>
-<li>スタートメニューフォルダーの指定<br>
-</li>
+<li>スタートメニューフォルダーの指定</li>
 <li>追加タスクの選択
 <ul>
-<li>お好みで<br>
-</li>
+<li>「アイコンの追加」はお好みで選択</li>
 </ul></li>
+<li>インストール状況（プログレス表示）</li>
 <li>完了</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -283,57 +278,117 @@ Tip: MDI or SDI
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>　R Commanderを利用する場合は、操作ウィンドウやグラフ表示に個々のウィンドウを割り当てるSDIモードが便利です。<br>
-　インストール時にMDIを選択してもオプションで変更できます。</p>
+<p>R Commanderを利用する場合は、操作ウィンドウやグラフ表示に個々のウィンドウを割り当てるSDIモードが便利です。インストール時にMDIを選択してた場合でもR起動後にオプションで変更できます。</p>
 </div>
 </div>
+<p>　</p>
 </section>
 <section id="起動確認" class="level3">
 <h3 class="anchored" data-anchor-id="起動確認">起動確認</h3>
-<p>　スタートメニューから［R］-［R 4.3.x］を選んでRが起動することを確認します。</p>
-<p><img src="./fig/11.R.png" class="img-fluid"></p>
+<p>スタートメニューから［R］-［R 4.x.x］を実行し下図のようなウィンドウが表示されることを確認します。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./fig/11.R.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">R Console</figcaption>
+</figure>
+</div>
+<p>　</p>
 </section>
 </section>
 <section id="r-commanderのインストール" class="level2">
 <h2 class="anchored" data-anchor-id="r-commanderのインストール">R Commanderのインストール</h2>
 <section id="インストール-2" class="level3">
 <h3 class="anchored" data-anchor-id="インストール-2">インストール</h3>
-<p>　R CommanderのインストールはRから行います。</p>
+<p>R CommanderのインストールはRから行います。</p>
 <ol type="1">
 <li>Rのメニューから［パッケージ］-［パッケージのインストール…］を実行</li>
-<li>パッケージをダウンロードするミラーサイトを選択
+<li>パッケージをダウンロードするミラーサイトを選択して［OK］をクリック
 <ul>
-<li>デフォルトの「0-Cloud(https)」<br>
-</li>
+<li>デフォルトの「<strong>0-Cloud[https]</strong>」を選択</li>
 </ul></li>
-<li>パッケージ選択画面から「Rcmdr」を選択<br>
-</li>
-<li>インストールの確認<br>
-</li>
-<li>インストール先の確認<br>
-</li>
-<li>R Commanderのインストール完了</li>
+<li>パッケージ一覧から「<strong>Rcmdr</strong>」を選択して［OK］をクリック</li>
+<li>パーソナルライブラリの利用確認
+<ul>
+<li>初回のみで［はい(Y)］をクリック</li>
+</ul></li>
+<li>インストール先の確認
+<ul>
+<li>初回のみで［はい(Y)］をクリック</li>
+</ul></li>
+<li>パッケージダウンロードのプログレスが複数表示
+<ul>
+<li>なにもしない</li>
+</ul></li>
+<li>R Commanderインストール完了</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./fig/26.RcmdrInstalled.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">R Console</figcaption>
+</figure>
+</div>
+<p>　</p>
 </section>
 <section id="起動確認-1" class="level3">
 <h3 class="anchored" data-anchor-id="起動確認-1">起動確認</h3>
-<p>　R Commanderが起動することを確認します</p>
+<p>R Commanderが起動することを確認します。</p>
 <ol type="1">
-<li>Rのメニューから［パッケージ］-［パッケージの読み込み…］を実行<br>
-</li>
-<li>「Rcmdr」を選択<br>
-</li>
-<li>不足パッケージのインストール<br>
-</li>
-<li>ダウンロード先の選択<br>
-</li>
-<li>起動完了<br>
-<img src="./fig/35.LoadedRcmdr.png" class="img-fluid"></li>
+<li>Rのメニューから［パッケージ］-［パッケージの読み込み…］を実行</li>
+<li>「Rcmdr」を選択</li>
+<li>不足パッケージのインストール
+<ul>
+<li>初回のみ</li>
+</ul></li>
+<li>ダウンロード先の選択
+<ul>
+<li>デフォルトの「CRAN」を選択</li>
+</ul></li>
+<li>R Commander起動</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./fig/35.LoadedRcmdr.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">R Commander</figcaption>
+</figure>
+</div>
+<p>　</p>
+</section>
+</section>
+<section id="動作確認" class="level2">
+<h2 class="anchored" data-anchor-id="動作確認">動作確認</h2>
+<p>以下はR Commanderウィンドウでの操作になります。</p>
+<ol type="1">
+<li>メニューバーの下にある［データセット:］の部分が「&lt;アクティブデータセットなし&gt;」になっていることを確認</li>
+<li>メニューから［データ］-［パッケージ内のデータ］-［アタッチされたパッケージからデータセットを読み込む…］を実行</li>
+<li>［データセット名を入力:］欄に「iris」と入力し［OK］をクリック</li>
+<li>メニューバーの下にある［データセット:］の部分が「iris」になっていることを確認</li>
+<li>メニューから［グラフ］-［箱ひげ図…］を実行</li>
+<li>［変数］の「Petal.Length」をクリックし［OK］をクリック</li>
+<li>別ウィンドウで箱ひげ図が描かれることを確認</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./fig/46.BoxplotWindow.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">R Commander</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: Version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>「アクティブデータセット」はR Commander特有の概念です。R単体でも同様のことはできますが変数の参照間違いにつながりやすいので一般的には使用しません。</p>
+</div>
+</div>
+<p>　</p>
 <hr>
 
 
-</section>
 </section>
 </section>
 
