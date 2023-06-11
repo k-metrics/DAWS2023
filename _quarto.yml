@@ -42,10 +42,10 @@ book:
 
 format:
   html:
+    theme: superhero
     # Toggle light and dark
-    theme:
-      light: minty
-      dark: superhero
+      # light: minty
+      # dark: superhero
     # theme - Boothswatch 
     #   https://quarto.org/docs/output-formats/html-themes.html
     # Light theme: default, cerulean, cosmo, flatly, journal, litera, lumen,
@@ -61,7 +61,7 @@ format:
     #   source: true   # 各ページのソースを表示するか否か
     #   toggle: true   # 
     #   caption: none  # 
-    highlight-style: gruvbox
+    highlight-style: arrow # gruvbox
     # highlight-style - highlight.js
     #   https://quarto.org/docs/output-formats/html-code.html
     # Automatically switch type

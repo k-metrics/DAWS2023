@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>『統計ソフト「R」超入門』 - データセット</title>
+<title>『統計ソフト「R」超入門』 - 2&nbsp; データセット</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,12 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dataset.html">データセット</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dataset.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データセット</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -125,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">データセット</h1>
+      <h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データセット</span></h1>
                       </div>
   </div>
     
@@ -162,7 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </li>
       </ul>
     </div>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -176,13 +173,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">環境構築</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">環境構築</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dataset.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">データセット</span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データセット</span></span></a>
   </div>
 </li>
     </ul>
@@ -195,23 +192,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#データセットとは" id="toc-データセットとは" class="nav-link active" data-scroll-target="#データセットとは">データセットとは</a></li>
-  <li><a href="#組み込みデータセット" id="toc-組み込みデータセット" class="nav-link" data-scroll-target="#組み込みデータセット">組み込みデータセット</a>
+  <li><a href="#データセットとは" id="toc-データセットとは" class="nav-link active" data-scroll-target="#データセットとは"><span class="header-section-number">2.1</span> データセットとは</a></li>
+  <li><a href="#組み込みデータセット" id="toc-組み込みデータセット" class="nav-link" data-scroll-target="#組み込みデータセット"><span class="header-section-number">2.2</span> 組み込みデータセット</a>
   <ul class="collapse">
-  <li><a href="#iris-flower-data-set" id="toc-iris-flower-data-set" class="nav-link" data-scroll-target="#iris-flower-data-set">Iris flower data set</a></li>
-  <li><a href="#new-york-air-quarity-measurements" id="toc-new-york-air-quarity-measurements" class="nav-link" data-scroll-target="#new-york-air-quarity-measurements">New York Air Quarity Measurements</a></li>
+  <li><a href="#iris-flower-data-set" id="toc-iris-flower-data-set" class="nav-link" data-scroll-target="#iris-flower-data-set"><span class="header-section-number">2.2.1</span> Iris flower data set</a></li>
+  <li><a href="#new-york-air-quarity-measurements" id="toc-new-york-air-quarity-measurements" class="nav-link" data-scroll-target="#new-york-air-quarity-measurements"><span class="header-section-number">2.2.2</span> New York Air Quarity Measurements</a></li>
   </ul></li>
-  <li><a href="#データセットを作成する" id="toc-データセットを作成する" class="nav-link" data-scroll-target="#データセットを作成する">データセットを作成する</a>
+  <li><a href="#データセットを作成する" id="toc-データセットを作成する" class="nav-link" data-scroll-target="#データセットを作成する"><span class="header-section-number">2.3</span> データセットを作成する</a>
   <ul class="collapse">
-  <li><a href="#r-commanderのためのデータセット" id="toc-r-commanderのためのデータセット" class="nav-link" data-scroll-target="#r-commanderのためのデータセット">R Commanderのためのデータセット</a></li>
+  <li><a href="#r-commanderのためのデータセット" id="toc-r-commanderのためのデータセット" class="nav-link" data-scroll-target="#r-commanderのためのデータセット"><span class="header-section-number">2.3.1</span> R Commanderのためのデータセット</a></li>
   </ul></li>
-  <li><a href="#データセットを読み込む" id="toc-データセットを読み込む" class="nav-link" data-scroll-target="#データセットを読み込む">データセットを読み込む</a>
+  <li><a href="#データセットを読み込む" id="toc-データセットを読み込む" class="nav-link" data-scroll-target="#データセットを読み込む"><span class="header-section-number">2.4</span> データセットを読み込む</a>
   <ul class="collapse">
-  <li><a href="#csvutf-8形式の場合" id="toc-csvutf-8形式の場合" class="nav-link" data-scroll-target="#csvutf-8形式の場合">CSV(UTF-8)形式の場合</a></li>
-  <li><a href="#xls形式xlsx形式の場合" id="toc-xls形式xlsx形式の場合" class="nav-link" data-scroll-target="#xls形式xlsx形式の場合">xls形式／xlsx形式の場合</a></li>
-  <li><a href="#rdata形式の場合" id="toc-rdata形式の場合" class="nav-link" data-scroll-target="#rdata形式の場合">.RData形式の場合</a></li>
+  <li><a href="#csvutf-8形式の場合" id="toc-csvutf-8形式の場合" class="nav-link" data-scroll-target="#csvutf-8形式の場合"><span class="header-section-number">2.4.1</span> CSV(UTF-8)形式の場合</a></li>
+  <li><a href="#xls形式xlsx形式の場合" id="toc-xls形式xlsx形式の場合" class="nav-link" data-scroll-target="#xls形式xlsx形式の場合"><span class="header-section-number">2.4.2</span> xls形式／xlsx形式の場合</a></li>
+  <li><a href="#rdata形式の場合" id="toc-rdata形式の場合" class="nav-link" data-scroll-target="#rdata形式の場合"><span class="header-section-number">2.4.3</span> .RData形式の場合</a></li>
   </ul></li>
-  <li><a href="#アクティブデータセット" id="toc-アクティブデータセット" class="nav-link" data-scroll-target="#アクティブデータセット">アクティブデータセット</a></li>
+  <li><a href="#アクティブデータセット" id="toc-アクティブデータセット" class="nav-link" data-scroll-target="#アクティブデータセット"><span class="header-section-number">2.5</span> アクティブデータセット</a></li>
   </ul>
 </nav>
     </div>
@@ -221,8 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="データセットとは" class="level2">
-<h2 class="anchored" data-anchor-id="データセットとは">データセットとは</h2>
+<section id="データセットとは" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="データセットとは"><span class="header-section-number">2.1</span> データセットとは</h2>
 <p>Rにおけるデータセットとは分析対象となるデータの集まりを意味します。例えば、下表のような車の諸元をまとめたものはデータセットです。</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -275,12 +272,12 @@ Tip: Tidy data（整然データ）
 </div>
 <p>　</p>
 </section>
-<section id="組み込みデータセット" class="level2">
-<h2 class="anchored" data-anchor-id="組み込みデータセット">組み込みデータセット</h2>
+<section id="組み込みデータセット" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="組み込みデータセット"><span class="header-section-number">2.2</span> 組み込みデータセット</h2>
 <p>Rには様々なデータセットがあらかじめ組み込まれています。テキストP36のパッケージ付属データと同義です。特に標準で用意されている<code>datasets</code>パッケージには様々なデータセットが組み込まれていますので、代表的なデータセットを簡単に紹介しておきます。</p>
 <p>　</p>
-<section id="iris-flower-data-set" class="level3">
-<h3 class="anchored" data-anchor-id="iris-flower-data-set">Iris flower data set</h3>
+<section id="iris-flower-data-set" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="iris-flower-data-set"><span class="header-section-number">2.2.1</span> Iris flower data set</h3>
 <p>統計学の世界で最も有名な「フィッシャーのアヤメ」のデータセットです。</p>
 <div class="cell">
 <details open="">
@@ -311,8 +308,8 @@ Tip: Tidy data（整然データ）
 </div>
 <p>　</p>
 </section>
-<section id="new-york-air-quarity-measurements" class="level3">
-<h3 class="anchored" data-anchor-id="new-york-air-quarity-measurements">New York Air Quarity Measurements</h3>
+<section id="new-york-air-quarity-measurements" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="new-york-air-quarity-measurements"><span class="header-section-number">2.2.2</span> New York Air Quarity Measurements</h3>
 <p>1973年5月から9月にかけてニューヨークで観測された大気データのデータセットで欠損値（欠測値）が含まれています。</p>
 <div class="cell">
 <details open="">
@@ -345,13 +342,13 @@ Tip: Tidy data（整然データ）
 <p>　</p>
 </section>
 </section>
-<section id="データセットを作成する" class="level2">
-<h2 class="anchored" data-anchor-id="データセットを作成する">データセットを作成する</h2>
+<section id="データセットを作成する" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="データセットを作成する"><span class="header-section-number">2.3</span> データセットを作成する</h2>
 <p>R Commanderにはデータセットを作成するための機能が組み込まれていますが、Excelのような表計算ソフトを使ってデータファイルをを作成した方が早くて便利ですし融通が利きます。R Commanderが対応している代表的なファイル形式はxls形式、xlsx形式、CSV形式です。</p>
 <p>変数名などに日本語が含まれるデータをCSV形式でファイルに保存する場合は必ずUTF-8エンコーディングを指定してください。日本語版ExcelはデフォルトでシフトJISエンコーディングのCSVファイルを作成します。R Commanderの読み込み処理ではエンコーディングが指定されないためにエンコーディングエラーを起こしてファイルを読み込むことができません。このエラーはR 4.2.xからデフォルトエンコーディングがUTF-8に変更されたことに起因しています。</p>
 <p>　</p>
-<section id="r-commanderのためのデータセット" class="level3">
-<h3 class="anchored" data-anchor-id="r-commanderのためのデータセット">R Commanderのためのデータセット</h3>
+<section id="r-commanderのためのデータセット" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="r-commanderのためのデータセット"><span class="header-section-number">2.3.1</span> R Commanderのためのデータセット</h3>
 <p>R CommanderではGUI操作の弊害で様々なオプションの指定ができないため以下の規則に則ってファイルを作成することで読み込み時のエラーを回避することができます。</p>
 <ol type="1">
 <li>Tidy data形式を守る
@@ -381,12 +378,12 @@ Tip: Tidy data（整然データ）
 <p>　</p>
 </section>
 </section>
-<section id="データセットを読み込む" class="level2">
-<h2 class="anchored" data-anchor-id="データセットを読み込む">データセットを読み込む</h2>
+<section id="データセットを読み込む" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="データセットを読み込む"><span class="header-section-number">2.4</span> データセットを読み込む</h2>
 <p>R Commanderでデータセットのファイルを読み込むには［データ］メニューを使います。</p>
 <p>　</p>
-<section id="csvutf-8形式の場合" class="level3">
-<h3 class="anchored" data-anchor-id="csvutf-8形式の場合">CSV(UTF-8)形式の場合</h3>
+<section id="csvutf-8形式の場合" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="csvutf-8形式の場合"><span class="header-section-number">2.4.1</span> CSV(UTF-8)形式の場合</h3>
 <p>［データ］-［データのインポート］-［テキストファイルまたはクリップボード,URL から…］を実行すると下図のようなダイアログが開きます。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -440,8 +437,8 @@ Tip: Tidy data（整然データ）
 <p>データファイルの場所をローカルファイルシステムまたはインターネットのURLにして ［OK］ボタンをクリックすると入力ダイアログが開きますので、読み込みたいファイルを選択するかURLを入力してください。</p>
 <p>　</p>
 </section>
-<section id="xls形式xlsx形式の場合" class="level3">
-<h3 class="anchored" data-anchor-id="xls形式xlsx形式の場合">xls形式／xlsx形式の場合</h3>
+<section id="xls形式xlsx形式の場合" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="xls形式xlsx形式の場合"><span class="header-section-number">2.4.2</span> xls形式／xlsx形式の場合</h3>
 <p>［データ］-［データのインポート］-［エクセルファイルから…］</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -486,15 +483,15 @@ Tip: Tidy data（整然データ）
 </table>
 <p>　</p>
 </section>
-<section id="rdata形式の場合" class="level3">
-<h3 class="anchored" data-anchor-id="rdata形式の場合">.RData形式の場合</h3>
+<section id="rdata形式の場合" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="rdata形式の場合"><span class="header-section-number">2.4.3</span> .RData形式の場合</h3>
 <p>［データ］-［データセットのロード…］を実行するとOSのファイル選択ダイアログが開きますので読み込みたい<code>.RData</code>形式のファイルを指定します。</p>
 <p>　</p>
 </section>
 </section>
-<section id="アクティブデータセット" class="level2">
-<h2 class="anchored" data-anchor-id="アクティブデータセット">アクティブデータセット</h2>
-<p>R Commanderにはアクティブデータセットという概念があります。アクティブデータセットとは計算対象となるデータセットのことで、指定されていないと統計用の算出やグラフによる可視化ができません。</p>
+<section id="アクティブデータセット" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="アクティブデータセット"><span class="header-section-number">2.5</span> アクティブデータセット</h2>
+<p>R Commanderにはアクティブデータセットという概念があります。アクティブデータセットとは計算対象となるデータセットのことで、指定されていないと統計量の算出やグラフによる可視化ができません。</p>
 <p>　</p>
 <hr>
 
@@ -522,121 +519,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -853,7 +735,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">環境構築</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">環境構築</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
