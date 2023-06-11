@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA">
-<meta name="dcterms.date" content="2023-06-10">
+<meta name="dcterms.date" content="2023-06-11">
 
 <title>『統計ソフト「R」超入門』</title>
 <style>
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./dataset.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 10, 2023</p>
+        <p class="date">June 11, 2023</p>
       </div>
     </div>
     
@@ -155,6 +156,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">環境構築</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dataset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">データセット</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -191,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="環境構築" class="level1 unnumbered">
 <h1 class="unnumbered">環境構築</h1>
-<p>本資料では<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は<a href="https://cran.r-project.org/index.html">CRAN</a>にてインストール方法を確認してください。</p>
+<p>本資料では<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は<a href="https://cran.r-project.org/index.html">CRAN</a>にてインストール方法を確認してください。</p>
 <p>環境構築はインターネットに接続された環境で行う必要があります。イントラネットなどで外部に接続する際にプロキシサーバーが必要な環境ではR Commanderがインストールできませんのでご注意ください。</p>
 <ol type="1">
 <li>Rのインストール</li>
@@ -214,10 +221,12 @@ ul.task-list li input[type="checkbox"] {
 <p>　</p>
 <section id="rのインストール" class="level2">
 <h2 class="anchored" data-anchor-id="rのインストール">Rのインストール</h2>
+<p>テキストのP24から図解されていますので、図解が必要な場合はテキストを参照してください。</p>
+<p>　</p>
 <section id="ダウンロード" class="level3">
 <h3 class="anchored" data-anchor-id="ダウンロード">ダウンロード</h3>
 <ol type="1">
-<li><a href="https://cran.r-project.org/bin/windows/base/">CRAN</a>からRの最新版をダウンロードします</li>
+<li><a href="https://cran.r-project.org/bin/windows/base/">CRAN</a>からRの最新版インストーラをダウンロードします</li>
 <li>ダウンロードしたファイルのウィルスチェックをします</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -238,12 +247,15 @@ Tip: Version
 <h3 class="anchored" data-anchor-id="インストール">インストール</h3>
 <p>Rのインストールではダイアログでの問い合わせに対して基本的にデフォルトを選択します。ただし、R Commnderを使いやすくするために起動時オプションの選択だけはデフォルトから変更します。</p>
 <ol type="1">
-<li>ダウンロードしたファイルを実行</li>
+<li>ダウンロードしたファイル（インストーラ）を実行
+<ul>
+<li>以降、ウィザード形式の指示に従う</li>
+</ul></li>
 <li>インストール言語を選択</li>
-<li>ライセンスの確認</li>
-<li>インストール先の指定</li>
-<li>コンポーネントの選択</li>
-<li>起動時オプション
+<li>ライセンスを確認</li>
+<li>インストール先を指定</li>
+<li>コンポーネントを選択</li>
+<li>起動時オプションを選択
 <ul>
 <li>「<strong>はい(カスタマイズする)</strong>」を選択<br>
 </li>
@@ -288,15 +300,18 @@ Tip: MDI or SDI
 <p>スタートメニューから［R］-［R 4.x.x］を実行し下図のようなウィンドウが表示されることを確認します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./fig/11.R.png" class="img-fluid figure-img"></p>
+<p><img src="./fig/00-11.R.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">R Console</figcaption>
 </figure>
 </div>
+<p>そのまま、R Commanderのインストールに進みます。</p>
 <p>　</p>
 </section>
 </section>
 <section id="r-commanderのインストール" class="level2">
 <h2 class="anchored" data-anchor-id="r-commanderのインストール">R Commanderのインストール</h2>
+<p>テキストのP28から図解されていますので、図解が必要な場合はテキストを参照してください。</p>
+<p>　</p>
 <section id="インストール-1" class="level3">
 <h3 class="anchored" data-anchor-id="インストール-1">インストール</h3>
 <p>R CommanderのインストールはRから行います。</p>
@@ -323,7 +338,7 @@ Tip: MDI or SDI
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./fig/26.RcmdrInstalled.png" class="img-fluid figure-img"></p>
+<p><img src="./fig/00-26.RcmdrInstalled.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">R Console</figcaption>
 </figure>
 </div>
@@ -347,7 +362,7 @@ Tip: MDI or SDI
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./fig/35.LoadedRcmdr.png" class="img-fluid figure-img"></p>
+<p><img src="./fig/00-35.LoadedRcmdr.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">R Commander</figcaption>
 </figure>
 </div>
@@ -368,7 +383,7 @@ Tip: MDI or SDI
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./fig/46.BoxplotWindow.png" class="img-fluid figure-img"></p>
+<p><img src="./fig/00-46.BoxplotWindow.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">R Commander</figcaption>
 </figure>
 </div>
@@ -741,6 +756,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./dataset.html" class="pagination-link">
+        <span class="nav-page-text">データセット</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

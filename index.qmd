@@ -1,5 +1,5 @@
 # 環境構築 {.unnumbered}
-本資料では[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は[CRAN](https://cran.r-project.org/index.html)にてインストール方法を確認してください。
+本資料では[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は[CRAN](https://cran.r-project.org/index.html)にてインストール方法を確認してください。
 
 環境構築はインターネットに接続された環境で行う必要があります。イントラネットなどで外部に接続する際にプロキシサーバーが必要な環境ではR Commanderがインストールできませんのでご注意ください。  
 
@@ -16,11 +16,13 @@ Rをインストールする際に利用するWinodwsのユーザアカウント
 　  
 
 ## Rのインストール
+テキストのP24から図解されていますので、図解が必要な場合はテキストを参照してください。
 
+　  
 
 ### ダウンロード
 
-1. [CRAN](https://cran.r-project.org/bin/windows/base/)からRの最新版をダウンロードします
+1. [CRAN](https://cran.r-project.org/bin/windows/base/)からRの最新版インストーラをダウンロードします
 1. ダウンロードしたファイルのウィルスチェックをします
 
 :::{.callout-tip}
@@ -32,12 +34,13 @@ Rをインストールする際に利用するWinodwsのユーザアカウント
 Rのインストールではダイアログでの問い合わせに対して基本的にデフォルトを選択します。ただし、R Commnderを使いやすくするために起動時オプションの選択だけはデフォルトから変更します。
 
 
-1. ダウンロードしたファイルを実行
+1. ダウンロードしたファイル（インストーラ）を実行
+    * 以降、ウィザード形式の指示に従う
 1. インストール言語を選択
-1. ライセンスの確認
-1. インストール先の指定
-1. コンポーネントの選択
-1. 起動時オプション
+1. ライセンスを確認
+1. インストール先を指定
+1. コンポーネントを選択
+1. 起動時オプションを選択
     * 「**はい(カスタマイズする)**」を選択  
     1. 表示モード
         * 「**SDI(複数のウィンドウを使用して表示)**」を選択  
@@ -60,11 +63,16 @@ R Commanderを利用する場合は、操作ウィンドウやグラフ表示に
 ### 起動確認
 スタートメニューから［R］-［R 4.x.x］を実行し下図のようなウィンドウが表示されることを確認します。  
 
-![R Console](./fig/11.R.png)
+![R Console](./fig/00-11.R.png)
+
+そのまま、R Commanderのインストールに進みます。
 
 　  
 
 ## R Commanderのインストール
+テキストのP28から図解されていますので、図解が必要な場合はテキストを参照してください。
+
+　  
 
 ### インストール
 R CommanderのインストールはRから行います。
@@ -81,7 +89,7 @@ R CommanderのインストールはRから行います。
     * なにもしない
 1. R Commanderインストール完了  
 
-![R Console](./fig/26.RcmdrInstalled.png)
+![R Console](./fig/00-26.RcmdrInstalled.png)
 
 　  
 
@@ -96,7 +104,7 @@ R Commanderが起動することを確認します。
     * デフォルトの「CRAN」を選択
 1. R Commander起動  
 
-![R Commander](./fig/35.LoadedRcmdr.png)
+![R Commander](./fig/00-35.LoadedRcmdr.png)
 
 　  
 
@@ -111,7 +119,7 @@ R Commanderが起動することを確認します。
 1. ［変数］の「Petal.Length」をクリックし［OK］をクリック
 1. 別ウィンドウで箱ひげ図が描かれることを確認  
 
-![R Commander](./fig/46.BoxplotWindow.png)
+![R Commander](./fig/00-46.BoxplotWindow.png)
 
 :::{.callout-tip}
 ## Tip: Version
