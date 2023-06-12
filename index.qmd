@@ -1,4 +1,4 @@
-# 環境構築
+# 環境構築 {.unnumbered}
 本資料では[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は[CRAN](https://cran.r-project.org/index.html)にてインストール方法を確認してください。
 
 環境構築はインターネットに接続された環境で行う必要があります。イントラネットなどで外部に接続する際にプロキシサーバーが必要な環境ではR Commanderがインストールできませんのでご注意ください。  
@@ -122,7 +122,7 @@ R Commanderが起動することを確認します。
 ![R Commander](./fig/00-46.BoxplotWindow.png)
 
 :::{.callout-tip}
-## Tip: Active Dataset
+## Tip: Version
 「アクティブデータセット」はR Commander特有の概念です。R単体でも同様のことはできますが変数の参照間違いにつながりやすいので一般的には使用しません。
 :::
 
