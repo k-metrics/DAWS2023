@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,14 +58,15 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -77,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">環境構築</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -175,6 +176,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ダウンロード" id="toc-ダウンロード" class="nav-link" data-scroll-target="#ダウンロード"><span class="header-section-number">1.1.1</span> ダウンロード</a></li>
   <li><a href="#インストール" id="toc-インストール" class="nav-link" data-scroll-target="#インストール"><span class="header-section-number">1.1.2</span> インストール</a></li>
   <li><a href="#起動確認" id="toc-起動確認" class="nav-link" data-scroll-target="#起動確認"><span class="header-section-number">1.1.3</span> 起動確認</a></li>
+  <li><a href="#リカバリーsdiモードへの変更" id="toc-リカバリーsdiモードへの変更" class="nav-link" data-scroll-target="#リカバリーsdiモードへの変更"><span class="header-section-number">1.1.4</span> リカバリー（SDIモードへの変更）</a></li>
   </ul></li>
   <li><a href="#r-commanderのインストール" id="toc-r-commanderのインストール" class="nav-link" data-scroll-target="#r-commanderのインストール"><span class="header-section-number">1.2</span> R Commanderのインストール</a>
   <ul class="collapse">
@@ -187,12 +189,12 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
 
 
-<section id="環境構築" class="level1" data-number="1">
+<section id="環境構築" class="level1 page-columns page-full" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> 環境構築</h1>
 <p>　本資料では<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は<a href="https://cran.r-project.org/index.html">CRAN</a>にてインストール方法を確認してください。</p>
 <p>　環境構築はインターネットに接続された環境で行う必要があります。イントラネットなどで外部に接続する際にプロキシサーバーが必要な環境ではR Commanderがインストールできませんのでご注意ください。</p>
@@ -215,7 +217,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>　</p>
-<section id="rのインストール" class="level2" data-number="1.1">
+<section id="rのインストール" class="level2 page-columns page-full" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="rのインストール"><span class="header-section-number">1.1</span> Rのインストール</h2>
 <p>　テキストのP24から図解されていますので、図解が必要な場合はテキストを参照してください。</p>
 <p>　</p>
@@ -240,7 +242,7 @@ Tip: Version
 </div>
 </div>
 </section>
-<section id="インストール" class="level3" data-number="1.1.2">
+<section id="インストール" class="level3 page-columns page-full" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="インストール"><span class="header-section-number">1.1.2</span> インストール</h3>
 <p>　Rのインストールではダイアログでの問い合わせに対して基本的にデフォルトを選択します。ただし、R Commnderを使いやすくするために起動時オプションの選択だけはデフォルトから変更します。</p>
 <ol type="1">
@@ -260,12 +262,12 @@ Tip: Version
 <ol type="1">
 <li>表示モード
 <ul>
-<li>「<strong>SDI(複数のウィンドウを使用して表示)</strong>」を選択<br>
+<li>「<strong>SDI(複数のウィンドウを使用して表示)</strong>」を選択<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><br>
 </li>
 </ul></li>
 <li>ヘルプの表示方法
 <ul>
-<li>「<strong>HTMLヘルプ</strong>」を選択<br>
+<li>「<strong>HTMLヘルプ</strong>」を選択<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a><br>
 </li>
 </ul></li>
 </ol></li>
@@ -277,7 +279,7 @@ Tip: Version
 <li>インストール状況（プログレス表示）</li>
 <li>完了</li>
 </ol>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;カスタマイズせずにデフォルトインストールした場合は下記のリカバリーを参考に変更してください</p></li><li id="fn2"><p><sup>2</sup>&nbsp;ヘルプの表示方法は好みで構いませんがHTML形式の方が関連項目のリンクが使えるので便利です</p></li></div><div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -302,6 +304,19 @@ Tip: MDI or SDI
 </figure>
 </div>
 <p>　RのウィンドウはそのままでR Commanderのインストールに進みます。</p>
+<p>　</p>
+</section>
+<section id="リカバリーsdiモードへの変更" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="リカバリーsdiモードへの変更"><span class="header-section-number">1.1.4</span> リカバリー（SDIモードへの変更）</h3>
+<p>　MDIモードでインストールした場合は下記の手順でSDIモードに変更してください。</p>
+<ol type="1">
+<li>Rのメニューから［編集］-［GUIプリファレンス…］を実行して設定エディタダイアログを開く<br>
+<img src="./fig/00-51.GuiPreference.png" class="img-fluid" alt="GUI Preference"><br>
+</li>
+<li>最上段にある［Sigle or multiple］で「SDI」にチェックを入れ［OK］ボタンをクリックする<br>
+<img src="./fig/00-52.GuiPreferenceSDI.png" class="img-fluid" alt="Rgui設定エディター"></li>
+<li>Rを再起動する</li>
+</ol>
 <p>　</p>
 </section>
 </section>
@@ -390,6 +405,7 @@ Tip: MDI or SDI
 
 </section>
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
