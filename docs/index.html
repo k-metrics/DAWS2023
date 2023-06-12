@@ -65,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -187,12 +187,12 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
 
 
-<section id="環境構築" class="level1" data-number="1">
+<section id="環境構築" class="level1 page-columns page-full" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> 環境構築</h1>
 <p>　本資料では<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は<a href="https://cran.r-project.org/index.html">CRAN</a>にてインストール方法を確認してください。</p>
 <p>　環境構築はインターネットに接続された環境で行う必要があります。イントラネットなどで外部に接続する際にプロキシサーバーが必要な環境ではR Commanderがインストールできませんのでご注意ください。</p>
@@ -215,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>　</p>
-<section id="rのインストール" class="level2" data-number="1.1">
+<section id="rのインストール" class="level2 page-columns page-full" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="rのインストール"><span class="header-section-number">1.1</span> Rのインストール</h2>
 <p>　テキストのP24から図解されていますので、図解が必要な場合はテキストを参照してください。</p>
 <p>　</p>
@@ -240,7 +240,7 @@ Tip: Version
 </div>
 </div>
 </section>
-<section id="インストール" class="level3" data-number="1.1.2">
+<section id="インストール" class="level3 page-columns page-full" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="インストール"><span class="header-section-number">1.1.2</span> インストール</h3>
 <p>　Rのインストールではダイアログでの問い合わせに対して基本的にデフォルトを選択します。ただし、R Commnderを使いやすくするために起動時オプションの選択だけはデフォルトから変更します。</p>
 <ol type="1">
@@ -260,12 +260,12 @@ Tip: Version
 <ol type="1">
 <li>表示モード
 <ul>
-<li>「<strong>SDI(複数のウィンドウを使用して表示)</strong>」を選択<br>
+<li>「<strong>SDI(複数のウィンドウを使用して表示)</strong>」を選択<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><br>
 </li>
 </ul></li>
 <li>ヘルプの表示方法
 <ul>
-<li>「<strong>HTMLヘルプ</strong>」を選択<br>
+<li>「<strong>HTMLヘルプ</strong>」を選択<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a><br>
 </li>
 </ul></li>
 </ol></li>
@@ -277,7 +277,7 @@ Tip: Version
 <li>インストール状況（プログレス表示）</li>
 <li>完了</li>
 </ol>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;カスタマイズせずにデフォルトインストールした場合は下記のリカバリーを参考に変更してください</p></li><li id="fn2"><p><sup>2</sup>&nbsp;ヘルプの表示方法は好みで構いませんがHTML形式の方が関連項目のリンクが使えるので便利です</p></li></div><div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -303,6 +303,11 @@ Tip: MDI or SDI
 </div>
 <p>　RのウィンドウはそのままでR Commanderのインストールに進みます。</p>
 <p>　</p>
+<section id="リカバリー" class="level4" data-number="1.1.3.1">
+<h4 data-number="1.1.3.1" class="anchored" data-anchor-id="リカバリー"><span class="header-section-number">1.1.3.1</span> リカバリー</h4>
+<p>RをMDIモードでインストールした場合は下記の手順でSDIモードに変更してください。</p>
+<p>　</p>
+</section>
 </section>
 </section>
 <section id="r-commanderのインストール" class="level2" data-number="1.2">
@@ -390,6 +395,7 @@ Tip: MDI or SDI
 
 </section>
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
