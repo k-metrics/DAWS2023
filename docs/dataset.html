@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
-
+<meta name="generator" content="quarto-1.3.353">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>『統計ソフト「R」超入門』 - 2&nbsp; データセット</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,7 +53,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -73,8 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -90,40 +85,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
-}</script>
-
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-
 </head>
-
 <body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dataset.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データセット</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+  </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データセット</span></h1>
+      <h1 class="title">
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データセット</span>
+</h1>
                       </div>
   </div>
     
@@ -138,28 +123,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">『統計ソフト「R」超入門』</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=%7Curl%7C">
               <i class="bi bi-bi-twitter pe-1"></i>
             Twitter
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=%7Curl%7C">
               <i class="bi bi-bi-facebook pe-1"></i>
             Facebook
             </a>
           </li>
       </ul>
-    </div>
+</div>
 </div>
     </div>
       </div>
@@ -170,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">環境構築</span></span></a>
@@ -183,49 +167,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#データセットとは" id="toc-データセットとは" class="nav-link active" data-scroll-target="#データセットとは"><span class="header-section-number">2.1</span> データセットとは</a>
+<li>
+<a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF" id="toc-データセットとは" class="nav-link active" data-scroll-target="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF"><span class="header-section-number">2.1</span> データセットとは</a>
   <ul class="collapse">
-  <li><a href="#data.frame型" id="toc-data.frame型" class="nav-link" data-scroll-target="#data.frame型"><span class="header-section-number">2.1.1</span> data.frame型</a></li>
-  </ul></li>
-  <li><a href="#組み込みデータセット" id="toc-組み込みデータセット" class="nav-link" data-scroll-target="#組み込みデータセット"><span class="header-section-number">2.2</span> 組み込みデータセット</a>
-  <ul class="collapse">
-  <li><a href="#iris-flower-data-set" id="toc-iris-flower-data-set" class="nav-link" data-scroll-target="#iris-flower-data-set"><span class="header-section-number">2.2.1</span> Iris flower data set</a></li>
-  <li><a href="#new-york-air-quarity-measurements" id="toc-new-york-air-quarity-measurements" class="nav-link" data-scroll-target="#new-york-air-quarity-measurements"><span class="header-section-number">2.2.2</span> New York Air Quarity Measurements</a></li>
-  </ul></li>
-  <li><a href="#データセットを作成する" id="toc-データセットを作成する" class="nav-link" data-scroll-target="#データセットを作成する"><span class="header-section-number">2.3</span> データセットを作成する</a>
-  <ul class="collapse">
-  <li><a href="#r-commanderのためのデータセット" id="toc-r-commanderのためのデータセット" class="nav-link" data-scroll-target="#r-commanderのためのデータセット"><span class="header-section-number">2.3.1</span> R Commanderのためのデータセット</a></li>
-  </ul></li>
-  <li><a href="#データセットを読み込む" id="toc-データセットを読み込む" class="nav-link" data-scroll-target="#データセットを読み込む"><span class="header-section-number">2.4</span> データセットを読み込む</a>
-  <ul class="collapse">
-  <li><a href="#csvutf-8形式の場合" id="toc-csvutf-8形式の場合" class="nav-link" data-scroll-target="#csvutf-8形式の場合"><span class="header-section-number">2.4.1</span> CSV(UTF-8)形式の場合</a></li>
-  <li><a href="#xls形式xlsx形式の場合" id="toc-xls形式xlsx形式の場合" class="nav-link" data-scroll-target="#xls形式xlsx形式の場合"><span class="header-section-number">2.4.2</span> xls形式／xlsx形式の場合</a></li>
-  <li><a href="#rdata形式の場合" id="toc-rdata形式の場合" class="nav-link" data-scroll-target="#rdata形式の場合"><span class="header-section-number">2.4.3</span> .RData形式の場合</a></li>
-  </ul></li>
-  <li><a href="#アクティブデータセット" id="toc-アクティブデータセット" class="nav-link" data-scroll-target="#アクティブデータセット"><span class="header-section-number">2.5</span> アクティブデータセット</a></li>
+<li><a href="#data.frame%E5%9E%8B" id="toc-data.frame型" class="nav-link" data-scroll-target="#data.frame%E5%9E%8B"><span class="header-section-number">2.1.1</span> data.frame型</a></li>
   </ul>
-</nav>
+</li>
+  <li>
+<a href="#%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88" id="toc-組み込みデータセット" class="nav-link" data-scroll-target="#%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88"><span class="header-section-number">2.2</span> 組み込みデータセット</a>
+  <ul class="collapse">
+<li><a href="#iris-flower-data-set" id="toc-iris-flower-data-set" class="nav-link" data-scroll-target="#iris-flower-data-set"><span class="header-section-number">2.2.1</span> Iris flower data set</a></li>
+  <li><a href="#new-york-air-quarity-measurements" id="toc-new-york-air-quarity-measurements" class="nav-link" data-scroll-target="#new-york-air-quarity-measurements"><span class="header-section-number">2.2.2</span> New York Air Quarity Measurements</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" id="toc-データセットを作成する" class="nav-link" data-scroll-target="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"><span class="header-section-number">2.3</span> データセットを作成する</a>
+  <ul class="collapse">
+<li><a href="#r-commander%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88" id="toc-r-commanderのためのデータセット" class="nav-link" data-scroll-target="#r-commander%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88"><span class="header-section-number">2.3.1</span> R Commanderのためのデータセット</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80" id="toc-データセットを読み込む" class="nav-link" data-scroll-target="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"><span class="header-section-number">2.4</span> データセットを読み込む</a>
+  <ul class="collapse">
+<li><a href="#csvutf-8%E5%BD%A2%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88" id="toc-csvutf-8形式の場合" class="nav-link" data-scroll-target="#csvutf-8%E5%BD%A2%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88"><span class="header-section-number">2.4.1</span> CSV(UTF-8)形式の場合</a></li>
+  <li><a href="#xls%E5%BD%A2%E5%BC%8Fxlsx%E5%BD%A2%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88" id="toc-xls形式xlsx形式の場合" class="nav-link" data-scroll-target="#xls%E5%BD%A2%E5%BC%8Fxlsx%E5%BD%A2%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88"><span class="header-section-number">2.4.2</span> xls形式／xlsx形式の場合</a></li>
+  <li><a href="#rdata%E5%BD%A2%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88" id="toc-rdata形式の場合" class="nav-link" data-scroll-target="#rdata%E5%BD%A2%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88"><span class="header-section-number">2.4.3</span> .RData形式の場合</a></li>
+  </ul>
+</li>
+  <li><a href="#%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88" id="toc-アクティブデータセット" class="nav-link" data-scroll-target="#%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88"><span class="header-section-number">2.5</span> アクティブデータセット</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
-
-
-
-
-<p>　Rではデータセットを用いることで効率的な分析が行えるようになっています。</p>
-<p>　</p>
-<section id="データセットとは" class="level2 page-columns page-full" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="データセットとは"><span class="header-section-number">2.1</span> データセットとは</h2>
-<p>　Rにおけるデータセットとは分析対象となるデータの集まりを意味します。例えば、下表のような車の諸元をまとめたものはデータセットです。</p>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><p>　Rではデータセットを用いることで効率的な分析が行えるようになっています。</p>
+<section id="データセットとは" class="level2 page-columns page-full" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="データセットとは">
+<span class="header-section-number">2.1</span> データセットとは</h2>
+<p>　Rにおけるデータセットとは分析対象となるデータの集まりを意味します。例えば、下表のような車の諸元をまとめたものはデータセットのひとつです。</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -236,8 +219,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>　表計算ソフトで例えるとファイルをR Commanderとした場合、各シートがデータセット、シート内の各列がデータセット内の変数というイメージになりますので、データセット自体は複数持つことが可能です。</p>
-<div class="page-columns page-full"><p>　Rではこのようなデータセットを<code>data.frame</code>型という変数型を用いて一つの変数として扱っています。<code>data.frame</code>型変数は<strong>Tidy data（整然データ）</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>という概念を満たすデータになります。</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<a href="https://ja.wikipedia.org/wiki/Tidy_data">Wikipedia</a></p></li></div></div>
+<p>　表計算ソフトで例えるとファイルをR/R Commanderとした場合、各シートがデータセット、シート内の各列がデータセット内の変数というイメージになります。各シート単位で様々な計算やグラフ作成ができるのがR Commanderと思ってください。</p>
+<div class="page-columns page-full"><p>　Rではデータセットを<code>data.frame</code>型という変数型を用いて一つの変数として扱えます。<code>data.frame</code>型変数は<strong>Tidy data（整然データ）</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>という概念を満たす変数型です。</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<a href="https://ja.wikipedia.org/wiki/Tidy_data">Wikipedia</a></p></li></div></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -256,10 +239,9 @@ Tip: Tidy data（整然データ）
 <p>なので、神ExcelはTidy dataにはなりませんのでRでそのまま扱うことはできません。</p>
 </div>
 </div>
-<p>　</p>
-<section id="data.frame型" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="data.frame型"><span class="header-section-number">2.1.1</span> data.frame型</h3>
-<p>　<code>data.frame</code>型変数は以下のような構造を取る変数型で、複数の変数を扱うことができます。このデータセットでは11個の実数型変数（<code>num</code>）からなる32組の観測（車種）があることがわかります。</p>
+<section id="data.frame型" class="level3" data-number="2.1.1"><h3 data-number="2.1.1" class="anchored" data-anchor-id="data.frame型">
+<span class="header-section-number">2.1.1</span> data.frame型</h3>
+<p>　<code>data.frame</code>型変数は下記のような構造を取ります。特徴的なのは一つの変数（データセット）で複数の変数を扱うことができる点です。前出の車両諸元に関するデータセットでは11個の実数型変数（<code>num</code>）からなる32組の観測（車種）を持っています。</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   32 obs. of  11 variables:
@@ -276,21 +258,16 @@ Tip: Tidy data（整然データ）
  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
 </div>
 </div>
-<p>　実数型以外にも整数型・文字型・論理型・日付型・因子型などの様々な変数を混在させることが可能です。</p>
+<p>　<code>data.frame</code>型変数では実数型以外にも整数型・文字型・論理型・日付型・因子型などの様々な変数を混在させることが可能です。</p>
 <p>　</p>
-</section>
-</section>
-<section id="組み込みデータセット" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="組み込みデータセット"><span class="header-section-number">2.2</span> 組み込みデータセット</h2>
-<p>　Rには様々なデータセットがあらかじめ組み込まれています。テキストP36のパッケージ付属データと同義です。標準で用意されている<code>datasets</code>パッケージには様々なデータセットが組み込まれています。代表的なデータセットを簡単に紹介しておきます。</p>
-<p>　</p>
-<section id="iris-flower-data-set" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="iris-flower-data-set"><span class="header-section-number">2.2.1</span> Iris flower data set</h3>
-<p>　統計学の世界で最も有名な「フィッシャーのアヤメ」のデータセットです。</p>
+</section></section><section id="組み込みデータセット" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="組み込みデータセット">
+<span class="header-section-number">2.2</span> 組み込みデータセット</h2>
+<p>　組み込みデータセットはテキストP36のパッケージ付属データと同義です。標準で用意されている<code>datasets</code>パッケージは名前の通り様々なデータセットが組み込まれているパッケージです。代表的なデータセットを簡単に紹介しておきます。</p>
+<section id="iris-flower-data-set" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="iris-flower-data-set">
+<span class="header-section-number">2.2.1</span> Iris flower data set</h3>
+<p>　統計学の世界で最も有名な「フィッシャーのアヤメ」のデータセットです。三品種のアヤメの花の大きさを計測したデータで、萼片（Sepal）と花弁（Petal）の計測値が品種ごとに各50組、計150組が格納されています。品種（<code>Species</code>）は因子型と呼ばれる変数型になっており、層別処理を行う際に便利なようになっています。</p>
 <div class="cell">
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>datasets<span class="sc">::</span>iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -303,7 +280,6 @@ Tip: Tidy data（整然データ）
 </div>
 </div>
 </div>
-<p>　三品種のアヤメの花の大きさを計測したデータで、萼片（Sepal）と花弁（Petal）の計測値が各50組、計150組が格納されています。品種（<code>Species</code>）は因子型と呼ばれる変数型になっており、層別処理を行う際に便利です。</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  5 variables:
@@ -314,15 +290,11 @@ Tip: Tidy data（整然データ）
  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 </div>
 </div>
-<p>　</p>
-</section>
-<section id="new-york-air-quarity-measurements" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="new-york-air-quarity-measurements"><span class="header-section-number">2.2.2</span> New York Air Quarity Measurements</h3>
-<p>　1973年5月から9月にかけてニューヨークで観測された大気データのデータセットで欠損値（欠測値）が含まれています。</p>
+</section><section id="new-york-air-quarity-measurements" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="new-york-air-quarity-measurements">
+<span class="header-section-number">2.2.2</span> New York Air Quarity Measurements</h3>
+<p>　テキストにも出てくる1973年5月から9月にかけてニューヨークで観測された大気データのデータセットで欠損値（欠測値）が含まれています。オゾン濃度、日射量、風速、気温の測定値と月、日のデータが格納されている一種の時系列のデータセットです。6変数のすべてが数値型ですが、整数型（<code>int</code>）と実数型（<code>num</code>）が混在しています。欠損値（欠測値）は<code>NA</code>と表示されます。</p>
 <div class="cell">
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>datasets<span class="sc">::</span>airquality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/airquality.html">airquality</a></span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -335,7 +307,6 @@ Tip: Tidy data（整然データ）
 </div>
 </div>
 </div>
-<p>　オゾン濃度、日射量、風速、気温の測定値と月、日のデータが格納されている一種の時系列のデータセットです。6変数のすべてが数値型ですが、整数型（<code>int</code>）と実数型（<code>num</code>）が混在しています。欠損値（欠測値）は<code>NA</code>と表示されます。</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   153 obs. of  6 variables:
@@ -348,66 +319,52 @@ Tip: Tidy data（整然データ）
 </div>
 </div>
 <p>　</p>
-</section>
-</section>
-<section id="データセットを作成する" class="level2 page-columns page-full" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="データセットを作成する"><span class="header-section-number">2.3</span> データセットを作成する</h2>
-<div class="page-columns page-full"><p>　R Commanderにはデータセットを作成するための機能が組み込まれていますが、Excelのような表計算ソフトを使ってデータファイルをを作成した方が早くて便利ですし融通が利きます。R Commanderが対応している代表的なファイル形式はxls形式、xlsx形式、CSV形式です。変数名などに日本語が含まれるデータをCSV形式でファイルに保存する場合は必ず<strong>UTF-8エンコーディングを指定</strong>してください。<br>
-　R Commanderの読み込み処理ではエンコーディングが指定できないために日本語版Excelがデフォルトで書き出すシフトJISエンコーディングされた日本語を含むCSVファイルを読み込もうとするとエラーになります<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;R 4.2からデフォルトロケール（エンコーディング）をシフトJISからUTF-8に変更したために起こる日本語版Windows特有の問題です。</p></li></div></div>
-<p>　</p>
-<section id="r-commanderのためのデータセット" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="r-commanderのためのデータセット"><span class="header-section-number">2.3.1</span> R Commanderのためのデータセット</h3>
-<p>　R CommanderではGUI操作の弊害で様々なオプションの指定ができないためエンコーディング以外に下記の条件を満たすファイルを作成することで読み込み時のエラーを回避することができます。</p>
+</section></section><section id="データセットを作成する" class="level2 page-columns page-full" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="データセットを作成する">
+<span class="header-section-number">2.3</span> データセットを作成する</h2>
+<div class="page-columns page-full"><p>　R Commanderにはデータセットを作成するための機能が組み込まれていますが、使いやすいとは言えないので、Excelのような表計算ソフトを使ってデータファイルを作成することをおすゝめします。R Commanderが対応している代表的なファイル形式はxls形式、xlsx形式、CSV形式です。変数名などに日本語が含まれるデータをCSV形式にする場合には必ず<strong>UTF-8エンコーディングを指定</strong>して保存してくださいください。<br>
+　R CommanderのGUIによる読み込み処理ではエンコーディングが指定できないために日本語版Excelがデフォルトで書き出すシフトJISエンコーディングされたファイルには対応していません<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;R 4.2からデフォルトロケール（エンコーディング）をシフトJISからUTF-8に変更したために起こる日本語版Windows特有の問題です</p></li></div></div>
+<section id="r-commanderのためのデータセット" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="r-commanderのためのデータセット">
+<span class="header-section-number">2.3.1</span> R Commanderのためのデータセット</h3>
+<p>　R CommanderではGUI操作の弊害で様々なオプションの指定ができないためエンコーディング以外に下記の条件を満たすファイルを作成することで読み込み時のエラーを回避するようにしてください。</p>
 <ol type="1">
 <li>Tidy data形式を守る
 <ul>
 <li>神Excelにしない</li>
-</ul></li>
+</ul>
+</li>
 <li>一行目には必ず変数名を記載する
 <ul>
 <li>変数名に（<code>_</code>,<code>-</code>を除く）記号・空白を使わない</li>
-<li>変数名の最初の文字を数字・記号（<code>_</code>,<code>-</code>）にしない
-<ul>
-<li>これらはRの変数名に対する制限です</li>
-</ul></li>
-</ul></li>
+<li>変数名の最初の文字を数字・記号（<code>_</code>,<code>-</code>）にしない</li>
+</ul>
+</li>
 <li>各列の行数を合わせる
 <ul>
-<li>行数が合わないと自動的に先頭からのデータを用いて行数が一致するように埋めてしまう場合があります</li>
-<li>欠損値（欠測値）の扱いに関しては、明示的に<code>NA</code>と文字を入力するか空白（何も入力しない）にするかルールをあらかじめ決めておく
-<ul>
-<li><code>NA</code>を使うと表計算ソフト側でうまく処理できなくなる可能性があります</li>
-</ul></li>
-</ul></li>
+<li>各列の行数が一致していない場合は自動的に先頭からのデータを用いて行数が一致するように処理してしまう場合があります</li>
+<li>欠損値（欠測値）の扱いに関しては、明示的に<code>NA</code>のように文字を入力するか空白（何も入力しない）にするかルールをあらかじめ決めておく</li>
+</ul>
+</li>
 </ol>
 <p>　</p>
-</section>
-</section>
-<section id="データセットを読み込む" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="データセットを読み込む"><span class="header-section-number">2.4</span> データセットを読み込む</h2>
+</section></section><section id="データセットを読み込む" class="level2 page-columns page-full" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="データセットを読み込む">
+<span class="header-section-number">2.4</span> データセットを読み込む</h2>
 <p>　R Commanderでデータセットのファイルを読み込むには［データ］メニューを使います。</p>
-<p>　</p>
-<section id="csvutf-8形式の場合" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="csvutf-8形式の場合"><span class="header-section-number">2.4.1</span> CSV(UTF-8)形式の場合</h3>
+<section id="csvutf-8形式の場合" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="csvutf-8形式の場合">
+<span class="header-section-number">2.4.1</span> CSV(UTF-8)形式の場合</h3>
 <p>　［データ］-［データのインポート］-［テキストファイルまたはクリップボード,URL から…］を実行すると下図のようなダイアログが開きます。</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./fig/01-01.ReadCSV.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">条件設定ダイアログ</figcaption>
-</figure>
+<figure class="figure"><p><img src="./fig/01-01.ReadCSV.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">条件設定ダイアログ</figcaption></figure>
 </div>
-<p>　各設定項目の意味は</p>
 <table class="table">
 <colgroup>
 <col style="width: 29%">
 <col style="width: 70%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>設定項目</th>
 <th>設定内容</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td>データセット名を入力</td>
@@ -440,29 +397,22 @@ Tip: Tidy data（整然データ）
 </tbody>
 </table>
 <p>　データファイルの場所をローカルファイルシステムまたはインターネットのURLにして ［OK］ボタンをクリックします。ローカルファイルの場合はファイルダイアログが、インターネットURLの場合は入力ダイアログが開きますのでダイアログに合わせた操作を行ってください。</p>
-<p>　</p>
-</section>
-<section id="xls形式xlsx形式の場合" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="xls形式xlsx形式の場合"><span class="header-section-number">2.4.2</span> xls形式／xlsx形式の場合</h3>
+</section><section id="xls形式xlsx形式の場合" class="level3 page-columns page-full" data-number="2.4.2"><h3 data-number="2.4.2" class="anchored" data-anchor-id="xls形式xlsx形式の場合">
+<span class="header-section-number">2.4.2</span> xls形式／xlsx形式の場合</h3>
 <p>　［データ］-［データのインポート］-［エクセルファイルから…］を実行すると下図のようなダイアログが開きます。</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./fig/01-02.ReadExcel.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">条件設定ダイアログ</figcaption>
-</figure>
+<figure class="figure"><p><img src="./fig/01-02.ReadExcel.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">条件設定ダイアログ</figcaption></figure>
 </div>
-<p>　各設定項目の意味は</p>
 <table class="table">
 <colgroup>
 <col style="width: 41%">
 <col style="width: 58%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>設定項目</th>
 <th>設定内容</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td>データセット名を入力</td>
@@ -486,44 +436,43 @@ Tip: Tidy data（整然データ）
 </tr>
 </tbody>
 </table>
-<p>　各設定項目を設定後、［OK］ボタンをクリックするとファイルダイアログが開きますので読み込みたいファイルを指定してください。なお、ファイル内に複数のシートがある場合は最初のシートだけを読み込みます。GUI操作では任意のシートを読み込むことはできません。</p>
-<p>　</p>
-</section>
-<section id="rdata形式の場合" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="rdata形式の場合"><span class="header-section-number">2.4.3</span> .RData形式の場合</h3>
-<p>　［データ］-［データセットのロード…］を実行するとファイル選択ダイアログが開きますので読み込みたい<code>.RData</code>形式のファイルを指定します。読み込むと自動的にアクティブデータセットに読み込んだデータセット名が表示されます。<br>
-　サンプルで提供されているファイルに格納されているデータセット名は下表の通りです。なお、データセット名が同一のファイルを読み込んだ場合、確認なしで上書きされます。</p>
+<div class="page-columns page-full"><p>　各設定項目を設定後、［OK］ボタンをクリックするとファイルダイアログが開きますので読み込みたいファイルを指定してください。なお、ファイル内に複数のシートがある場合は<strong>最初のシートだけ</strong>を読み込みます<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;GUI操作では任意のシートを読み込むことはできません</p></li></div></div>
+</section><section id="rdata形式の場合" class="level3" data-number="2.4.3"><h3 data-number="2.4.3" class="anchored" data-anchor-id="rdata形式の場合">
+<span class="header-section-number">2.4.3</span> .RData形式の場合</h3>
+<p>　［データ］-［データセットのロード…］を実行するとファイル選択ダイアログが開きますので読み込みたい<code>.RData</code>形式のファイルを指定します。読み込むと自動的にアクティブデータセットに読み込んだデータセット名が表示されます。</p>
+<p>　サンプルで提供されているファイルに格納されているデータセット名は下表の通りです。なお、データセット名が同一のファイルを読み込んだ場合、確認なしで上書きされます。</p>
 <table class="table">
 <colgroup>
 <col style="width: 42%">
-<col style="width: 57%">
+<col style="width: 20%">
+<col style="width: 36%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>ファイル名</th>
 <th>データセット名</th>
-</tr>
-</thead>
+<th>データ数</th>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td>バイタル.RData</td>
 <td>VitalSign</td>
+<td>57 obs. of 13 variables</td>
 </tr>
 <tr class="even">
 <td>外来患者ストレス.RData</td>
 <td>PatientStress</td>
+<td>337 obs. of 14 variables</td>
 </tr>
 <tr class="odd">
 <td>外来患者ストレス(元データ).RData</td>
 <td>PatientStress</td>
+<td>337 obs. of 9 variables</td>
 </tr>
 </tbody>
 </table>
 <p>　</p>
-</section>
-</section>
-<section id="アクティブデータセット" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="アクティブデータセット"><span class="header-section-number">2.5</span> アクティブデータセット</h2>
+</section></section><section id="アクティブデータセット" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="アクティブデータセット">
+<span class="header-section-number">2.5</span> アクティブデータセット</h2>
 <p>　R Commanderには<strong>アクティブデータセット</strong>という概念があります。アクティブデータセットとは計算対象となるデータセットのことで、指定されていないと統計用の算出やグラフによる可視化ができません。</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -542,11 +491,7 @@ Tip: アクティブデータセット
 <hr>
 
 
-</section>
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -778,9 +723,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">環境構築</span></span>
       </a>          
@@ -789,8 +732,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">Sampo Suzuki, CC 4.0 BY-NC-SA</div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -800,7 +742,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 </body></html>
