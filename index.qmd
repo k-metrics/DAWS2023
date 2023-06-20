@@ -4,7 +4,7 @@
 
 　環境構築前に下記の条件を満たしている[^0]ことを確認してください。
 
-* [勉強会のセキュリティ・ポリシー](https://sites.google.com/view/kanto-metrics/home)を満たしているWindows PC
+* [勉強会のセキュリティ・ポリシー](https://sites.google.com/view/kanto-metrics/home#h.n86cgepzr6c)を満たしているWindows PC
 * Windowsが**64bit環境**（Windows10 or Windows11）
 * Windowsのユーザアカウント名に日本語や空白・記号が含まれてない[^1]
 * プロキシサーバーを介さずにインターネットと通信ができる
