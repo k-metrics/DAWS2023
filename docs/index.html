@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA">
-<meta name="dcterms.date" content="2023-06-14">
+<meta name="dcterms.date" content="2023-06-20">
 
 <title>『統計ソフト「R」超入門』</title>
 <style>
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 14, 2023</p>
+        <p class="date">June 20, 2023</p>
       </div>
     </div>
     
@@ -195,14 +195,15 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="環境構築" class="level1 page-columns page-full" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> 環境構築</h1>
-<p>　本資料では<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は<a href="https://cran.r-project.org/index.html">CRAN</a>にてインストール方法を確認してください。</p>
-<p>　環境構築前に下記の条件を満たしていることを確認してください。</p>
+<p>　本資料では<a href="https://sites.google.com/view/kanto-metrics/2023%E5%B9%B4%E5%BA%A6">2023年度データ分析勉強会</a>の図書である<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows環境のみが対象です。他のOSを利用したい場合は<a href="https://cran.r-project.org/index.html">CRAN</a>にてインストール方法を確認してください。なお、本資料はR/R Commanderが動作することを保証するものではありません。</p>
+<div class="page-columns page-full"><p>　環境構築前に下記の条件を満たしている<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>ことを確認してください。</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;R/R Commanderを動作させるタイトな条件でなので、満たしていなくても動作する場合もあります</p></li></div></div>
 <ul>
-<li>Windows10/11が64bit環境であること</li>
-<li>Windowsのユーザアカウント名に日本語や空白が含まれてないこと<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li>プロキシサーバーを介さずにインターネットと通信ができること</li>
+<li><a href="https://sites.google.com/view/kanto-metrics/home">勉強会のセキュリティ・ポリシー</a>を満たしているWindows PC</li>
+<li>Windowsが<strong>64bit環境</strong>（Windows10 or Windows11）</li>
+<li>Windowsのユーザアカウント名に日本語や空白・記号が含まれてない<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>プロキシサーバーを介さずにインターネットと通信ができる</li>
 </ul>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<strong>日本語および空白を含まず数字から始まらない</strong>アカウントを使用してください</p></li></div><p>　環境構築の手順は下記の通りです。</p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<strong>日本語および空白・記号を含まず数字から始まらない</strong>アカウントを使用してください</p></li></div><p>　環境構築の手順は下記の通りです。</p>
 <ol type="1">
 <li>Rのインストール
 <ol type="1">
@@ -238,7 +239,7 @@ Tip: Version
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>書籍と同じバージョンを利用したい場合は<a href="https://cran.r-project.org/bin/windows/base/old/4.2.2/">こちらからR4.2.2</a>をダウンロードしてください。</p>
+<p>どうしうても書籍と同じバージョンを利用したい場合には<a href="https://cran.r-project.org/bin/windows/base/old/4.2.2/">こちら</a>からR4.2.2をダウンロードしてください。</p>
 </div>
 </div>
 </section>
@@ -262,12 +263,12 @@ Tip: Version
 <ol type="1">
 <li>表示モード
 <ul>
-<li>「<strong>SDI(複数のウィンドウを使用して表示)</strong>」<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>を選択<br>
+<li>「<strong>SDI(複数のウィンドウを使用して表示)</strong>」<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>を選択<br>
 </li>
 </ul></li>
 <li>ヘルプの表示方法
 <ul>
-<li>「<strong>HTMLヘルプ</strong>」<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>を選択<br>
+<li>「<strong>HTMLヘルプ</strong>」<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>を選択<br>
 </li>
 </ul></li>
 </ol></li>
@@ -279,7 +280,7 @@ Tip: Version
 <li>インストール状況（プログレス表示）</li>
 <li>完了</li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;カスタマイズせずにデフォルトインストールした場合は下記のリカバリーを参考にSDIモードに変更してください</p></li><li id="fn3"><p><sup>3</sup>&nbsp;ヘルプの表示方法は好みで構いませんがHTML形式の方が関連項目のリンクが使えるので便利です</p></li></div><div class="callout callout-style-default callout-tip callout-titled">
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;カスタマイズせずにデフォルトインストールした場合は下記のリカバリーを参考にSDIモードに変更してください</p></li><li id="fn4"><p><sup>4</sup>&nbsp;ヘルプの表示方法は好みで構いませんがHTML形式の方が関連項目のリンクが使えるので便利です</p></li></div><div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>

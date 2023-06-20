@@ -1,14 +1,16 @@
 # 環境構築
-　本資料では[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows10/11環境のみが対象で、他のOSを利用したい場合は[CRAN](https://cran.r-project.org/index.html)にてインストール方法を確認してください。
+　本資料では[2023年度データ分析勉強会](https://sites.google.com/view/kanto-metrics/2023%E5%B9%B4%E5%BA%A6)の図書である[『統計ソフト「R」超入門』逸見功著](https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/)（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows環境のみが対象です。他のOSを利用したい場合は[CRAN](https://cran.r-project.org/index.html)にてインストール方法を確認してください。なお、本資料はR/R Commanderが動作することを保証するものではありません。
 
 
-　環境構築前に下記の条件を満たしていることを確認してください。
+　環境構築前に下記の条件を満たしている[^0]ことを確認してください。
 
-* Windows10/11が64bit環境であること
-* Windowsのユーザアカウント名に日本語や空白が含まれてないこと[^1]
-* プロキシサーバーを介さずにインターネットと通信ができること
+* [勉強会のセキュリティ・ポリシー](https://sites.google.com/view/kanto-metrics/home)を満たしているWindows PC
+* Windowsが**64bit環境**（Windows10 or Windows11）
+* Windowsのユーザアカウント名に日本語や空白・記号が含まれてない[^1]
+* プロキシサーバーを介さずにインターネットと通信ができる
 
-[^1]: **日本語および空白を含まず数字から始まらない**アカウントを使用してください
+[^0]: R/R Commanderを動作させるタイトな条件でなので、満たしていなくても動作する場合もあります
+[^1]: **日本語および空白・記号を含まず数字から始まらない**アカウントを使用してください
 
 　環境構築の手順は下記の通りです。
 
@@ -33,7 +35,7 @@
 
 :::{.callout-tip}
 ## Tip: Version
-書籍と同じバージョンを利用したい場合は[こちらからR4.2.2](https://cran.r-project.org/bin/windows/base/old/4.2.2/)をダウンロードしてください。
+どうしうても書籍と同じバージョンを利用したい場合には[こちら](https://cran.r-project.org/bin/windows/base/old/4.2.2/)からR4.2.2をダウンロードしてください。
 :::
 
 ### インストール
