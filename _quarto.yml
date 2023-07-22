@@ -18,8 +18,8 @@ book:
     type: textbox     # overlay or textbox
   sharing: [twitter, facebook]
   sidebar:
-    style: floating   # floating or docked
-    background: dark  # light or dark
+    style: docked   # floating or docked
+    background: light  # light or dark
   page-footer: 
     left: "Sampo Suzuki, CC 4.0 BY-NC-SA"
     # center: 
@@ -43,7 +43,7 @@ book:
 format:
   html:
     # Toggle light and dark
-    theme: superhero
+    theme: pulse
       # light: minty
       # dark: superhero
     # theme - Boothswatch 
@@ -61,7 +61,7 @@ format:
     #   source: true   # 各ページのソースを表示するか否か
     #   toggle: true   # 
     #   caption: none  # 
-    highlight-style: github # gruvbox
+    highlight-style: github
     # highlight-style - highlight.js
     #   https://quarto.org/docs/output-formats/html-code.html
     # Automatically switch type
