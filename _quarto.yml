@@ -8,10 +8,10 @@ book:
   date: today
   # description: "本書はデータ分析勉強会で学んだ成果をまとめたものです。"
   language: ja
-  # site-url: https://k-metrics.github.io/DAWS2023/
-  # repo-url: https://github.com/k-metrics/DAWS2023/
-  # repo-branch: main
-  # repo-actions: [issue] # edit, issue or source
+  site-url: https://k-metrics.github.io/DAWS2023/
+  repo-url: https://github.com/k-metrics/DAWS2023/
+  repo-branch: main
+  repo-actions: [issue] # edit, issue or source
   # downloads: [pdf]
   search: 
     location: sidebar # navbar or sidebar
