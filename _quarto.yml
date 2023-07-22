@@ -23,10 +23,10 @@ book:
   page-footer: 
     left: "Sampo Suzuki, CC 4.0 BY-NC-SA"
     # center: 
-    # right: 
-    #   - icon: github
-    #     href: https://github.com/k-metrics/DAWS2023/
-    background: dark # or light
+    right:
+      - icon: github
+        href: https://github.com/k-metrics/DAWS2023/
+    background: light # dark or light
   chapters:
     - index.qmd
     - dataset.qmd
@@ -43,9 +43,9 @@ book:
 format:
   html:
     # Toggle light and dark
-    theme: pulse
-      # light: minty
-      # dark: superhero
+    theme:
+      light: pulse
+      dark: superhero
     # theme - Boothswatch 
     #   https://quarto.org/docs/output-formats/html-themes.html
     # Light theme: default, cerulean, cosmo, flatly, journal, litera, lumen,
