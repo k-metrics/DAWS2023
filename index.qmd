@@ -34,7 +34,7 @@
 1. ダウンロードしたファイルのウィルスチェックをします
 
 :::{.callout-tip}
-## Tip: Version
+## Tips: Version
 どうしうても書籍と同じバージョンを利用したい場合には[こちら](https://cran.r-project.org/bin/windows/base/old/4.2.2/)からR4.2.2をダウンロードしてください。
 :::
 
@@ -65,7 +65,7 @@
 
 
 :::{.callout-tip}
-## Tip: MDI or SDI
+## Tips: MDI or SDI
 R Commanderを利用する場合は、操作ウィンドウやグラフ表示に個々のウィンドウを割り当てるSDIモードが便利です。インストール時にMDIを選択してた場合でもR起動後にオプションで変更できます。
 :::
 
@@ -120,6 +120,12 @@ R Commanderを利用する場合は、操作ウィンドウやグラフ表示に
 
 ![R Commander](./fig/00-35.LoadedRcmdr.png)
 
+:::{.callout-tip}
+## Tips: How to load
+メニューを経由せずにR Commanderを起動するにはRのプロンプト（`>`）に`library(Rcmdr)`と入力してEnterキーを押下します。
+:::
+
+
 ## 動作確認
 　以下はR Commanderウィンドウでの操作になります。
 
@@ -134,6 +140,12 @@ R Commanderを利用する場合は、操作ウィンドウやグラフ表示に
 ![R Commander](./fig/00-46.BoxplotWindow.png)
 
 
+## 留意事項
+　Rを起動すると下記のメッセージが表示されるように利用やその結果に対しては誰も何も保証することはありません。
+
+> R は、自由なソフトウェアであり、「完全に無保証」です。 
+
+　したがって、利用に際しては結果などに疑問を感じた場合に自ら検証できる基本的な知識は必要です。
 　  
 
 ---
