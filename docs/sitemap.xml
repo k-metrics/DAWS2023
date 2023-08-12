@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/index.html</loc>
-    <lastmod>2023-08-12T06:48:46.521Z</lastmod>
+    <lastmod>2023-08-12T13:13:56.558Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/dataset.html</loc>
-    <lastmod>2023-08-12T06:48:46.537Z</lastmod>
+    <lastmod>2023-08-12T13:13:56.574Z</lastmod>
+  </url>
+  <url>
+    <loc>https://k-metrics.github.io/DAWS2023/try.html</loc>
+    <lastmod>2023-08-12T13:13:56.586Z</lastmod>
   </url>
 </urlset>

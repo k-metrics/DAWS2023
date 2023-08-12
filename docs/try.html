@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sampo Suzuki">
-<meta name="dcterms.date" content="2023-08-12">
 
-<title>『統計ソフト「R」超入門』</title>
+<title>『統計ソフト「R」超入門』 - 3&nbsp; 使ってみる</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./dataset.html" rel="next">
+<link href="./dataset.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -76,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">環境構築</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./try.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">使ってみる</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -89,26 +87,14 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">『統計ソフト「R」超入門』</h1>
+      <h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">使ってみる</span></h1>
                       </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Sampo Suzuki </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">August 12, 2023</p>
-      </div>
-    </div>
     
       
     </div>
@@ -152,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">環境構築</span></span></a>
   </div>
 </li>
@@ -164,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./try.html" class="sidebar-item-text sidebar-link">
+  <a href="./try.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">使ってみる</span></span></a>
   </div>
 </li>
@@ -178,23 +164,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#環境構築" id="toc-環境構築" class="nav-link active" data-scroll-target="#環境構築"><span class="header-section-number">1</span> 環境構築</a>
+  <li><a href="#rコマンダーの起動" id="toc-rコマンダーの起動" class="nav-link active" data-scroll-target="#rコマンダーの起動"><span class="header-section-number">3.1</span> Rコマンダーの起動</a>
   <ul class="collapse">
-  <li><a href="#rのインストール" id="toc-rのインストール" class="nav-link" data-scroll-target="#rのインストール"><span class="header-section-number">1.1</span> Rのインストール</a>
-  <ul class="collapse">
-  <li><a href="#ダウンロード" id="toc-ダウンロード" class="nav-link" data-scroll-target="#ダウンロード"><span class="header-section-number">1.1.1</span> ダウンロード</a></li>
-  <li><a href="#インストール" id="toc-インストール" class="nav-link" data-scroll-target="#インストール"><span class="header-section-number">1.1.2</span> インストール</a></li>
-  <li><a href="#起動確認" id="toc-起動確認" class="nav-link" data-scroll-target="#起動確認"><span class="header-section-number">1.1.3</span> 起動確認</a></li>
-  <li><a href="#リカバリーsdiモードへの変更" id="toc-リカバリーsdiモードへの変更" class="nav-link" data-scroll-target="#リカバリーsdiモードへの変更"><span class="header-section-number">1.1.4</span> リカバリー（SDIモードへの変更）</a></li>
+  <li><a href="#メニュー" id="toc-メニュー" class="nav-link" data-scroll-target="#メニュー"><span class="header-section-number">3.1.1</span> メニュー</a></li>
+  <li><a href="#データセットモデル" id="toc-データセットモデル" class="nav-link" data-scroll-target="#データセットモデル"><span class="header-section-number">3.1.2</span> データセット・モデル</a></li>
+  <li><a href="#rスクリプトrマークダウン" id="toc-rスクリプトrマークダウン" class="nav-link" data-scroll-target="#rスクリプトrマークダウン"><span class="header-section-number">3.1.3</span> Rスクリプト／Rマークダウン</a></li>
+  <li><a href="#実行ボタン" id="toc-実行ボタン" class="nav-link" data-scroll-target="#実行ボタン"><span class="header-section-number">3.1.4</span> 実行ボタン</a></li>
+  <li><a href="#出力" id="toc-出力" class="nav-link" data-scroll-target="#出力"><span class="header-section-number">3.1.5</span> 出力</a></li>
+  <li><a href="#メッセージ" id="toc-メッセージ" class="nav-link" data-scroll-target="#メッセージ"><span class="header-section-number">3.1.6</span> メッセージ</a></li>
   </ul></li>
-  <li><a href="#r-commanderのインストール" id="toc-r-commanderのインストール" class="nav-link" data-scroll-target="#r-commanderのインストール"><span class="header-section-number">1.2</span> R Commanderのインストール</a>
-  <ul class="collapse">
-  <li><a href="#インストール-1" id="toc-インストール-1" class="nav-link" data-scroll-target="#インストール-1"><span class="header-section-number">1.2.1</span> インストール</a></li>
-  <li><a href="#起動確認-1" id="toc-起動確認-1" class="nav-link" data-scroll-target="#起動確認-1"><span class="header-section-number">1.2.2</span> 起動確認</a></li>
-  </ul></li>
-  <li><a href="#動作確認" id="toc-動作確認" class="nav-link" data-scroll-target="#動作確認"><span class="header-section-number">1.3</span> 動作確認</a></li>
-  <li><a href="#留意事項" id="toc-留意事項" class="nav-link" data-scroll-target="#留意事項"><span class="header-section-number">1.4</span> 留意事項</a></li>
-  </ul></li>
+  <li><a href="#コマンドによる操作" id="toc-コマンドによる操作" class="nav-link" data-scroll-target="#コマンドによる操作"><span class="header-section-number">3.2</span> コマンドによる操作</a></li>
+  <li><a href="#付属データの利用" id="toc-付属データの利用" class="nav-link" data-scroll-target="#付属データの利用"><span class="header-section-number">3.3</span> 付属データの利用</a></li>
+  <li><a href="#グラフの保存" id="toc-グラフの保存" class="nav-link" data-scroll-target="#グラフの保存"><span class="header-section-number">3.4</span> グラフの保存</a></li>
+  <li><a href="#グラフの貼り付け" id="toc-グラフの貼り付け" class="nav-link" data-scroll-target="#グラフの貼り付け"><span class="header-section-number">3.5</span> グラフの貼り付け</a></li>
+  <li><a href="#終了方法" id="toc-終了方法" class="nav-link" data-scroll-target="#終了方法"><span class="header-section-number">3.6</span> 終了方法</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/k-metrics/DAWS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -205,183 +188,16 @@ ul.task-list li input[type="checkbox"] {
 
 
 <blockquote class="blockquote">
-<p><strong>※本ページの内容はテキストの第２章に相当します</strong></p>
+<p><strong>※本ページの内容はテキストの第3章に相当します</strong></p>
 </blockquote>
-<section id="環境構築" class="level1 page-columns page-full" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 環境構築</h1>
-<p>　本資料では<a href="https://sites.google.com/view/kanto-metrics/2023%E5%B9%B4%E5%BA%A6">2023年度データ分析勉強会</a>の図書である<a href="https://bluebacks.kodansha.co.jp/books/9784065020494/appendix/">『統計ソフト「R」超入門』逸見功著</a>（以降、テキスト）で利用するR/R Commander環境を構築する方法を紹介しています。Windows環境のみが対象です。他のOSを利用したい場合は<a href="https://cran.r-project.org/index.html">CRAN</a>にてインストール方法を確認してください。なお、本資料はR/R Commanderが動作することを保証するものではありません。</p>
-<p>　環境構築前に下記の条件を満たしていることを確認してください。</p>
-<ul>
-<li><a href="https://sites.google.com/view/kanto-metrics/home#h.n86cgepzr6c"><strong>勉強会のセキュリティ・ポリシー</strong></a>を満たしているWindows PC</li>
-<li>Windowsは<strong>64bit環境</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>（Windows10 or Windows11）</li>
-<li>Windowsのユーザアカウント名に日本語や空白・記号が含まれてない<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
-<li>プロキシサーバーを介さずにインターネットと通信ができる</li>
-</ul>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Rでの32bit環境のサポートは終了しています</p></li><li id="fn2"><p><sup>2</sup>&nbsp;<strong>日本語および空白・記号を含まず数字から始まらない</strong>アカウントを使用してください</p></li></div><p>　環境構築の手順は下記の通りです。</p>
+<p>　インストールが終わったらR Commanderの基本操作を覚えましょう。</p>
+<section id="rコマンダーの起動" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="rコマンダーの起動"><span class="header-section-number">3.1</span> Rコマンダーの起動</h2>
+<p>　R Commanderを起動するには必ず最初にRを起動します。</p>
 <ol type="1">
-<li>Rのインストール
-<ol type="1">
-<li>ダウンロード</li>
-<li>インストール</li>
-<li>起動確認</li>
-<li>リカバリー（必要な場合のみ）</li>
-</ol></li>
-<li>R Commanderのインストール
-<ol type="1">
-<li>インストール</li>
-<li>起動確認</li>
-</ol></li>
-<li>動作確認</li>
-</ol>
-<section id="rのインストール" class="level2 page-columns page-full" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="rのインストール"><span class="header-section-number">1.1</span> Rのインストール</h2>
-<p>　テキストのP24から図解されていますので、図解が必要な場合はテキストを参照してください。</p>
-<section id="ダウンロード" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="ダウンロード"><span class="header-section-number">1.1.1</span> ダウンロード</h3>
-<p>　Rのインストーラーをダウンロードします。</p>
-<ol type="1">
-<li><a href="https://cran.r-project.org/bin/windows/base/">CRAN</a>からRの最新版インストーラをダウンロードします</li>
-<li>ダウンロードしたファイルのウィルスチェックをします</li>
-</ol>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tips: Version
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>書籍と同じバージョンを利用したい場合には<a href="https://cran.r-project.org/bin/windows/base/old/4.2.2/">こちら</a>からR4.2.2をダウンロードしてください。</p>
-</div>
-</div>
-</section>
-<section id="インストール" class="level3 page-columns page-full" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="インストール"><span class="header-section-number">1.1.2</span> インストール</h3>
-<p>　Rのインストールではダイアログでの問い合わせに対して基本的にデフォルトを選択します。ただし、R Commnderを使いやすくするために起動時オプションの選択だけはデフォルトから変更します。</p>
-<ol type="1">
-<li>ダウンロードしたファイル（インストーラ）を実行
-<ul>
-<li>以降、ウィザード形式の指示に従う</li>
-</ul></li>
-<li>インストール言語を選択</li>
-<li>ライセンスを確認</li>
-<li>インストール先を指定</li>
-<li>コンポーネントを選択</li>
-<li>起動時オプションを選択
-<ul>
-<li>「<strong>はい(カスタマイズする)</strong>」を選択<br>
-</li>
-</ul>
-<ol type="1">
-<li>表示モード
-<ul>
-<li>「<strong>SDI(複数のウィンドウを使用して表示)</strong>」<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>を選択<br>
-</li>
-</ul></li>
-<li>ヘルプの表示方法
-<ul>
-<li>「<strong>HTMLヘルプ</strong>」<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>を選択<br>
-</li>
-</ul></li>
-</ol></li>
-<li>スタートメニューフォルダーの指定</li>
-<li>追加タスクの選択
-<ul>
-<li>「アイコンの追加」はお好みで選択</li>
-</ul></li>
-<li>インストール状況（プログレス表示）</li>
-<li>完了</li>
-</ol>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;カスタマイズせずにデフォルトインストールした場合は下記のリカバリーを参考にSDIモードに変更してください</p></li><li id="fn4"><p><sup>4</sup>&nbsp;ヘルプの表示方法は好みで構いませんがHTML形式の方が関連項目のリンクが使えるので便利です</p></li></div><div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tips: MDI or SDI
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>R Commanderを利用する場合は、操作ウィンドウやグラフ表示に個々のウィンドウを割り当てるSDIモードが便利です。インストール時にMDIを選択してた場合でもR起動後にオプションで変更できます。</p>
-</div>
-</div>
-</section>
-<section id="起動確認" class="level3 page-columns page-full" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="起動確認"><span class="header-section-number">1.1.3</span> 起動確認</h3>
-<div class="page-columns page-full"><p>　スタートメニューから［R］-［R 4.x.x］を実行し下図<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>のようなウィンドウが表示されることを確認します。</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;図はR4.3.0でバージョンにより表記が変わります。</p></li></div></div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./fig/00-11.R.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">R Console</figcaption>
-</figure>
-</div>
-<p>　RのウィンドウはそのままでR Commanderのインストールに進みます。</p>
-</section>
-<section id="リカバリーsdiモードへの変更" class="level3" data-number="1.1.4">
-<h3 data-number="1.1.4" class="anchored" data-anchor-id="リカバリーsdiモードへの変更"><span class="header-section-number">1.1.4</span> リカバリー（SDIモードへの変更）</h3>
-<p>　MDIモードでインストールした場合は下記の手順でSDIモードに変更してください。</p>
-<ol type="1">
-<li>Rのメニューから［編集］-［GUIプリファレンス…］を実行して設定エディタダイアログを開く<br>
-<img src="./fig/00-51.GuiPreference.png" class="img-fluid" alt="GUI Preference"><br>
-</li>
-<li>最上段にある［Sigle or multiple］で「SDI」にチェックを入れ［OK］ボタンをクリックする<br>
-<img src="./fig/00-52.GuiPreferenceSDI.png" class="img-fluid" alt="Rgui設定エディター"></li>
-<li>Rを再起動する</li>
-</ol>
-<p>　</p>
-</section>
-</section>
-<section id="r-commanderのインストール" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="r-commanderのインストール"><span class="header-section-number">1.2</span> R Commanderのインストール</h2>
-<p>　テキストのP28から図解されていますので、図解が必要な場合はテキストを参照してください。</p>
-<section id="インストール-1" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="インストール-1"><span class="header-section-number">1.2.1</span> インストール</h3>
-<p>　R Commanderは単独のプログラムではなくRのパッケージ（ライブラリ）として動く機能拡張プログラムですので、インストールはRから行います。</p>
-<ol type="1">
-<li>Rのメニューから［パッケージ］-［パッケージのインストール…］を実行</li>
-<li>パッケージをダウンロードするミラーサイトを選択して［OK］をクリック
-<ul>
-<li>デフォルトの「<strong>0-Cloud[https]</strong>」を選択</li>
-</ul></li>
-<li>パッケージ一覧から「<strong>Rcmdr</strong>」を選択して［OK］をクリック</li>
-<li>パーソナルライブラリの利用確認
-<ul>
-<li>初回のみで［はい(Y)］をクリック</li>
-</ul></li>
-<li>インストール先の確認
-<ul>
-<li>初回のみで［はい(Y)］をクリック</li>
-</ul></li>
-<li>パッケージダウンロードのプログレスが複数表示
-<ul>
-<li>なにもしない</li>
-</ul></li>
-<li>R Commanderインストール完了</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./fig/00-26.RcmdrInstalled.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">R Console</figcaption>
-</figure>
-</div>
-</section>
-<section id="起動確認-1" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="起動確認-1"><span class="header-section-number">1.2.2</span> 起動確認</h3>
-<p>　R Commanderが起動することを確認します。</p>
-<ol type="1">
-<li>Rのメニューから［パッケージ］-［パッケージの読み込み…］を実行</li>
-<li>「Rcmdr」を選択</li>
-<li>不足パッケージのインストール
-<ul>
-<li>初回のみ</li>
-</ul></li>
-<li>ダウンロード先の選択
-<ul>
-<li>デフォルトの「CRAN」を選択</li>
-</ul></li>
-<li>R Commander起動</li>
+<li>Rを起動する</li>
+<li>Rのメニューから［パッケージ］-［パッケージの読み込み…］を実行し</li>
+<li>表示されたダイアログから「Rcmdr」を選択し[OK]ボタンをクリックする</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -395,45 +211,107 @@ Tips: MDI or SDI
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tips: How to load
+Tips: Rのウィンドウの扱い
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>メニューを経由せずにR Commanderを起動するにはRのプロンプト（<code>&gt;</code>）に<code>library(Rcmdr)</code>と入力してEnterキーを押下します。</p>
+<p>R Commanderが起動してもRのウィンドウは閉じない（終了させない）でください。バックグラウンドで実行処理を担っています。邪魔な場合は最小化させてください。</p>
 </div>
 </div>
+<section id="メニュー" class="level3 page-columns page-full" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="メニュー"><span class="header-section-number">3.1.1</span> メニュー</h3>
+<p>　R Commanderは基本的にメニュー操作だけで利用できます。各メニューの内容は下表の通りで、利用する頻度が多いのは、［データ］、［統計量］、［グラフ］の三メニューです。</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>メニュー</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ファイル</td>
+<td>各種ファイル操作</td>
+</tr>
+<tr class="even">
+<td>編集</td>
+<td>スクリプトウィンドウに対する編集操作</td>
+</tr>
+<tr class="odd">
+<td>データ</td>
+<td>データセットのハンドリング</td>
+</tr>
+<tr class="even">
+<td>統計量 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
+<td>アクティブデータセットに対する統計量算出、検定、モデリング</td>
+</tr>
+<tr class="odd">
+<td>グラフ <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
+<td>アクティブデータセットに対するグラフ描画</td>
+</tr>
+<tr class="even">
+<td>モデル <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></td>
+<td>統計モデルに対する診断（数値・グラフ）</td>
+</tr>
+<tr class="odd">
+<td>分布 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
+<td>様々な分布の統計量算出やグラフ描画</td>
+</tr>
+<tr class="even">
+<td>ツール</td>
+<td>R Commanderに関する各種設定</td>
+</tr>
+<tr class="odd">
+<td>ヘルプ</td>
+<td>各種ヘルプ</td>
+</tr>
+</tbody>
+</table>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;アクティブデータセットがセットされていないと使えません</p></li><li id="fn2"><p><sup>2</sup>&nbsp;アクティブデータセットがセットされていないと使えません</p></li><li id="fn3"><p><sup>3</sup>&nbsp;［統計量］メニューでのモデリング結果をアクティブモデルとしてセットしておく必要があります</p></li><li id="fn4"><p><sup>4</sup>&nbsp;アクティブデータセットとは無関係に使えます</p></li></div></section>
+<section id="データセットモデル" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="データセットモデル"><span class="header-section-number">3.1.2</span> データセット・モデル</h3>
+<p>　分析対象となるデータセットやモデルの状態を表示・操作することができます。</p>
+</section>
+<section id="rスクリプトrマークダウン" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="rスクリプトrマークダウン"><span class="header-section-number">3.1.3</span> Rスクリプト／Rマークダウン</h3>
+<p>　使用しなくても一通りの処理はできます。最初は気にしないほうが良いです。</p>
+</section>
+<section id="実行ボタン" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="実行ボタン"><span class="header-section-number">3.1.4</span> 実行ボタン</h3>
+<p>　スクリプトを実行する際に利用します。</p>
+</section>
+<section id="出力" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="出力"><span class="header-section-number">3.1.5</span> 出力</h3>
+<p>　Rのコンソールと呼ばれる部分で実行内容と実行結果が表示されます。</p>
+</section>
+<section id="メッセージ" class="level3" data-number="3.1.6">
+<h3 data-number="3.1.6" class="anchored" data-anchor-id="メッセージ"><span class="header-section-number">3.1.6</span> メッセージ</h3>
+<p>　Rのシステムメッセージやエラーメッセージが表示されます。</p>
 </section>
 </section>
-<section id="動作確認" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="動作確認"><span class="header-section-number">1.3</span> 動作確認</h2>
-<p>　以下はR Commanderウィンドウでの操作になります。</p>
-<ol type="1">
-<li>メニューバーの下にある［データセット:］の部分が「&lt;アクティブデータセットなし&gt;」になっていることを確認</li>
-<li>メニューから［データ］-［パッケージ内のデータ］-［アタッチされたパッケージからデータセットを読み込む…］を実行</li>
-<li>［データセット名を入力:］欄に「iris」と入力し［OK］をクリック</li>
-<li>メニューバーの下にある［データセット:］の部分が「iris」になっていることを確認</li>
-<li>メニューから［グラフ］-［箱ひげ図…］を実行</li>
-<li>［変数］の「Petal.Length」をクリックし［OK］をクリック</li>
-<li>別ウィンドウで箱ひげ図が描かれることを確認</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./fig/00-46.BoxplotWindow.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">R Commander</figcaption>
-</figure>
-</div>
+<section id="コマンドによる操作" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="コマンドによる操作"><span class="header-section-number">3.2</span> コマンドによる操作</h2>
+<p>　最初は混乱の元になるだけですので、覚えなくて構いません。R Commanderを使いこなして限界を感じるようになったら覚えましょう。</p>
 </section>
-<section id="留意事項" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="留意事項"><span class="header-section-number">1.4</span> 留意事項</h2>
-<p>　Rを起動すると下記のメッセージが表示されるように利用やその結果に対しては誰も何も保証することはありません。</p>
-<blockquote class="blockquote">
-<p>R は、自由なソフトウェアであり、「完全に無保証」です。</p>
-</blockquote>
-<p>　したがって、利用に際しては結果などに疑問を感じた場合に自ら検証できる基本的な知識は必要です。 　</p>
+<section id="付属データの利用" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="付属データの利用"><span class="header-section-number">3.3</span> 付属データの利用</h2>
+<p>　パッケージに付属のデータはサンプルとして利用されることが多いですから、読み込み方法を覚えてアクティブデータセットに設定できるようになりましょう。</p>
+</section>
+<section id="グラフの保存" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="グラフの保存"><span class="header-section-number">3.4</span> グラフの保存</h2>
+</section>
+<section id="グラフの貼り付け" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="グラフの貼り付け"><span class="header-section-number">3.5</span> グラフの貼り付け</h2>
+</section>
+<section id="終了方法" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="終了方法"><span class="header-section-number">3.6</span> 終了方法</h2>
 <hr>
 
 
-</section>
 </section>
 
 
@@ -788,11 +666,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./dataset.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データセット</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./dataset.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データセット</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
