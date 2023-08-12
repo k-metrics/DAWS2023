@@ -209,7 +209,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/k-metrics/DAWS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><p>　Rではデータセットを用いることで効率的な分析が行えるようになっています。</p>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><blockquote class="blockquote">
+<p><strong>※本ページの内容はテキストには記載されていません</strong></p>
+</blockquote>
+<p>　Rではデータセットを用いることで効率的な分析が行えるようになっています。</p>
 <section id="データセットとは" class="level2 page-columns page-full" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="データセットとは">
 <span class="header-section-number">2.1</span> データセットとは</h2>
 <p>　Rにおけるデータセットとは分析対象となるデータの集まりを意味します。例えば、下表のような車の諸元をまとめたものはデータセットのひとつです。</p>
@@ -223,8 +226,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>　表計算ソフトで例えるとファイルをR/R Commanderとした場合、各シートがデータセット、シート内の各列がデータセット内の変数というイメージになります。各シート単位で様々な計算やグラフ作成ができるのがR Commanderと思ってください。</p>
-<div class="page-columns page-full"><p>　Rではデータセットを<code>data.frame</code>型という変数型を用いて一つの変数として扱えます。<code>data.frame</code>型変数は<strong>Tidy data（整然データ）</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>という概念を満たす変数型です。</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<a href="https://ja.wikipedia.org/wiki/Tidy_data">Wikipedia</a></p></li></div></div>
+<p>　表計算ソフト(Excel)と比較するとRは下表のようなイメージです。</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 19%">
+<col style="width: 14%">
+<col style="width: 47%">
+</colgroup>
+<thead><tr class="header">
+<th>　</th>
+<th>R</th>
+<th>Excel</th>
+<th>備考</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>処理部</strong></td>
+<td>R</td>
+<td>Excel</td>
+<td>Rはインタプリタ</td>
+</tr>
+<tr class="even">
+<td><strong>データ</strong></td>
+<td>データセット</td>
+<td>シート</td>
+<td>シートは数式・書式を含まないもの</td>
+</tr>
+<tr class="odd">
+<td><strong>GUI</strong></td>
+<td>R/Rcmdr<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</td>
+<td>Excel</td>
+<td>Windows版Rは簡単なGUIを持っている</td>
+</tr>
+<tr class="even">
+<td><strong>関数</strong></td>
+<td>R Script</td>
+<td>VBA</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>機能拡張</strong></td>
+<td>パッケージ</td>
+<td>アドオン</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;R Commanderの実装としてはパッケージ</p></li></div><p>　各シート単位で様々な計算やグラフ作成ができるのがR Commander(Rcmdr)だと思ってください。</p>
+<div class="page-columns page-full"><p>　Rではデータセットは<code>data.frame</code>型という変数型を用いて一つの変数として扱います。<code>data.frame</code>型変数は<strong>Tidy data（整然データ）</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>という概念を満たす変数型です。</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<a href="https://ja.wikipedia.org/wiki/Tidy_data">Wikipedia</a></p></li></div></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -339,7 +390,7 @@ Tips: How to run
 </section></section><section id="データセットを作成する" class="level2 page-columns page-full" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="データセットを作成する">
 <span class="header-section-number">2.3</span> データセットを作成する</h2>
 <div class="page-columns page-full"><p>　R Commanderにはデータセットを作成するための機能が組み込まれていますが、使いやすいとは言えないので、Excelのような表計算ソフトを使ってデータファイルを作成することをおすゝめします。R Commanderが対応している代表的なファイル形式はxls形式、xlsx形式、CSV形式です。変数名などに日本語が含まれるデータをCSV形式にする場合には必ず<strong>UTF-8エンコーディングを指定</strong>して保存してくださいください。<br>
-　R CommanderのGUIによる読み込み処理ではエンコーディングが指定できないために日本語版Excelがデフォルトで書き出すシフトJISエンコーディングされたファイルには対応していません<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;R 4.2からデフォルトロケール（エンコーディング）をシフトJISからUTF-8に変更したために起こる日本語版Windows特有の問題です</p></li></div></div>
+　R CommanderのGUIによる読み込み処理ではエンコーディングが指定できないために日本語版Excelがデフォルトで書き出すシフトJISエンコーディングされたファイルには対応していません<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;R 4.2からデフォルトロケール（エンコーディング）をシフトJISからUTF-8に変更したために起こる日本語版Windows特有の問題です</p></li></div></div>
 <section id="r-commanderのためのデータセット" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="r-commanderのためのデータセット">
 <span class="header-section-number">2.3.1</span> R Commanderのためのデータセット</h3>
 <p>　R CommanderではGUI操作の弊害で様々なオプションの指定ができないためエンコーディング以外に下記の条件を満たすファイルを作成することで読み込み時のエラーを回避するようにしてください。</p>
@@ -453,7 +504,7 @@ Tips: How to run
 </tr>
 </tbody>
 </table>
-<div class="page-columns page-full"><p>　各設定項目を設定後、［OK］ボタンをクリックするとファイルダイアログが開きますので読み込みたいファイルを指定してください。なお、ファイル内に複数のシートがある場合は<strong>最初のシートだけ</strong>を読み込みます<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;GUI操作では任意のシートを読み込むことはできません</p></li></div></div>
+<div class="page-columns page-full"><p>　各設定項目を設定後、［OK］ボタンをクリックするとファイルダイアログが開きますので読み込みたいファイルを指定してください。なお、ファイル内に複数のシートがある場合は<strong>最初のシートだけ</strong>を読み込みます<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;GUI操作では任意のシートを読み込むことはできません</p></li></div></div>
 </section><section id="rdata形式の場合" class="level3" data-number="2.4.3"><h3 data-number="2.4.3" class="anchored" data-anchor-id="rdata形式の場合">
 <span class="header-section-number">2.4.3</span> .RData形式の場合</h3>
 <p>　［データ］-［データセットのロード…］を実行するとファイル選択ダイアログが開きますので読み込みたい<code>.RData</code>形式のファイルを指定します。読み込むと自動的にアクティブデータセットに読み込んだデータセット名が表示されます。</p>

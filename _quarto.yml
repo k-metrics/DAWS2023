@@ -4,7 +4,7 @@ project:
 
 book:
   title: "『統計ソフト「R」超入門』"
-  author: "Sampo Suzuki, CC 4.0 BY-NC-SA"
+  author: "Sampo Suzuki"
   date: today
   # description: "本書はデータ分析勉強会で学んだ成果をまとめたものです。"
   language: ja
