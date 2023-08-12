@@ -37,7 +37,7 @@
 
 :::{.callout-tip}
 ## Tips: Version
-どうしうても書籍と同じバージョンを利用したい場合には[こちら](https://cran.r-project.org/bin/windows/base/old/4.2.2/)からR4.2.2をダウンロードしてください。
+書籍と同じバージョンを利用したい場合には[こちら](https://cran.r-project.org/bin/windows/base/old/4.2.2/)からR4.2.2をダウンロードしてください。
 :::
 
 ### インストール
