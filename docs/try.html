@@ -220,7 +220,7 @@ Tips: Rのウィンドウの扱い
 </div>
 <section id="メニュー" class="level3 page-columns page-full" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="メニュー"><span class="header-section-number">3.1.1</span> メニュー</h3>
-<p>　R Commanderは基本的にメニュー操作だけで利用できます。各メニューの内容は下表の通りで、利用する頻度が多いのは、［データ］、［統計量］、［グラフ］の三メニューです。</p>
+<p>　R Commanderは基本的にメニュー操作だけで利用できます。各メニューの内容は下表の通りです。</p>
 <table class="table">
 <colgroup>
 <col style="width: 16%">
@@ -271,26 +271,26 @@ Tips: Rのウィンドウの扱い
 </tr>
 </tbody>
 </table>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;アクティブデータセットがセットされていないと使えません</p></li><li id="fn2"><p><sup>2</sup>&nbsp;アクティブデータセットがセットされていないと使えません</p></li><li id="fn3"><p><sup>3</sup>&nbsp;［統計量］メニューでのモデリング結果をアクティブモデルとしてセットしておく必要があります</p></li><li id="fn4"><p><sup>4</sup>&nbsp;アクティブデータセットとは無関係に使えます</p></li></div></section>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;アクティブデータセットが設定されていないと使えません</p></li><li id="fn2"><p><sup>2</sup>&nbsp;アクティブデータセットが設定されていないと使えません</p></li><li id="fn3"><p><sup>3</sup>&nbsp;［統計量］メニューでのモデリング結果をアクティブモデルに設定しておく必要があります</p></li><li id="fn4"><p><sup>4</sup>&nbsp;アクティブデータセットとは無関係に使えます</p></li></div></section>
 <section id="データセットモデル" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="データセットモデル"><span class="header-section-number">3.1.2</span> データセット・モデル</h3>
 <p>　分析対象となるデータセットやモデルの状態を表示・操作することができます。</p>
 </section>
 <section id="rスクリプトrマークダウン" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="rスクリプトrマークダウン"><span class="header-section-number">3.1.3</span> Rスクリプト／Rマークダウン</h3>
-<p>　使用しなくても一通りの処理はできます。最初は気にしないほうが良いです。</p>
+<p>　使用しなくても一通りの処理はできます。最初は気にしないほうがよいです。</p>
 </section>
 <section id="実行ボタン" class="level3" data-number="3.1.4">
 <h3 data-number="3.1.4" class="anchored" data-anchor-id="実行ボタン"><span class="header-section-number">3.1.4</span> 実行ボタン</h3>
-<p>　スクリプトを実行する際に利用します。</p>
+<p>　スクリプトを実行する際に利用しますが、最初は気にしないほうがよいです。</p>
 </section>
 <section id="出力" class="level3" data-number="3.1.5">
 <h3 data-number="3.1.5" class="anchored" data-anchor-id="出力"><span class="header-section-number">3.1.5</span> 出力</h3>
-<p>　Rのコンソールと呼ばれる部分で実行内容と実行結果が表示されます。</p>
+<p>　Rのコンソールと呼ばれる部分で実行内容と実行結果が表示されます。利用するメニューにより表示内容が異なりますので、順次、覚えていきましょう。</p>
 </section>
 <section id="メッセージ" class="level3" data-number="3.1.6">
 <h3 data-number="3.1.6" class="anchored" data-anchor-id="メッセージ"><span class="header-section-number">3.1.6</span> メッセージ</h3>
-<p>　Rのシステムメッセージやエラーメッセージが表示されます。</p>
+<p>　Rのシステムメッセージやエラーメッセージが表示されます。意図しない動作の場合は、ここのメッセージを確認してみてください。</p>
 </section>
 </section>
 <section id="コマンドによる操作" class="level2" data-number="3.2">
@@ -299,16 +299,38 @@ Tips: Rのウィンドウの扱い
 </section>
 <section id="付属データの利用" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="付属データの利用"><span class="header-section-number">3.3</span> 付属データの利用</h2>
-<p>　パッケージに付属のデータはサンプルとして利用されることが多いですから、読み込み方法を覚えてアクティブデータセットに設定できるようになりましょう。</p>
+<p>　パッケージに付属のデータはサンプルとして利用されることが多いですから、読み込み方法を覚えてアクティブデータセットに設定できるようになりましょう。 　なお、テキストのサンプルデータをはじめとした主なファイル形式の読み込み方は<a href="https://k-metrics.github.io/DAWS2023/dataset.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80">こちら</a>で説明してあります。</p>
 </section>
 <section id="グラフの保存" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="グラフの保存"><span class="header-section-number">3.4</span> グラフの保存</h2>
+<p>　テキストでは七種類のファイル形式で保存できると説明されていますが、バージョンやOS環境により異なります。汎用性を考えるとビットマップ系の場合はJPGE形式かPNG形式、ベクトル形式の場合はPostscript形式かEPS形式が無難です。</p>
 </section>
 <section id="グラフの貼り付け" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="グラフの貼り付け"><span class="header-section-number">3.5</span> グラフの貼り付け</h2>
+<p>　テキストではクリップボード経由の貼り付け方法を説明していますが、前節で説明のあったファイル経由の貼り付けでも構いません。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tips: グラフの扱い
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>クリップボードを経由する方法は簡単な反面、どの条件で描いたグラフかを後で特定することが難しくなります。なお、データ分析の世界では分析条件が特定できることを分析再現性（再現可能性）という言葉を使って表すことがあります。</p>
+</div>
+</div>
 </section>
 <section id="終了方法" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="終了方法"><span class="header-section-number">3.6</span> 終了方法</h2>
+<p>　［ファイル］-［終了］からは</p>
+<ol type="1">
+<li>R Commanderのみを終了</li>
+<li>R CommanderとRを終了</li>
+<li>R Commanderを再起動</li>
+</ol>
+<p>の三つが選択でき、通常は「R CommanderとRを終了」を選べばよいでしょう。 　なお、終了させる際に各種ファイルを保存するか否かを確認するダイアログが表示されますが、最初のうちは保存しない方がよいでしょう。</p>
 <hr>
 
 
