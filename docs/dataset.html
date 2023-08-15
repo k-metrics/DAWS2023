@@ -233,13 +233,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>　表計算ソフト(Excel)と比較すると下表のようなイメージになります。</p>
+<p>　<br>
+　表計算ソフト(Excel)と比較すると下表のようなイメージになります。</p>
 <table class="table">
 <colgroup>
-<col style="width: 18%">
+<col style="width: 20%">
 <col style="width: 19%">
-<col style="width: 14%">
-<col style="width: 47%">
+<col style="width: 13%">
+<col style="width: 46%">
 </colgroup>
 <thead><tr class="header">
 <th>　</th>
@@ -252,7 +253,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><strong>処理部</strong></td>
 <td>R</td>
 <td>Excel</td>
-<td>Rはインタプリタ</td>
+<td>インタプリタ<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</td>
 </tr>
 <tr class="even">
 <td><strong>データ</strong></td>
@@ -262,13 +264,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><strong>GUI</strong></td>
-<td>R/Rcmdr<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+<td>R/Rcmdr<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
 </td>
 <td>Excel</td>
-<td>Windows版Rは簡単なGUIを持っている</td>
+<td>Windows版Rは簡単なGUIあり</td>
 </tr>
 <tr class="even">
-<td><strong>関数</strong></td>
+<td><strong>スクリプト</strong></td>
 <td>R Script</td>
 <td>VBA</td>
 <td></td>
@@ -281,8 +283,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;R Commanderの実装としてはパッケージ</p></li></div><p>　各シート単位で様々な計算やグラフ作成ができるのがR Commander(Rcmdr)だと思ってください。</p>
-<div class="page-columns page-full"><p>　Rではデータセットは<code>data.frame</code>型という変数型を用いて一つの変数として扱います。<code>data.frame</code>型変数は<strong>Tidy data（整然データ）</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>という概念を満たす変数型です。</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<a href="https://ja.wikipedia.org/wiki/Tidy_data">Wikipedia</a></p></li></div></div>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;動きを見ている限りExcelはセルでのイベント駆動によるインタプリタ処理だと思われます</p></li><li id="fn2"><p><sup>2</sup>&nbsp;R Commanderの実装としてはパッケージ</p></li></div><p>　各シート単位で様々な計算やグラフ作成ができるのがR Commander(Rcmdr)だと思ってください。</p>
+<div class="page-columns page-full"><p>　Rではデータセットは<code>data.frame</code>型という変数型を用いて一つの変数として扱います。<code>data.frame</code>型変数は<strong>Tidy data（整然データ）</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>という概念を満たす変数型です。</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;<a href="https://ja.wikipedia.org/wiki/Tidy_data">Wikipedia</a></p></li></div></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -397,7 +399,7 @@ Tips: How to run
 </section></section><section id="データセットを作成する" class="level2 page-columns page-full" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="データセットを作成する">
 <span class="header-section-number">2.3</span> データセットを作成する</h2>
 <div class="page-columns page-full"><p>　R Commanderにはデータセットを作成するための機能が組み込まれていますが、使いやすいとは言えないので、Excelのような表計算ソフトを使ってデータファイルを作成することをおすゝめします。R Commanderが対応している代表的なファイル形式はxls形式、xlsx形式、CSV形式です。変数名などに日本語が含まれるデータをCSV形式にする場合には必ず<strong>UTF-8エンコーディングを指定</strong>して保存してくださいください。<br>
-　R CommanderのGUIによる読み込み処理ではエンコーディングが指定できないために日本語版Excelがデフォルトで書き出すシフトJISエンコーディングされたファイルには対応していません<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;R 4.2からデフォルトロケール（エンコーディング）をシフトJISからUTF-8に変更したために起こる日本語版Windows特有の問題です</p></li></div></div>
+　R CommanderのGUIによる読み込み処理ではエンコーディングが指定できないために日本語版Excelがデフォルトで書き出すシフトJISエンコーディングされたファイルには対応していません<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;R 4.2からデフォルトロケール（エンコーディング）をシフトJISからUTF-8に変更したために起こる日本語版Windows特有の問題です</p></li></div></div>
 <section id="r-commanderのためのデータセット" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="r-commanderのためのデータセット">
 <span class="header-section-number">2.3.1</span> R Commanderのためのデータセット</h3>
 <p>　R CommanderではGUI操作の弊害で様々なオプションの指定ができないためエンコーディング以外に下記の条件を満たすファイルを作成することで読み込み時のエラーを回避するようにしてください。</p>
@@ -511,7 +513,7 @@ Tips: How to run
 </tr>
 </tbody>
 </table>
-<div class="page-columns page-full"><p>　各設定項目を設定後、［OK］ボタンをクリックするとファイルダイアログが開きますので読み込みたいファイルを指定してください。なお、ファイル内に複数のシートがある場合は<strong>最初のシートだけ</strong>を読み込みます<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;GUI操作では任意のシートを読み込むことはできません</p></li></div></div>
+<div class="page-columns page-full"><p>　各設定項目を設定後、［OK］ボタンをクリックするとファイルダイアログが開きますので読み込みたいファイルを指定してください。なお、ファイル内に複数のシートがある場合は<strong>最初のシートだけ</strong>を読み込みます<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;GUI操作では任意のシートを読み込むことはできません</p></li></div></div>
 </section><section id="rdata形式の場合" class="level3" data-number="2.4.3"><h3 data-number="2.4.3" class="anchored" data-anchor-id="rdata形式の場合">
 <span class="header-section-number">2.4.3</span> .RData形式の場合</h3>
 <p>　［データ］-［データセットのロード…］を実行するとファイル選択ダイアログが開きますので読み込みたい<code>.RData</code>形式のファイルを指定します。読み込むと自動的にアクティブデータセットに読み込んだデータセット名が表示されます。</p>
@@ -548,7 +550,7 @@ Tips: How to run
 <p>　</p>
 </section></section><section id="アクティブデータセット" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="アクティブデータセット">
 <span class="header-section-number">2.5</span> アクティブデータセット</h2>
-<p>　R Commanderには<strong>アクティブデータセット</strong>という概念があります。アクティブデータセットとは計算対象となるデータセットのことで、指定されていないと統計量の算出やグラフによる可視化ができません。</p>
+<p>　R Commanderには<strong>アクティブデータセット</strong>という概念があります。アクティブデータセットとは計算対象となるデータセットのことで、設定されていないと統計量の算出やグラフによる可視化ができません。</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -559,7 +561,7 @@ Tips: アクティブデータセット
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>「アクティブデータセット」はR Commander特有の概念です。R CommanderはRの機能（関数）を利用していますので、Rでも同様の機能を利用することは可能ですが、アクティブなデータセットを常に意識する必要があり参照間違いや変数名のコンフリクトを起こしやすいためRで利用することはおすゝめできません。</p>
+<p>R CommanderはRの機能（関数）を利用していますので、Rでも同様の機能を利用することは可能ですが、アクティブなデータセットを常に意識する必要があり参照間違いや変数名のコンフリクトを起こしやすいためRで利用することはおすゝめできません。</p>
 </div>
 </div>
 <p>　</p>

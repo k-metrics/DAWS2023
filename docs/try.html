@@ -255,7 +255,7 @@ Tips: Rのウィンドウの扱い
 </tr>
 <tr class="even">
 <td>モデル <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></td>
-<td>統計モデルに対する診断（数値・グラフ）</td>
+<td>アクティブモデルに対する診断（数値・グラフ）など</td>
 </tr>
 <tr class="odd">
 <td>分布 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
@@ -274,11 +274,11 @@ Tips: Rのウィンドウの扱い
 <div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;アクティブデータセットが設定されていないと使えません</p></li><li id="fn2"><p><sup>2</sup>&nbsp;アクティブデータセットが設定されていないと使えません</p></li><li id="fn3"><p><sup>3</sup>&nbsp;［統計量］メニューでのモデリング結果をアクティブモデルに設定しておく必要があります</p></li><li id="fn4"><p><sup>4</sup>&nbsp;アクティブデータセットとは無関係に使えます</p></li></div></section>
 <section id="データセットモデル" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="データセットモデル"><span class="header-section-number">3.1.2</span> データセット・モデル</h3>
-<p>　分析対象となるデータセットやモデルの状態を表示・操作することができます。</p>
+<p>　分析対象となるデータセットやモデルの状態を表示・設定することができます。アクティブデータセットやアクティブモデルの切り替えはここから行います。参考までにアクティブデータセットが設定されている状態はExcelで計算対象とするシートを表示している状態のようなものです。</p>
 </section>
 <section id="rスクリプトrマークダウン" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="rスクリプトrマークダウン"><span class="header-section-number">3.1.3</span> Rスクリプト／Rマークダウン</h3>
-<p>　使用しなくても一通りの処理はできます。最初は気にしないほうがよいです。</p>
+<p>　使用しなくても一通りの処理はできます。最初は気にしないほうがよいです。なお、R Commanderが使用している関数の大半はR Commanderが独自に作成している（ラッパー）関数であり汎用性が低いのでこれらの関数の使い方を覚える必要は基本的にありません。</p>
 </section>
 <section id="実行ボタン" class="level3" data-number="3.1.4">
 <h3 data-number="3.1.4" class="anchored" data-anchor-id="実行ボタン"><span class="header-section-number">3.1.4</span> 実行ボタン</h3>
@@ -299,7 +299,7 @@ Tips: Rのウィンドウの扱い
 </section>
 <section id="付属データの利用" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="付属データの利用"><span class="header-section-number">3.3</span> 付属データの利用</h2>
-<p>　パッケージに付属のデータはサンプルとして利用されることが多いですから、読み込み方法を覚えてアクティブデータセットに設定できるようになりましょう。 　なお、テキストのサンプルデータをはじめとした主なファイル形式の読み込み方は<a href="https://k-metrics.github.io/DAWS2023/dataset.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80">こちら</a>で説明してあります。</p>
+<p>　パッケージに付属のデータはサンプルとして利用されることが多いですから、読み込み方法を覚えてアクティブデータセットに設定できるようになりましょう。なお、テキストのサンプルデータをはじめとした主なファイル形式の読み込み方は<a href="https://k-metrics.github.io/DAWS2023/dataset.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80">こちら</a>で説明してあります。</p>
 </section>
 <section id="グラフの保存" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="グラフの保存"><span class="header-section-number">3.4</span> グラフの保存</h2>
@@ -314,11 +314,11 @@ Tips: Rのウィンドウの扱い
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tips: グラフの扱い
+Tips: 再現可能性を考える
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>クリップボードを経由する方法は簡単な反面、どの条件で描いたグラフかを後で特定することが難しくなります。なお、データ分析の世界では分析条件が特定できることを分析再現性（再現可能性）という言葉を使って表すことがあります。</p>
+<p>クリップボードを経由する方法は簡単な反面、どの条件で描いたグラフかを後で特定することが難しくなります。なお、データ分析の世界では分析条件が特定できて同じ結果を得られることを再現可能性（分析再現性）という言葉を使って表すことがあります。</p>
 </div>
 </div>
 </section>
