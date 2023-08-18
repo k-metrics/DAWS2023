@@ -35,8 +35,8 @@ datasets::mtcars %>%
 
 [^1]: [Wikipedia](https://ja.wikipedia.org/wiki/Tidy_data)
 
-:::{.callout-tip}
-## FYI: Tidy data（整然データ）
+:::{.callout-note collapse="true"}
+## Tidy data（整然データ）
 以下の条件を満たす表型のデータをTidy dataといい、構造と意味が合致しているのが特徴です。  
 　1. 個々の変数が一つの列をなす  
 　2. 個々の観測が一つの行をなす  
@@ -162,8 +162,8 @@ str(airquality)
 ## アクティブデータセット
 　R Commanderには**アクティブデータセット**という概念があります。アクティブデータセットとは計算対象となるデータセットのことで、設定されていないと統計量の算出やグラフによる可視化ができません。
 
-:::{.callout-tip}
-## FYI: アクティブデータセット
+:::{.callout-note  collapse="true"}
+## アクティブデータセット
 R CommanderはRの機能（関数）を利用していますので、Rでも同様の機能を利用することは可能ですが、アクティブなデータセットを常に意識する必要があり参照間違いや変数名のコンフリクトを起こしやすいためRで利用することはおすゝめできません。
 :::
 

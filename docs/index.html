@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sampo Suzuki">
-<meta name="dcterms.date" content="2023-08-17">
+<meta name="dcterms.date" content="2023-08-18">
 
 <title>『統計ソフト「R」超入門』</title>
 <style>
@@ -106,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 17, 2023</p>
+        <p class="date">August 18, 2023</p>
       </div>
     </div>
     
@@ -243,17 +243,20 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://cran.r-project.org/bin/windows/base/">CRAN</a>からRの最新版インストーラをダウンロードします</li>
 <li>ダウンロードしたファイルのウィルスチェックをします</li>
 </ol>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-FYI: Version
+Version
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>書籍と同じバージョンを利用したい場合には<a href="https://cran.r-project.org/bin/windows/base/old/4.2.2/">こちら</a>からR4.2.2をダウンロードしてください。</p>
+</div>
 </div>
 </div>
 </section>
@@ -294,17 +297,20 @@ FYI: Version
 <li>インストール状況（プログレス表示）</li>
 <li>完了</li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;カスタマイズせずにデフォルトインストールした場合は下記のリカバリーを参考にSDIモードに変更してください</p></li><li id="fn4"><p><sup>4</sup>&nbsp;ヘルプの表示方法は好みで構いませんがHTML形式の方が関連項目のリンクが使えるので便利です</p></li></div><div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;カスタマイズせずにデフォルトインストールした場合は下記のリカバリーを参考にSDIモードに変更してください</p></li><li id="fn4"><p><sup>4</sup>&nbsp;ヘルプの表示方法は好みで構いませんがHTML形式の方が関連項目のリンクが使えるので便利です</p></li></div><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-FYI: MDI or SDI
+MDI or SDI
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>R Commanderを利用する場合は、操作ウィンドウやグラフ表示に個々のウィンドウを割り当てるSDIモードが便利です。インストール時にMDIを選択してた場合でもR起動後にオプションで変更できます。</p>
+</div>
 </div>
 </div>
 </section>
@@ -339,6 +345,22 @@ FYI: MDI or SDI
 <section id="インストール-1" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="インストール-1"><span class="header-section-number">1.2.1</span> インストール</h3>
 <p>　R Commanderは単独のプログラムではなくRのパッケージ（ライブラリ）として動く機能拡張プログラムですので、インストールはRから行います。</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ソースからインストール？
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>パッケージのインストール中に「パッケージのソースからインストールを行いますか？」のようなメッセージが表示された場合は「いいえ(No)」を選択してください。今回構築するWindows環境ではソースからのインストールに対応していません。なお、このメッセージはCRANのパッケージ更新状況によるので表示されない場合もあります。</p>
+</div>
+</div>
+</div>
 <ol type="1">
 <li>Rのメニューから［パッケージ］-［パッケージのインストール…］を実行</li>
 <li>パッケージをダウンロードするミラーサイトを選択して［OK］をクリック
@@ -365,19 +387,6 @@ FYI: MDI or SDI
 <p><img src="./fig/00-26.RcmdrInstalled.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">R Console</figcaption>
 </figure>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-FYI: Compile?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>パッケージのインストール中に「パッケージのソースからインストールを行いますか？」のようなメッセージが表示された場合は「いいえ(No)」を選択してください。今回構築するWindows環境ではソースからのインストールに対応していません。なお、このメッセージはCRANのパッケージ更新状況によるので表示されない場合もあります。</p>
-</div>
 </div>
 </section>
 <section id="起動確認-1" class="level3" data-number="1.2.2">
