@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>『統計ソフト「R」超入門』 - 4&nbsp; 始める前に</title>
+<title>『統計ソフト「R」超入門』 - 5&nbsp; データの特徴を探る</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,6 +17,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -26,8 +60,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./browsingData.html" rel="next">
-<link href="./try.html" rel="prev">
+<link href="./warmingup.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./warmingup.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">始める前に</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./browsingData.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データの特徴を探る</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -76,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">
-<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">始める前に</span>
+<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データの特徴を探る</span>
 </h1>
                       </div>
   </div>
@@ -145,13 +178,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./warmingup.html" class="sidebar-item-text sidebar-link active">
+  <a href="./warmingup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">始める前に</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./browsingData.html" class="sidebar-item-text sidebar-link">
+  <a href="./browsingData.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データの特徴を探る</span></span></a>
   </div>
 </li>
@@ -163,35 +196,66 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%86%85%E5%AE%B9" id="toc-使用するデータの内容" class="nav-link active" data-scroll-target="#%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%86%85%E5%AE%B9"><span class="header-section-number">4.1</span> 使用するデータの内容</a></li>
-  <li><a href="#%E5%A4%89%E6%95%B0%E3%81%AE%E7%A8%AE%E9%A1%9E" id="toc-変数の種類" class="nav-link" data-scroll-target="#%E5%A4%89%E6%95%B0%E3%81%AE%E7%A8%AE%E9%A1%9E"><span class="header-section-number">4.2</span> 変数の種類</a></li>
-  <li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90%E3%81%AE%E6%B5%81%E3%82%8C" id="toc-データ解析の流れ" class="nav-link" data-scroll-target="#%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90%E3%81%AE%E6%B5%81%E3%82%8C"><span class="header-section-number">4.3</span> データ解析の流れ</a></li>
+<li>
+<a href="#%E9%87%8F%E7%9A%84%E5%A4%89%E6%95%B0%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95%E8%A1%A8%E7%8F%BE" id="toc-量的変数のグラフ表現" class="nav-link active" data-scroll-target="#%E9%87%8F%E7%9A%84%E5%A4%89%E6%95%B0%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95%E8%A1%A8%E7%8F%BE"><span class="header-section-number">5.1</span> 量的変数のグラフ表現</a>
+  <ul class="collapse">
+<li><a href="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%83%83%E3%83%88" id="toc-インデックスプロット" class="nav-link" data-scroll-target="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"><span class="header-section-number">5.1.1</span> インデックスプロット</a></li>
+  <li><a href="#%E3%83%89%E3%83%83%E3%83%88%E3%83%97%E3%83%AD%E3%83%83%E3%83%88" id="toc-ドットプロット" class="nav-link" data-scroll-target="#%E3%83%89%E3%83%83%E3%83%88%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"><span class="header-section-number">5.1.2</span> ドットプロット</a></li>
+  <li><a href="#%E3%83%89%E3%83%83%E3%83%88%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88" id="toc-ドットチャート" class="nav-link" data-scroll-target="#%E3%83%89%E3%83%83%E3%83%88%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88"><span class="header-section-number">5.1.3</span> ドットチャート</a></li>
+  <li><a href="#%E9%9B%A2%E6%95%A3%E6%95%B0%E5%80%A4%E5%A4%89%E6%95%B0%E3%81%AE%E3%83%97%E3%83%AD%E3%83%83%E3%83%88" id="toc-離散数値変数のプロット" class="nav-link" data-scroll-target="#%E9%9B%A2%E6%95%A3%E6%95%B0%E5%80%A4%E5%A4%89%E6%95%B0%E3%81%AE%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"><span class="header-section-number">5.1.4</span> 離散数値変数のプロット</a></li>
+  <li><a href="#%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0" id="toc-ヒストグラム" class="nav-link" data-scroll-target="#%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0"><span class="header-section-number">5.1.5</span> ヒストグラム</a></li>
+  <li><a href="#%E5%AF%86%E5%BA%A6%E6%8E%A8%E5%AE%9A" id="toc-密度推定" class="nav-link" data-scroll-target="#%E5%AF%86%E5%BA%A6%E6%8E%A8%E5%AE%9A"><span class="header-section-number">5.1.6</span> 密度推定</a></li>
+  <li><a href="#%E8%A6%B3%E8%91%89%E8%A1%A8%E7%A4%BA" id="toc-観葉表示" class="nav-link" data-scroll-target="#%E8%A6%B3%E8%91%89%E8%A1%A8%E7%A4%BA"><span class="header-section-number">5.1.7</span> 観葉表示</a></li>
+  <li><a href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3" id="toc-箱ひげ図" class="nav-link" data-scroll-target="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3"><span class="header-section-number">5.1.8</span> 箱ひげ図</a></li>
+  <li><a href="#%E5%B9%B3%E5%9D%87%E5%80%A4%E3%83%97%E3%83%AD%E3%83%83%E3%83%88" id="toc-平均値プロット" class="nav-link" data-scroll-target="#%E5%B9%B3%E5%9D%87%E5%80%A4%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"><span class="header-section-number">5.1.9</span> 平均値プロット</a></li>
+  <li><a href="#qq%E3%83%97%E3%83%AD%E3%83%83%E3%83%88" id="toc-qqプロット" class="nav-link" data-scroll-target="#qq%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"><span class="header-section-number">5.1.10</span> QQプロット</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E8%B3%AA%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95%E8%A1%A8%E7%8F%BE" id="toc-質的データのグラフ表現" class="nav-link" data-scroll-target="#%E8%B3%AA%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95%E8%A1%A8%E7%8F%BE"><span class="header-section-number">5.2</span> 質的データのグラフ表現</a>
+  <ul class="collapse">
+<li><a href="#%E6%A3%92%E3%82%B0%E3%83%A9%E3%83%95" id="toc-棒グラフ" class="nav-link" data-scroll-target="#%E6%A3%92%E3%82%B0%E3%83%A9%E3%83%95"><span class="header-section-number">5.2.1</span> 棒グラフ</a></li>
+  <li><a href="#%E5%86%86%E3%82%B0%E3%83%A9%E3%83%95" id="toc-円グラフ" class="nav-link" data-scroll-target="#%E5%86%86%E3%82%B0%E3%83%A9%E3%83%95"><span class="header-section-number">5.2.2</span> 円グラフ</a></li>
+  <li><a href="#%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%B8%A6%E3%81%B9%E3%81%A6%E6%8F%8F%E7%94%BB" id="toc-複数のグラフを並べて描画" class="nav-link" data-scroll-target="#%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%B8%A6%E3%81%B9%E3%81%A6%E6%8F%8F%E7%94%BB"><span class="header-section-number">5.2.3</span> 複数のグラフを並べて描画</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E6%95%B0%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E8%A6%81%E7%B4%84" id="toc-数値による要約" class="nav-link" data-scroll-target="#%E6%95%B0%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E8%A6%81%E7%B4%84"><span class="header-section-number">5.3</span> 数値による要約</a>
+  <ul class="collapse">
+<li><a href="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E5%A4%89%E6%95%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E6%95%B0%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E8%A6%81%E7%B4%84" id="toc-すべての変数についての数値による要約" class="nav-link" data-scroll-target="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E5%A4%89%E6%95%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E6%95%B0%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E8%A6%81%E7%B4%84"><span class="header-section-number">5.3.1</span> すべての変数についての数値による要約</a></li>
+  <li><a href="#%E9%87%8F%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%95%B0%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E8%A6%81%E7%B4%84" id="toc-量的データの数値による要約" class="nav-link" data-scroll-target="#%E9%87%8F%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%95%B0%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E8%A6%81%E7%B4%84"><span class="header-section-number">5.3.2</span> 量的データの数値による要約</a></li>
+  <li><a href="#%E8%B3%AA%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%BA%A6%E6%95%B0%E5%88%86%E5%B8%83%E3%81%8A%E3%82%88%E3%81%B3%E9%81%A9%E5%90%88%E5%BA%A6%E6%A4%9C%E5%AE%9A" id="toc-質的データの度数分布および適合度検定" class="nav-link" data-scroll-target="#%E8%B3%AA%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%BA%A6%E6%95%B0%E5%88%86%E5%B8%83%E3%81%8A%E3%82%88%E3%81%B3%E9%81%A9%E5%90%88%E5%BA%A6%E6%A4%9C%E5%AE%9A"><span class="header-section-number">5.3.3</span> 質的データの度数分布および適合度検定</a></li>
+  </ul>
+</li>
+  <li><a href="#%E6%AD%A3%E8%A6%8F%E6%80%A7%E3%81%AE%E6%A4%9C%E5%AE%9A" id="toc-正規性の検定" class="nav-link" data-scroll-target="#%E6%AD%A3%E8%A6%8F%E6%80%A7%E3%81%AE%E6%A4%9C%E5%AE%9A"><span class="header-section-number">5.4</span> 正規性の検定</a></li>
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/k-metrics/DAWS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content"><blockquote class="blockquote">
-<p><strong>※本ページの内容はテキストの第４章に相当します</strong></p>
+<p><strong>※本ページの内容はテキストの第５章に相当します</strong></p>
 </blockquote>
-<p>　データ分析を始める前に使用するデータについて把握しておきましょう。データは<a href="https://bluebacks.kodansha.co.jp/books/9784065318164/appendix/">テキスト特設サイト</a>からダウンロードしておきます。</p>
+<p>　本章ではひとつの量的データ（一次元データ）に対する記述統計に関して学びます。</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-テキスト特設サイト
+データの読み込み
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><a href="https://bluebacks.kodansha.co.jp/books/9784065318164/appendix/">https://bluebacks.kodansha.co.jp/books/9784065318164/appendix/</a>にあるデータはWindows用とmacOS用がありますので、利用環境に合わせてダウンロードしてください。</p>
+<p>前章で説明したようにRcmdrのバグを回避するために<a href="https://drive.google.com/drive/u/1/folders/1Jw0Hl74HNAMinb1Rl0ZDbQHBUevU6LGn">第3回の公開資料フォルダ</a>にアップロードしてある「<code>外来患者ストレス改.RData</code>」ファイルを使います。第2回のファイルと同名ですが内容が異なりますので、必ずこのファイルを使用してください。</p>
+<ol type="1">
+<li>Rcmdrのメニューから［データ］-［データセットのロード…］を実行する</li>
+<li>ファイルダイアログで「<code>外来患者ストレス改.RData</code>」ファイルを選択する</li>
+<li>アクティブデータセットが<code>PatientStressKai</code>になっていることを確認する</li>
+</ol>
 </div>
 </div>
 </div>
-<section id="使用するデータの内容" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="使用するデータの内容">
-<span class="header-section-number">4.1</span> 使用するデータの内容</h2>
-<p>　テキストでは使用するデータのファイル名が「外来患者ストレス.RData」となっていますが、テキストの説明と異なる順番で変数が並んでいたり、Rcmdrのバグに引っかかったりするので第5章で使う最小限のデータに限定したデータセット（<code>外来患者ストレス改.RData</code>（<code>PatientStressKai</code>））を用意しました。</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -202,72 +266,204 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>　各変数の詳細についてはテキストで確認してください。</p>
-<div class="callout callout-style-default callout-caution callout-titled">
+<section id="量的変数のグラフ表現" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="量的変数のグラフ表現">
+<span class="header-section-number">5.1</span> 量的変数のグラフ表現</h2>
+<section id="インデックスプロット" class="level3" data-number="5.1.1"><h3 data-number="5.1.1" class="anchored" data-anchor-id="インデックスプロット">
+<span class="header-section-number">5.1.1</span> インデックスプロット</h3>
+</section><section id="ドットプロット" class="level3" data-number="5.1.2"><h3 data-number="5.1.2" class="anchored" data-anchor-id="ドットプロット">
+<span class="header-section-number">5.1.2</span> ドットプロット</h3>
+</section><section id="ドットチャート" class="level3" data-number="5.1.3"><h3 data-number="5.1.3" class="anchored" data-anchor-id="ドットチャート">
+<span class="header-section-number">5.1.3</span> ドットチャート</h3>
+</section><section id="離散数値変数のプロット" class="level3" data-number="5.1.4"><h3 data-number="5.1.4" class="anchored" data-anchor-id="離散数値変数のプロット">
+<span class="header-section-number">5.1.4</span> 離散数値変数のプロット</h3>
+</section><section id="ヒストグラム" class="level3" data-number="5.1.5"><h3 data-number="5.1.5" class="anchored" data-anchor-id="ヒストグラム">
+<span class="header-section-number">5.1.5</span> ヒストグラム</h3>
+</section><section id="密度推定" class="level3" data-number="5.1.6"><h3 data-number="5.1.6" class="anchored" data-anchor-id="密度推定">
+<span class="header-section-number">5.1.6</span> 密度推定</h3>
+</section><section id="観葉表示" class="level3" data-number="5.1.7"><h3 data-number="5.1.7" class="anchored" data-anchor-id="観葉表示">
+<span class="header-section-number">5.1.7</span> 観葉表示</h3>
+</section><section id="箱ひげ図" class="level3" data-number="5.1.8"><h3 data-number="5.1.8" class="anchored" data-anchor-id="箱ひげ図">
+<span class="header-section-number">5.1.8</span> 箱ひげ図</h3>
+</section><section id="平均値プロット" class="level3" data-number="5.1.9"><h3 data-number="5.1.9" class="anchored" data-anchor-id="平均値プロット">
+<span class="header-section-number">5.1.9</span> 平均値プロット</h3>
+</section><section id="qqプロット" class="level3" data-number="5.1.10"><h3 data-number="5.1.10" class="anchored" data-anchor-id="qqプロット">
+<span class="header-section-number">5.1.10</span> QQプロット</h3>
+</section></section><section id="質的データのグラフ表現" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="質的データのグラフ表現">
+<span class="header-section-number">5.2</span> 質的データのグラフ表現</h2>
+<section id="棒グラフ" class="level3" data-number="5.2.1"><h3 data-number="5.2.1" class="anchored" data-anchor-id="棒グラフ">
+<span class="header-section-number">5.2.1</span> 棒グラフ</h3>
+</section><section id="円グラフ" class="level3" data-number="5.2.2"><h3 data-number="5.2.2" class="anchored" data-anchor-id="円グラフ">
+<span class="header-section-number">5.2.2</span> 円グラフ</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Rcmdrのバグ
+円グラフの始点を変更する
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Rcmdr 2.8.0にはアクティブデータセット内に10を超える変数がある場合、要約統計量が計算できずフリーズするというバグがあります。</p>
+<p>Rcmdrの円グラフは<code>RcmdrMisc::pichart()</code>関数を利用しており、その定義は下記の通りです。</p>
+<div class="cell">
+<details open=""><summary>function piechart()</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">piechart</span><span class="op">(</span><span class="va">x</span>, scale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"percent"</span>, <span class="st">"frequency"</span>, <span class="st">"none"</span><span class="op">)</span>, </span>
+<span>         col <span class="op">=</span> <span class="fu">rainbow_hcl</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html">nlevels</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p><code>x</code>: a factor or other discrete variable; the segments of the pie correspond to the unique values (levels) of x and are proportional to the frequency counts in the various levels.<br><code>scale</code>: parenthetical numbers to add to the pie-segment labels; the default is “percent”.<br><code>col</code>: colors for the segments; the default is provided by the rainbow_hcl function in the colorspace package.<br><code>...</code>: further arguments to be passed to pie.</p>
+</blockquote>
+<p>円グラフの始点に関するパラメータはありませんが、<code>...</code>の部分で<code><a href="https://rdrr.io/r/graphics/pie.html">pie()</a></code>関数へ渡すパラメータを指定できることがわかります。<code><a href="https://rdrr.io/r/graphics/pie.html">pie()</a></code>関数の定義は</p>
+<div class="cell">
+<details open=""><summary>function pie()</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pie.html">pie</a></span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, edges <span class="op">=</span> <span class="fl">200</span>, radius <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>    clockwise <span class="op">=</span> <span class="cn">FALSE</span>, init.angle <span class="op">=</span> <span class="kw">if</span><span class="op">(</span><span class="va">clockwise</span><span class="op">)</span> <span class="fl">90</span> <span class="kw">else</span> <span class="fl">0</span>,</span>
+<span>    density <span class="op">=</span> <span class="cn">NULL</span>, angle <span class="op">=</span> <span class="fl">45</span>, col <span class="op">=</span> <span class="cn">NULL</span>, border <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    lty <span class="op">=</span> <span class="cn">NULL</span>, main <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>となっておりヘルプを見ると<code>init.angle</code>パラメータを指定すれば始点を変更できることがわかります。</p>
+<blockquote class="blockquote">
+<p><code>init.angle</code>: number specifying the starting angle (in degrees) for the slices. Defaults to 0 (i.e., ‘3 o’clock’) unless <strong>clockwise is true</strong> where init.angle defaults to 90 (degrees), (i.e., ‘12 o’clock’).</p>
+</blockquote>
+<p><code>init.angle</code>の定義から<code>clockwise = TRUE</code>を指定することで始点を12時に変更できることがわかります。</p>
+<blockquote class="blockquote">
+<p><code>clockwise</code>: logical indicating if slices are drawn clockwise or counter clockwise (i.e., mathematically positive direction), the latter is default.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<!-- ### 元データ -->
-<!-- 　調査結果（外来患者ストレス(元データ).RData）をテキストP47からの紹介順に並べると下記のようになります。 -->
-<p>　</p>
-<!-- ### カテゴリカル変数部 -->
-<!-- 　元データを任意の水準でカテゴライズ（因子化）してものをテキストP47からの紹介順に並べると各のようになります。 -->
-</section><section id="変数の種類" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="変数の種類">
-<span class="header-section-number">4.2</span> 変数の種類</h2>
-<p>　テキストでは変数を「数値をとる場合」と「非数値をとる場合」に二分していますが、一般的には「量的変数」と「質的変数」という名称が使われますが、このふたつの変数を更に分類した<a href="https://bellcurve.jp/statistics/course/1562.html">尺度</a>を用いるのが一般的です。</p>
-<table class="table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 72%">
-</colgroup>
-<thead><tr class="header">
-<th>変数区分</th>
-<th>尺度</th>
-<th>意味</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>質的変数</td>
-<td>名義尺度</td>
-<td>値が同じか否かという意味しかない</td>
-</tr>
-<tr class="even">
-<td>質的変数</td>
-<td>順序尺度</td>
-<td>順序や大小には意味があるが間隔には意味がない</td>
-</tr>
-<tr class="odd">
-<td>量的変数</td>
-<td>間隔尺度</td>
-<td>0が相対的な意味を持ち等間隔であり間隔に意味がある</td>
-</tr>
-<tr class="even">
-<td>量的変数</td>
-<td>比例尺度</td>
-<td>0が絶対的な意味を持ち間隔と比率に意味があるもの</td>
-</tr>
-</tbody>
-</table>
-<!-- ### 名義尺度 --><!-- 　名義尺度は名前の通り他と区分するための変数で、性別や血液型、背番号などが該当します。背番号は数字ですが、一般的には数字の大小に意味を持たないので名義尺度と捉えることができます。 --><!-- ### 順序尺度 --><!-- 　順序尺度は名前の通り順序が意味を持つ変数で、順位（ランキング）や階級などが該当します。一般的に順位などは数字で表すので量的変数のように思えます、数値を加減算しても意味がないものは順序尺度と考えます。 --><!-- ### 間隔尺度 --><!-- 　間隔尺度は名前の通り間隔が意味を持つ変数で、温度やテストの点数などが該当します。加減算した場合には意味を持ち、乗除算しても意味がないものは間隔尺度です。 --><!-- 　例えば、温度は15度から15度上がれば30度ですが、15度が2倍になったら30度とは言えないので、間隔尺度に該当します。 --><!-- ### 比例尺度（比尺度） --></section><section id="データ解析の流れ" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="データ解析の流れ">
-<span class="header-section-number">4.3</span> データ解析の流れ</h2>
-<ol type="1">
-<li>一変数単位での要約統計量と分布の確認</li>
-<li>二変数単位での相関の確認</li>
-<li>二変数以上の変数間の関係を表すモデルの作成</li>
-</ol>
+</section><section id="複数のグラフを並べて描画" class="level3" data-number="5.2.3"><h3 data-number="5.2.3" class="anchored" data-anchor-id="複数のグラフを並べて描画">
+<span class="header-section-number">5.2.3</span> 複数のグラフを並べて描画</h3>
+</section></section><section id="数値による要約" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="数値による要約">
+<span class="header-section-number">5.3</span> 数値による要約</h2>
+<section id="すべての変数についての数値による要約" class="level3" data-number="5.3.1"><h3 data-number="5.3.1" class="anchored" data-anchor-id="すべての変数についての数値による要約">
+<span class="header-section-number">5.3.1</span> すべての変数についての数値による要約</h3>
+<div class="cell">
+<details open=""><summary>要約 - アクティブデータセット</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">PatientStressKai</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code> 性別          年齢       ストレッサー得点 日常苛立ちごと     健康統制感    
+ 男:119   Min.   :15.00   Min.   : 0.000   Min.   : 0.000   Min.   : 58.00  
+ 女:218   1st Qu.:19.00   1st Qu.: 5.000   1st Qu.: 0.000   1st Qu.: 83.00  
+          Median :24.00   Median : 7.000   Median : 1.000   Median : 92.00  
+          Mean   :36.13   Mean   : 7.303   Mean   : 2.896   Mean   : 91.46  
+          3rd Qu.:52.00   3rd Qu.: 9.000   3rd Qu.: 4.000   3rd Qu.:101.00  
+          Max.   :87.00   Max.   :16.000   Max.   :25.000   Max.   :138.00  
+ ストレス反応得点 ノンコンプライアンス行動数 年齢区分  
+ Min.   :  0.0    Min.   :0.0000             青年:171  
+ 1st Qu.: 11.0    1st Qu.:0.0000             壮年: 43  
+ Median : 25.0    Median :0.0000             中年: 79  
+ Mean   : 34.9    Mean   :0.6083             高年: 44  
+ 3rd Qu.: 50.0    3rd Qu.:1.0000                       
+ Max.   :156.0    Max.   :4.0000                       </code></pre>
+</div>
+</div>
+</section><section id="量的データの数値による要約" class="level3" data-number="5.3.2"><h3 data-number="5.3.2" class="anchored" data-anchor-id="量的データの数値による要約">
+<span class="header-section-number">5.3.2</span> 量的データの数値による要約</h3>
+<div class="cell">
+<details open=""><summary>要約 - 数値による要約</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/numSummary.html">numSummary</a></span><span class="op">(</span><span class="va">PatientStressKai</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ストレス反応得点"</span>,</span>
+<span>                                          <span class="st">"ストレッサー得点"</span><span class="op">)</span>, drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">]</span>,</span>
+<span>                      groups<span class="op">=</span><span class="va">PatientStressKai</span><span class="op">$</span><span class="va">性別</span>,</span>
+<span>                      statistics<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"quantiles"</span>, <span class="st">"CV"</span><span class="op">)</span>,</span>
+<span>                      quantiles<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.25</span>,<span class="fl">.5</span>,<span class="fl">.75</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+Variable: ストレス反応得点 
+       mean       sd   IQR 0% 25% 50%   75% 100%   n
+男 26.63866 26.30001 29.50  0   9  19 38.50  113 119
+女 39.40826 34.31023 40.75  0  14  31 54.75  156 218
+
+Variable: ストレッサー得点 
+       mean       sd IQR 0% 25% 50% 75% 100%   n
+男 7.386555 2.940394   4  1   5   7   9   15 119
+女 7.256881 3.113531   4  0   5   7   9   16 218</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open=""><summary>要約 - 層別の統計量</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, <span class="va">mean</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
+<span>            data<span class="op">=</span><span class="va">PatientStressKai</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>    年齢区分
+性別     青年     壮年     中年     高年
+  男 35.56000 26.15789 20.81250 12.72222
+  女 48.09091 44.70833 24.34043 21.34615</code></pre>
+</div>
+</div>
+</section><section id="質的データの度数分布および適合度検定" class="level3" data-number="5.3.3"><h3 data-number="5.3.3" class="anchored" data-anchor-id="質的データの度数分布および適合度検定">
+<span class="header-section-number">5.3.3</span> 質的データの度数分布および適合度検定</h3>
+<div class="cell">
+<details open=""><summary>要約 - 頻度分布（カイ二乗検定あり）</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/eval.html">local</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="va">.Table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStressKai</span>, <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">性別</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\ncounts:\n"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">.Table</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\npercentages:\n"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="va">.Table</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">.Table</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">.Probs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">0.5</span><span class="op">)</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">.Table</span>, p<span class="op">=</span><span class="va">.Probs</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+counts:
+性別
+ 男  女 
+119 218 
+
+percentages:
+性別
+   男    女 
+35.31 64.69 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  .Table
+X-squared = 29.083, df = 1, p-value = 6.934e-08</code></pre>
+</div>
+</div>
+</section></section><section id="正規性の検定" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="正規性の検定">
+<span class="header-section-number">5.4</span> 正規性の検定</h2>
+<div class="cell">
+<details open=""><summary>要約 - 正規性の検定</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/normalityTest.html">normalityTest</a></span><span class="op">(</span><span class="op">~</span><span class="va">健康統制感</span>, test<span class="op">=</span><span class="st">"shapiro.test"</span>,</span>
+<span>                         data<span class="op">=</span><span class="va">PatientStressKai</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  健康統制感
+W = 0.99445, p-value = 0.261</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open=""><summary>要約 - 正規性の検定（層別）</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/normalityTest.html">normalityTest</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, test<span class="op">=</span><span class="st">"shapiro.test"</span>,</span>
+<span>                         data<span class="op">=</span><span class="va">PatientStressKai</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+ --------
+ 性別 = 男 
+
+    Shapiro-Wilk normality test
+
+data:  健康統制感
+W = 0.98277, p-value = 0.132
+
+ --------
+ 性別 = 女 
+
+    Shapiro-Wilk normality test
+
+data:  健康統制感
+W = 0.99475, p-value = 0.6516
+
+ --------
+
+ p-values adjusted by the Holm method:
+   unadjusted adjusted
+男 0.13205    0.2641  
+女 0.65160    0.6516  </code></pre>
+</div>
+</div>
 <hr>
 
 
@@ -619,14 +815,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./try.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">使ってみる</span></span>
+      <a href="./warmingup.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">始める前に</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./browsingData.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データの特徴を探る</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -1,0 +1,151 @@
+> **※本ページの内容はテキストの第５章に相当します**
+
+```{r setup, include=FALSE}
+source("./R/setup.R")
+```
+
+
+# データの特徴を探る
+　本章ではひとつの量的データ（一次元データ）に対する記述統計に関して学びます。
+
+:::{.callout-note collapse="false"}
+## データの読み込み
+前章で説明したようにRcmdrのバグを回避するために[第3回の公開資料フォルダ](https://drive.google.com/drive/u/1/folders/1Jw0Hl74HNAMinb1Rl0ZDbQHBUevU6LGn)にアップロードしてある「`外来患者ストレス改.RData`」ファイルを使います。第2回のファイルと同名ですが内容が異なりますので、必ずこのファイルを使用してください。
+
+1. Rcmdrのメニューから［データ］-［データセットのロード...］を実行する
+1. ファイルダイアログで「`外来患者ストレス改.RData`」ファイルを選択する
+1. アクティブデータセットが`PatientStressKai`になっていることを確認する
+
+:::
+
+```{r, echo=FALSE}
+load("./SampleFiles/外来患者ストレス改.RData")
+PatientStressKai %>% df_print()
+```
+
+
+## 量的変数のグラフ表現
+
+### インデックスプロット
+
+### ドットプロット
+
+### ドットチャート
+
+### 離散数値変数のプロット
+
+### ヒストグラム
+
+### 密度推定
+
+### 観葉表示
+
+### 箱ひげ図
+
+### 平均値プロット
+
+### QQプロット
+
+
+## 質的データのグラフ表現
+
+### 棒グラフ
+
+### 円グラフ
+
+:::{.callout-tip collapse="true"}
+## 円グラフの始点を変更する
+Rcmdrの円グラフは`RcmdrMisc::pichart()`関数を利用しており、その定義は下記の通りです。
+```{r, eval=FALSE}
+#| code-summary: "function piechart()"
+
+piechart(x, scale = c("percent", "frequency", "none"), 
+         col = rainbow_hcl(nlevels(x)), ...)
+```
+> `x`: a factor or other discrete variable; the segments of the pie correspond to the unique values (levels) of x and are proportional to the frequency counts in the various levels.  
+> `scale`: parenthetical numbers to add to the pie-segment labels; the default is "percent".  
+> `col`: colors for the segments; the default is provided by the rainbow_hcl function in the colorspace package.  
+> `...`:	further arguments to be passed to pie.
+
+円グラフの始点に関するパラメータはありませんが、`...`の部分で`pie()`関数へ渡すパラメータを指定できることがわかります。`pie()`関数の定義は
+```{r, eval=FALSE}
+#| code-summary: "function pie()"
+
+pie(x, labels = names(x), edges = 200, radius = 0.8,
+    clockwise = FALSE, init.angle = if(clockwise) 90 else 0,
+    density = NULL, angle = 45, col = NULL, border = NULL,
+    lty = NULL, main = NULL, ...)
+```
+
+となっておりヘルプを見ると`init.angle`パラメータを指定すれば始点を変更できることがわかります。
+
+> `init.angle`: number specifying the starting angle (in degrees) for the slices. Defaults to 0 (i.e., ‘3 o'clock’) unless **clockwise is true** where init.angle defaults to 90 (degrees), (i.e., ‘12 o'clock’).
+
+`init.angle`の定義から`clockwise = TRUE`を指定することで始点を12時に変更できることがわかります。
+:::
+
+### 複数のグラフを並べて描画
+
+
+## 数値による要約
+
+### すべての変数についての数値による要約
+```{r}
+#| code-summary: "要約 - アクティブデータセット"
+
+summary(PatientStressKai)
+```
+
+### 量的データの数値による要約
+```{r}
+#| code-summary: "要約 - 数値による要約"
+
+RcmdrMisc::numSummary(PatientStressKai[,c("ストレス反応得点",
+                                          "ストレッサー得点"), drop=FALSE],
+                      groups=PatientStressKai$性別,
+                      statistics=c("mean", "sd", "quantiles", "CV"),
+                      quantiles=c(0,.25,.5,.75,1))
+```
+
+```{r}
+#| code-summary: "要約 - 層別の統計量"
+
+car::Tapply(ストレス反応得点 ~ 性別 + 年齢区分, mean, na.action=na.omit,
+            data=PatientStressKai)
+```
+
+### 質的データの度数分布および適合度検定
+
+```{r}
+#| code-summary: "要約 - 頻度分布（カイ二乗検定あり）"
+
+local({
+  .Table <- with(PatientStressKai, table(性別))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+  .Probs <- c(0.5,0.5) 
+  chisq.test(.Table, p=.Probs)
+})
+```
+
+
+## 正規性の検定
+
+```{r}
+#| code-summary: "要約 - 正規性の検定"
+
+RcmdrMisc::normalityTest(~健康統制感, test="shapiro.test",
+                         data=PatientStressKai)
+```
+
+
+```{r}
+#| code-summary: "要約 - 正規性の検定（層別）"
+
+RcmdrMisc::normalityTest(健康統制感 ~ 性別, test="shapiro.test",
+                         data=PatientStressKai)
+```
+
+---
