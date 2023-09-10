@@ -291,20 +291,29 @@ with(PatientStressSub,
 :::
 
 ### 複数のグラフを並べて描画
+　（省略）
 
 
-## 数値による要約
+## 数値による要約（P97-）
 
-### すべての変数についての数値による要約
+### すべての変数についての数値による要約（P97-99）
 ```{r}
-#| code-summary: "要約 - アクティブデータセット"
+#| code-summary: "統計量 - 要約 - アクティブデータセット"
 
 summary(PatientStressSub)
 ```
 
-### 量的データの数値による要約
+:::{.callout-caution collapse="true"}
+## Rcmdrのバグ
+R Commanderにバグがあるため変数の数が10を超えるデータセットに対してこの操作を実行した場合、エラーが表示されてRcmdrがフリーズすることがあります。テキストP99の注釈参照方。
+:::
+
+
+### 量的データの数値による要約（P99-P103）
+::: {.panel-tabset}
+## 数値による要約
 ```{r}
-#| code-summary: "要約 - 数値による要約"
+#| code-summary: "統計量 - 要約 - 数値による要約"
 
 RcmdrMisc::numSummary(PatientStressSub[,c("ストレス反応得点",
                                           "ストレッサー得点"), drop=FALSE],
@@ -313,17 +322,18 @@ RcmdrMisc::numSummary(PatientStressSub[,c("ストレス反応得点",
                       quantiles=c(0,.25,.5,.75,1))
 ```
 
+## 層別の統計量
 ```{r}
-#| code-summary: "要約 - 層別の統計量"
+#| code-summary: "統計量 - 要約 - 層別の統計量"
 
 car::Tapply(ストレス反応得点 ~ 性別 + 年齢区分, mean, na.action=na.omit,
             data=PatientStressSub)
 ```
+:::
 
-### 質的データの度数分布および適合度検定
-
+### 質的データの度数分布および適合度検定（P104-P107）
 ```{r}
-#| code-summary: "要約 - 頻度分布（カイ二乗検定あり）"
+#| code-summary: "統計量 - 要約 - 頻度分布（カイ二乗検定あり）"
 
 local({
   .Table <- with(PatientStressSub, table(性別))
@@ -337,21 +347,47 @@ local({
 ```
 
 
+## 正規性の検定（P107-P111）
+　正規性の検定で用いられることが多いシャピロウィルク検定の**帰無**仮説は
+
+> **母集団は正規分布である**
+
+ であることに留意してください。
+
+::: {.panel-tabset}
 ## 正規性の検定
-
 ```{r}
-#| code-summary: "要約 - 正規性の検定"
+#| code-summary: "グラフ - QQプロット/統計量 - 要約 - 正規性の検定"
+#| layout-ncol: 2
+#| fig-height: 7
 
+#　QQプロット
+with(PatientStressSub,
+     car::qqPlot(健康統制感, dist="norm",
+                 id=list(method="y", n=0, labels=rownames(PatientStressSub))))
+
+# 正規性の検定
 RcmdrMisc::normalityTest(~健康統制感, test="shapiro.test",
                          data=PatientStressSub)
 ```
 
-
+## 層別した場合
 ```{r}
-#| code-summary: "要約 - 正規性の検定（層別）"
+#| code-summary: "グラフ - QQプロット/統計量 - 要約 - 正規性の検定"
+#| layout-ncol: 2
+#| fig-height: 7
 
+#　QQプロット
+with(PatientStressSub,
+     car::qqPlot(健康統制感, dist="norm",
+                 id=list(method="y", n=0, labels=rownames(PatientStressSub)),
+                 groups=性別))
+
+# 正規性の検定
 RcmdrMisc::normalityTest(健康統制感 ~ 性別, test="shapiro.test",
                          data=PatientStressSub)
 ```
+:::
+
 
 ---
