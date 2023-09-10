@@ -59,8 +59,9 @@ with(PatientStressSub, RcmdrMisc::Dotplot(健康統制感, by=性別, bin=FALSE)
 ### ドットチャート（P62-63）
 ::: {.panel-tabset}
 ## 積み重ね＆少しずらす
-```{r, fig.height=7}
+```{r}
 #| code-summary: "グラフ - ドットチャート"
+#| fig.height: 10
 #| layout-ncol: 2
 #| fig-subcap: 
 #|   - "積み重ね"
