@@ -1,0 +1,356 @@
+> **※本ページの内容はテキストの第５章に相当します**
+
+```{r setup, include=FALSE}
+source("./R/setup.R")
+```
+
+
+# データの特徴を探る
+　本章ではひとつのデータ（一次元データ）に対する記述統計に関して学びます。  
+　本章ではRcmdrで実行した場合のコードと出力結果のみを記載し、手順の記載は省略しますので詳細はテキストを参照してください。
+
+:::{.callout-note collapse="false"}
+## データの読み込み（P55-P56の手順の読み替え）
+前章で説明したようにRcmdrのバグを回避するために[第3回の公開資料フォルダ](https://drive.google.com/drive/u/1/folders/1Jw0Hl74HNAMinb1Rl0ZDbQHBUevU6LGn)にアップロードしてある「**`外来患者ストレスSub.RData`**」ファイルを使います。必ずこのファイルを使用してください。
+
+1. Rcmdrのメニューから［データ］-［データセットのロード...］を実行する
+1. ファイルダイアログで「`外来患者ストレスSub.RData`」ファイルを選択する
+1. アクティブデータセットが**`PatientStressSub`**になっていることを確認する
+
+:::
+
+```{r, echo=FALSE}
+load("./SampleFiles/外来患者ストレスSub.RData")
+PatientStressSub %>% df_print()
+```
+
+
+## 量的変数のグラフ表現（P56-）
+
+### インデックスプロット（P56-P59）
+
+::: {.panel-tabset}
+## スパイク
+```{r, fig.height=7}
+#| code-summary: "グラフ - インデックスプロット"
+
+RcmdrMisc::indexplot(PatientStressSub[,'ストレス反応得点', drop=FALSE],
+                     type='h', id.method='y', id.n=2,
+                     groups=PatientStressSub$性別)
+```
+
+## 点
+```{r, fig.height=7}
+#| code-summary: "グラフ - インデックスプロット"
+
+RcmdrMisc::indexplot(PatientStressSub[,'ストレス反応得点', drop=FALSE],
+                     type='p', id.method='y', id.n=2,
+                     groups=PatientStressSub$性別)
+```
+:::
+
+### ドットプロット（P60-P61）
+```{r, fig.height=7}
+#| code-summary: "グラフ - ドットプロット"
+
+with(PatientStressSub, RcmdrMisc::Dotplot(健康統制感, by=性別, bin=FALSE))
+```
+
+### ドットチャート（P62-63）
+::: {.panel-tabset}
+## 積み重ね＆少しずらす
+```{r, fig.height=7}
+#| code-summary: "グラフ - ドットチャート"
+#| layout-ncol: 2
+#| fig-subcap: 
+#|   - "積み重ね"
+#|   - "少しずらす"
+
+# 積み重ね
+stripchart(ストレス反応得点 ~ 年齢区分, vertical=TRUE, method="stack",
+           ylab="ストレス反応得点", data=PatientStressSub)
+
+# すこしずらす
+stripchart(ストレス反応得点 ~ 年齢区分, vertical=TRUE, method="jitter",
+           ylab="ストレス反応得点", data=PatientStressSub)
+```
+
+## 重ね合わせ（Overplot）
+```{r, fig.height=7}
+#| code-summary: "グラフ - ドットチャート"
+
+stripchart(ストレス反応得点 ~ 年齢区分, vertical=TRUE,
+           ylab="ストレス反応得点", data=PatientStressSub)
+```
+:::
+
+### 離散数値変数のプロット（P64-P66）
+```{r, fig.height=7}
+#| code-summary: "グラフ - 離散数値変数のプロット"
+
+with(PatientStressSub, RcmdrMisc::discretePlot(ストレッサー得点,
+                                               by=性別, scale="percent"))
+```
+
+### ヒストグラム（P66-P70）
+::: {.panel-tabset}
+## 頻度
+```{r}
+#| code-summary: "グラフ - ヒストグラム"
+
+with(PatientStressSub, RcmdrMisc::Hist(ストレス反応得点, scale="frequency",
+                                       breaks="Sturges", col="darkgray"))
+```
+## パーセント
+```{r}
+#| code-summary: "グラフ - ヒストグラム"
+
+with(PatientStressSub, RcmdrMisc::Hist(ストレス反応得点, scale="percent",
+                                       breaks="Sturges", col="darkgray"))
+```
+
+## 密度
+```{r}
+#| code-summary: "グラフ - ヒストグラム"
+
+with(PatientStressSub, RcmdrMisc::Hist(ストレス反応得点, scale="density",
+                                       breaks="Sturges", col="darkgray"))
+```
+
+:::
+
+### 密度推定（P71-P74）
+```{r, fig.height=7}
+#| code-summary: "グラフ - 密度推定"
+
+car::densityPlot( ~ ストレス反応得点, data=PatientStressSub,
+                  bw=bw.SJ, adjust=1, kernel=dnorm, method="adaptive")
+```
+
+### 観葉表示（P74-78）
+```{r}
+#| code-summary: "グラフ - 観葉表示"
+
+with(PatientStressSub, aplpack::stem.leaf(ストレス反応得点, na.rm=TRUE))
+```
+
+### 箱ひげ図（P78-P81）
+```{r, fig.height=7}
+#| code-summary: "グラフ - 箱ひげ図"
+#| fig-subcap: "外れ値の特定：自動"
+
+car::Boxplot(ストレス反応得点 ~ 性別, data=PatientStressSub,
+             id=list(method="y"))
+```
+
+### 平均値プロット（P81-P87）
+::: {.panel-tabset}
+## 年齢区分
+```{r, fig.height=7}
+#| code-summary: "グラフ - 平均値のプロット"
+
+with(PatientStressSub, RcmdrMisc::plotMeans(健康統制感, 年齢区分,
+                                            error.bars="se", connect=TRUE))
+```
+
+## 年齢区分/性別
+```{r, fig.height=7}
+#| code-summary: "グラフ - 平均値のプロット"
+
+with(PatientStressSub, RcmdrMisc::plotMeans(健康統制感, 年齢区分, 性別,
+                                            error.bars="se", connect=TRUE,
+                                            legend.pos="top"))
+```
+
+## 性別/年齢区分
+```{r, fig.height=7}
+#| code-summary: "グラフ - 平均値のプロット"
+
+with(PatientStressSub, RcmdrMisc::plotMeans(健康統制感, 性別, 年齢区分,
+                                            error.bars="se", connect=TRUE,
+                                            legend.pos="farright"))
+```
+
+:::
+
+### QQプロット（P87-P91）
+::: {.panel-tabset}
+## ストレス反応得点
+```{r, fig.height=7}
+#| code-summary: "グラフ - QQプロット"
+
+with(PatientStressSub,
+     car::qqPlot(ストレス反応得点, dist="norm",
+                 id=list(method="y", n=0, labels=rownames(PatientStressSub))))
+```
+
+## ストレス反応
+```{r, fig.height=7}
+#| code-summary: "ストレス反応の4グラフ"
+#| layout-ncol: 2
+#| layout-nrow: 2
+#| fig-subcap: 
+#|   - "ドットチャート"
+#|   - "ヒストグラム"
+#|   - "密度推定"
+#|   - "QQプロット"
+
+# ドットチャート
+with(PatientStressSub, RcmdrMisc::Dotplot(ストレス反応, bin=FALSE))
+
+# ヒストグラム
+with(PatientStressSub, RcmdrMisc::Hist(ストレス反応, scale="frequency",
+                                       breaks="Sturges", col="darkgray"))
+
+# 密度推定
+car::densityPlot( ~ ストレス反応, data=PatientStressSub, bw=bw.SJ, adjust=1,
+                  kernel=dnorm, method="adaptive")
+
+# QQプロット
+with(PatientStressSub,
+     car::qqPlot(ストレス反応, dist="norm",
+                 id=list(method="y", n=0, labels=rownames(PatientStressSub))))
+```
+:::
+
+## 質的データのグラフ表現（P91-）
+
+### 棒グラフ（P92-P94）
+```{r}
+#| code-summary: "グラフ - 棒グラフ"
+#| fig-height: 10
+#| layout-ncol: 3
+#| fig-subcap: 
+#|   - "層別なし"
+#|   - "年齢区分別（分割）"
+#|   - "年齢区分別（グループ化）"
+
+with(PatientStressSub,
+     RcmdrMisc::Barplot(性別, xlab="性別", ylab="Frequency", label.bars=TRUE))
+
+with(PatientStressSub,
+     RcmdrMisc::Barplot(性別, by=年齢区分, style="divided",
+                        legend.pos="topleft", xlab="性別", ylab="Frequency",
+                        label.bars=TRUE))
+
+with(PatientStressSub,
+     RcmdrMisc::Barplot(性別, by=年齢区分, style="parallel",
+                        legend.pos="topleft", xlab="性別", ylab="Frequency",
+                        label.bars=TRUE))
+```
+
+### 円グラフ（P94-P97）
+
+```{r, fig.height=7}
+#| code-summary: "グラフ - 棒グラフ"
+
+with(PatientStressSub,
+     RcmdrMisc::piechart(年齢区分, xlab="", ylab="", main="年齢区分",
+                         col=colorspace::rainbow_hcl(4), scale="percent"))
+```
+
+
+:::{.callout-tip collapse="true"}
+## 円グラフの始点を変更する
+Rcmdrの円グラフは`RcmdrMisc::pichart()`関数を利用しており、その定義は下記の通りです。
+```{r, eval=FALSE}
+#| code-summary: "function piechart()"
+
+piechart(x, scale = c("percent", "frequency", "none"), 
+         col = rainbow_hcl(nlevels(x)), ...)
+```
+> `x`: a factor or other discrete variable; the segments of the pie correspond to the unique values (levels) of x and are proportional to the frequency counts in the various levels.  
+> `scale`: parenthetical numbers to add to the pie-segment labels; the default is "percent".  
+> `col`: colors for the segments; the default is provided by the rainbow_hcl function in the colorspace package.  
+> `...`:	further arguments to be passed to pie.
+
+円グラフの始点に関するパラメータはありませんが、`...`の部分で`pie()`関数へ渡すパラメータを指定できることがわかります。`pie()`関数の定義は
+```{r, eval=FALSE}
+#| code-summary: "function pie()"
+
+pie(x, labels = names(x), edges = 200, radius = 0.8,
+    clockwise = FALSE, init.angle = if(clockwise) 90 else 0,
+    density = NULL, angle = 45, col = NULL, border = NULL,
+    lty = NULL, main = NULL, ...)
+```
+
+となっておりヘルプを見ると`init.angle`パラメータを指定すれば始点を変更できることがわかります。
+
+> `init.angle`: number specifying the starting angle (in degrees) for the slices. Defaults to 0 (i.e., ‘3 o'clock’) unless **clockwise is true** where init.angle defaults to 90 (degrees), (i.e., ‘12 o'clock’).
+
+`init.angle`の定義から`clockwise = TRUE`を指定することで始点を12時に変更できることがわかります。
+
+```{r, fig,highlight=7}
+with(PatientStressSub,
+     RcmdrMisc::piechart(年齢区分, xlab="", ylab="", main="年齢区分",
+                         col=colorspace::rainbow_hcl(4), scale="percent",
+                         clockwise=TRUE))
+```
+                         
+:::
+
+### 複数のグラフを並べて描画
+
+
+## 数値による要約
+
+### すべての変数についての数値による要約
+```{r}
+#| code-summary: "要約 - アクティブデータセット"
+
+summary(PatientStressSub)
+```
+
+### 量的データの数値による要約
+```{r}
+#| code-summary: "要約 - 数値による要約"
+
+RcmdrMisc::numSummary(PatientStressSub[,c("ストレス反応得点",
+                                          "ストレッサー得点"), drop=FALSE],
+                      groups=PatientStressSub$性別,
+                      statistics=c("mean", "sd", "quantiles", "CV"),
+                      quantiles=c(0,.25,.5,.75,1))
+```
+
+```{r}
+#| code-summary: "要約 - 層別の統計量"
+
+car::Tapply(ストレス反応得点 ~ 性別 + 年齢区分, mean, na.action=na.omit,
+            data=PatientStressSub)
+```
+
+### 質的データの度数分布および適合度検定
+
+```{r}
+#| code-summary: "要約 - 頻度分布（カイ二乗検定あり）"
+
+local({
+  .Table <- with(PatientStressSub, table(性別))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+  .Probs <- c(0.5,0.5) 
+  chisq.test(.Table, p=.Probs)
+})
+```
+
+
+## 正規性の検定
+
+```{r}
+#| code-summary: "要約 - 正規性の検定"
+
+RcmdrMisc::normalityTest(~健康統制感, test="shapiro.test",
+                         data=PatientStressSub)
+```
+
+
+```{r}
+#| code-summary: "要約 - 正規性の検定（層別）"
+
+RcmdrMisc::normalityTest(健康統制感 ~ 性別, test="shapiro.test",
+                         data=PatientStressSub)
+```
+
+---

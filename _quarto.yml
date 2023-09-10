@@ -32,6 +32,7 @@ book:
     - dataset.qmd
     - try.qmd
     - warmingup.qmd
+    - browsingData.qmd
 
 # bibliography: references.bib
 
