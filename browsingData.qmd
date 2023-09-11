@@ -361,7 +361,7 @@ local({
 #| layout-ncol: 2
 #| fig-height: 7
 
-#　QQプロット
+# QQプロット
 with(PatientStressSub,
      car::qqPlot(健康統制感, dist="norm",
                  id=list(method="y", n=0, labels=rownames(PatientStressSub))))
