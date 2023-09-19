@@ -118,7 +118,9 @@ car::scatter3d(Response~Control+Stresser, data=PatientStress,
                axis.scales=TRUE, grid=TRUE, ellipsoid=FALSE)
 ```
 
-> 本環境では実行できませんので省略
+> 本環境では実行できませんのでスクリーンショットで代用します。
+
+![RGL Device](./fig/RGL_device.png)
 
 
 ## 複数の質的変数間の関連性（P130-）
