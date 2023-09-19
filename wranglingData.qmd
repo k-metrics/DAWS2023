@@ -114,8 +114,8 @@ PatientStress %>% df_print()
 #| warning: false
 
 car::scatter3d(Response~Control+Stresser, data=PatientStress,
-               fit=c("quadratic","smooth"), bg="white", 
-               axis.scales=TRUE, grid=TRUE, ellipsoid=FALSE)
+               fit=c("linear","smooth"), bg="white", axis.scales=TRUE,
+               grid=TRUE, ellipsoid=FALSE)
 ```
 
 > 本環境では実行できませんのでスクリーンショットで代用します。
