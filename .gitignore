@@ -53,3 +53,5 @@ rsconnect/
 *.Rproj
 
 /.quarto/
+
+SampleFiles/Mac/

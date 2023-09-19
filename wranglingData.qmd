@@ -126,7 +126,7 @@ car::scatter3d(Response~Control+Stresser, data=PatientStress,
 load("./SampleFiles/外来患者ストレス.RData")
 ```
 
-### 2元分割表（P103-P136）
+### 2元分割表（P130-P136）
 
 ::: {.panel-tabset}
 ## 2元分割表
@@ -164,10 +164,10 @@ local({
 :::
 
 
-### 多元分割表
+### 多元分割表（P136-P139）
 
 ::: {.panel-tabset}
-## 全体
+## 多元分割表
 ```{r}
 #| code-summary: "統計量 - 分割表 - 多元表"
 
