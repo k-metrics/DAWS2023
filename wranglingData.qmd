@@ -1,0 +1,202 @@
+> **※本ページの内容はテキストの第６章に相当します**
+
+```{r setup, include=FALSE}
+source("./R/setup.R")
+```
+
+
+# 変数間の関係を探る
+　変数間の関係を調べる方法は変数の種類により下記の三つの組み合わせにより決まります。
+
+* {量的変数, 量的変数}
+    * 散布図・相関係数
+* {質的変数, 質的変数}
+    * 分割表・独立性の検定
+* {量的変数, 質的変数}
+    * 量的変数の層別解析
+
+:::{.callout-note collapse="false"}
+## データの読み込み
+
+1. Rcmdrのメニューから［データ］-［データセットのロード...］を実行する
+1. ファイルダイアログで「`外来患者ストレス.RData`」ファイルを選択する
+1. アクティブデータセットが**`PatientStress`**になっていることを確認する
+
+:::
+
+```{r, echo=FALSE}
+load("./SampleFiles/外来患者ストレス.RData")
+PatientStress %>% df_print()
+```
+
+
+## 複数の量的変数間の関連性（P113-）
+
+### 散布図（P113-P117）
+
+::: {.panel-tabset}
+## 全体
+```{r}
+#| code-summary: "グラフ - 散布図"
+#| fig-height: 7
+#| warning: false
+
+car::scatterplot(ストレス反応~日常苛立ちごと, regLine=TRUE,
+                 smooth=list(span=0.5, spread=TRUE), boxplots=FALSE,
+                 jitter=list(x=1), 
+                 data=PatientStress)
+```
+
+## 層別
+```{r}
+#| code-summary: "グラフ - 散布図"
+#| fig-height: 7
+#| warning: false
+
+car::scatterplot(ストレス反応~日常苛立ちごと | 性別, regLine=TRUE,
+                 smooth=list(span=0.5, spread=TRUE), boxplots=FALSE,
+                 jitter=list(x=1), by.groups=TRUE,
+                 legend=list(coords="bottomright"), data=PatientStress)
+```
+:::
+
+
+### 相関の検定（P118-P123）
+```{r}
+#| code-summary: "統計量 - 要約 - 相関の検定"
+#| warning: false
+
+with(PatientStress,
+     cor.test(ストレス反応, 日常苛立ちごと, alternative="two.sided",
+              method="spearman"))
+
+```
+
+
+### 散布図行列（P123-P126）
+```{r}
+#| code-summary: "グラフ - 散布図行列"
+#| fig-height: 7
+#| warning: false
+
+car::scatterplotMatrix(~ストレス反応+ストレッサー得点+健康統制感,
+                       regLine=TRUE, smooth=list(span=0.5, spread=FALSE),
+                       diagonal=list(method="histogram"), 
+                       data=PatientStress)
+```
+
+### 相関の検定
+```{r}
+#| code-summary: "統計量 - 要約 - 相関の検定"
+#| warning: false
+
+RcmdrMisc::rcorr.adjust(
+  PatientStress[,c("ストレス反応","ストレッサー得点","健康統制感")],
+  type="pearson", use="complete")
+```
+
+
+### 3次元散布図（鳥瞰図）（P126-P130）
+```{r}
+#| code-summary: "データ - アクティブデータセット内の変数の管理 - 変数名をつけ直す"
+#| warning: false
+
+names(PatientStress)[c(6)] <- c("Control")    # 健康統制感
+names(PatientStress)[c(5)] <- c("Stresser")   # ストレッサー得点
+names(PatientStress)[c(9)] <- c("Response")   # ストレス反応
+```
+```{r, echo=FALSE}
+PatientStress %>% df_print()
+```
+```{r, eval=FALSE}
+#| code-summary: "グラフ - 3次元グラフ - 3次元散布図"
+#| fig-height: 7
+#| warning: false
+
+car::scatter3d(Response~Control+Stresser, data=PatientStress,
+               fit=c("quadratic","smooth"), bg="white", 
+               axis.scales=TRUE, grid=TRUE, ellipsoid=FALSE)
+```
+
+> 本環境では実行できませんので省略
+
+
+## 複数の質的変数間の関連性（P130-）
+```{r, echo=FALSE}
+load("./SampleFiles/外来患者ストレス.RData")
+```
+
+### 2元分割表（P103-P136）
+
+::: {.panel-tabset}
+## 2元分割表
+```{r}
+#| code-summary: "統計量 - 分割表 - 2元表"
+
+local({
+  .Table <- xtabs(~日常苛立ち+ノンコンプライアンス, data=PatientStress)
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(RcmdrMisc::rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+
+## 2x2分割表
+```{r}
+#| code-summary: "統計量 - 分割表 - 2元表"
+
+local({
+  .Table <- xtabs(~性別+ノンコンプライアンス, data=PatientStress)
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(RcmdrMisc::rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+  cat("\nExpected counts:\n")
+  print(.Test$expected) 
+  print(fisher.test(.Table))
+})
+```
+:::
+
+
+### 多元分割表
+
+::: {.panel-tabset}
+## 全体
+```{r}
+#| code-summary: "統計量 - 分割表 - 多元表"
+
+local({
+  .Table <- xtabs(~日常苛立ち+ノンコンプライアンス+性別, data=PatientStress)
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(RcmdrMisc::rowPercents(.Table)) 
+})
+```
+
+## 層別解析（女性の場合）
+```{r}
+#| code-summary: "統計量 - 分割表 - 2元表"
+
+local({
+  .Table <- xtabs(~日常苛立ち+ノンコンプライアンス, data=PatientStress,
+                  subset=性別=="女")
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(RcmdrMisc::rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+:::
+
+
+
+---

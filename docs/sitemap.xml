@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/index.html</loc>
-    <lastmod>2023-09-11T01:53:36.728Z</lastmod>
+    <lastmod>2023-09-19T08:36:47.570Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/dataset.html</loc>
-    <lastmod>2023-09-11T01:53:36.748Z</lastmod>
+    <lastmod>2023-09-19T08:36:47.590Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/try.html</loc>
-    <lastmod>2023-09-11T01:53:36.760Z</lastmod>
+    <lastmod>2023-09-19T08:36:47.602Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/warmingup.html</loc>
-    <lastmod>2023-09-11T01:53:36.768Z</lastmod>
+    <lastmod>2023-09-19T08:36:47.610Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/browsingData.html</loc>
-    <lastmod>2023-09-11T01:53:36.844Z</lastmod>
+    <lastmod>2023-09-19T08:36:47.666Z</lastmod>
+  </url>
+  <url>
+    <loc>https://k-metrics.github.io/DAWS2023/wranglingData.html</loc>
+    <lastmod>2023-09-19T08:36:47.718Z</lastmod>
   </url>
 </urlset>

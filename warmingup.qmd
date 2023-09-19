@@ -57,6 +57,43 @@ load("./SampleFiles/外来患者ストレス(元データ).RData")
 PatientStressOrg <- PatientStress
 save(PatientStressOrg, file = "./SampleFiles/外来患者ストレスOrg.RData")
 ```
+```{r, echo=FALSE, eval=FALSE}
+# Sample data for macOS
+load("./SampleFiles/Mac/外来患者ストレス(Mac).RData")
+PatientStressSub <- PatientStress %>% 
+  dplyr::select(
+    Sex,                 # = `性別`,
+    Age,                 # = `年齢`,
+    Stressor,            # = `ストレッサー得点`,
+    DailyHassle,         # = `日常苛立ちごと`,
+    LocusOfControl,      # = `健康統制感`,
+    StressResponseScore, # = `ストレス反応得点`,
+    NoncomplianceScore,  # = `ノンコンプライアンス行動数`,
+    AgeClass,            # = `年齢区分`,
+    StressResponse       # = `ストレス反応`
+  )
+save(PatientStressSub, file = "./SampleFiles/外来患者ストレスSubMac.RData")
+
+load("./SampleFiles/Mac/外来患者ストレス(元データ)Mac.RData")
+PatientStressOrg <- PatientStress
+save(PatientStressOrg, file = "./SampleFiles/外来患者ストレスOrgMac.RData")
+
+# ID
+# 性別                     Sex
+# 年齢                     Age
+# 日常苛立ちごと           DailyHassleScore
+# ストレッサー得点         Stressor
+# 健康統制感               LocusOfControl
+# ストレス反応得点         StressResponseScore
+# ノンコンプライアンス行動 NoncomplianceScore
+# ストレス反応             StressResponse
+# ノンコンプライアンス     Noncompliance
+# 日常いらだち             DailyHassle
+# 年齢区分                 AgeClass
+# 年齢コード               AgeCode
+# 年齢コード3              AgeCode3
+
+```
 
 　各変数の詳細についてはテキストで確認してください。
 

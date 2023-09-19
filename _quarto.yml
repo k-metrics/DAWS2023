@@ -33,6 +33,7 @@ book:
     - try.qmd
     - warmingup.qmd
     - browsingData.qmd
+    - wranglingData.qmd
 
 # bibliography: references.bib
 
