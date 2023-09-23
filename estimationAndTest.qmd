@@ -1,0 +1,110 @@
+> **※本ページの内容はテキストの第７章に相当します**
+
+```{r setup, include=FALSE}
+source("./R/setup.R")
+```
+
+
+# 平均に関する推定と検定
+　本章では1標本と2標本の場合における平均値の推定方法について学びます。本章ではRcmdrで実行した場合のコードと出力結果のみを記載し、手順の記載は省略しますので詳細はテキストを参照してください。
+
+
+:::{.callout-note collapse="false"}
+## データの読み込み
+
+1. Rcmdrのメニューから［データ］-［データセットのロード...］を実行する
+1. ファイルダイアログで「`外来患者ストレス.RData`」ファイルを選択する
+1. アクティブデータセットが**`PatientStress`**になっていることを確認する
+
+:::
+
+```{r, echo=FALSE}
+load("./SampleFiles/外来患者ストレス.RData")
+PatientStress %>% df_print()
+```
+
+
+## 1標本における母平均に関する推測（P140-）
+
+### 母平均に関するt検定（P141-P143）
+　t検定は「母平均はある特定の値に等しい（または、小さい・大きい）」という帰無仮説（null hypothesis）をテスト（両側検定または片側検定）する手法です。テストが成功（p値が事前に設定した水準未満）すれば帰無仮説は棄却され対立仮説（alternative hypothesis）が採用されます。
+
+
+::: {.panel-tabset}
+## 両側検定
+　母平均$\mu \ne \mu_0$の両側検定。
+```{r, fig.height=7}
+#| code-summary: "統計量 - 平均 - 1標本t検定"
+
+with(PatientStress,
+     (t.test(健康統制感, alternative = "two.sided",
+             mu = 100, conf.level = .95)))
+```
+
+## 片側検定（母平均$\mu \lt \mu_0$）
+　テキストにはありません。
+```{r, fig.height=7}
+#| code-summary: "統計量 - 平均 - 1標本t検定"
+
+with(PatientStress,
+     (t.test(健康統制感, alternative = "less",
+             mu = 100, conf.level = .95)))
+```
+
+## 片側検定（母平均$\mu \gt \mu_0$）
+　テキストにはありません。
+```{r, fig.height=7}
+#| code-summary: "統計量 - 平均 - 1標本t検定"
+
+with(PatientStress,
+     (t.test(健康統制感, alternative = "greater",
+             mu = 100, conf.level = .95)))
+```
+:::
+
+
+### 1標本ウィルコクソン検定（P143-P146）
+::: {.panel-tabset}
+## 両側検定
+　ウィルコクソン検定は変数が正規分布に従わない場合に用いる検定です。
+```{r}
+#| code-summary: "統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定"
+
+with(PatientStress, median(ストレス反応得点, na.rm=TRUE))
+with(PatientStress, mean(ストレス反応得点, na.rm=TRUE))
+with(PatientStress,
+     wilcox.test(ストレス反応得点, alternative='two.sided', mu=30))
+```
+
+## 片側検定（$\mu \lt \mu_0$）
+　テキストにはありません。
+```{r}
+#| code-summary: "統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定"
+
+with(PatientStress, median(ストレス反応得点, na.rm=TRUE))
+with(PatientStress, mean(ストレス反応得点, na.rm=TRUE))
+with(PatientStress,
+     wilcox.test(ストレス反応得点, alternative='less', mu=30))
+```
+
+## 片側検定（$\mu \gt \mu_0$）
+　テキストにはありません。
+```{r}
+#| code-summary: "統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定"
+
+with(PatientStress, median(ストレス反応得点, na.rm=TRUE))
+with(PatientStress, mean(ストレス反応得点, na.rm=TRUE))
+with(PatientStress,
+     wilcox.test(ストレス反応得点, alternative='greater', mu=30))
+```
+:::
+
+
+
+:::{.callout-tip collapse="true"}
+
+:::
+
+
+
+---

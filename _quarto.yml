@@ -34,6 +34,7 @@ book:
     - warmingup.qmd
     - browsingData.qmd
     - wranglingData.qmd
+    - estimationAndTest.qmd
 
 # bibliography: references.bib
 
