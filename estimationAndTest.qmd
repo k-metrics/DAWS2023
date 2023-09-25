@@ -24,9 +24,9 @@ PatientStress %>% df_print()
 ```
 
 
-## 1標本における母平均に関する推測（P140-）
+## 1標本における母平均に関する推測（P140）
 
-### 母平均に関するt検定（P141-P143）
+### 母平均に関するt検定（P141）
 　t検定は「母平均はある特定の値に等しい（または、大きい・小さい）」という帰無仮説$H_0$（null hypothesis）をテスト（両側検定または片側検定）する手法です。テストが成功（p値が事前に設定した有意水準より小さい）すれば帰無仮説$H_0$は棄却され対立仮説$H_1$（alternative hypothesis）が採用されます。逆にテストが失敗（p値が有意水準より大きい）すれば帰無仮説$H_0$は棄却されません。
 
 
@@ -63,6 +63,7 @@ with(PatientStress,
 
 ## ヒストグラム
 ```{r}
+#| code-summary: "グラフ - ヒストグラム"
 #| fig-height: 7
 
 with(PatientStress, RcmdrMisc::Hist(健康統制感,
@@ -73,12 +74,13 @@ abline(v = 100, col = "red")
 :::
 
 
-### 1標本ウィルコクソン検定（P143-P146）
+### 1標本ウィルコクソン検定（P143）
 ::: {.panel-tabset}
 ## 両側検定
 　ウィルコクソン検定は変数が正規分布に従わない場合に用いる検定です。
 ```{r}
 #| code-summary: "統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定"
+#| layout-nrow: 3
 
 with(PatientStress, median(ストレス反応得点, na.rm=TRUE))
 with(PatientStress, mean(ストレス反応得点, na.rm=TRUE))
@@ -90,6 +92,7 @@ with(PatientStress,
 　テキストにはありません。
 ```{r}
 #| code-summary: "統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定"
+#| layout-nrow: 3
 
 with(PatientStress, median(ストレス反応得点, na.rm=TRUE))
 with(PatientStress, mean(ストレス反応得点, na.rm=TRUE))
@@ -101,6 +104,7 @@ with(PatientStress,
 　テキストにはありません。
 ```{r}
 #| code-summary: "統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定"
+#| layout-nrow: 3
 
 with(PatientStress, median(ストレス反応得点, na.rm=TRUE))
 with(PatientStress, mean(ストレス反応得点, na.rm=TRUE))
@@ -121,10 +125,9 @@ with(PatientStress, RcmdrMisc::Hist(ストレス反応得点,
 
 
 
-## 独立な2標本における母平均に関する推定
+## 独立な2標本における母平均に関する推定（P146）
 
-### 簿平均の差に関するt検定と区間推定
-
+### 母平均の差に関するt検定と区間推定（P147）
 ::: {.panel-tabset}
 ## 両側検定
 　平均の差$\mu_a - \mu_b \ne 0$の両側検定。
@@ -155,6 +158,7 @@ t.test(健康統制感 ~ 性別, alternative = "greater", var.equal = TRUE,
 
 ## ヒストグラム
 ```{r}
+#| code-summary: "グラフ - ヒストグラム"
 #| fig-height: 7
 
 with(PatientStress, RcmdrMisc::Hist(健康統制感, groups=性別,
@@ -165,12 +169,13 @@ with(PatientStress, RcmdrMisc::Hist(健康統制感, groups=性別,
 :::
 
 
-### 2標本ウィルコクソン検定
+### 2標本ウィルコクソン検定（P149）
 ::: {.panel-tabset}
 ## 両側検定
 　ウィルコクソン検定は変数が正規分布に従わない場合に用いる検定です。
 ```{r}
 #| code-summary: "統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定"
+#| layout-nrow: 2
 
 car::Tapply(ストレス反応得点 ~ 性別, median, na.action=na.omit,
             data=PatientStress) # medians by group
@@ -182,6 +187,7 @@ wilcox.test(ストレス反応得点 ~ 性別, alternative="two.sided",
 　テキストにはありません。
 ```{r}
 #| code-summary: "統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定"
+#| layout-nrow: 2
 
 car::Tapply(ストレス反応得点 ~ 性別, median, na.action=na.omit,
             data=PatientStress) # medians by group
@@ -193,6 +199,7 @@ wilcox.test(ストレス反応得点 ~ 性別, alternative="less",
 　テキストにはありません。
 ```{r}
 #| code-summary: "統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定"
+#| layout-nrow: 2
 
 car::Tapply(ストレス反応得点 ~ 性別, median, na.action=na.omit,
             data=PatientStress) # medians by group
@@ -202,6 +209,7 @@ wilcox.test(ストレス反応得点 ~ 性別, alternative="greater",
 
 ## ヒストグラム
 ```{r}
+#| code-summary: "グラフ - ヒストグラム"
 #| fig-height: 7
 
 with(PatientStress, RcmdrMisc::Hist(ストレス反応得点, groups=性別,
@@ -211,7 +219,7 @@ with(PatientStress, RcmdrMisc::Hist(ストレス反応得点, groups=性別,
 :::
 
 
-## 対応のある標本における平均の差に関する推測（P152-）
+## 対応のある標本における平均の差に関する推測（P152）
 
 :::{.callout-note collapse="false"}
 ## データの読み込み
@@ -228,7 +236,7 @@ VitalSign %>% df_print()
 ```
 
 
-### 対応のある標本のt検定と区間推定（P153-P155）
+### 対応のある標本のt検定と区間推定（P153）
 
 ::: {.panel-tabset}
 ## 両側検定
@@ -263,6 +271,7 @@ with(VitalSign, (t.test(運動後収縮期血圧, 安静時収縮期血圧,
 
 ## ヒストグラム
 ```{r}
+#| code-summary: "グラフ - ヒストグラム"
 #| fig-height: 3.5
 #| layout-nrow: 2
 
@@ -272,7 +281,82 @@ with(VitalSign, RcmdrMisc::Hist(運動後収縮期血圧, scale="frequency",
 with(VitalSign, RcmdrMisc::Hist(安静時収縮期血圧, scale="frequency",
                                 breaks=seq(70, 160, 10), col="darkgray"))
 ```
+:::
 
+
+### ウィルコクソンの符号付き順位検定（P155）
+::: {.panel-tabset}
+## 両側検定
+　平均の差$\mu_1 - \mu_2 \ne 0$の両側検定。
+```{r, fig.height=7}
+#| code-summary: "統計量 - ノンパラメトリック検定 - 対応のあるウィルコクソン検定"
+
+with(VitalSign, wilcox.test(運動後呼吸数, 安静時呼吸数,
+                            alternative='two.sided', paired=TRUE))
+```
+
+## 片側検定（$\mu_1 - \mu_2 \lt 0$）
+　テキストにはありません。
+```{r, fig.height=7}
+#| code-summary: "統計量 - ノンパラメトリック検定 - 対応のあるウィルコクソン検定"
+
+with(VitalSign, wilcox.test(運動後呼吸数, 安静時呼吸数,
+                            alternative='less', paired=TRUE))
+```
+
+## 片側検定（$\mu_1 - \mu_2 \gt 0$）
+　テキストにはありません。
+```{r, fig.height=7}
+#| code-summary: "統計量 - ノンパラメトリック検定 - 対応のあるウィルコクソン検定"
+
+with(VitalSign, wilcox.test(運動後呼吸数, 安静時呼吸数,
+                            alternative='greater', paired=TRUE))
+```
+
+## ヒストグラム
+　テキストにはありません。
+```{r}
+#| code-summary: "グラフ - ヒストグラム"
+#| fig-height: 3.5
+#| layout-nrow: 2
+
+with(VitalSign,
+     RcmdrMisc::Hist(運動後呼吸数, scale="frequency",
+                     breaks=seq(5, 60, 5), col="darkgray"))
+
+with(VitalSign,
+     RcmdrMisc::Hist(安静時呼吸数, scale="frequency",
+                     breaks=seq(5, 60, 5), col="darkgray"))
+
+```
+
+## 中央値
+　テキストにはありません。
+```{r}
+#| code-summary: "統計量 - 要約 - 数値による要約"
+#| layout-nrow: 2
+
+RcmdrMisc::numSummary(VitalSign[,"運動後呼吸数", drop=FALSE],
+                      statistics=c("quantiles"), quantiles=c(.5))
+
+RcmdrMisc::numSummary(VitalSign[,"安静時呼吸数", drop=FALSE],
+                      statistics=c("quantiles"), quantiles=c(.5))
+```
+
+:::
+
+
+:::{.callout-tip collapse="true"}
+## 数値による要約の制約事項
+数値による要約（`numSummary()`関数）では、統計量タブにおいてすべてのチェックを外すとエラーになります。中央値を求める場合は「四分位範囲」のみにチェックを入れ、分位数に0.5を指定してください。
+または、Rスクリプトのタブで下記のように`median()`関数を実行してください。
+```{r}
+#| code-summary: "統計量 - 要約 - 数値による要約"
+#| layout-nrow: 2
+
+with(VitalSign, median(運動後呼吸数))
+with(VitalSign, median(安静時呼吸数))
+```
 :::
 
 
