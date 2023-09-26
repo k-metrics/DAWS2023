@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>『統計ソフト「R」超入門』 - 7&nbsp; 平均に関する推定と検定</title>
+<title>『統計ソフト「R」超入門』 - 8&nbsp; 分散に関する検定</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,8 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./varTest.html" rel="next">
-<link href="./wranglingData.html" rel="prev">
+<link href="./estimationAndTest.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -100,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./estimationAndTest.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">平均に関する推定と検定</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./varTest.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">分散に関する検定</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -110,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">
-<span class="chapter-number">7</span>&nbsp; <span class="chapter-title">平均に関する推定と検定</span>
+<span class="chapter-number">8</span>&nbsp; <span class="chapter-title">分散に関する検定</span>
 </h1>
                       </div>
   </div>
@@ -197,13 +196,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./estimationAndTest.html" class="sidebar-item-text sidebar-link active">
+  <a href="./estimationAndTest.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">平均に関する推定と検定</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./varTest.html" class="sidebar-item-text sidebar-link">
+  <a href="./varTest.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">分散に関する検定</span></span></a>
   </div>
 </li>
@@ -215,34 +214,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li>
-<a href="#%E6%A8%99%E6%9C%AC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%AF%8D%E5%B9%B3%E5%9D%87%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%8E%A8%E6%B8%ACp140" id="toc-標本における母平均に関する推測p140" class="nav-link active" data-scroll-target="#%E6%A8%99%E6%9C%AC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%AF%8D%E5%B9%B3%E5%9D%87%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%8E%A8%E6%B8%ACp140"><span class="header-section-number">7.1</span> 1標本における母平均に関する推測（P140）</a>
-  <ul class="collapse">
-<li><a href="#%E6%AF%8D%E5%B9%B3%E5%9D%87%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8Bt%E6%A4%9C%E5%AE%9Ap141" id="toc-母平均に関するt検定p141" class="nav-link" data-scroll-target="#%E6%AF%8D%E5%B9%B3%E5%9D%87%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8Bt%E6%A4%9C%E5%AE%9Ap141"><span class="header-section-number">7.1.1</span> 母平均に関するt検定（P141）</a></li>
-  <li><a href="#%E6%A8%99%E6%9C%AC%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%B3%E3%82%AF%E3%82%BD%E3%83%B3%E6%A4%9C%E5%AE%9Ap143" id="toc-標本ウィルコクソン検定p143" class="nav-link" data-scroll-target="#%E6%A8%99%E6%9C%AC%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%B3%E3%82%AF%E3%82%BD%E3%83%B3%E6%A4%9C%E5%AE%9Ap143"><span class="header-section-number">7.1.2</span> 1標本ウィルコクソン検定（P143）</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#%E7%8B%AC%E7%AB%8B%E3%81%AA2%E6%A8%99%E6%9C%AC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%AF%8D%E5%B9%B3%E5%9D%87%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%8E%A8%E5%AE%9Ap146" id="toc-独立な2標本における母平均に関する推定p146" class="nav-link" data-scroll-target="#%E7%8B%AC%E7%AB%8B%E3%81%AA2%E6%A8%99%E6%9C%AC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%AF%8D%E5%B9%B3%E5%9D%87%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%8E%A8%E5%AE%9Ap146"><span class="header-section-number">7.2</span> 独立な2標本における母平均に関する推定（P146）</a>
-  <ul class="collapse">
-<li><a href="#%E6%AF%8D%E5%B9%B3%E5%9D%87%E3%81%AE%E5%B7%AE%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%A8%E5%8C%BA%E9%96%93%E6%8E%A8%E5%AE%9Ap147" id="toc-母平均の差に関するt検定と区間推定p147" class="nav-link" data-scroll-target="#%E6%AF%8D%E5%B9%B3%E5%9D%87%E3%81%AE%E5%B7%AE%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%A8%E5%8C%BA%E9%96%93%E6%8E%A8%E5%AE%9Ap147"><span class="header-section-number">7.2.1</span> 母平均の差に関するt検定と区間推定（P147）</a></li>
-  <li><a href="#%E6%A8%99%E6%9C%AC%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%B3%E3%82%AF%E3%82%BD%E3%83%B3%E6%A4%9C%E5%AE%9Ap149" id="toc-標本ウィルコクソン検定p149" class="nav-link" data-scroll-target="#%E6%A8%99%E6%9C%AC%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%B3%E3%82%AF%E3%82%BD%E3%83%B3%E6%A4%9C%E5%AE%9Ap149"><span class="header-section-number">7.2.2</span> 2標本ウィルコクソン検定（P149）</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8B%E6%A8%99%E6%9C%AC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%B9%B3%E5%9D%87%E3%81%AE%E5%B7%AE%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%8E%A8%E6%B8%ACp152" id="toc-対応のある標本における平均の差に関する推測p152" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8B%E6%A8%99%E6%9C%AC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%B9%B3%E5%9D%87%E3%81%AE%E5%B7%AE%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%8E%A8%E6%B8%ACp152"><span class="header-section-number">7.3</span> 対応のある標本における平均の差に関する推測（P152）</a>
-  <ul class="collapse">
-<li><a href="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8B%E6%A8%99%E6%9C%AC%E3%81%AEt%E6%A4%9C%E5%AE%9A%E3%81%A8%E5%8C%BA%E9%96%93%E6%8E%A8%E5%AE%9Ap153" id="toc-対応のある標本のt検定と区間推定p153" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8B%E6%A8%99%E6%9C%AC%E3%81%AEt%E6%A4%9C%E5%AE%9A%E3%81%A8%E5%8C%BA%E9%96%93%E6%8E%A8%E5%AE%9Ap153"><span class="header-section-number">7.3.1</span> 対応のある標本のt検定と区間推定（P153）</a></li>
-  <li><a href="#%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%B3%E3%82%AF%E3%82%BD%E3%83%B3%E3%81%AE%E7%AC%A6%E5%8F%B7%E4%BB%98%E3%81%8D%E9%A0%86%E4%BD%8D%E6%A4%9C%E5%AE%9Ap155" id="toc-ウィルコクソンの符号付き順位検定p155" class="nav-link" data-scroll-target="#%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%B3%E3%82%AF%E3%82%BD%E3%83%B3%E3%81%AE%E7%AC%A6%E5%8F%B7%E4%BB%98%E3%81%8D%E9%A0%86%E4%BD%8D%E6%A4%9C%E5%AE%9Ap155"><span class="header-section-number">7.3.2</span> ウィルコクソンの符号付き順位検定（P155）</a></li>
-  </ul>
-</li>
+<li><a href="#%E7%AD%89%E5%88%86%E6%95%A3%E6%80%A7%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8Bf%E6%A4%9C%E5%AE%9A-2%E3%81%A4%E3%81%AE%E9%9B%86%E5%9B%A3p158" id="toc-等分散性に関するf検定-2つの集団p158" class="nav-link active" data-scroll-target="#%E7%AD%89%E5%88%86%E6%95%A3%E6%80%A7%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8Bf%E6%A4%9C%E5%AE%9A-2%E3%81%A4%E3%81%AE%E9%9B%86%E5%9B%A3p158"><span class="header-section-number">8.1</span> 等分散性に関するF検定 2つの集団（P158）</a></li>
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/k-metrics/DAWS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content"><blockquote class="blockquote">
-<p><strong>※本ページの内容はテキストの第７章に相当します</strong></p>
+<p><strong>※本ページの内容はテキストの第８章に相当します</strong></p>
 </blockquote>
-<p>　本章では1標本と2標本の場合における平均値の推定方法について学びます。本章ではRcmdrで実行した場合のコードと出力結果のみを記載し、手順の記載は省略しますので詳細はテキストを参照してください。</p>
+<p>　本章では分散の基本となるF検定を中心に学びます。本章ではRcmdrで実行した場合のコードと出力結果のみを記載し、手順の記載は省略しますので詳細はテキストを参照してください。</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -273,664 +252,147 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="標本における母平均に関する推測p140" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="標本における母平均に関する推測p140">
-<span class="header-section-number">7.1</span> 1標本における母平均に関する推測（P140）</h2>
-<section id="母平均に関するt検定p141" class="level3" data-number="7.1.1"><h3 data-number="7.1.1" class="anchored" data-anchor-id="母平均に関するt検定p141">
-<span class="header-section-number">7.1.1</span> 母平均に関するt検定（P141）</h3>
-<p>　t検定は「母平均はある特定の値に等しい（または、大きい・小さい）」という帰無仮説<span class="math inline">\(H_0\)</span>（null hypothesis）をテスト（両側検定または片側検定）する手法です。テストが成功（p値が事前に設定した有意水準より小さい）すれば帰無仮説<span class="math inline">\(H_0\)</span>は棄却され対立仮説<span class="math inline">\(H_1\)</span>（alternative hypothesis）が採用されます。逆にテストが失敗（p値が有意水準より大きい）すれば帰無仮説<span class="math inline">\(H_0\)</span>は棄却されません。</p>
+<section id="等分散性に関するf検定-2つの集団p158" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="等分散性に関するf検定-2つの集団p158">
+<span class="header-section-number">8.1</span> 等分散性に関するF検定 2つの集団（P158）</h2>
+<p>　F検定はふたつの集団がともに正規分布にしたがう場合、統計量<span class="math inline">\(F\)</span>（2群の標準偏差の比）はF分布に従うを利用した検定です。帰無仮説<span class="math inline">\(H_0\)</span>は「分散の比は1に等しい（2群の分散は等しい）」（両側仮説）で、対立仮説<span class="math inline">\(H_1\)</span>は「分散の比は1と等しくない」（両側仮説）です。</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist">
 <li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">両側検定</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">片側検定（<span class="math inline">\(\mu \lt \mu_0\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">片側検定（<span class="math inline">\(\mu \gt \mu_0\)</span>）</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">片側検定（<span class="math inline">\(\frac{\sigma_2^2}{\sigma_1^2} \lt 1\)</span>）</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">片側検定（<span class="math inline">\(\frac{\sigma_2^2}{\sigma_1^2} \gt 1\)</span>）</a></li>
 <li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">ヒストグラム</a></li>
 </ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>　母平均<span class="math inline">\(\mu \ne \mu_0\)</span>の両側検定。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 1標本t検定</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>,</span>
-<span>     <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">健康統制感</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
-<span>             mu <span class="op">=</span> <span class="fl">100</span>, conf.level <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
+<p>　母分散比<span class="math inline">\(\frac{\sigma_2^2}{\sigma_1^2} \ne 1\)</span>の両側検定。</p>
+<div>
+<details open=""><summary>統計量 - 分散 - 分散の比のF検定</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, <span class="va">var</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
+<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># variances by group</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/var.test.html">var.test</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, alternative<span class="op">=</span><span class="st">'two.sided'</span>, conf.level<span class="op">=</span><span class="fl">.95</span>,</span>
+<span>         data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>      男       女 
+212.9299 173.3991 </code></pre>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>
-    One Sample t-test
+    F test to compare two variances
 
-data:  健康統制感
-t = -11.468, df = 336, p-value &lt; 2.2e-16
-alternative hypothesis: true mean is not equal to 100
+data:  健康統制感 by 性別
+F = 1.228, num df = 118, denom df = 217, p-value = 0.1952
+alternative hypothesis: true ratio of variances is not equal to 1
 95 percent confidence interval:
- 89.99854 92.92728
+ 0.9000029 1.7010485
 sample estimates:
-mean of x 
- 91.46291 </code></pre>
+ratio of variances 
+          1.227976 </code></pre>
 </div>
 </div>
+</div>
+</div>
+<p>　帰無仮説は<span class="math inline">\(5\%\)</span>有意水準で棄却されません（テストは失敗です）ので、帰無仮説が採択され健康統制感の分散は男女で等しいと言えます。</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>　テキストにはありません。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 1標本t検定</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>,</span>
-<span>     <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">健康統制感</span>, alternative <span class="op">=</span> <span class="st">"less"</span>,</span>
-<span>             mu <span class="op">=</span> <span class="fl">100</span>, conf.level <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
+<div>
+<details open=""><summary>統計量 - 分散 - 分散の比のF検定</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, <span class="va">var</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
+<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># variances by group</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/var.test.html">var.test</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, alternative<span class="op">=</span><span class="st">'less'</span>, conf.level<span class="op">=</span><span class="fl">.95</span>,</span>
+<span>         data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>      男       女 
+212.9299 173.3991 </code></pre>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>
-    One Sample t-test
+    F test to compare two variances
 
-data:  健康統制感
-t = -11.468, df = 336, p-value &lt; 2.2e-16
-alternative hypothesis: true mean is less than 100
+data:  健康統制感 by 性別
+F = 1.228, num df = 118, denom df = 217, p-value = 0.9024
+alternative hypothesis: true ratio of variances is less than 1
 95 percent confidence interval:
-    -Inf 92.6908
+ 0.000000 1.613525
 sample estimates:
-mean of x 
- 91.46291 </code></pre>
+ratio of variances 
+          1.227976 </code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>　テキストにはありません。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 1標本t検定</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>,</span>
-<span>     <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">健康統制感</span>, alternative <span class="op">=</span> <span class="st">"greater"</span>,</span>
-<span>             mu <span class="op">=</span> <span class="fl">100</span>, conf.level <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
+<div>
+<details open=""><summary>統計量 - 分散 - 分散の比のF検定</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, <span class="va">var</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
+<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># variances by group</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/var.test.html">var.test</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, alternative<span class="op">=</span><span class="st">'greater'</span>, conf.level<span class="op">=</span><span class="fl">.95</span>,</span>
+<span>         data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>      男       女 
+212.9299 173.3991 </code></pre>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>
-    One Sample t-test
+    F test to compare two variances
 
-data:  健康統制感
-t = -11.468, df = 336, p-value = 1
-alternative hypothesis: true mean is greater than 100
+data:  健康統制感 by 性別
+F = 1.228, num df = 118, denom df = 217, p-value = 0.09758
+alternative hypothesis: true ratio of variances is greater than 1
 95 percent confidence interval:
- 90.23501      Inf
+ 0.9460203       Inf
 sample estimates:
-mean of x 
- 91.46291 </code></pre>
+ratio of variances 
+          1.227976 </code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<div class="cell">
-<details open=""><summary>グラフ - ヒストグラム</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">健康統制感</span>,</span>
-<span>                                    scale<span class="op">=</span><span class="st">"frequency"</span>, breaks<span class="op">=</span><span class="st">"Sturges"</span>,</span>
-<span>                                    col<span class="op">=</span><span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fl">100</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<p><img src="estimationAndTest_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="標本ウィルコクソン検定p143" class="level3" data-number="7.1.2"><h3 data-number="7.1.2" class="anchored" data-anchor-id="標本ウィルコクソン検定p143">
-<span class="header-section-number">7.1.2</span> 1標本ウィルコクソン検定（P143）</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">両側検定</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">片側検定（<span class="math inline">\(\mu \lt \mu_0\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">片側検定（<span class="math inline">\(\mu \gt \mu_0\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">ヒストグラム</a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>　ウィルコクソン検定は変数が正規分布に従わない場合に用いる検定です。</p>
-<div>
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>,</span>
-<span>     <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, alternative<span class="op">=</span><span class="st">'two.sided'</span>, mu<span class="op">=</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>[1] 25</code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>[1] 34.89911</code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>
-    Wilcoxon signed rank test with continuity correction
-
-data:  ストレス反応得点
-V = 28410, p-value = 0.8792
-alternative hypothesis: true location is not equal to 30</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>　テキストにはありません。</p>
-<div>
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>,</span>
-<span>     <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, alternative<span class="op">=</span><span class="st">'less'</span>, mu<span class="op">=</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>[1] 25</code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>[1] 34.89911</code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>
-    Wilcoxon signed rank test with continuity correction
-
-data:  ストレス反応得点
-V = 28410, p-value = 0.5606
-alternative hypothesis: true location is less than 30</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<p>　テキストにはありません。</p>
-<div>
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 1標本Wilcoxon検定</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>,</span>
-<span>     <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, alternative<span class="op">=</span><span class="st">'greater'</span>, mu<span class="op">=</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>[1] 25</code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>[1] 34.89911</code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>
-    Wilcoxon signed rank test with continuity correction
-
-data:  ストレス反応得点
-V = 28410, p-value = 0.4396
-alternative hypothesis: true location is greater than 30</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
 <div class="cell">
-<details open=""><summary>Code</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>,</span>
+<details open=""><summary>グラフ - ヒストグラム</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">健康統制感</span>, groups<span class="op">=</span><span class="va">性別</span>,</span>
 <span>                                    scale<span class="op">=</span><span class="st">"frequency"</span>, breaks<span class="op">=</span><span class="st">"Sturges"</span>,</span>
 <span>                                    col<span class="op">=</span><span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<p><img src="estimationAndTest_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section></section><section id="独立な2標本における母平均に関する推定p146" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="独立な2標本における母平均に関する推定p146">
-<span class="header-section-number">7.2</span> 独立な2標本における母平均に関する推定（P146）</h2>
-<section id="母平均の差に関するt検定と区間推定p147" class="level3" data-number="7.2.1"><h3 data-number="7.2.1" class="anchored" data-anchor-id="母平均の差に関するt検定と区間推定p147">
-<span class="header-section-number">7.2.1</span> 母平均の差に関するt検定と区間推定（P147）</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">両側検定</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">片側検定（<span class="math inline">\(\mu_a - \mu_b \lt 0\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">片側検定（<span class="math inline">\(\mu_a - \mu_b\)</span> ）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">ヒストグラム</a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<p>　平均の差<span class="math inline">\(\mu_a - \mu_b \ne 0\)</span>の両側検定。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 独立サンプルt検定</summary><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>       data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Two Sample t-test
-
-data:  健康統制感 by 性別
-t = 0.049249, df = 335, p-value = 0.9608
-alternative hypothesis: true difference in means between group 男 and group 女 is not equal to 0
-95 percent confidence interval:
- -2.991696  3.145347
-sample estimates:
-mean in group 男 mean in group 女 
-        91.51261         91.43578 </code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<p>　テキストにはありません。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 独立サンプルt検定</summary><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, alternative <span class="op">=</span> <span class="st">"less"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>       data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Two Sample t-test
-
-data:  健康統制感 by 性別
-t = 0.049249, df = 335, p-value = 0.5196
-alternative hypothesis: true difference in means between group 男 and group 女 is less than 0
-95 percent confidence interval:
-     -Inf 2.649821
-sample estimates:
-mean in group 男 mean in group 女 
-        91.51261         91.43578 </code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<p>　テキストにはありません。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 独立サンプルt検定</summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span>, alternative <span class="op">=</span> <span class="st">"greater"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>       data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Two Sample t-test
-
-data:  健康統制感 by 性別
-t = 0.049249, df = 335, p-value = 0.4804
-alternative hypothesis: true difference in means between group 男 and group 女 is greater than 0
-95 percent confidence interval:
- -2.496171       Inf
-sample estimates:
-mean in group 男 mean in group 女 
-        91.51261         91.43578 </code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
-<div class="cell">
-<details open=""><summary>グラフ - ヒストグラム</summary><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">健康統制感</span>, groups<span class="op">=</span><span class="va">性別</span>,</span>
-<span>                                    scale<span class="op">=</span><span class="st">"frequency"</span>, breaks<span class="op">=</span><span class="st">"Sturges"</span>,</span>
-<span>                                    col<span class="op">=</span><span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<p><img src="estimationAndTest_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="標本ウィルコクソン検定p149" class="level3" data-number="7.2.2"><h3 data-number="7.2.2" class="anchored" data-anchor-id="標本ウィルコクソン検定p149">
-<span class="header-section-number">7.2.2</span> 2標本ウィルコクソン検定（P149）</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">両側検定</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">片側検定（<span class="math inline">\(\mu_a \lt \mu_b\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">片側検定（<span class="math inline">\(\mu_a \gt \mu_b\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false">ヒストグラム</a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<p>　ウィルコクソン検定は変数が正規分布に従わない場合に用いる検定です。</p>
-<div>
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, <span class="va">median</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
-<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># medians by group</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, alternative<span class="op">=</span><span class="st">"two.sided"</span>,</span>
-<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>男 女 
-19 31 </code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>
-    Wilcoxon rank sum test with continuity correction
-
-data:  ストレス反応得点 by 性別
-W = 9830, p-value = 0.000238
-alternative hypothesis: true location shift is not equal to 0</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<p>　テキストにはありません。</p>
-<div>
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, <span class="va">median</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
-<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># medians by group</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, alternative<span class="op">=</span><span class="st">"less"</span>,</span>
-<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>男 女 
-19 31 </code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>
-    Wilcoxon rank sum test with continuity correction
-
-data:  ストレス反応得点 by 性別
-W = 9830, p-value = 0.000119
-alternative hypothesis: true location shift is less than 0</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
-<p>　テキストにはありません。</p>
-<div>
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, <span class="va">median</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
-<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># medians by group</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, alternative<span class="op">=</span><span class="st">"greater"</span>,</span>
-<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>男 女 
-19 31 </code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>
-    Wilcoxon rank sum test with continuity correction
-
-data:  ストレス反応得点 by 性別
-W = 9830, p-value = 0.9999
-alternative hypothesis: true location shift is greater than 0</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
-<div class="cell">
-<details open=""><summary>グラフ - ヒストグラム</summary><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">ストレス反応得点</span>, groups<span class="op">=</span><span class="va">性別</span>,</span>
-<span>                                    scale<span class="op">=</span><span class="st">"frequency"</span>, breaks<span class="op">=</span><span class="st">"Sturges"</span>,</span>
-<span>                                    col<span class="op">=</span><span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<p><img src="estimationAndTest_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section></section><section id="対応のある標本における平均の差に関する推測p152" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="対応のある標本における平均の差に関する推測p152">
-<span class="header-section-number">7.3</span> 対応のある標本における平均の差に関する推測（P152）</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-データの読み込み
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Rcmdrのメニューから［データ］-［データセットのロード…］を実行する</li>
-<li>ファイルダイアログで「<code>バイタルサイン.RData</code>」ファイルを選択する</li>
-<li>アクティブデータセットが<strong><code>VitalSign</code></strong>になっていることを確認する</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["ID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["安静時収縮期血圧"],"name":[2],"type":["int"],"align":["right"]},{"label":["安静時拡張期血圧"],"name":[3],"type":["int"],"align":["right"]},{"label":["安静時脈拍数"],"name":[4],"type":["int"],"align":["right"]},{"label":["安静時呼吸数"],"name":[5],"type":["int"],"align":["right"]},{"label":["安静時体温"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["運動後収縮期血圧"],"name":[7],"type":["int"],"align":["right"]},{"label":["運動後拡張期血圧"],"name":[8],"type":["int"],"align":["right"]},{"label":["運動後脈拍数"],"name":[9],"type":["int"],"align":["right"]},{"label":["運動後呼吸数"],"name":[10],"type":["int"],"align":["right"]},{"label":["運動後体温"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["身長"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["体重"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"96","3":"54","4":"62","5":"22","6":"36.0","7":"126","8":"54","9":"96","10":"25","11":"35.8","12":"160.0","13":"51.0"},{"1":"2","2":"90","3":"52","4":"60","5":"13","6":"36.6","7":"110","8":"50","9":"62","10":"16","11":"36.3","12":"165.0","13":"48.0"},{"1":"3","2":"102","3":"68","4":"74","5":"13","6":"36.6","7":"114","8":"68","9":"110","10":"34","11":"36.3","12":"158.0","13":"48.8"},{"1":"4","2":"90","3":"58","4":"65","5":"18","6":"36.3","7":"102","8":"60","9":"72","10":"20","11":"36.5","12":"150.0","13":"46.0"},{"1":"5","2":"100","3":"70","4":"66","5":"21","6":"35.9","7":"104","8":"64","9":"70","10":"25","11":"36.1","12":"159.0","13":"46.0"},{"1":"6","2":"104","3":"50","4":"61","5":"12","6":"36.4","7":"114","8":"38","9":"72","10":"36","11":"36.8","12":"160.2","13":"54.0"},{"1":"7","2":"90","3":"60","4":"72","5":"12","6":"36.3","7":"98","8":"58","9":"96","10":"12","11":"35.4","12":"152.0","13":"42.0"},{"1":"8","2":"96","3":"46","4":"70","5":"22","6":"36.4","7":"110","8":"68","9":"71","10":"22","11":"36.5","12":"158.0","13":"49.0"},{"1":"9","2":"94","3":"68","4":"60","5":"18","6":"36.1","7":"108","8":"70","9":"78","10":"22","11":"35.8","12":"163.0","13":"52.0"},{"1":"10","2":"94","3":"70","4":"70","5":"16","6":"35.8","7":"110","8":"58","9":"86","10":"14","11":"35.2","12":"154.8","13":"42.0"},{"1":"11","2":"98","3":"68","4":"68","5":"18","6":"36.7","7":"98","8":"56","9":"84","10":"32","11":"36.7","12":"147.0","13":"41.0"},{"1":"12","2":"98","3":"72","4":"60","5":"14","6":"36.4","7":"124","8":"68","9":"88","10":"26","11":"36.7","12":"160.0","13":"53.0"},{"1":"13","2":"96","3":"50","4":"62","5":"19","6":"36.9","7":"106","8":"58","9":"112","10":"23","11":"37.0","12":"160.0","13":"48.0"},{"1":"14","2":"108","3":"64","4":"63","5":"17","6":"36.8","7":"134","8":"60","9":"84","10":"26","11":"36.4","12":"154.0","13":"43.0"},{"1":"15","2":"96","3":"62","4":"68","5":"11","6":"36.4","7":"112","8":"76","9":"80","10":"18","11":"36.2","12":"156.0","13":"50.0"},{"1":"16","2":"100","3":"48","4":"66","5":"18","6":"36.5","7":"110","8":"42","9":"106","10":"25","11":"36.3","12":"160.0","13":"56.0"},{"1":"17","2":"102","3":"68","4":"62","5":"18","6":"37.3","7":"122","8":"74","9":"83","10":"33","11":"37.2","12":"158.0","13":"45.0"},{"1":"18","2":"95","3":"63","4":"84","5":"16","6":"36.0","7":"120","8":"50","9":"105","10":"23","11":"36.6","12":"155.0","13":"47.0"},{"1":"19","2":"104","3":"64","4":"64","5":"15","6":"36.5","7":"142","8":"62","9":"88","10":"23","11":"36.3","12":"147.0","13":"44.0"},{"1":"20","2":"100","3":"70","4":"60","5":"29","6":"36.2","7":"104","8":"64","9":"96","10":"34","11":"35.3","12":"167.0","13":"51.0"},{"1":"21","2":"110","3":"68","4":"70","5":"16","6":"35.8","7":"128","8":"60","9":"82","10":"28","11":"36.6","12":"160.0","13":"65.0"},{"1":"22","2":"102","3":"62","4":"66","5":"17","6":"36.1","7":"110","8":"72","9":"93","10":"18","11":"36.2","12":"160.0","13":"49.5"},{"1":"23","2":"100","3":"65","4":"68","5":"14","6":"36.4","7":"119","8":"69","9":"136","10":"34","11":"36.4","12":"168.0","13":"58.0"},{"1":"24","2":"98","3":"56","4":"72","5":"16","6":"36.8","7":"120","8":"60","9":"92","10":"32","11":"36.7","12":"158.0","13":"53.0"},{"1":"25","2":"94","3":"68","4":"58","5":"12","6":"36.7","7":"110","8":"68","9":"98","10":"24","11":"36.5","12":"163.0","13":"53.0"},{"1":"26","2":"110","3":"74","4":"74","5":"12","6":"36.6","7":"122","8":"74","9":"86","10":"14","11":"37.1","12":"160.0","13":"57.5"},{"1":"27","2":"97","3":"63","4":"60","5":"15","6":"36.3","7":"120","8":"60","9":"113","10":"29","11":"36.7","12":"161.0","13":"51.0"},{"1":"28","2":"124","3":"84","4":"62","5":"11","6":"36.2","7":"132","8":"86","9":"119","10":"43","11":"36.5","12":"160.0","13":"70.0"},{"1":"29","2":"104","3":"60","4":"70","5":"11","6":"36.4","7":"128","8":"62","9":"108","10":"18","11":"35.6","12":"169.4","13":"53.0"},{"1":"30","2":"110","3":"80","4":"58","5":"20","6":"36.4","7":"108","8":"62","9":"84","10":"56","11":"36.8","12":"162.0","13":"55.0"},{"1":"31","2":"96","3":"78","4":"68","5":"12","6":"35.8","7":"132","8":"66","9":"60","10":"20","11":"35.5","12":"155.0","13":"49.5"},{"1":"32","2":"96","3":"70","4":"50","5":"16","6":"35.7","7":"116","8":"70","9":"108","10":"28","11":"36.2","12":"158.0","13":"52.0"},{"1":"33","2":"90","3":"56","4":"61","5":"17","6":"36.6","7":"90","8":"60","9":"62","10":"24","11":"36.7","12":"160.0","13":"49.0"},{"1":"34","2":"106","3":"62","4":"70","5":"14","6":"36.0","7":"120","8":"70","9":"80","10":"40","11":"36.2","12":"157.0","13":"50.0"},{"1":"35","2":"78","3":"54","4":"60","5":"16","6":"36.9","7":"120","8":"62","9":"76","10":"16","11":"36.5","12":"159.9","13":"48.5"},{"1":"36","2":"90","3":"46","4":"62","5":"15","6":"36.0","7":"92","8":"46","9":"88","10":"25","11":"36.3","12":"153.0","13":"44.0"},{"1":"37","2":"112","3":"63","4":"64","5":"20","6":"36.0","7":"134","8":"65","9":"94","10":"33","11":"36.4","12":"158.0","13":"47.8"},{"1":"38","2":"112","3":"64","4":"62","5":"16","6":"36.1","7":"106","8":"70","9":"116","10":"27","11":"36.2","12":"168.0","13":"49.0"},{"1":"39","2":"110","3":"68","4":"60","5":"20","6":"36.3","7":"116","8":"74","9":"68","10":"32","11":"36.6","12":"158.0","13":"48.0"},{"1":"40","2":"102","3":"54","4":"68","5":"19","6":"35.9","7":"130","8":"54","9":"84","10":"29","11":"35.7","12":"162.0","13":"48.0"},{"1":"41","2":"102","3":"68","4":"64","5":"16","6":"36.7","7":"104","8":"56","9":"76","10":"48","11":"36.8","12":"160.0","13":"45.0"},{"1":"42","2":"100","3":"60","4":"65","5":"13","6":"36.6","7":"110","8":"72","9":"70","10":"16","11":"36.0","12":"160.0","13":"43.0"},{"1":"43","2":"105","3":"66","4":"68","5":"16","6":"35.5","7":"103","8":"57","9":"80","10":"26","11":"35.7","12":"159.0","13":"60.0"},{"1":"44","2":"102","3":"50","4":"80","5":"17","6":"36.1","7":"112","8":"50","9":"83","10":"17","11":"35.7","12":"153.0","13":"49.0"},{"1":"45","2":"98","3":"61","4":"65","5":"13","6":"36.1","7":"118","8":"79","9":"68","10":"24","11":"35.5","12":"156.8","13":"46.0"},{"1":"46","2":"120","3":"74","4":"76","5":"16","6":"36.2","7":"130","8":"68","9":"100","10":"36","11":"36.0","12":"155.0","13":"65.0"},{"1":"47","2":"104","3":"60","4":"68","5":"12","6":"36.8","7":"110","8":"60","9":"116","10":"30","11":"36.5","12":"160.0","13":"55.0"},{"1":"48","2":"104","3":"48","4":"60","5":"18","6":"36.3","7":"130","8":"64","9":"68","10":"24","11":"36.2","12":"160.0","13":"49.0"},{"1":"49","2":"106","3":"60","4":"80","5":"24","6":"36.1","7":"115","8":"55","9":"110","10":"26","11":"36.6","12":"163.0","13":"54.0"},{"1":"50","2":"110","3":"74","4":"80","5":"8","6":"36.3","7":"122","8":"62","9":"100","10":"12","11":"36.5","12":"160.0","13":"49.5"},{"1":"51","2":"110","3":"78","4":"80","5":"12","6":"36.5","7":"158","8":"60","9":"100","10":"20","11":"36.7","12":"160.0","13":"50.0"},{"1":"52","2":"100","3":"52","4":"82","5":"13","6":"36.8","7":"112","8":"58","9":"114","10":"29","11":"36.7","12":"158.0","13":"47.0"},{"1":"53","2":"108","3":"62","4":"68","5":"12","6":"36.4","7":"128","8":"64","9":"84","10":"24","11":"36.4","12":"155.0","13":"55.0"},{"1":"54","2":"104","3":"64","4":"64","5":"12","6":"36.6","7":"120","8":"60","9":"76","10":"36","11":"36.9","12":"157.0","13":"64.0"},{"1":"55","2":"94","3":"60","4":"66","5":"8","6":"36.4","7":"106","8":"76","9":"90","10":"14","11":"36.6","12":"NA","13":"NA"},{"1":"56","2":"104","3":"60","4":"79","5":"14","6":"36.2","7":"118","8":"68","9":"116","10":"30","11":"36.3","12":"165.0","13":"54.5"},{"1":"57","2":"104","3":"68","4":"76","5":"16","6":"36.3","7":"130","8":"86","9":"78","10":"28","11":"37.0","12":"167.0","13":"55.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-</div>
-<section id="対応のある標本のt検定と区間推定p153" class="level3" data-number="7.3.1"><h3 data-number="7.3.1" class="anchored" data-anchor-id="対応のある標本のt検定と区間推定p153">
-<span class="header-section-number">7.3.1</span> 対応のある標本のt検定と区間推定（P153）</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">両側検定</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">片側検定（<span class="math inline">\(\mu_1 - \mu_2 \lt 0\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">片側検定（<span class="math inline">\(\mu_1 - \mu_2 \gt 0\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false">ヒストグラム</a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<p>　平均の差<span class="math inline">\(\mu_1 - \mu_2 \ne 0\)</span>の両側検定。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 対応のあるt検定</summary><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">運動後収縮期血圧</span>, <span class="va">安静時収縮期血圧</span>,</span>
-<span>                        alternative <span class="op">=</span> <span class="st">"two.sided"</span>, conf.level <span class="op">=</span> <span class="fl">.95</span>,</span>
-<span>                        paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Paired t-test
-
-data:  運動後収縮期血圧 and 安静時収縮期血圧
-t = 10.588, df = 56, p-value = 5.535e-15
-alternative hypothesis: true mean difference is not equal to 0
-95 percent confidence interval:
- 12.48919 18.31783
-sample estimates:
-mean difference 
-       15.40351 </code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<p>　テキストにはありません。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 対応のあるt検定</summary><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">運動後収縮期血圧</span>, <span class="va">安静時収縮期血圧</span>,</span>
-<span>                        alternative <span class="op">=</span> <span class="st">"less"</span>, conf.level <span class="op">=</span> <span class="fl">.95</span>,</span>
-<span>                        paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Paired t-test
-
-data:  運動後収縮期血圧 and 安静時収縮期血圧
-t = 10.588, df = 56, p-value = 1
-alternative hypothesis: true mean difference is less than 0
-95 percent confidence interval:
-    -Inf 17.8367
-sample estimates:
-mean difference 
-       15.40351 </code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
-<p>　テキストにはありません。</p>
-<div class="cell">
-<details open=""><summary>統計量 - 平均 - 対応のあるt検定</summary><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">運動後収縮期血圧</span>, <span class="va">安静時収縮期血圧</span>,</span>
-<span>                        alternative <span class="op">=</span> <span class="st">"greater"</span>, conf.level <span class="op">=</span> <span class="fl">.95</span>,</span>
-<span>                        paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Paired t-test
-
-data:  運動後収縮期血圧 and 安静時収縮期血圧
-t = 10.588, df = 56, p-value = 2.768e-15
-alternative hypothesis: true mean difference is greater than 0
-95 percent confidence interval:
- 12.97032      Inf
-sample estimates:
-mean difference 
-       15.40351 </code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
-<div>
-<details open=""><summary>グラフ - ヒストグラム</summary><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">運動後収縮期血圧</span>, scale<span class="op">=</span><span class="st">"frequency"</span>,</span>
-<span>                                breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">70</span>, <span class="fl">160</span>, <span class="fl">10</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">安静時収縮期血圧</span>, scale<span class="op">=</span><span class="st">"frequency"</span>,</span>
-<span>                                breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">70</span>, <span class="fl">160</span>, <span class="fl">10</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="estimationAndTest_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="estimationAndTest_files/figure-html/unnamed-chunk-22-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="ウィルコクソンの符号付き順位検定p155" class="level3" data-number="7.3.2"><h3 data-number="7.3.2" class="anchored" data-anchor-id="ウィルコクソンの符号付き順位検定p155">
-<span class="header-section-number">7.3.2</span> ウィルコクソンの符号付き順位検定（P155）</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">両側検定</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">片側検定（<span class="math inline">\(\mu_1 - \mu_2 \lt 0\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">片側検定（<span class="math inline">\(\mu_1 - \mu_2 \gt 0\)</span>）</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false">ヒストグラム</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-5" role="tab" aria-controls="tabset-6-5" aria-selected="false">中央値</a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<p>　平均の差<span class="math inline">\(\mu_1 - \mu_2 \ne 0\)</span>の両側検定。</p>
-<div class="cell">
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 対応のあるウィルコクソン検定</summary><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">運動後呼吸数</span>, <span class="va">安静時呼吸数</span>,</span>
-<span>                            alternative<span class="op">=</span><span class="st">'two.sided'</span>, paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Wilcoxon signed rank test with continuity correction
-
-data:  運動後呼吸数 and 安静時呼吸数
-V = 1427.5, p-value = 2.931e-10
-alternative hypothesis: true location shift is not equal to 0</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<p>　テキストにはありません。</p>
-<div class="cell">
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 対応のあるウィルコクソン検定</summary><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">運動後呼吸数</span>, <span class="va">安静時呼吸数</span>,</span>
-<span>                            alternative<span class="op">=</span><span class="st">'less'</span>, paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Wilcoxon signed rank test with continuity correction
-
-data:  運動後呼吸数 and 安静時呼吸数
-V = 1427.5, p-value = 1
-alternative hypothesis: true location shift is less than 0</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
-<p>　テキストにはありません。</p>
-<div class="cell">
-<details open=""><summary>統計量 - ノンパラメトリック検定 - 対応のあるウィルコクソン検定</summary><div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">運動後呼吸数</span>, <span class="va">安静時呼吸数</span>,</span>
-<span>                            alternative<span class="op">=</span><span class="st">'greater'</span>, paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>
-    Wilcoxon signed rank test with continuity correction
-
-data:  運動後呼吸数 and 安静時呼吸数
-V = 1427.5, p-value = 1.465e-10
-alternative hypothesis: true location shift is greater than 0</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-6-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-4-tab">
-<p>　テキストにはありません。</p>
-<div>
-<details open=""><summary>グラフ - ヒストグラム</summary><div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>,</span>
-<span>     <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">運動後呼吸数</span>, scale<span class="op">=</span><span class="st">"frequency"</span>,</span>
-<span>                     breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">60</span>, <span class="fl">5</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>,</span>
-<span>     <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/Hist.html">Hist</a></span><span class="op">(</span><span class="va">安静時呼吸数</span>, scale<span class="op">=</span><span class="st">"frequency"</span>,</span>
-<span>                     breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">60</span>, <span class="fl">5</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="estimationAndTest_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="estimationAndTest_files/figure-html/unnamed-chunk-26-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-6-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-5-tab">
-<p>　テキストにはありません。</p>
-<div>
-<details open=""><summary>統計量 - 要約 - 数値による要約</summary><div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/numSummary.html">numSummary</a></span><span class="op">(</span><span class="va">VitalSign</span><span class="op">[</span>,<span class="st">"運動後呼吸数"</span>, drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">]</span>,</span>
-<span>                      statistics<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"quantiles"</span><span class="op">)</span>, quantiles<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/numSummary.html">numSummary</a></span><span class="op">(</span><span class="va">VitalSign</span><span class="op">[</span>,<span class="st">"安静時呼吸数"</span>, drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">]</span>,</span>
-<span>                      statistics<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"quantiles"</span><span class="op">)</span>, quantiles<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>50% 
- 25 </code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>50% 
- 16 </code></pre>
-</div>
-</div>
+<p><img src="varTest_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-数値による要約の制約事項
+Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>数値による要約（<code>numSummary()</code>関数）では、統計量タブにおいてすべてのチェックを外すとエラーになります。中央値を求める場合は「四分位範囲」のみにチェックを入れ、分位数に0.5を指定してください。 または、Rスクリプトのタブで下記のように<code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>関数を実行してください。</p>
-<div>
-<details open=""><summary>統計量 - 要約 - 数値による要約</summary><div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">運動後呼吸数</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">VitalSign</span>, <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">安静時呼吸数</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>[1] 25</code></pre>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>[1] 16</code></pre>
-</div>
-</div>
-</div>
-</div>
+
 </div>
 </div>
 </div>
 <hr>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1278,14 +740,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./wranglingData.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">変数間の関係を探る</span></span>
+      <a href="./estimationAndTest.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">平均に関する推定と検定</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./varTest.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">分散に関する検定</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

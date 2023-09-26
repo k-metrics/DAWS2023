@@ -35,6 +35,7 @@ book:
     - browsingData.qmd
     - wranglingData.qmd
     - estimationAndTest.qmd
+    - varTest.qmd
 
 # bibliography: references.bib
 
