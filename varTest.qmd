@@ -76,9 +76,40 @@ with(PatientStress, RcmdrMisc::Hist(健康統制感, groups=性別,
 :::
 
 
-:::{.callout-tip collapse="true"}
-## 検定結果を比較すると？
-:::
+## ルービン検定 3つ以上の集団（P161）
+::: {.panel-tabset}
+## ルービン検定
+ルービン検定の帰無仮設$H_0$は「すべての水準で分散は等しい」ですので、対立仮説$H_1$は「あらゆる水準で分散が異なる」の両側検定になります。
+```{r}
+#| code-summary: "統計量 - 分散 - ルービン検定"
+#| layout-nrow: 2
 
+car::Tapply(健康統制感 ~ 年齢区分, var, na.action=na.omit,
+            data=PatientStress) # variances by group
+car::leveneTest(健康統制感 ~ 年齢区分, data=PatientStress,
+                center="median")
+```
+　帰無仮説は$5\%$有意水準で棄却されません（テストは失敗です）ので、帰無仮説が採択され健康統制感の分散はすべての年齢区分で等しいと言えます。
+
+## バートレットの検定
+　テキストにはありません。
+```{r}
+#| code-summary: "統計量 - 分散 - バートレットの検定"
+
+bartlett.test(健康統制感 ~ 年齢区分, data=PatientStress)
+```
+
+## ヒストグラム
+　テキストにはありません。
+```{r}
+#| code-summary: "グラフ - ヒストグラム"
+#| fig-height: 7
+
+with(PatientStress, RcmdrMisc::Hist(健康統制感, groups=年齢区分,
+                                    scale="frequency", breaks="Sturges",
+                                    col="darkgray"))
+
+```
+:::
 
 ---
