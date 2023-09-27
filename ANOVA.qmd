@@ -1,0 +1,56 @@
+> **※本ページの内容はテキストの第９章に相当します**
+
+```{r setup, include=FALSE}
+source("./R/setup.R")
+```
+
+
+# 分散分析
+　本章では分散分析（ANalysis Of VAriance）について学びます。分散分析は目的変数である量的変数が説明変数である因子によって影響されるかを調べる手法です。本章ではRcmdrで実行した場合のコードと出力結果のみを記載し、手順の記載は省略しますので詳細はテキストを参照してください。
+
+
+:::{.callout-note collapse="false"}
+## データの読み込み
+
+1. Rcmdrのメニューから［データ］-［データセットのロード...］を実行する
+1. ファイルダイアログで「`外来患者ストレス.RData`」ファイルを選択する
+1. アクティブデータセットが**`PatientStress`**になっていることを確認する
+
+:::
+
+```{r, echo=FALSE}
+load("./SampleFiles/外来患者ストレス.RData")
+PatientStress %>% df_print()
+```
+
+
+## 1元配置分散分析（P158）
+
+### 正規分布の場合（P164）
+
+```{r}
+#| code-summary: "統計量 - 平均 - 1元配置分散分析"
+#| layout-nrow: 4
+#| fig-height: 7
+
+AnovaModel.1 <- aov(健康統制感 ~ 年齢区分, data = PatientStress)
+summary(AnovaModel.1)
+with(PatientStress, RcmdrMisc::numSummary(健康統制感, groups = 年齢区分,
+                                          statistics=c('mean', 'sd')))
+
+# 以下はLinux環境のRcmdrでは動作しませんでした
+local({
+ .Pairs <- multcomp::glht(AnovaModel.1,
+                          linfct = multcomp::mcp(年齢区分 = "Tukey"))
+ print(summary(.Pairs)) # pairwise tests
+ print(confint(.Pairs, level=0.95)) # confidence intervals
+ print(multcomp::cld(.Pairs, level=0.05)) # compact letter display
+ old.oma <- par(oma=c(0, 5, 0, 0))
+ plot(confint(.Pairs))
+ par(old.oma)
+})
+```
+
+
+
+---
