@@ -38,7 +38,7 @@ summary(AnovaModel.1)
 with(PatientStress, RcmdrMisc::numSummary(健康統制感, groups = 年齢区分,
                                           statistics=c('mean', 'sd')))
 
-# 以下はLinux環境のRcmdrでは動作しませんでした
+# 多重検定で水準間の平均値の差を確認する
 local({
  .Pairs <- multcomp::glht(AnovaModel.1,
                           linfct = multcomp::mcp(年齢区分 = "Tukey"))
@@ -51,6 +51,56 @@ local({
 })
 ```
 
+:::{.callout-tip collapse="true"}
+## 多重比較
+**一元配置分散分析**  
+一元配置分散分析（ANOVA）の帰無仮設$H_0$は「すべての水準の平均は等しい」です。したがって、対立仮説$H_1$は「すくなくとも一つの水準間の平均に差がある」となります。すなわち、帰無仮設$H_0$が棄却された場合にはどの水準間に差があるのかまでは分かりません。
+```{r}
+#| code-summary: "一元配置分散分析"
 
+summary(AnovaModel.1)
+```
+
+**多重比較**  
+どの水準間に差があるのかを確認するためには一元配置分散分析（`aov()`）とは別に[多重比較](https://corvus-window.com/whats_multiple_comparison/)を行う必要があります。
+```{r}
+#| code-summary: "多重比較（テューキー・クレーマー法）"
+
+summary(multcomp::glht(AnovaModel.1,
+                       linfct = multcomp::mcp(年齢区分 = "Tukey")))
+```
+
+**信頼区間**  
+各水準間の平均値の差（推定値）が求められましたので、それを元に信頼区間を求めます。
+```{r}
+#| code-summary: "信頼区間"
+
+confint(multcomp::glht(AnovaModel.1,
+                       linfct = multcomp::mcp(年齢区分 = "Tukey")),
+        level = 0.95)
+```
+この結果をプロットするとR Commanderが出力したグラフになります。
+```{r}
+#| code-summary: "多重比較の可視化"
+#| fig-height: 7
+
+plot(confint(multcomp::glht(AnovaModel.1,
+                            linfct = multcomp::mcp(年齢区分 = "Tukey")),
+             level = 0.95))
+
+```
+
+**別の方法**  
+R　Commanderでは複数の手順を経由して多重比較を可視化していますが標準で組み込まれている`TukeyHSD()`関数を使うと一度で求めることが可能です。なお、R Commanderがこのような手順を踏んでいる理由は分かりません。
+```{r}
+#| code-summary: "多重比較の可視化（テューキー・クレーマー法）"
+#| fig-height: 7
+#| layout-nrow: 2
+
+TukeyHSD(aov(健康統制感 ~ 年齢区分, data = PatientStress)) |> 
+  print() |> 
+  plot()
+```
+:::
 
 ---
