@@ -103,4 +103,49 @@ TukeyHSD(aov(健康統制感 ~ 年齢区分, data = PatientStress)) |>
 ```
 :::
 
+### クラスカル・ウォリス検定（P168）
+```{r}
+#| code-summary: "統計量 - ノンパラメトリック検定 - クラスカル・ウォリス検定"
+#| layout-nrow: 2
+
+car::Tapply(ストレス反応得点 ~ 年齢区分, median, na.action=na.omit,
+            data=PatientStress) # medians by group
+kruskal.test(ストレス反応得点 ~ 年齢区分, data=PatientStress)
+```
+
+
+:::{.callout-tip collapse="true"}
+## 多重比較
+```{r}
+#| warning: false
+
+subset(PatientStress, PatientStress$年齢区分 == c("青年", "壮年"),
+       drop = TRUE) %>% 
+  with(wilcox.test(ストレス反応得点 ~ 年齢区分, alternative="two.sided"))
+
+subset(PatientStress, PatientStress$年齢区分 == c("青年", "中年"),
+       drop = TRUE) %>% 
+  with(wilcox.test(ストレス反応得点 ~ 年齢区分, alternative="two.sided"))
+
+subset(PatientStress, PatientStress$年齢区分 == c("青年", "高年"),
+       drop = TRUE) %>% 
+  with(wilcox.test(ストレス反応得点 ~ 年齢区分, alternative="two.sided"))
+
+subset(PatientStress, PatientStress$年齢区分 == c("壮年", "中年"),
+       drop = TRUE) %>% 
+  with(wilcox.test(ストレス反応得点 ~ 年齢区分, alternative="two.sided"))
+
+subset(PatientStress, PatientStress$年齢区分 == c("壮年", "高年"),
+       drop = TRUE) %>% 
+  with(wilcox.test(ストレス反応得点 ~ 年齢区分, alternative="two.sided"))
+
+subset(PatientStress, PatientStress$年齢区分 == c("中年", "高年"),
+       drop = TRUE) %>% 
+  with(wilcox.test(ストレス反応得点 ~ 年齢区分, alternative="two.sided"))
+
+```
+
+:::
+
 ---
+4
