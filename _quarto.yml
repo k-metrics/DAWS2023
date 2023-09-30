@@ -36,6 +36,7 @@ book:
     - wranglingData.qmd
     - estimationAndTest.qmd
     - varTest.qmd
+    - ANOVA.qmd
 
 # bibliography: references.bib
 
