@@ -224,8 +224,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="#%E5%85%83%E9%85%8D%E7%BD%AE%E5%88%86%E6%95%A3%E5%88%86%E6%9E%90p158" id="toc-元配置分散分析p158" class="nav-link active" data-scroll-target="#%E5%85%83%E9%85%8D%E7%BD%AE%E5%88%86%E6%95%A3%E5%88%86%E6%9E%90p158"><span class="header-section-number">9.1</span> 1元配置分散分析（P158）</a>
   <ul class="collapse">
 <li><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83%E3%81%AE%E5%A0%B4%E5%90%88p164" id="toc-正規分布の場合p164" class="nav-link" data-scroll-target="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83%E3%81%AE%E5%A0%B4%E5%90%88p164"><span class="header-section-number">9.1.1</span> 正規分布の場合（P164）</a></li>
+  <li><a href="#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%AB%E3%83%AB%E3%82%A6%E3%82%A9%E3%83%AA%E3%82%B9%E6%A4%9C%E5%AE%9Ap168" id="toc-クラスカルウォリス検定p168" class="nav-link" data-scroll-target="#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%AB%E3%83%AB%E3%82%A6%E3%82%A9%E3%83%AA%E3%82%B9%E6%A4%9C%E5%AE%9Ap168"><span class="header-section-number">9.1.2</span> クラスカル・ウォリス検定（P168）</a></li>
   </ul>
 </li>
+  <li><a href="#%E5%A4%9A%E5%85%83%E9%85%8D%E7%BD%AE%E5%88%86%E6%95%A3%E5%88%86%E6%9E%90p170" id="toc-多元配置分散分析p170" class="nav-link" data-scroll-target="#%E5%A4%9A%E5%85%83%E9%85%8D%E7%BD%AE%E5%88%86%E6%95%A3%E5%88%86%E6%9E%90p170"><span class="header-section-number">9.2</span> 多元配置分散分析（P170）</a></li>
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/k-metrics/DAWS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
@@ -332,18 +334,18 @@ Multiple Comparisons of Means: Tukey Contrasts
 
 Fit: aov(formula = 健康統制感 ~ 年齢区分, data = PatientStress)
 
-Quantile = 2.5689
+Quantile = 2.5688
 95% family-wise confidence level
  
 
 Linear Hypotheses:
                  Estimate lwr     upr    
-壮年 - 青年 == 0  0.2815  -5.5159  6.0790
-中年 - 青年 == 0  1.6869  -2.9361  6.3098
-高年 - 青年 == 0 11.1256   5.3810 16.8702
-中年 - 壮年 == 0  1.4054  -5.0348  7.8455
-高年 - 壮年 == 0 10.8441   3.5569 18.1313
-高年 - 中年 == 0  9.4387   3.0462 15.8313
+壮年 - 青年 == 0  0.2815  -5.5157  6.0787
+中年 - 青年 == 0  1.6869  -2.9359  6.3097
+高年 - 青年 == 0 11.1256   5.3813 16.8699
+中年 - 壮年 == 0  1.4054  -5.0345  7.8452
+高年 - 壮年 == 0 10.8441   3.5572 18.1310
+高年 - 中年 == 0  9.4387   3.0464 15.8310
 
 青年 壮年 中年 高年 
  "a"  "a"  "a"  "b" </code></pre>
@@ -400,7 +402,7 @@ Linear Hypotheses:
 中年 - 青年 == 0   1.6869     1.7996   0.937    0.779    
 高年 - 青年 == 0  11.1256     2.2362   4.975   &lt;0.001 ***
 中年 - 壮年 == 0   1.4054     2.5070   0.561    0.942    
-高年 - 壮年 == 0  10.8441     2.8367   3.823   &lt;0.001 ***
+高年 - 壮年 == 0  10.8441     2.8367   3.823    0.001 ** 
 高年 - 中年 == 0   9.4387     2.4885   3.793   &lt;0.001 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -422,18 +424,18 @@ Multiple Comparisons of Means: Tukey Contrasts
 
 Fit: aov(formula = 健康統制感 ~ 年齢区分, data = PatientStress)
 
-Quantile = 2.5679
+Quantile = 2.567
 95% family-wise confidence level
  
 
 Linear Hypotheses:
                  Estimate lwr     upr    
-壮年 - 青年 == 0  0.2815  -5.5138  6.0769
-中年 - 青年 == 0  1.6869  -2.9344  6.3082
-高年 - 青年 == 0 11.1256   5.3831 16.8681
-中年 - 壮年 == 0  1.4054  -5.0324  7.8431
-高年 - 壮年 == 0 10.8441   3.5595 18.1286
-高年 - 中年 == 0  9.4387   3.0485 15.8290</code></pre>
+壮年 - 青年 == 0  0.2815  -5.5116  6.0747
+中年 - 青年 == 0  1.6869  -2.9327  6.3064
+高年 - 青年 == 0 11.1256   5.3853 16.8659
+中年 - 壮年 == 0  1.4054  -5.0300  7.8407
+高年 - 壮年 == 0 10.8441   3.5623 18.1259
+高年 - 中年 == 0  9.4387   3.0509 15.8265</code></pre>
 </div>
 </div>
 <p>この結果をプロットするとR Commanderが出力したグラフになります。</p>
@@ -479,10 +481,309 @@ $年齢区分
 </div>
 </div>
 </div>
+</section><section id="クラスカルウォリス検定p168" class="level3" data-number="9.1.2"><h3 data-number="9.1.2" class="anchored" data-anchor-id="クラスカルウォリス検定p168">
+<span class="header-section-number">9.1.2</span> クラスカル・ウォリス検定（P168）</h3>
+<div>
+<details open=""><summary>統計量 - ノンパラメトリック検定 - クラスカル・ウォリス検定</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span>, <span class="va">median</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
+<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># medians by group</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/kruskal.test.html">kruskal.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span>, data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>青年 壮年 中年 高年 
+33.0 27.0 15.0 11.5 </code></pre>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  ストレス反応得点 by 年齢区分
+Kruskal-Wallis chi-squared = 47.672, df = 3, p-value = 2.501e-10</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+多重比較（テキストの方法）
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<details open=""><summary>データ - アクティブデータセット - アクティブデータセットの部分集合を抽出</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">PatientStress</span>, subset<span class="op">=</span><span class="va">年齢区分</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"青年"</span>, <span class="st">"壮年"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">PatientStress</span>, subset<span class="op">=</span><span class="va">年齢区分</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"青年"</span>, <span class="st">"中年"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">PatientStress</span>, subset<span class="op">=</span><span class="va">年齢区分</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"青年"</span>, <span class="st">"高年"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">PatientStress</span>, subset<span class="op">=</span><span class="va">年齢区分</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"壮年"</span>, <span class="st">"中年"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">PatientStress</span>, subset<span class="op">=</span><span class="va">年齢区分</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"壮年"</span>, <span class="st">"高年"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">PatientStress</span>, subset<span class="op">=</span><span class="va">年齢区分</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"中年"</span>, <span class="st">"高年"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>アクティブデータセットを切り替えながら検定を行います。有意水準はボフェローニ補正により <span class="math inline">\(p \lt \frac{0.05}{6} = 0.0083333\)</span> となります。</p>
+<div class="cell">
+<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">df1</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span>, alternative<span class="op">=</span><span class="st">"two.sided"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 4233.5, p-value = 0.1252
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">df2</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span>, alternative<span class="op">=</span><span class="st">"two.sided"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 9563, p-value = 1.266e-07
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">df3</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span>, alternative<span class="op">=</span><span class="st">"two.sided"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 5810.5, p-value = 2.603e-08
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">df4</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span>, alternative<span class="op">=</span><span class="st">"two.sided"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 2149, p-value = 0.01583
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">df5</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span>, alternative<span class="op">=</span><span class="st">"two.sided"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stderr">
+<pre><code>Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...):
+タイがあるため、正確な p 値を計算することができません</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 1335.5, p-value = 0.000951
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<details open=""><summary>統計量 - ノンパラメトリック検定 - 2標本ウィルコクソン検定</summary><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">df6</span>, <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span>, alternative<span class="op">=</span><span class="st">"two.sided"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 1992, p-value = 0.1804
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+多重比較（コードを書く方法）
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<details open=""><summary>あまりエレガントでない方法</summary><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ageCalssLvls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/combn.html">combn</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">PatientStress</span><span class="op">$</span><span class="va">年齢区分</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">ageCalssLvls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>    V1   V2
+1 青年 壮年
+2 青年 中年
+3 青年 高年
+4 壮年 中年
+5 壮年 高年
+6 中年 高年</code></pre>
+</div>
+<details open=""><summary>あまりエレガントでない方法</summary><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ageCalssLvls</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="va">PatientStress</span><span class="op">$</span><span class="va">年齢区分</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> </span>
+<span>         <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">ageCalssLvls</span><span class="op">$</span><span class="va">V1</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">ageCalssLvls</span><span class="op">$</span><span class="va">V2</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">年齢区分</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"----------"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 4233.5, p-value = 0.1252
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "----------"
+
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 9563, p-value = 1.266e-07
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "----------"
+
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 5810.5, p-value = 2.603e-08
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "----------"
+
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 2149, p-value = 0.01583
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "----------"</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...):
+タイがあるため、正確な p 値を計算することができません</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 1335.5, p-value = 0.000951
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "----------"
+
+    Wilcoxon rank sum test with continuity correction
+
+data:  ストレス反応得点 by 年齢区分
+W = 1992, p-value = 0.1804
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "----------"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+多重比較（エレガントな方法）
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>（検討中）</p>
+</div>
+</div>
+</div>
+</section></section><section id="多元配置分散分析p170" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="多元配置分散分析p170">
+<span class="header-section-number">9.2</span> 多元配置分散分析（P170）</h2>
+<div>
+<details open=""><summary>統計量 - 平均 - 多元配置分散分析(Linux)</summary><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">AnovaModel.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span><span class="op">*</span><span class="va">年齢区分</span>,</span>
+<span>                   data <span class="op">=</span> <span class="va">PatientStress</span>,</span>
+<span>                   contrasts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>性別<span class="op">=</span><span class="va">contr.sum</span>, 年齢区分<span class="op">=</span><span class="va">contr.sum</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html">Anova</a></span><span class="op">(</span><span class="va">AnovaModel.2</span><span class="op">)</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, <span class="va">mean</span>, na.action <span class="op">=</span> <span class="va">na.omit</span>,</span>
+<span>            data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span> <span class="co"># means</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, <span class="va">sd</span>, na.action <span class="op">=</span> <span class="va">na.omit</span>,</span>
+<span>            data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span> <span class="co"># std. deviations</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/xtabs.html">xtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span> <span class="co"># counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>Anova Table (Type II tests)
+
+Response: 健康統制感
+              Sum Sq  Df F value    Pr(&gt;F)    
+性別              11   1  0.0660    0.7974    
+年齢区分        4489   3  8.5936 1.653e-05 ***
+性別:年齢区分    973   3  1.8619    0.1359    
+Residuals      57291 329                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>    年齢区分
+性別     青年     壮年     中年      高年
+  男 91.82000 86.94737 90.31250  97.61111
+  女 88.65289 92.16667 91.91489 102.84615</code></pre>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>    年齢区分
+性別     青年     壮年     中年     高年
+  男 13.96013 13.17183 15.54689 15.03775
+  女 12.40478 11.41192 12.55220 13.52536</code></pre>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>    年齢区分
+性別 青年 壮年 中年 高年
+  男   50   19   32   18
+  女  121   24   47   26</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rcmdrのバグ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Linux版のR Commanderにはバグがあるようで上記のコードに変更しないと動作しませんが、Windowsではこのコードでは動作しません。</p>
+<div class="cell">
+<details open=""><summary>統計量 - 平均 - 多元配置分散分析(Windows)</summary><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">AnovaModel.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span><span class="op">*</span><span class="va">年齢区分</span>, data<span class="op">=</span><span class="va">PatientStress</span>,</span>
+<span>                   contrasts<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>性別 <span class="op">=</span><span class="st">"contr.Sum"</span>, 年齢区分 <span class="op">=</span><span class="st">"contr.Sum"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html">Anova</a></span><span class="op">(</span><span class="va">AnovaModel.2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, <span class="va">mean</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
+<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># means</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">健康統制感</span> <span class="op">~</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, <span class="va">sd</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
+<span>            data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># std. deviations</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/xtabs.html">xtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span> <span class="co"># counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+</div>
 <hr>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
