@@ -37,6 +37,7 @@ book:
     - estimationAndTest.qmd
     - varTest.qmd
     - ANOVA.qmd
+    - tips.qmd
 
 # bibliography: references.bib
 

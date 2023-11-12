@@ -1,0 +1,71 @@
+> **※本ページの内容はテキストの範囲外となります**
+
+```{r setup, include=FALSE}
+source("./R/setup.R")
+```
+
+
+# Tips {.unnumbered}
+　本章では勉強会での質問などを整理しています。
+
+
+:::{.callout-note collapse="false"}
+## データの読み込み
+
+1. Rcmdrのメニューから［データ］-［データセットのロード...］を実行する
+1. ファイルダイアログで「`外来患者ストレス.RData`」ファイルを選択する
+1. アクティブデータセットが**`PatientStress`**になっていることを確認する
+
+:::
+
+```{r, echo=FALSE}
+load("./SampleFiles/外来患者ストレス.RData")
+PatientStress %>% df_print()
+```
+
+
+## 箱ひげ図の各値を知る方法
+R Commanderの箱ひげ図（`Boxplot()`関数）は外れ値のインデックスを描いてくれますが、四分位数などの数値は描いてくれません。
+```{r}
+#| code-summary: "グラフ - 箱ひげ図"
+#| layout-nrow: 4
+
+car::Boxplot(ストレス反応得点 ~ 性別, data = PatientStress,
+             id = list(method = "y"))
+```
+
+> 引数`id`は外れ値のインデックス番号（行番号）の描き方の指定に使われています。
+
+Rの標準関数として用意されている箱ひげ図描画関数（`boxplot()`）は基本的にR Commanderの`Boxplot()`関数と同じ引数を取ります。ただし、外れ値のインデックスを描く機能はありません。  
+したがって、`Boxplot()`関数と同様に下記のように指定することで同じ箱ひげ図が描けます。
+```{r}
+#| code-summary: "Rの標準関数"
+boxplot(ストレス反応得点 ~ 性別, data = PatientStress)
+```
+
+加えて`boxplot()`関数はリスト型の非表示返り値を持っていますので、この返り値を`print()`関数を用いて表示することで各種の値を取得することができます。
+```{r}
+#| code-summary: "print()関数で返り値も表示"
+#| layout-nrow: 2
+print(boxplot(ストレス反応得点 ~ 性別, data = PatientStress))
+```
+
+各返り値は下表のようになります。
+
+返り値  | 内容
+--------|----------------------------------
+`stats` | 下ひげ、四分位数、上ひげの値
+`n`     | データ数
+`conf`  | 信頼区間[^conf]（$Q_2 \pm 1.58 \times \frac{IQR}{\sqrt n}$）
+`out`   | 外れ値（インデックスではなく値）
+`group` | 外れ値が属するグループ
+`names` | グループ名（層別水準名）
+
+[^conf]: 正規分布での$Q_2 \pm 2\sigma$相当なので95$\%$信頼区間にあたります。係数はソースでベタ打ちになっているため変更することはできません。
+
+四分位数はテューキーの四分位数で`fivenum()`関数を用いています。  
+外れ値は閉区間$\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]$の外側にある値です。閉区間の外側を外れ値とする理由は下図を見れば理解できると思います。
+
+![出典:Wikipedia(en)](https://upload.wikimedia.org/wikipedia/commons/1/1a/Boxplot_vs_PDF.svg)
+
+---
