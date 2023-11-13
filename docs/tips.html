@@ -224,14 +224,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3%E3%81%AE%E5%90%84%E5%80%A4%E3%82%92%E7%9F%A5%E3%82%8B%E6%96%B9%E6%B3%95" id="toc-箱ひげ図の各値を知る方法" class="nav-link active" data-scroll-target="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3%E3%81%AE%E5%90%84%E5%80%A4%E3%82%92%E7%9F%A5%E3%82%8B%E6%96%B9%E6%B3%95">箱ひげ図の各値を知る方法</a></li>
+<li><a href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3%E3%81%AE%E6%A7%98%E3%80%85%E3%81%AA%E5%80%A4%E3%82%92%E7%9F%A5%E3%82%8B%E6%96%B9%E6%B3%95" id="toc-箱ひげ図の様々な値を知る方法" class="nav-link active" data-scroll-target="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3%E3%81%AE%E6%A7%98%E3%80%85%E3%81%AA%E5%80%A4%E3%82%92%E7%9F%A5%E3%82%8B%E6%96%B9%E6%B3%95">箱ひげ図の様々な値を知る方法</a></li>
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/k-metrics/DAWS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><blockquote class="blockquote">
 <p><strong>※本ページの内容はテキストの範囲外となります</strong></p>
 </blockquote>
-<p>　本章では勉強会での質問などを整理しています。</p>
+<p>　本章では勉強会であった質問事項などを整理しています。</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -262,11 +262,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="箱ひげ図の各値を知る方法" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="箱ひげ図の各値を知る方法">箱ひげ図の各値を知る方法</h2>
-<p>R Commanderの箱ひげ図（<code>Boxplot()</code>関数）は外れ値のインデックスを描いてくれますが、四分位数などの数値は描いてくれません。</p>
+<section id="箱ひげ図の様々な値を知る方法" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="箱ひげ図の様々な値を知る方法">箱ひげ図の様々な値を知る方法</h2>
+<p>R Commanderの箱ひげ図（<code>Boxplot()</code>関数）は外れ値のインデックスを出力することは可能ですが、四分位数などの箱ひげ図に関する様々な値を出力できません。</p>
 <div>
-<details open=""><summary>グラフ - 箱ひげ図</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Boxplot.html">Boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span>,</span>
-<span>             id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>グラフ - 箱ひげ図</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Boxplot.html">Boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
@@ -281,24 +280,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>引数<code>id</code>は外れ値のインデックス番号（行番号）の描き方の指定に使われています。</p>
-</blockquote>
-<p>Rの標準関数として用意されている箱ひげ図描画関数（<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>）は基本的にR Commanderの<code>Boxplot()</code>関数と同じ引数を取ります。ただし、外れ値のインデックスを描く機能はありません。<br>
-したがって、<code>Boxplot()</code>関数と同様に下記のように指定することで同じ箱ひげ図が描けます。</p>
-<div class="cell">
-<details open=""><summary>Rの標準関数</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<p><img src="tips_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p>そこで、Rの標準的な箱ひげ図関数である<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数を用います。<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数は箱ひげ図の出力と同時に箱ひげ図に関する様々な値の出力が可能です。ただし、様々な値は非表示の返り値になっているため<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>関数を用いて明示的に出力する必要があります。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>Boxplot()</code>関数と<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数の関係
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>R Commanderの<code>Boxplot()</code>関数は<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数のラッパー関数です。箱ひげ図自体の描画を<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が担い、外れ値の特定処理を<code>Boxplot()</code>関数が担っています。ですので<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が出力する箱ひげ図はR Commanderで外れ値の特定を”No”に設定した場合と同一の出力になります。なお、<code>Boxplot()</code>関数は返り値を持っていないため上記の方法は使えません。</p>
 </div>
 </div>
-<p>加えて<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数はリスト型の非表示返り値を持っていますので、この返り値を<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>関数を用いて表示することで各種の値を取得することができます。</p>
+</div>
 <div>
-<details open=""><summary>print()関数で返り値も表示</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open=""><summary>print()関数による出力</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="tips_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="tips_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -331,28 +335,28 @@ $names
 </div>
 </div>
 </div>
-<p>各返り値は下表のようになります。</p>
+<p>返り値の持つ意味は下表の通りです。</p>
 <table class="table">
 <thead><tr class="header">
 <th>返り値</th>
-<th>内容</th>
+<th>意味（内容）</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>stats</code></td>
-<td>下ひげ、四分位数、上ひげの値</td>
+<td>下ひげ極値<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、四分位数<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>、上ひげ極値</td>
 </tr>
 <tr class="even">
 <td><code>n</code></td>
-<td>データ数</td>
+<td>（グループ毎の）データ数</td>
 </tr>
 <tr class="odd">
 <td><code>conf</code></td>
-<td>信頼区間<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>（<span class="math inline">\(Q_2 \pm 1.58 \times \frac{IQR}{\sqrt n}\)</span>）</td>
+<td>信頼区間<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>（<span class="math inline">\(Q_2 \pm 1.58 \times \frac{IQR}{\sqrt n}\)</span>）</td>
 </tr>
 <tr class="even">
 <td><code>out</code></td>
-<td>外れ値（インデックスではなく値）</td>
+<td>外れ値<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>（インデックスではなくデータの値）</td>
 </tr>
 <tr class="odd">
 <td><code>group</code></td>
@@ -364,11 +368,103 @@ $names
 </tr>
 </tbody>
 </table>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;正規分布での<span class="math inline">\(Q_2 \pm 2\sigma\)</span>相当なので95<span class="math inline">\(\%\)</span>信頼区間にあたります。係数はソースでベタ打ちになっているため変更することはできません。</p></li></div><p>四分位数はテューキーの四分位数で<code><a href="https://rdrr.io/r/stats/fivenum.html">fivenum()</a></code>関数を用いて求めています。<br>
-外れ値は閉区間<span class="math inline">\(\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]\)</span>の外側にある値です。閉区間の外側を外れ値とする理由は下図を見れば理解できると思います。</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;下／上ひげ極値とは閉区間<span class="math inline">\(\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]\)</span>の中で最も小さい／大きいデータの値です。閉区間の下限／上限値ではありません。</p></li><li id="fn2"><p><sup>2</sup>&nbsp;四分位数はテューキーの四分位数（<code><a href="https://rdrr.io/r/stats/fivenum.html">fivenum()</a></code>関数で求めています）になります。</p></li><li id="fn3"><p><sup>3</sup>&nbsp;95<span class="math inline">\(\%\)</span>信頼区間です。係数はソースでベタ打ちになっているため引数を用いて信頼区間を変更することはできません。</p></li><li id="fn4"><p><sup>4</sup>&nbsp;外れ値は閉区間<span class="math inline">\(\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]\)</span>の外側にある値です。</p></li></div><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+IQRの1.5倍の外側が外れ値になる理由
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>閉区間の外側を外れ値とする理由は下図（正規分布における箱ひげ図）を見れば理解できると思います。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Boxplot_vs_PDF.svg" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">出典:Wikipedia(en)</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+返り値だけを出力する
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>箱ひげ図を出力せずに返り値だけを出力したい場合は<code>plot = FALSE</code>を引数に指定します。</p>
+<div class="cell">
+<details open=""><summary>返り値だけを出力する</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>$stats
+     [,1] [,2]
+[1,]  0.0    0
+[2,]  9.0   14
+[3,] 19.0   31
+[4,] 38.5   55
+[5,] 81.0  114
+
+$n
+[1] 119 218
+
+$conf
+         [,1]     [,2]
+[1,] 14.72727 26.61254
+[2,] 23.27273 35.38746
+
+$out
+ [1]  97 113  86  87 107 113 156 131 139 126 140 124 141 148 126 142
+
+$group
+ [1] 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2
+
+$names
+[1] "男" "女"</code></pre>
+</div>
+</div>
+<p>返り値はリスト型変数なので<code>$</code>演算子を用いた参照で特定の値だけを出力することも可能です。</p>
+<div class="cell">
+<details open=""><summary>特定の返り値だけを出力する</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">stats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]  0.0    0
+[2,]  9.0   14
+[3,] 19.0   31
+[4,] 38.5   55
+[5,] 81.0  114</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+極値と閉区間の関係
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>青点線が男性の閉区間上限値、赤点線が女性の閉区間上限値、青緑の四角がデータ値になります。上ひげ（whisker）極値は必ずしも閉区間上限値と一致しないことが図から分かります。上ひげ極値は必ず閉区間の中で最も大きいデータの値と一致します。なお、下限側はマイナス値になることから描画を省略しています。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="tips_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <hr>
 

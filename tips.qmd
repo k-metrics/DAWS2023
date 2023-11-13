@@ -6,7 +6,7 @@ source("./R/setup.R")
 
 
 # Tips {.unnumbered}
-　本章では勉強会での質問などを整理しています。
+　本章では勉強会であった質問事項などを整理しています。
 
 
 :::{.callout-note collapse="false"}
@@ -24,48 +24,88 @@ PatientStress %>% df_print()
 ```
 
 
-## 箱ひげ図の各値を知る方法
-R Commanderの箱ひげ図（`Boxplot()`関数）は外れ値のインデックスを描いてくれますが、四分位数などの数値は描いてくれません。
+## 箱ひげ図の様々な値を知る方法
+R Commanderの箱ひげ図（`Boxplot()`関数）は外れ値のインデックスを出力することは可能ですが、四分位数などの箱ひげ図に関する様々な値を出力できません。
 ```{r}
+#| fig-height: 7
 #| code-summary: "グラフ - 箱ひげ図"
 #| layout-nrow: 4
-
-car::Boxplot(ストレス反応得点 ~ 性別, data = PatientStress,
-             id = list(method = "y"))
+car::Boxplot(ストレス反応得点 ~ 性別, data = PatientStress)
 ```
 
-> 引数`id`は外れ値のインデックス番号（行番号）の描き方の指定に使われています。
+そこで、Rの標準的な箱ひげ図関数である`boxplot()`関数を用います。`boxplot()`関数は箱ひげ図の出力と同時に箱ひげ図に関する様々な値の出力が可能です。ただし、様々な値は非表示の返り値になっているため`print()`関数を用いて明示的に出力する必要があります。
 
-Rの標準関数として用意されている箱ひげ図描画関数（`boxplot()`）は基本的にR Commanderの`Boxplot()`関数と同じ引数を取ります。ただし、外れ値のインデックスを描く機能はありません。  
-したがって、`Boxplot()`関数と同様に下記のように指定することで同じ箱ひげ図が描けます。
-```{r}
-#| code-summary: "Rの標準関数"
-boxplot(ストレス反応得点 ~ 性別, data = PatientStress)
-```
+:::{.callout-note collapse="true"}
+## `Boxplot()`関数と`boxplot()`関数の関係
+R Commanderの`Boxplot()`関数は`boxplot()`関数のラッパー関数です。箱ひげ図自体の描画を`boxplot()`関数が担い、外れ値の特定処理を`Boxplot()`関数が担っています。ですので`boxplot()`関数が出力する箱ひげ図はR Commanderで外れ値の特定を"No"に設定した場合と同一の出力になります。なお、`Boxplot()`関数は返り値を持っていないため上記の方法は使えません。
+:::
 
-加えて`boxplot()`関数はリスト型の非表示返り値を持っていますので、この返り値を`print()`関数を用いて表示することで各種の値を取得することができます。
 ```{r}
-#| code-summary: "print()関数で返り値も表示"
+#| fig-height: 7
+#| code-summary: "print()関数による出力"
 #| layout-nrow: 2
 print(boxplot(ストレス反応得点 ~ 性別, data = PatientStress))
 ```
 
-各返り値は下表のようになります。
+返り値の持つ意味は下表の通りです。
 
-返り値  | 内容
---------|----------------------------------
-`stats` | 下ひげ、四分位数、上ひげの値
-`n`     | データ数
+返り値  | 意味（内容）
+--------|-------------------------------------------------------------
+`stats` | 下ひげ極値[^whisker]、四分位数[^fivenum]、上ひげ極値
+`n`     | （グループ毎の）データ数
 `conf`  | 信頼区間[^conf]（$Q_2 \pm 1.58 \times \frac{IQR}{\sqrt n}$）
-`out`   | 外れ値（インデックスではなく値）
+`out`   | 外れ値[^outer]（インデックスではなくデータの値）
 `group` | 外れ値が属するグループ
 `names` | グループ名（層別水準名）
 
-[^conf]: 正規分布での$Q_2 \pm 2\sigma$相当なので95$\%$信頼区間にあたります。係数はソースでベタ打ちになっているため変更することはできません。
+[^whisker]: 下／上ひげ極値とは閉区間$\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]$の中で最も小さい／大きいデータの値です。閉区間の下限／上限値ではありません。
 
-四分位数はテューキーの四分位数で`fivenum()`関数を用いています。  
-外れ値は閉区間$\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]$の外側にある値です。閉区間の外側を外れ値とする理由は下図を見れば理解できると思います。
+[^fivenum]: 四分位数はテューキーの四分位数（`fivenum()`関数で求めています）になります。
+
+[^conf]: 95$\%$信頼区間です。係数はソースでベタ打ちになっているため引数を用いて信頼区間を変更することはできません。
+
+[^outer]: 外れ値は閉区間$\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]$の外側にある値です。
+
+:::{.callout-note collapse="true"}
+## IQRの1.5倍の外側が外れ値になる理由
+閉区間の外側を外れ値とする理由は下図（正規分布における箱ひげ図）を見れば理解できると思います。
 
 ![出典:Wikipedia(en)](https://upload.wikimedia.org/wikipedia/commons/1/1a/Boxplot_vs_PDF.svg)
+:::
 
+:::{.callout-tip collapse="true"}
+## 返り値だけを出力する
+箱ひげ図を出力せずに返り値だけを出力したい場合は`plot = FALSE`を引数に指定します。
+```{r}
+#| code-summary: "返り値だけを出力する"
+boxplot(ストレス反応得点 ~ 性別, data = PatientStress, plot = FALSE)
+```
+
+返り値はリスト型変数なので`$`演算子を用いた参照で特定の値だけを出力することも可能です。
+```{r}
+#| code-summary: "特定の返り値だけを出力する"
+boxplot(ストレス反応得点 ~ 性別, data = PatientStress, plot = FALSE)$stats
+```
+:::
+
+:::{.callout-note collapse="true"}
+## 極値と閉区間の関係
+青点線が男性の閉区間上限値、赤点線が女性の閉区間上限値、青緑の四角がデータ値になります。上ひげ（whisker）極値は必ずしも閉区間上限値と一致しないことが図から分かります。上ひげ極値は必ず閉区間の中で最も大きいデータの値と一致します。なお、下限側はマイナス値になることから描画を省略しています。
+```{r, echo=FALSE}
+#| fig-height: 7
+stats <- boxplot(ストレス反応得点 ~ 性別, data = PatientStress, plot = FALSE)$stats
+iqr <- diff(stats[c(2, 4), ])
+lower <- stats[2, ] - 1.5 * iqr
+upper <- stats[4, ] + 1.5 * iqr
+# iqr
+# lower
+# upper
+
+boxplot(ストレス反応得点 ~ 性別, data = PatientStress, lty = "solid")
+stripchart(ストレス反応得点 ~ 性別, data = PatientStress, method = "stack",
+           add = TRUE, vertical = TRUE, col = "darkcyan")
+abline(h = upper[, 1], lty = "dotted", col = "blue")
+abline(h = upper[, 2], lty = "dotted", col = "red")
+```
+:::
 ---
