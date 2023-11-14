@@ -24,8 +24,8 @@ PatientStress %>% df_print()
 ```
 
 
-## 箱ひげ図の様々な値を知る方法
-R Commanderの箱ひげ図（`Boxplot()`関数）は外れ値のインデックスを出力することは可能ですが、四分位数などの箱ひげ図に関する様々な値を出力できません。
+## 箱ひげ図のサマリを知る方法
+R Commanderの箱ひげ図（`Boxplot()`関数）は外れ値のインデックスを出力することは可能ですが、四分位数などの箱ひげ図に関するサマリを出力できません。
 ```{r}
 #| fig-height: 7
 #| code-summary: "グラフ - 箱ひげ図"
@@ -33,7 +33,7 @@ R Commanderの箱ひげ図（`Boxplot()`関数）は外れ値のインデック�
 car::Boxplot(ストレス反応得点 ~ 性別, data = PatientStress)
 ```
 
-そこで、Rの標準的な箱ひげ図関数である`boxplot()`関数を用います。`boxplot()`関数は箱ひげ図の出力と同時に箱ひげ図に関する様々な値の出力が可能です。ただし、様々な値は非表示の返り値になっているため`print()`関数を用いて明示的に出力する必要があります。
+そこで、サマリを関数の返り値として出力できるRの標準的箱ひげ図関数`boxplot()`関数を用います。ただし、サマリは非表示の返り値になっているため`print()`関数を用いて明示的に出力する必要があります。
 
 :::{.callout-note collapse="true"}
 ## `Boxplot()`関数と`boxplot()`関数の関係
@@ -47,14 +47,15 @@ R Commanderの`Boxplot()`関数は`boxplot()`関数のラッパー関数です�
 print(boxplot(ストレス反応得点 ~ 性別, data = PatientStress))
 ```
 
-返り値の持つ意味は下表の通りです。
+### サマリの詳細
+`boxplot()`関数が出力するのはテューキーの箱ひげ図で、出力されるサマリは下表の通りです。
 
-返り値  | 意味（内容）
+返り値  | 説明（返り値の内容）
 --------|-------------------------------------------------------------
 `stats` | 下ひげ極値[^whisker]、四分位数[^fivenum]、上ひげ極値
 `n`     | （グループ毎の）データ数
 `conf`  | 信頼区間[^conf]（$Q_2 \pm 1.58 \times \frac{IQR}{\sqrt n}$）
-`out`   | 外れ値[^outer]（インデックスではなくデータの値）
+`out`   | 外れ値[^outlier]（インデックスではなくデータの値）
 `group` | 外れ値が属するグループ
 `names` | グループ名（層別水準名）
 
@@ -64,7 +65,7 @@ print(boxplot(ストレス反応得点 ~ 性別, data = PatientStress))
 
 [^conf]: 95$\%$信頼区間です。係数はソースでベタ打ちになっているため引数を用いて信頼区間を変更することはできません。
 
-[^outer]: 外れ値は閉区間$\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]$の外側にある値です。
+[^outlier]: 外れ値は閉区間$\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]$の外側にある値です。
 
 :::{.callout-note collapse="true"}
 ## IQRの1.5倍の外側が外れ値になる理由
@@ -74,8 +75,8 @@ print(boxplot(ストレス反応得点 ~ 性別, data = PatientStress))
 :::
 
 :::{.callout-tip collapse="true"}
-## 返り値だけを出力する
-箱ひげ図を出力せずに返り値だけを出力したい場合は`plot = FALSE`を引数に指定します。
+## サマリだけを出力する
+箱ひげ図を出力せずにサマリだけを出力したい場合は`plot = FALSE`を引数に指定します。
 ```{r}
 #| code-summary: "返り値だけを出力する"
 boxplot(ストレス反応得点 ~ 性別, data = PatientStress, plot = FALSE)
@@ -90,22 +91,23 @@ boxplot(ストレス反応得点 ~ 性別, data = PatientStress, plot = FALSE)$s
 
 :::{.callout-note collapse="true"}
 ## 極値と閉区間の関係
-青点線が男性の閉区間上限値、赤点線が女性の閉区間上限値、青緑の四角がデータ値になります。上ひげ（whisker）極値は必ずしも閉区間上限値と一致しないことが図から分かります。上ひげ極値は必ず閉区間の中で最も大きいデータの値と一致します。なお、下限側はマイナス値になることから描画を省略しています。
-```{r, echo=FALSE}
+下図の青点線が男性の閉区間上限値、赤点線が女性の閉区間上限値、青緑の四角が各データになります。上ひげ極値は閉区間内にあるデータの最大値を取りますので必ずしも閉区間上限値と一致しないことが図から分かります。なお、閉区間下限値はマイナスになることから出力を省略しますが、下ひげ極値は男女ともに閉区間内にあるデータの最小値であるゼロになっていることが分かります。
+```{r}
+#| echo: false
 #| fig-height: 7
-stats <- boxplot(ストレス反応得点 ~ 性別, data = PatientStress, plot = FALSE)$stats
-iqr <- diff(stats[c(2, 4), ])
-lower <- stats[2, ] - 1.5 * iqr
-upper <- stats[4, ] + 1.5 * iqr
-# iqr
-# lower
-# upper
+bp <- boxplot(ストレス反応得点 ~ 性別, data = PatientStress, plot = FALSE)
 
-boxplot(ストレス反応得点 ~ 性別, data = PatientStress, lty = "solid")
-stripchart(ストレス反応得点 ~ 性別, data = PatientStress, method = "stack",
+iqr <- diff(bp$stats[c(2, 4), ])
+
+l.limit <- bp$stats[c(2), ] - 1.5 * iqr
+u.limit <- bp$stats[c(4), ] + 1.5 * iqr
+
+bxp(bp)   # Draw Box Plots from Summaries
+stripchart(ストレス反応得点 ~ 性別, data = PatientStress, method = "overplot",
            add = TRUE, vertical = TRUE, col = "darkcyan")
-abline(h = upper[, 1], lty = "dotted", col = "blue")
-abline(h = upper[, 2], lty = "dotted", col = "red")
+abline(h = u.limit[, 1], lty = "dotted", col = "blue")
+abline(h = u.limit[, 2], lty = "dotted", col = "red")
 ```
 :::
+
 ---
