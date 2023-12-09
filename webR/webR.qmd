@@ -4,9 +4,16 @@ format: html
 engine: knitr
 filters:
   - webr
+# webr:
+#   packages: ['ggplot2', 'dplyr', 'readxl']
 ---
 
 This is a webR-enabled code cell in a Quarto HTML document.
+
+```{webr-r}
+webr::install("tidyverse")
+```
+
 
 ```{webr-r}
 fit = lm(mpg ~ am, data = mtcars)
@@ -18,3 +25,4 @@ summary(fit)
 ```{webr-r}
 plot(iris)
 ```
+
