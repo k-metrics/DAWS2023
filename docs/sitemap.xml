@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/index.html</loc>
-    <lastmod>2023-11-14T09:44:27.568Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.130Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/dataset.html</loc>
-    <lastmod>2023-11-14T09:44:27.584Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.150Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/try.html</loc>
-    <lastmod>2023-11-14T09:44:27.596Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.162Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/warmingup.html</loc>
-    <lastmod>2023-11-14T09:44:27.604Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.174Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/browsingData.html</loc>
-    <lastmod>2023-11-14T09:44:27.660Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.234Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/wranglingData.html</loc>
-    <lastmod>2023-11-14T09:44:27.700Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.270Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/estimationAndTest.html</loc>
-    <lastmod>2023-11-14T09:44:27.752Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.314Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/varTest.html</loc>
-    <lastmod>2023-11-14T09:44:27.768Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.334Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/ANOVA.html</loc>
-    <lastmod>2023-11-14T09:44:27.812Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.370Z</lastmod>
   </url>
   <url>
     <loc>https://k-metrics.github.io/DAWS2023/tips.html</loc>
-    <lastmod>2023-11-14T09:44:27.840Z</lastmod>
+    <lastmod>2023-12-15T13:25:50.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://k-metrics.github.io/DAWS2023/webR/webR.html</loc>
+    <lastmod>2023-12-15T13:25:50.426Z</lastmod>
   </url>
 </urlset>

@@ -219,6 +219,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Tips</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./webR/webR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Try boxplot()</span></a>
+  </div>
+</li>
     </ul>
 </div>
 </nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
@@ -758,23 +764,30 @@ Rcmdrのバグ
 <span>                      groups<span class="op">=</span><span class="va">PatientStressSub</span><span class="op">$</span><span class="va">性別</span>,</span>
 <span>                      statistics<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"quantiles"</span>, <span class="st">"CV"</span><span class="op">)</span>,</span>
 <span>                      quantiles<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.25</span>,<span class="fl">.5</span>,<span class="fl">.75</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stderr">
+<pre><code>Warning in FUN(X[[i]], ...): not all values are positive
+
+Warning in FUN(X[[i]], ...): not all values are positive
+
+Warning in FUN(X[[i]], ...): not all values are positive</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
 <pre><code>
 Variable: ストレス反応得点 
-       mean       sd   IQR 0% 25% 50%   75% 100%   n
-男 26.63866 26.30001 29.50  0   9  19 38.50  113 119
-女 39.40826 34.31023 40.75  0  14  31 54.75  156 218
+       mean       sd        CV 0% 25% 50%   75% 100%   n
+男 26.63866 26.30001 0.9872873  0   9  19 38.50  113 119
+女 39.40826 34.31023 0.8706356  0  14  31 54.75  156 218
 
 Variable: ストレッサー得点 
-       mean       sd IQR 0% 25% 50% 75% 100%   n
-男 7.386555 2.940394   4  1   5   7   9   15 119
-女 7.256881 3.113531   4  0   5   7   9   16 218</code></pre>
+       mean       sd        CV 0% 25% 50% 75% 100%   n
+男 7.386555 2.940394 0.3980739  1   5   7   9   15 119
+女 7.256881 3.113531 0.4290454  0   5   7   9   16 218</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <div class="cell">
-<details open=""><summary>統計量 - 要約 - 層別の統計量</summary><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, <span class="va">mean</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
+<details open=""><summary>統計量 - 要約 - 層別の統計量</summary><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Tapply.html">Tapply</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢区分</span>, <span class="va">mean</span>, na.action<span class="op">=</span><span class="va">na.omit</span>,</span>
 <span>            data<span class="op">=</span><span class="va">PatientStressSub</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>    年齢区分
@@ -789,7 +802,7 @@ Variable: ストレッサー得点
 </section><section id="質的データの度数分布および適合度検定p104-p107" class="level3" data-number="5.3.3"><h3 data-number="5.3.3" class="anchored" data-anchor-id="質的データの度数分布および適合度検定p104-p107">
 <span class="header-section-number">5.3.3</span> 質的データの度数分布および適合度検定（P104-P107）</h3>
 <div class="cell">
-<details open=""><summary>統計量 - 要約 - 頻度分布（カイ二乗検定あり）</summary><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/eval.html">local</a></span><span class="op">(</span><span class="op">{</span></span>
+<details open=""><summary>統計量 - 要約 - 頻度分布（カイ二乗検定あり）</summary><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/eval.html">local</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>  <span class="va">.Table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStressSub</span>, <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">性別</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\ncounts:\n"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">.Table</span><span class="op">)</span></span>
@@ -833,7 +846,7 @@ X-squared = 29.083, df = 1, p-value = 6.934e-08</code></pre>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div>
-<details open=""><summary>グラフ - QQプロット/統計量 - 要約 - 正規性の検定</summary><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># QQプロット</span></span>
+<details open=""><summary>グラフ - QQプロット/統計量 - 要約 - 正規性の検定</summary><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># QQプロット</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStressSub</span>,</span>
 <span>     <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/qqPlot.html">qqPlot</a></span><span class="op">(</span><span class="va">健康統制感</span>, dist<span class="op">=</span><span class="st">"norm"</span>,</span>
 <span>                 id<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"y"</span>, n<span class="op">=</span><span class="fl">0</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">PatientStressSub</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -858,7 +871,7 @@ W = 0.99445, p-value = 0.261</code></pre>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <div>
-<details open=""><summary>グラフ - QQプロット/統計量 - 要約 - 正規性の検定</summary><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#　QQプロット</span></span>
+<details open=""><summary>グラフ - QQプロット/統計量 - 要約 - 正規性の検定</summary><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#　QQプロット</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">PatientStressSub</span>,</span>
 <span>     <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/qqPlot.html">qqPlot</a></span><span class="op">(</span><span class="va">健康統制感</span>, dist<span class="op">=</span><span class="st">"norm"</span>,</span>
 <span>                 id<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"y"</span>, n<span class="op">=</span><span class="fl">0</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">PatientStressSub</span><span class="op">)</span><span class="op">)</span>,</span>

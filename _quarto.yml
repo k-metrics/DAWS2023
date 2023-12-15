@@ -38,6 +38,7 @@ book:
     - varTest.qmd
     - ANOVA.qmd
     - tips.qmd
+    - webR/webR.qmd
 
 # bibliography: references.bib
 
