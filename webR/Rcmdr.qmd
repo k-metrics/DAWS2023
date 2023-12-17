@@ -1,0 +1,22 @@
+---
+engine: knitr
+filters:
+  - webr
+# webr:
+#   packages: ['ggplot2', 'dplyr', 'readxl']
+---
+
+```{r setup, include=FALSE}
+source("../R/setup.R")
+```
+
+# Rcmdr on WebR {.unnumbered}
+
+```{webr-r}
+webr::install("Rcmdr")
+```
+
+
+```{webr-r}
+
+```
