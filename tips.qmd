@@ -110,4 +110,150 @@ abline(h = u.limit[, 2], lty = "dotted", col = "red")
 ```
 :::
 
+
+## 独立サンプルt検定
+　R Commanderで独立サンプルt検定（独立標本t検定）を行う場合は、データセットが**Tidy data（整然データ）**[^TidyData]という概念を満たしている必要があります。
+
+[^TidyData]: [Wikipedia](https://ja.wikipedia.org/wiki/Tidy_data)
+
+:::{.callout-note collapse="true"}
+## Tidy data（整然データ）
+以下の条件を満たす表型のデータをTidy dataといい、構造と意味が合致しているのが特徴です。  
+　1. 個々の変数が一つの列をなす  
+　2. 個々の観測が一つの行をなす  
+　3. 個々の値が一つのセルをなす  
+　4. 個々の観測の構成単位の累計が一つの表をなす  
+
+なので、神ExcelはTidy dataにはなりませんのでRでそのまま扱うことはできません。
+:::
+
+　Tidy dataの具体例としてはRに標準で組み込まれている`sleep`データセットが挙げられます。`sleep`データセットは二種類の睡眠薬の効果 (睡眠時間の増減) に関するデータです。
+```{r}
+#| echo: false
+
+datasets::sleep %>% df_print()
+```
+
+
+### `sleep`データセットを読み込む
+　R Commanderで`sleep`データセットを読み込む手順は下記の通りです。
+
+1. ［データ］-［パッケージ内のデータ］-［アタッチされたパッケージからデータセットを読み込む...］を実行する
+1. 開かれたダイアログの［データセット名を入力：］欄に`sleep`と入力し
+1. ［OK］ボタンをクリックする
+1. ［データセット:］欄が`sleep`になっていることを確認する
+
+
+### 独立サンプルt検定の実行
+　R Commanderで読み込んだ`sleep`データセットに対する独立サンプルt検定を実行する手順は下記の通りです。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。
+
+1. ［統計量］-［平均］-［独立サンプルt検定...］を実行する
+1. 開かれたダイアログのグループが`group`、目的変数が`extra`になっていることを確認し
+1. ダイアログの［OK］ボタンをクリックする
+1. 独立サンプルt検定が実行される
+
+```{r}
+#| code-summary: "統計量 - 平均 - 独立サンプルt検定"
+
+t.test(extra ~ group, alternative = "two.sided",
+       conf.level = .95, var.equal = FALSE, data = sleep)
+```
+
+
+## 対応のあるt検定
+　R Commanderで対応のあるt検定（関連のあるt検定、従属なt検定）を行うには、独立サンプルt検定で使ったデータセットとは異なり下記のような形式のデータセットが必要です。
+```{r}
+#| echo: false
+
+sleepWide <- RcmdrMisc::reshapeL2W(sleep,
+                                   within="group",
+                                   id="ID",
+                                   varying="extra")
+sleepWide %>% df_print()
+```
+
+### データセットの変換
+　R Commanderでこのような形式に変換する手順は下記の通りです。
+
+1. アクティブデータセットを`sleep`データセットにする
+1. ［データ］-［アクティブデータセット］ー［データセットのロングからワイド形式への変換］を実行する
+1. 開かれたダイアログで
+    * 被験者ID変数に`ID`を指定
+    * 被験者内要因に`group`を指定
+    * 出来事に応じて変化する変数に`extra`を指定
+    * 無視する変数は無指定
+1. ダイアログの［OK］ボタンをクリックする
+1. `sleep`データセットが`sleepWide`データセットに変換される
+
+```{r}
+#| eval: false
+#| code-summary: "データ - アクティブデータセット - データセットのロングからワイド形式への変換"
+
+sleepWide <- RcmdrMisc::reshapeL2W(sleep,
+                                   within="group",
+                                   id="ID",
+                                   varying="extra")
+```
+
+### 対応あるt検定の実行
+　データセットが作成できましたので、対応のあるt検定を下記の手順で実行します。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。
+
+1. 変換された`sleepWide`データセットをアクティブデータにする
+1. ［統計量］-［平均］-［対応のあるt検定...］を実行する
+1. 開かれだダイアログで
+    * 第１の変数に`extra.1`を指定
+    * 第２の変数に`extra.2`を指定
+1. ダイアログの［OK］ボタンをクリックする
+1. 対応のあるt検定が実行される
+
+```{r}
+#| code-summary: "統計量 - 平均 - 対応のあるt検定"
+
+with(sleepWide, (t.test(extra.1, extra.2,
+                        alternative = "two.sided",
+                        conf.level = .95,
+                        paired=TRUE)))
+```
+
+## Rにおけるt検定
+　R Commanderにおけるt検定は実行コードを見ればわかるようにすべてのt検定を`t.test()`というRの標準関数で行っています。`t.test()`関数は引数の指定で様々なt検定に対応しているからです。
+```{r}
+#| eval: false
+#| code-summary: "t.test()関数の引数"
+
+## Default S3 method:
+t.test(x, y = NULL,            # 標本の指定
+       alternative = c("two.sided", "less", "greater"),
+                               # 両側か片側かの指定
+       mu = 0,                 # 平均値の（差の）指定
+       paired = FALSE,         # 独立か対応かの指定
+       var.equal = FALSE,      # 等分散か否かの指定
+       conf.level = 0.95, ...)
+
+## S3 method for class 'formula'
+t.test(formula,                # 標本の指定
+       data,                   # データセット名の指定
+       subset,                 # サブセットの指定
+       na.action,              # NAへの対処方法
+       alternative = c("two.sided", "less", "greater"),
+                               # 両側か片側かの指定
+       mu = 0,                 # 平均値の（差の）指定
+       paired = FALSE,         # 独立か対応かの指定
+       var.equal = FALSE,      # 等分散か否かの指定
+       conf.level = 0.95, ...)
+```
+
+　指定方法には二通りありますが下側の'formula'形式を使うとTidy data（整然データ）を変形させずに引数の指定だけで四通りのt検定に対応できますので覚えておいて損はないかと思います。
+
+t検定の種類           | formula         | paired  | var.equal | 
+----------------------|-----------------|---------|-----------|
+1標本t検定            | `value ~ 1`     | `FALSE` | `FALSE`   |
+スチューデントのt検定[^st] | `value ~ group` | `FALSE` | `TRUE`    |
+ウェルチのt検定[^wt]       | `value ~ group` | `FALSE` | `FALSE`   |
+対応のあるt検定       | `value ~ group` | `TRUE`  | `FALSE`   |
+
+[^st]: スチューデントのt検定とは二標本間で等分散性があることを前提とした独立サンプルt検定です
+[^wt]: ウェルチのt検定とは二標本間で等分散性がないことを前提とした独立サンプルt検定です
+
+以上
 ---

@@ -237,6 +237,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#%E3%82%B5%E3%83%9E%E3%83%AA%E3%81%AE%E8%A9%B3%E7%B4%B0" id="toc-サマリの詳細" class="nav-link" data-scroll-target="#%E3%82%B5%E3%83%9E%E3%83%AA%E3%81%AE%E8%A9%B3%E7%B4%B0">サマリの詳細</a></li>
   </ul>
 </li>
+  <li>
+<a href="#%E7%8B%AC%E7%AB%8B%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABt%E6%A4%9C%E5%AE%9A" id="toc-独立サンプルt検定" class="nav-link" data-scroll-target="#%E7%8B%AC%E7%AB%8B%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABt%E6%A4%9C%E5%AE%9A">独立サンプルt検定</a>
+  <ul class="collapse">
+<li><a href="#sleep%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80" id="toc-sleepデータセットを読み込む" class="nav-link" data-scroll-target="#sleep%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"><code>sleep</code>データセットを読み込む</a></li>
+  <li><a href="#%E7%8B%AC%E7%AB%8B%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C" id="toc-独立サンプルt検定の実行" class="nav-link" data-scroll-target="#%E7%8B%AC%E7%AB%8B%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C">独立サンプルt検定の実行</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A" id="toc-対応のあるt検定" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A">対応のあるt検定</a>
+  <ul class="collapse">
+<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E5%A4%89%E6%8F%9B" id="toc-データセットの変換" class="nav-link" data-scroll-target="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E5%A4%89%E6%8F%9B">データセットの変換</a></li>
+  <li><a href="#%E5%AF%BE%E5%BF%9C%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C" id="toc-対応あるt検定の実行" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C">対応あるt検定の実行</a></li>
+  </ul>
+</li>
+  <li><a href="#r%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bt%E6%A4%9C%E5%AE%9A" id="toc-rにおけるt検定" class="nav-link" data-scroll-target="#r%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bt%E6%A4%9C%E5%AE%9A">Rにおけるt検定</a></li>
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/k-metrics/DAWS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
@@ -479,10 +494,209 @@ $names
 </div>
 </div>
 </div>
+</section></section><section id="独立サンプルt検定" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="独立サンプルt検定">独立サンプルt検定</h2>
+<div class="page-columns page-full"><p>　R Commanderで独立サンプルt検定（独立標本t検定）を行う場合は、データセットが<strong>Tidy data（整然データ）</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>という概念を満たしている必要があります。</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;<a href="https://ja.wikipedia.org/wiki/Tidy_data">Wikipedia</a></p></li></div></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tidy data（整然データ）
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>以下の条件を満たす表型のデータをTidy dataといい、構造と意味が合致しているのが特徴です。<br>
+　1. 個々の変数が一つの列をなす<br>
+　2. 個々の観測が一つの行をなす<br>
+　3. 個々の値が一つのセルをなす<br>
+　4. 個々の観測の構成単位の累計が一つの表をなす</p>
+<p>なので、神ExcelはTidy dataにはなりませんのでRでそのまま扱うことはできません。</p>
+</div>
+</div>
+</div>
+<p>　Tidy dataの具体例としてはRに標準で組み込まれている<code>sleep</code>データセットが挙げられます。<code>sleep</code>データセットは二種類の睡眠薬の効果 (睡眠時間の増減) に関するデータです。</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["extra"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["group"],"name":[2],"type":["fct"],"align":["left"]},{"label":["ID"],"name":[3],"type":["fct"],"align":["left"]}],"data":[{"1":"0.7","2":"1","3":"1"},{"1":"-1.6","2":"1","3":"2"},{"1":"-0.2","2":"1","3":"3"},{"1":"-1.2","2":"1","3":"4"},{"1":"-0.1","2":"1","3":"5"},{"1":"3.4","2":"1","3":"6"},{"1":"3.7","2":"1","3":"7"},{"1":"0.8","2":"1","3":"8"},{"1":"0.0","2":"1","3":"9"},{"1":"2.0","2":"1","3":"10"},{"1":"1.9","2":"2","3":"1"},{"1":"0.8","2":"2","3":"2"},{"1":"1.1","2":"2","3":"3"},{"1":"0.1","2":"2","3":"4"},{"1":"-0.1","2":"2","3":"5"},{"1":"4.4","2":"2","3":"6"},{"1":"5.5","2":"2","3":"7"},{"1":"1.6","2":"2","3":"8"},{"1":"4.6","2":"2","3":"9"},{"1":"3.4","2":"2","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<section id="sleepデータセットを読み込む" class="level3"><h3 class="anchored" data-anchor-id="sleepデータセットを読み込む">
+<code>sleep</code>データセットを読み込む</h3>
+<p>　R Commanderで<code>sleep</code>データセットを読み込む手順は下記の通りです。</p>
+<ol type="1">
+<li>［データ］-［パッケージ内のデータ］-［アタッチされたパッケージからデータセットを読み込む…］を実行する</li>
+<li>開かれたダイアログの［データセット名を入力：］欄に<code>sleep</code>と入力し</li>
+<li>［OK］ボタンをクリックする</li>
+<li>［データセット:］欄が<code>sleep</code>になっていることを確認する</li>
+</ol></section><section id="独立サンプルt検定の実行" class="level3"><h3 class="anchored" data-anchor-id="独立サンプルt検定の実行">独立サンプルt検定の実行</h3>
+<p>　R Commanderで読み込んだ<code>sleep</code>データセットに対する独立サンプルt検定を実行する手順は下記の通りです。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。</p>
+<ol type="1">
+<li>［統計量］-［平均］-［独立サンプルt検定…］を実行する</li>
+<li>開かれたダイアログのグループが<code>group</code>、目的変数が<code>extra</code>になっていることを確認し</li>
+<li>ダイアログの［OK］ボタンをクリックする</li>
+<li>独立サンプルt検定が実行される</li>
+</ol>
+<div class="cell">
+<details open=""><summary>統計量 - 平均 - 独立サンプルt検定</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">extra</span> <span class="op">~</span> <span class="va">group</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
+<span>       conf.level <span class="op">=</span> <span class="fl">.95</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span>, data <span class="op">=</span> <span class="va">sleep</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  extra by group
+t = -1.8608, df = 17.776, p-value = 0.07939
+alternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0
+95 percent confidence interval:
+ -3.3654832  0.2054832
+sample estimates:
+mean in group 1 mean in group 2 
+           0.75            2.33 </code></pre>
+</div>
+</div>
+</section></section><section id="対応のあるt検定" class="level2"><h2 class="anchored" data-anchor-id="対応のあるt検定">対応のあるt検定</h2>
+<p>　R Commanderで対応のあるt検定（関連のあるt検定、従属なt検定）を行うには、独立サンプルt検定で使ったデータセットとは異なり下記のような形式のデータセットが必要です。</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["extra.1"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["extra.2"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.7","2":"1.9","_rn_":"1"},{"1":"-1.6","2":"0.8","_rn_":"2"},{"1":"-0.2","2":"1.1","_rn_":"3"},{"1":"-1.2","2":"0.1","_rn_":"4"},{"1":"-0.1","2":"-0.1","_rn_":"5"},{"1":"3.4","2":"4.4","_rn_":"6"},{"1":"3.7","2":"5.5","_rn_":"7"},{"1":"0.8","2":"1.6","_rn_":"8"},{"1":"0.0","2":"4.6","_rn_":"9"},{"1":"2.0","2":"3.4","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<section id="データセットの変換" class="level3"><h3 class="anchored" data-anchor-id="データセットの変換">データセットの変換</h3>
+<p>　R Commanderでこのような形式に変換する手順は下記の通りです。</p>
+<ol type="1">
+<li>アクティブデータセットを<code>sleep</code>データセットにする</li>
+<li>［データ］-［アクティブデータセット］ー［データセットのロングからワイド形式への変換］を実行する</li>
+<li>開かれたダイアログで
+<ul>
+<li>被験者ID変数に<code>ID</code>を指定</li>
+<li>被験者内要因に<code>group</code>を指定</li>
+<li>出来事に応じて変化する変数に<code>extra</code>を指定</li>
+<li>無視する変数は無指定</li>
+</ul>
+</li>
+<li>ダイアログの［OK］ボタンをクリックする</li>
+<li>
+<code>sleep</code>データセットが<code>sleepWide</code>データセットに変換される</li>
+</ol>
+<div class="cell">
+<details open=""><summary>データ - アクティブデータセット - データセットのロングからワイド形式への変換</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sleepWide</span> <span class="op">&lt;-</span> <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/reshapeL2W.html">reshapeL2W</a></span><span class="op">(</span><span class="va">sleep</span>,</span>
+<span>                                   within<span class="op">=</span><span class="st">"group"</span>,</span>
+<span>                                   id<span class="op">=</span><span class="st">"ID"</span>,</span>
+<span>                                   varying<span class="op">=</span><span class="st">"extra"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section><section id="対応あるt検定の実行" class="level3"><h3 class="anchored" data-anchor-id="対応あるt検定の実行">対応あるt検定の実行</h3>
+<p>　データセットが作成できましたので、対応のあるt検定を下記の手順で実行します。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。</p>
+<ol type="1">
+<li>変換された<code>sleepWide</code>データセットをアクティブデータにする</li>
+<li>［統計量］-［平均］-［対応のあるt検定…］を実行する</li>
+<li>開かれだダイアログで
+<ul>
+<li>第１の変数に<code>extra.1</code>を指定</li>
+<li>第２の変数に<code>extra.2</code>を指定</li>
+</ul>
+</li>
+<li>ダイアログの［OK］ボタンをクリックする</li>
+<li>対応のあるt検定が実行される</li>
+</ol>
+<div class="cell">
+<details open=""><summary>統計量 - 平均 - 対応のあるt検定</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">sleepWide</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">extra.1</span>, <span class="va">extra.2</span>,</span>
+<span>                        alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
+<span>                        conf.level <span class="op">=</span> <span class="fl">.95</span>,</span>
+<span>                        paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  extra.1 and extra.2
+t = -4.0621, df = 9, p-value = 0.002833
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -2.4598858 -0.7001142
+sample estimates:
+mean difference 
+          -1.58 </code></pre>
+</div>
+</div>
+</section></section><section id="rにおけるt検定" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="rにおけるt検定">Rにおけるt検定</h2>
+<p>　R Commanderにおけるt検定は実行コードを見ればわかるようにすべてのt検定を<code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>というRの標準関数で行っています。<code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>関数は引数の指定で様々なt検定に対応しているからです。</p>
+<div class="cell">
+<details open=""><summary>t.test()関数の引数</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Default S3 method:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">x</span>, y <span class="op">=</span> <span class="cn">NULL</span>,            <span class="co"># 標本の指定</span></span>
+<span>       alternative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span><span class="op">)</span>,</span>
+<span>                               <span class="co"># 両側か片側かの指定</span></span>
+<span>       mu <span class="op">=</span> <span class="fl">0</span>,                 <span class="co"># 平均値の（差の）指定</span></span>
+<span>       paired <span class="op">=</span> <span class="cn">FALSE</span>,         <span class="co"># 独立か対応かの指定</span></span>
+<span>       var.equal <span class="op">=</span> <span class="cn">FALSE</span>,      <span class="co"># 等分散か否かの指定</span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## S3 method for class 'formula'</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">formula</span>,                <span class="co"># 標本の指定</span></span>
+<span>       <span class="va">data</span>,                   <span class="co"># データセット名の指定</span></span>
+<span>       <span class="va">subset</span>,                 <span class="co"># サブセットの指定</span></span>
+<span>       <span class="va">na.action</span>,              <span class="co"># NAへの対処方法</span></span>
+<span>       alternative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span><span class="op">)</span>,</span>
+<span>                               <span class="co"># 両側か片側かの指定</span></span>
+<span>       mu <span class="op">=</span> <span class="fl">0</span>,                 <span class="co"># 平均値の（差の）指定</span></span>
+<span>       paired <span class="op">=</span> <span class="cn">FALSE</span>,         <span class="co"># 独立か対応かの指定</span></span>
+<span>       var.equal <span class="op">=</span> <span class="cn">FALSE</span>,      <span class="co"># 等分散か否かの指定</span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>　指定方法には二通りありますが下側の’formula’形式を使うとTidy data（整然データ）を変形させずに引数の指定だけで四通りのt検定に対応できますので覚えておいて損はないかと思います。</p>
+<table class="table">
+<thead><tr class="header">
+<th>t検定の種類</th>
+<th>formula</th>
+<th>paired</th>
+<th>var.equal</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1標本t検定</td>
+<td><code>value ~ 1</code></td>
+<td><code>FALSE</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td>スチューデントのt検定<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
+</td>
+<td><code>value ~ group</code></td>
+<td><code>FALSE</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td>ウェルチのt検定<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>
+</td>
+<td><code>value ~ group</code></td>
+<td><code>FALSE</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td>対応のあるt検定</td>
+<td><code>value ~ group</code></td>
+<td><code>TRUE</code></td>
+<td><code>FALSE</code></td>
+</tr>
+</tbody>
+</table>
+<div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;スチューデントのt検定とは二標本間で等分散性があることを前提とした独立サンプルt検定です</p></li><li id="fn7"><p><sup>7</sup>&nbsp;ウェルチのt検定とは二標本間で等分散性がないことを前提とした独立サンプルt検定です</p></li></div><p>以上</p>
 <hr>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
