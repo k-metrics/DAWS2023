@@ -161,7 +161,7 @@ t.test(extra ~ group, alternative = "two.sided",
 
 
 ## 対応のあるt検定
-　R Commanderで対応のあるt検定（関連のあるt検定、従属なt検定）を行うには、独立サンプルt検定で使ったデータセットとは異なり下記のような形式のデータセットが必要です。
+　R Commanderで対応のあるt検定（関連のあるt検定、従属なt検定）を行うには、独立サンプルt検定で使ったデータセットとは異なり下記のような形式（ワイド形式）のデータセットが必要です。
 ```{r}
 #| echo: false
 
@@ -172,7 +172,8 @@ sleepWide <- RcmdrMisc::reshapeL2W(sleep,
 sleepWide %>% df_print()
 ```
 
-### データセットの変換
+:::{.callout-note collapse="true"}
+## ロングからワイド形式への変換
 　R Commanderでこのような形式に変換する手順は下記の通りです。
 
 1. アクティブデータセットを`sleep`データセットにする
@@ -194,9 +195,40 @@ sleepWide <- RcmdrMisc::reshapeL2W(sleep,
                                    id="ID",
                                    varying="extra")
 ```
+:::
+
+:::{.callout-note collapse="true"}
+## ワイドからロング形式への変換
+　R Commanderで上記の逆変換（ワイド->ロング）を変換する手順は下記の通りです。
+
+1. アクティブデータセットを`sleepWide`データセットにする
+1. ［データ］-［アクティブデータセット］ー［データセットのワイドからロング形式への変換］を実行する
+1. 開かれたダイアログで
+    * ［反復測定1因子］タブを選択する
+    * `Level-1`で`extra.1`を選択する
+    * `Level-2`で`extra.2`を選択する
+        * `Level-1`ならびに`Level-2`が元の`group`の値になります
+    * ［Name for the within-subjects factor:］には任意の変数名を設定する
+        * これが元の`group`に相当します
+1. ダイアログの［OK］ボタンをクリックする
+1. `sleepWide`データセットが`sleepWideLong`データセットに変換される
+
+　データセット名などは［オプション］タブで指定してください。
+
+```{r}
+#| eval: false
+#| code-summary: "データ - アクティブデータセット - データセットのワイドからロング形式への変換"
+
+sleepWideLong <- RcmdrMisc::reshapeW2L(sleepWide, within="trials",
+                                       levels=list(trials=c("Level-1", "Level-2")),
+                                       varying=list(response=c("extra.1","extra.2")),
+                                       id="id")
+```
+:::
+
 
 ### 対応あるt検定の実行
-　データセットが作成できましたので、対応のあるt検定を下記の手順で実行します。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。
+　ワイド形式のデータセットを準備し（ここでは上記のNoteの手順で作成した`sleepWide`データセットを利用します）。対応のあるt検定を下記の手順で実行します。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。
 
 1. 変換された`sleepWide`データセットをアクティブデータにする
 1. ［統計量］-［平均］-［対応のあるt検定...］を実行する
@@ -215,6 +247,7 @@ with(sleepWide, (t.test(extra.1, extra.2,
                         paired=TRUE)))
 ```
 
+
 ## Rにおけるt検定
 　R Commanderにおけるt検定は実行コードを見ればわかるようにすべてのt検定を`t.test()`というRの標準関数で行っています。`t.test()`関数は引数の指定で様々なt検定に対応しているからです。
 ```{r}
@@ -224,7 +257,7 @@ with(sleepWide, (t.test(extra.1, extra.2,
 ## Default S3 method:
 t.test(x, y = NULL,            # 標本の指定
        alternative = c("two.sided", "less", "greater"),
-                               # 両側か片側かの指定
+                               # 対立仮設の指定
        mu = 0,                 # 平均値の（差の）指定
        paired = FALSE,         # 独立か対応かの指定
        var.equal = FALSE,      # 等分散か否かの指定
@@ -236,7 +269,7 @@ t.test(formula,                # 標本の指定
        subset,                 # サブセットの指定
        na.action,              # NAへの対処方法
        alternative = c("two.sided", "less", "greater"),
-                               # 両側か片側かの指定
+                               # 対立仮設の指定
        mu = 0,                 # 平均値の（差の）指定
        paired = FALSE,         # 独立か対応かの指定
        var.equal = FALSE,      # 等分散か否かの指定
@@ -247,13 +280,51 @@ t.test(formula,                # 標本の指定
 
 t検定の種類           | formula         | paired  | var.equal | 
 ----------------------|-----------------|---------|-----------|
-1標本t検定            | `value ~ 1`     | `FALSE` | `FALSE`   |
+1標本のt検定          | `value ~ 1`     | `FALSE` | `FALSE`   |
 スチューデントのt検定[^st] | `value ~ group` | `FALSE` | `TRUE`    |
 ウェルチのt検定[^wt]       | `value ~ group` | `FALSE` | `FALSE`   |
 対応のあるt検定       | `value ~ group` | `TRUE`  | `FALSE`   |
 
-[^st]: スチューデントのt検定とは二標本間で等分散性があることを前提とした独立サンプルt検定です
-[^wt]: ウェルチのt検定とは二標本間で等分散性がないことを前提とした独立サンプルt検定です
+[^st]: スチューデントのt検定とは二標本間でデータの母分散が等しいと仮定できるときに用いる検定手法です
+[^wt]: ウェルチのt検定とは二標本間でデータの母分散が等しいとは限らないときに用いる検定手法です
+
+
+:::{.callout-tip collapse="true"}
+## 対立仮設の指定方法
+　対立仮設（`alternative`オプション）は`"two.sided"`、`"less"`、`"greater"`のどれかを指定します。デフォルトは`"two.sided"`（両側検定）です。
+
+
+### 1標本のt検定の場合
+　1標本のt検定の場合は標本の平均値（$\mu$）と比較値（$\mu_0$）に対する検定になります。
+
+対立仮設         | 帰無仮設        | 指定
+-----------------|-----------------|---------------
+$\mu \neq \mu_0$ | $\mu = \mu_0$   | `"two.sided"`
+$\mu \lt  \mu_0$ | $\mu \ge \mu_0$ | `"less"`
+$\mu \gt  \mu_0$ | $\mu \le \mu_0$ | `"greater"`
+
+
+### 独立サンプルt検定の場合
+　独立サンプルt検定の場合は各標本の平均値（$\mu_x$と$\mu_y$）に対する検定になります。
+
+対立仮設           | 帰無仮設          | 指定
+-------------------|-------------------|---------------
+$\mu_x \neq \mu_y$ | $\mu_x =   \mu_y$ | `"two.sided"`
+$\mu_x \lt  \mu_y$ | $\mu_x \ge \mu_y$ | `"less"`
+$\mu_x \gt  \mu_y$ | $\mu_x \le \mu_y$ | `"greater"`
+
+
+### 対応のあるt検定の場合
+　対応のあるt検定の場合は二標本の平均の差（$\delta = \mu_x - \mu_y$）に対する検定になります。
+
+対立仮設           | 帰無仮設          | 指定
+----------------|----------------|---------------
+$\delta \neq 0$ | $\delta =   0$ | `"two.sided"`
+$\delta \lt  0$ | $\delta \ge 0$ | `"less"`
+$\delta \gt  0$ | $\delta \le 0$ | `"greater"`
+
+:::
+
 
 以上
 ---
