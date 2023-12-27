@@ -37,7 +37,7 @@ car::Boxplot(ストレス反応得点 ~ 性別, data = PatientStress)
 
 :::{.callout-note collapse="true"}
 ## `Boxplot()`関数と`boxplot()`関数の関係
-R Commanderの`Boxplot()`関数は`boxplot()`関数のラッパー関数です。箱ひげ図自体の描画を`boxplot()`関数が担い、外れ値の特定処理を`Boxplot()`関数が担っています。ですので`boxplot()`関数が出力する箱ひげ図はR Commanderで外れ値の特定を"No"に設定した場合と同一の出力になります。なお、`Boxplot()`関数は返り値を持っていないため上記の方法は使えません。
+R Commanderの`Boxplot()`関数は`boxplot()`関数のラッパー関数です。箱ひげ図自体の描画を`boxplot()`関数が担い、外れ値の特定処理を`Boxplot()`関数が担っています。ですので`boxplot()`関数が出力する箱ひげ図はR Commanderで外れ値の特定を"No"に設定した場合と同一の出力になります。なお、`Boxplot()`関数は返り値を持っていないため`print()`関数にかましても何も出力されません。
 :::
 
 ```{r}
