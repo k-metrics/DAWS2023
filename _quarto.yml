@@ -37,6 +37,7 @@ book:
     - estimationAndTest.qmd
     - varTest.qmd
     - ANOVA.qmd
+    - linearModel.qmd
     - tips.qmd
     - webR/webR.qmd
 

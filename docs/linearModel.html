@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.551">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>『統計ソフト「R」超入門』 - Tips</title>
+<title>『統計ソフト「R」超入門』 - 10&nbsp; 回帰分析</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,8 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./webR/webR.html" rel="next">
-<link href="./linearModel.html" rel="prev">
+<link href="./tips.html" rel="next">
+<link href="./ANOVA.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -98,41 +98,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-<body class="nav-sidebar docked slimcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tips.html">Tips</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linearModel.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">回帰分析</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -141,7 +116,9 @@ window.Quarto = {
     </div>
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Tips</h1>
+      <h1 class="title">
+<span class="chapter-number">10</span>&nbsp; <span class="chapter-title">回帰分析</span>
+</h1>
                       </div>
   </div>
     
@@ -245,13 +222,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linearModel.html" class="sidebar-item-text sidebar-link">
+  <a href="./linearModel.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">回帰分析</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tips.html" class="sidebar-item-text sidebar-link active">
+  <a href="./tips.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tips</span></a>
   </div>
 </li>
@@ -269,33 +246,36 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li>
-<a href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3%E3%81%AE%E3%82%B5%E3%83%9E%E3%83%AA%E3%82%92%E7%9F%A5%E3%82%8B%E6%96%B9%E6%B3%95" id="toc-箱ひげ図のサマリを知る方法" class="nav-link active" data-scroll-target="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3%E3%81%AE%E3%82%B5%E3%83%9E%E3%83%AA%E3%82%92%E7%9F%A5%E3%82%8B%E6%96%B9%E6%B3%95">箱ひげ図のサマリを知る方法</a>
+<li><a href="#%E5%9B%9E%E5%B8%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8Bp173" id="toc-回帰モデルとは何かp173" class="nav-link active" data-scroll-target="#%E5%9B%9E%E5%B8%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8Bp173"><span class="header-section-number">10.1</span> 回帰モデルとは何か（P173）</a></li>
+  <li>
+<a href="#%E5%9B%9E%E5%B8%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%BD%93%E3%81%A6%E3%81%AF%E3%82%81p179" id="toc-回帰モデルの当てはめp179" class="nav-link" data-scroll-target="#%E5%9B%9E%E5%B8%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%BD%93%E3%81%A6%E3%81%AF%E3%82%81p179"><span class="header-section-number">10.2</span> 回帰モデルの当てはめ（P179）</a>
   <ul class="collapse">
-<li><a href="#%E3%82%B5%E3%83%9E%E3%83%AA%E3%81%AE%E8%A9%B3%E7%B4%B0" id="toc-サマリの詳細" class="nav-link" data-scroll-target="#%E3%82%B5%E3%83%9E%E3%83%AA%E3%81%AE%E8%A9%B3%E7%B4%B0">サマリの詳細</a></li>
+<li><a href="#%E7%B7%9A%E5%BD%A2%E5%9B%9E%E5%B8%B0p179" id="toc-線形回帰p179" class="nav-link" data-scroll-target="#%E7%B7%9A%E5%BD%A2%E5%9B%9E%E5%B8%B0p179"><span class="header-section-number">10.2.1</span> 線形回帰（P179）</a></li>
+  <li><a href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%ABp189" id="toc-線形モデルp189" class="nav-link" data-scroll-target="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%ABp189"><span class="header-section-number">10.2.2</span> 線形モデル（P189）</a></li>
   </ul>
 </li>
   <li>
-<a href="#%E7%8B%AC%E7%AB%8B%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABt%E6%A4%9C%E5%AE%9A" id="toc-独立サンプルt検定" class="nav-link" data-scroll-target="#%E7%8B%AC%E7%AB%8B%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABt%E6%A4%9C%E5%AE%9A">独立サンプルt検定</a>
+<a href="#%E3%83%A2%E3%83%87%E3%83%AB%E8%A8%BA%E6%96%ADp197" id="toc-モデル診断p197" class="nav-link" data-scroll-target="#%E3%83%A2%E3%83%87%E3%83%AB%E8%A8%BA%E6%96%ADp197"><span class="header-section-number">10.3</span> モデル診断（P197）</a>
   <ul class="collapse">
-<li><a href="#sleep%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80" id="toc-sleepデータセットを読み込む" class="nav-link" data-scroll-target="#sleep%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"><code>sleep</code>データセットを読み込む</a></li>
-  <li><a href="#%E7%8B%AC%E7%AB%8B%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C" id="toc-独立サンプルt検定の実行" class="nav-link" data-scroll-target="#%E7%8B%AC%E7%AB%8B%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C">独立サンプルt検定の実行</a></li>
+<li><a href="#%E6%95%B0%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A2%E3%83%87%E3%83%AB%E8%A8%BA%E6%96%AD" id="toc-数値によるモデル診断" class="nav-link" data-scroll-target="#%E6%95%B0%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A2%E3%83%87%E3%83%AB%E8%A8%BA%E6%96%AD"><span class="header-section-number">10.3.1</span> 数値によるモデル診断</a></li>
+  <li><a href="#%E8%A4%87%E9%9B%91%E3%81%AA%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%9B%9E%E5%B8%B0%E5%88%86%E6%9E%90p209" id="toc-複雑な線形モデルの回帰分析p209" class="nav-link" data-scroll-target="#%E8%A4%87%E9%9B%91%E3%81%AA%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%9B%9E%E5%B8%B0%E5%88%86%E6%9E%90p209"><span class="header-section-number">10.3.2</span> 複雑な線形モデルの回帰分析（P209）</a></li>
   </ul>
 </li>
   <li>
-<a href="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A" id="toc-対応のあるt検定" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A">対応のあるt検定</a>
+<a href="#%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E9%81%B8%E6%8A%9Ep212" id="toc-モデルの選択p212" class="nav-link" data-scroll-target="#%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E9%81%B8%E6%8A%9Ep212"><span class="header-section-number">10.4</span> モデルの選択（P212）</a>
   <ul class="collapse">
-<li><a href="#%E5%AF%BE%E5%BF%9C%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C" id="toc-対応あるt検定の実行" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C">対応あるt検定の実行</a></li>
+<li><a href="#%E5%88%86%E6%95%A3%E5%88%86%E6%9E%90%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%AF%94%E8%BC%83p213" id="toc-分散分析によるモデルの比較p213" class="nav-link" data-scroll-target="#%E5%88%86%E6%95%A3%E5%88%86%E6%9E%90%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%AF%94%E8%BC%83p213"><span class="header-section-number">10.4.1</span> 分散分析によるモデルの比較（P213）</a></li>
+  <li><a href="#aic%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A2%E3%83%87%E3%83%AB%E9%81%B8%E6%8A%9Ep215" id="toc-aicによるモデル選択p215" class="nav-link" data-scroll-target="#aic%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A2%E3%83%87%E3%83%AB%E9%81%B8%E6%8A%9Ep215"><span class="header-section-number">10.4.2</span> AICによるモデル選択（P215）</a></li>
   </ul>
 </li>
-  <li><a href="#r%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bt%E6%A4%9C%E5%AE%9A" id="toc-rにおけるt検定" class="nav-link" data-scroll-target="#r%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bt%E6%A4%9C%E5%AE%9A">Rにおけるt検定</a></li>
+  <li><a href="#%E8%A7%A3%E6%9E%90%E7%B5%90%E6%9E%9C%E3%81%AE%E4%BF%9D%E5%AD%98p219" id="toc-解析結果の保存p219" class="nav-link" data-scroll-target="#%E8%A7%A3%E6%9E%90%E7%B5%90%E6%9E%9C%E3%81%AE%E4%BF%9D%E5%AD%98p219"><span class="header-section-number">10.5</span> 解析結果の保存（P219）</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/k-metrics/DAWS2023/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><blockquote class="blockquote">
-<p><strong>※本ページの内容はテキストの範囲外となります</strong></p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><blockquote class="blockquote">
+<p><strong>※本ページの内容はテキストの第１０章に相当します</strong></p>
 </blockquote>
-<p>　本章では勉強会であった質問事項などを整理しています。</p>
+<p>　本章では回帰分析について学びます。Rcmdrで実行した場合のコードと出力結果のみを記載し、手順の記載は省略しますので詳細はテキストを参照してください。</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -325,203 +305,63 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="箱ひげ図のサマリを知る方法" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="箱ひげ図のサマリを知る方法">箱ひげ図のサマリを知る方法</h2>
-<p>R Commanderの箱ひげ図（<code>Boxplot()</code>関数）は外れ値のインデックスを出力することは可能ですが、四分位数などの箱ひげ図に関するサマリを出力できません。</p>
-<details open="" class="code-fold"><summary>グラフ - 箱ひげ図</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Boxplot.html">Boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel" data-layout-nrow="4">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="tips_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<section id="回帰モデルとは何かp173" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="回帰モデルとは何かp173">
+<span class="header-section-number">10.1</span> 回帰モデルとは何か（P173）</h2>
+</section><section id="回帰モデルの当てはめp179" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="回帰モデルの当てはめp179">
+<span class="header-section-number">10.2</span> 回帰モデルの当てはめ（P179）</h2>
+<section id="線形回帰p179" class="level3" data-number="10.2.1"><h3 data-number="10.2.1" class="anchored" data-anchor-id="線形回帰p179">
+<span class="header-section-number">10.2.1</span> 線形回帰（P179）</h3>
+<div class="cell">
+<details open="" class="code-fold"><summary>統計量 - モデルへの適合 - 線形回帰</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">RegModel.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ストレス反応</span><span class="op">~</span><span class="va">ストレッサー得点</span>,</span>
+<span>                 data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModel.1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = ストレス反応 ~ ストレッサー得点, data = PatientStress)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.7497 -1.8334 -0.2208  1.7854  6.8829 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       3.55031    0.38024   9.337  &lt; 2e-16 ***
+ストレッサー得点  0.22853    0.04806   4.755 2.95e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.687 on 335 degrees of freedom
+Multiple R-squared:  0.06323,   Adjusted R-squared:  0.06044 
+F-statistic: 22.61 on 1 and 335 DF,  p-value: 2.949e-06</code></pre>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
-<pre><code> [1] "28"  "76"  "113" "115" "195" "311" "13"  "92"  "200" "209" "270" "291"
-[13] "308" "310" "312" "318"</code></pre>
+<div class="cell">
+<details open="" class="code-fold"><summary>モデル - 信頼医区間</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/S.html">Confint</a></span><span class="op">(</span><span class="va">RegModel.1</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>                  Estimate    2.5 %    97.5 %
+(Intercept)      3.5503052 2.802338 4.2982727
+ストレッサー得点 0.2285298 0.133996 0.3230637</code></pre>
 </div>
 </div>
-</div>
-<p>そこで、サマリを関数の返り値として出力できるRの標準的箱ひげ図関数<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数を用います。ただし、サマリは非表示の返り値になっているため<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>関数を用いて明示的に出力する必要があります。</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code>Boxplot()</code>関数と<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数の関係
+相関
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>R Commanderの<code>Boxplot()</code>関数は<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数のラッパー関数です。箱ひげ図自体の描画を<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が担い、外れ値の特定処理を<code>Boxplot()</code>関数が担っています。ですので<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が出力する箱ひげ図はR Commanderで外れ値の特定を”No”に設定した場合と同一の出力になります。なお、<code>Boxplot()</code>関数は返り値を持っていないため<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>関数にかましても何も出力されません。</p>
-</div>
-</div>
-</div>
-<details open="" class="code-fold"><summary>print()関数による出力</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell quarto-layout-panel" data-layout-nrow="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="tips_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
-<pre><code>$stats
-     [,1] [,2]
-[1,]  0.0    0
-[2,]  9.0   14
-[3,] 19.0   31
-[4,] 38.5   55
-[5,] 81.0  114
-
-$n
-[1] 119 218
-
-$conf
-         [,1]     [,2]
-[1,] 14.72727 26.61254
-[2,] 23.27273 35.38746
-
-$out
- [1]  97 113  86  87 107 113 156 131 139 126 140 124 141 148 126 142
-
-$group
- [1] 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2
-
-$names
-[1] "男" "女"</code></pre>
-</div>
-</div>
-</div>
-<section id="サマリの詳細" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="サマリの詳細">サマリの詳細</h3>
-<p><code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が出力するのはテューキーの箱ひげ図で、出力されるサマリは下表の通りです。</p>
-<table class="table">
-<thead><tr class="header">
-<th>返り値</th>
-<th>説明（返り値の内容）</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>stats</code></td>
-<td>下ひげ極値<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、四分位数<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>、上ひげ極値</td>
-</tr>
-<tr class="even">
-<td><code>n</code></td>
-<td>（グループ毎の）データ数</td>
-</tr>
-<tr class="odd">
-<td><code>conf</code></td>
-<td>信頼区間<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>（<span class="math inline">\(Q_2 \pm 1.58 \times \frac{IQR}{\sqrt n}\)</span>）</td>
-</tr>
-<tr class="even">
-<td><code>out</code></td>
-<td>外れ値<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>（インデックスではなくデータの値）</td>
-</tr>
-<tr class="odd">
-<td><code>group</code></td>
-<td>外れ値が属するグループ</td>
-</tr>
-<tr class="even">
-<td><code>names</code></td>
-<td>グループ名（層別水準名）</td>
-</tr>
-</tbody>
-</table>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;下／上ひげ極値とは閉区間<span class="math inline">\(\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]\)</span>の中で最も小さい／大きいデータの値です。閉区間の下限／上限値ではありません。</p></div><div id="fn2"><p><sup>2</sup>&nbsp;四分位数はテューキーの四分位数（<code><a href="https://rdrr.io/r/stats/fivenum.html">fivenum()</a></code>関数で求めています）になります。</p></div><div id="fn3"><p><sup>3</sup>&nbsp;95<span class="math inline">\(\%\)</span>信頼区間です。係数はソースでベタ打ちになっているため引数を用いて信頼区間を変更することはできません。</p></div><div id="fn4"><p><sup>4</sup>&nbsp;外れ値は閉区間<span class="math inline">\(\big[ Q_1 - 1.5 \times IQR, Q_3 + 1.5 \times IQR \big]\)</span>の外側にある値です。</p></div></div><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-IQRの1.5倍の外側が外れ値になる理由
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>閉区間の外側を外れ値とする理由は下図（正規分布における箱ひげ図）を見れば理解できると思います。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Boxplot_vs_PDF.svg" class="img-fluid figure-img"></p>
-<figcaption>出典:Wikipedia(en)</figcaption></figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-サマリだけを出力する
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>箱ひげ図を出力せずにサマリだけを出力したい場合は<code>plot = FALSE</code>を引数に指定します。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>返り値だけを出力する</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>$stats
-     [,1] [,2]
-[1,]  0.0    0
-[2,]  9.0   14
-[3,] 19.0   31
-[4,] 38.5   55
-[5,] 81.0  114
-
-$n
-[1] 119 218
-
-$conf
-         [,1]     [,2]
-[1,] 14.72727 26.61254
-[2,] 23.27273 35.38746
-
-$out
- [1]  97 113  86  87 107 113 156 131 139 126 140 124 141 148 126 142
-
-$group
- [1] 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2
-
-$names
-[1] "男" "女"</code></pre>
-</div>
-</div>
-<p>返り値はリスト型変数なので<code>$</code>演算子を用いた参照で特定の値だけを出力することも可能です。</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>特定の返り値だけを出力する</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ストレス反応得点</span> <span class="op">~</span> <span class="va">性別</span>, data <span class="op">=</span> <span class="va">PatientStress</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">stats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2]
-[1,]  0.0    0
-[2,]  9.0   14
-[3,] 19.0   31
-[4,] 38.5   55
-[5,] 81.0  114</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-極値と閉区間の関係
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>下図の青点線が男性の閉区間上限値、赤点線が女性の閉区間上限値、青緑の四角が各データになります。上ひげ極値は閉区間内にあるデータの最大値を取りますので必ずしも閉区間上限値と一致しないことが図から分かります。なお、閉区間下限値はマイナスになることから出力を省略しますが、下ひげ極値は男女ともに閉区間内にあるデータの最小値であるゼロになっていることが分かります。</p>
-<div class="cell">
-<div class="cell-output-display">
+<details open="" class="code-fold"><summary>グラフ - 散布図</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/scatterplot.html">scatterplot</a></span><span class="op">(</span><span class="va">ストレス反応</span><span class="op">~</span><span class="va">ストレッサー得点</span>, regLine<span class="op">=</span><span class="cn">TRUE</span>, smooth<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>                 boxplots<span class="op">=</span><span class="cn">FALSE</span>, data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="tips_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="linearModel_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -529,359 +369,329 @@ $names
 </div>
 </div>
 </div>
-</section></section><section id="独立サンプルt検定" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="独立サンプルt検定">独立サンプルt検定</h2>
-<p>　R Commanderで独立サンプルt検定（独立標本t検定）を行う場合は、データセットが<strong>Tidy data（整然データ）</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>という概念を満たしている必要があります。</p>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;<a href="https://ja.wikipedia.org/wiki/Tidy_data">Wikipedia</a></p></div></div><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tidy data（整然データ）
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>以下の条件を満たす表型のデータをTidy dataといい、構造と意味が合致しているのが特徴です。<br>
-　1. 個々の変数が一つの列をなす<br>
-　2. 個々の観測が一つの行をなす<br>
-　3. 個々の値が一つのセルをなす<br>
-　4. 個々の観測の構成単位の累計が一つの表をなす</p>
-<p>なので、神ExcelはTidy dataにはなりませんのでRでそのまま扱うことはできません。</p>
-</div>
-</div>
-</div>
-<p>　Tidy dataの具体例としてはRに標準で組み込まれている<code>sleep</code>データセットが挙げられます。<code>sleep</code>データセットは二種類の睡眠薬の効果 (睡眠時間の増減) に関するデータです。</p>
 <div class="cell">
-<div class="cell-output-display">
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["extra"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["group"],"name":[2],"type":["fct"],"align":["left"]},{"label":["ID"],"name":[3],"type":["fct"],"align":["left"]}],"data":[{"1":"0.7","2":"1","3":"1"},{"1":"-1.6","2":"1","3":"2"},{"1":"-0.2","2":"1","3":"3"},{"1":"-1.2","2":"1","3":"4"},{"1":"-0.1","2":"1","3":"5"},{"1":"3.4","2":"1","3":"6"},{"1":"3.7","2":"1","3":"7"},{"1":"0.8","2":"1","3":"8"},{"1":"0.0","2":"1","3":"9"},{"1":"2.0","2":"1","3":"10"},{"1":"1.9","2":"2","3":"1"},{"1":"0.8","2":"2","3":"2"},{"1":"1.1","2":"2","3":"3"},{"1":"0.1","2":"2","3":"4"},{"1":"-0.1","2":"2","3":"5"},{"1":"4.4","2":"2","3":"6"},{"1":"5.5","2":"2","3":"7"},{"1":"1.6","2":"2","3":"8"},{"1":"4.6","2":"2","3":"9"},{"1":"3.4","2":"2","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-</div>
-<section id="sleepデータセットを読み込む" class="level3"><h3 class="anchored" data-anchor-id="sleepデータセットを読み込む">
-<code>sleep</code>データセットを読み込む</h3>
-<p>　R Commanderで<code>sleep</code>データセットを読み込む手順は下記の通りです。</p>
-<ol type="1">
-<li>［データ］-［パッケージ内のデータ］-［アタッチされたパッケージからデータセットを読み込む…］を実行する</li>
-<li>開かれたダイアログの［データセット名を入力：］欄に<code>sleep</code>と入力し</li>
-<li>［OK］ボタンをクリックする</li>
-<li>［データセット:］欄が<code>sleep</code>になっていることを確認する</li>
-</ol></section><section id="独立サンプルt検定の実行" class="level3"><h3 class="anchored" data-anchor-id="独立サンプルt検定の実行">独立サンプルt検定の実行</h3>
-<p>　R Commanderで読み込んだ<code>sleep</code>データセットに対する独立サンプルt検定を実行する手順は下記の通りです。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。</p>
-<ol type="1">
-<li>［統計量］-［平均］-［独立サンプルt検定…］を実行する</li>
-<li>開かれたダイアログのグループが<code>group</code>、目的変数が<code>extra</code>になっていることを確認し</li>
-<li>ダイアログの［OK］ボタンをクリックする</li>
-<li>独立サンプルt検定が実行される</li>
-</ol>
-<div class="cell">
-<details open="" class="code-fold"><summary>統計量 - 平均 - 独立サンプルt検定</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">extra</span> <span class="op">~</span> <span class="va">group</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
-<span>       conf.level <span class="op">=</span> <span class="fl">.95</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span>, data <span class="op">=</span> <span class="va">sleep</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>統計量 - モデルへの適合 - 線形回帰</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">RegModel.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ストレス反応</span><span class="op">~</span><span class="va">ストレッサー得点</span><span class="op">+</span><span class="va">健康統制感</span>,</span>
+<span>                 data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>
-    Welch Two Sample t-test
+Call:
+lm(formula = ストレス反応 ~ ストレッサー得点 + 
+    健康統制感, data = PatientStress)
 
-data:  extra by group
-t = -1.8608, df = 17.776, p-value = 0.07939
-alternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0
-95 percent confidence interval:
- -3.3654832  0.2054832
-sample estimates:
-mean in group 1 mean in group 2 
-           0.75            2.33 </code></pre>
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.7488 -1.8323 -0.2206  1.7867  6.8849 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       3.5639982  1.0523008   3.387 0.000791 ***
+ストレッサー得点  0.2285325  0.0481304   4.748 3.05e-06 ***
+健康統制感       -0.0001499  0.0107407  -0.014 0.988871    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.691 on 334 degrees of freedom
+Multiple R-squared:  0.06323,   Adjusted R-squared:  0.05762 
+F-statistic: 11.27 on 2 and 334 DF,  p-value: 1.83e-05</code></pre>
 </div>
 </div>
-</section></section><section id="対応のあるt検定" class="level2"><h2 class="anchored" data-anchor-id="対応のあるt検定">対応のあるt検定</h2>
-<p>　R Commanderで対応のあるt検定（関連のあるt検定、従属なt検定）を行うには、独立サンプルt検定で使ったデータセットとは異なり下記のような形式（ワイド形式）のデータセットが必要です。</p>
+<details open="" class="code-fold"><summary>統計量 - ブートストラップ信頼区間</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">.bs.samples</span> <span class="op">&lt;-</span> <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Boot.html">Boot</a></span><span class="op">(</span><span class="va">RegModel.2</span>, R<span class="op">=</span><span class="fl">10000</span>, method<span class="op">=</span><span class="st">"case"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stderr">
+<pre><code> 要求されたパッケージ boot をロード中です </code></pre>
+</div>
+<details open="" class="code-fold"><summary>統計量 - ブートストラップ信頼区間</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/plotBoot.html">plotBoot</a></span><span class="op">(</span><span class="va">.bs.samples</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">.bs.samples</span>, level<span class="op">=</span><span class="fl">0.95</span>, type<span class="op">=</span><span class="st">"bca"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">remove</a></span><span class="op">(</span><span class="va">.bs.samples</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell quarto-layout-panel" data-layout-nrow="4">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img src="linearModel_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<pre><code>Bootstrap bca confidence intervals
+
+                       2.5 %     97.5 %
+(Intercept)       1.48126640 5.64724585
+ストレッサー得点  0.13367067 0.32461128
+健康統制感       -0.02272356 0.02214268</code></pre>
+</div>
+</div>
+</div>
+</section><section id="線形モデルp189" class="level3" data-number="10.2.2"><h3 data-number="10.2.2" class="anchored" data-anchor-id="線形モデルp189">
+<span class="header-section-number">10.2.2</span> 線形モデル（P189）</h3>
 <div class="cell">
-<div class="cell-output-display">
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["extra.1"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["extra.2"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.7","2":"1.9","_rn_":"1"},{"1":"-1.6","2":"0.8","_rn_":"2"},{"1":"-0.2","2":"1.1","_rn_":"3"},{"1":"-1.2","2":"0.1","_rn_":"4"},{"1":"-0.1","2":"-0.1","_rn_":"5"},{"1":"3.4","2":"4.4","_rn_":"6"},{"1":"3.7","2":"5.5","_rn_":"7"},{"1":"0.8","2":"1.6","_rn_":"8"},{"1":"0.0","2":"4.6","_rn_":"9"},{"1":"2.0","2":"3.4","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ロングからワイド形式への変換
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>　R Commanderでこのような形式に変換する手順は下記の通りです。</p>
-<ol type="1">
-<li>アクティブデータセットを<code>sleep</code>データセットにする</li>
-<li>［データ］-［アクティブデータセット］ー［データセットのロングからワイド形式への変換］を実行する</li>
-<li>開かれたダイアログで
-<ul>
-<li>被験者ID変数に<code>ID</code>を指定</li>
-<li>被験者内要因に<code>group</code>を指定</li>
-<li>出来事に応じて変化する変数に<code>extra</code>を指定</li>
-<li>無視する変数は無指定</li>
-</ul>
-</li>
-<li>ダイアログの［OK］ボタンをクリックする</li>
-<li>
-<code>sleep</code>データセットが<code>sleepWide</code>データセットに変換される</li>
-</ol>
-<div class="cell">
-<details open="" class="code-fold"><summary>データ - アクティブデータセット - データセットのロングからワイド形式への変換</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sleepWide</span> <span class="op">&lt;-</span> <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/reshapeL2W.html">reshapeL2W</a></span><span class="op">(</span><span class="va">sleep</span>,</span>
-<span>                                   within<span class="op">=</span><span class="st">"group"</span>,</span>
-<span>                                   id<span class="op">=</span><span class="st">"ID"</span>,</span>
-<span>                                   varying<span class="op">=</span><span class="st">"extra"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ワイドからロング形式への変換
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>　R Commanderで上記の逆変換（ワイド-&gt;ロング）を変換する手順は下記の通りです。</p>
-<ol type="1">
-<li>アクティブデータセットを<code>sleepWide</code>データセットにする</li>
-<li>［データ］-［アクティブデータセット］ー［データセットのワイドからロング形式への変換］を実行する</li>
-<li>開かれたダイアログで
-<ul>
-<li>［反復測定1因子］タブを選択する</li>
-<li>
-<code>Level-1</code>で<code>extra.1</code>を選択する</li>
-<li>
-<code>Level-2</code>で<code>extra.2</code>を選択する
-<ul>
-<li>
-<code>Level-1</code>ならびに<code>Level-2</code>が元の<code>group</code>の値になります</li>
-</ul>
-</li>
-<li>［Name for the within-subjects factor:］には任意の変数名を設定する
-<ul>
-<li>これが元の<code>group</code>に相当します</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>ダイアログの［OK］ボタンをクリックする</li>
-<li>
-<code>sleepWide</code>データセットが<code>sleepWideLong</code>データセットに変換される</li>
-</ol>
-<p>　データセット名などは［オプション］タブで指定してください。</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>データ - アクティブデータセット - データセットのワイドからロング形式への変換</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sleepWideLong</span> <span class="op">&lt;-</span> <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/reshapeW2L.html">reshapeW2L</a></span><span class="op">(</span><span class="va">sleepWide</span>, within<span class="op">=</span><span class="st">"trials"</span>,</span>
-<span>                                       levels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>trials<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Level-1"</span>, <span class="st">"Level-2"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                                       varying<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>response<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"extra.1"</span>,<span class="st">"extra.2"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                                       id<span class="op">=</span><span class="st">"id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</div>
-</div>
-</div>
-<section id="対応あるt検定の実行" class="level3"><h3 class="anchored" data-anchor-id="対応あるt検定の実行">対応あるt検定の実行</h3>
-<p>　ワイド形式のデータセットを準備し（ここでは上記のNoteの手順で作成した<code>sleepWide</code>データセットを利用します）。対応のあるt検定を下記の手順で実行します。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。</p>
-<ol type="1">
-<li>変換された<code>sleepWide</code>データセットをアクティブデータにする</li>
-<li>［統計量］-［平均］-［対応のあるt検定…］を実行する</li>
-<li>開かれだダイアログで
-<ul>
-<li>第１の変数に<code>extra.1</code>を指定</li>
-<li>第２の変数に<code>extra.2</code>を指定</li>
-</ul>
-</li>
-<li>ダイアログの［OK］ボタンをクリックする</li>
-<li>対応のあるt検定が実行される</li>
-</ol>
-<div class="cell">
-<details open="" class="code-fold"><summary>統計量 - 平均 - 対応のあるt検定</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">sleepWide</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">extra.1</span>, <span class="va">extra.2</span>,</span>
-<span>                        alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
-<span>                        conf.level <span class="op">=</span> <span class="fl">.95</span>,</span>
-<span>                        paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>統計量 - モデルへの適合 - 線形モデル</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">LinearModel.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ストレス反応</span> <span class="op">~</span> <span class="va">日常苛立ち</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">LinearModel.1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>
-    Paired t-test
+Call:
+lm(formula = ストレス反応 ~ 日常苛立ち, data = PatientStress)
 
-data:  extra.1 and extra.2
-t = -4.0621, df = 9, p-value = 0.002833
-alternative hypothesis: true mean difference is not equal to 0
-95 percent confidence interval:
- -2.4598858 -0.7001142
-sample estimates:
-mean difference 
-          -1.58 </code></pre>
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.8138 -1.4475  0.0805  1.4749  6.0547 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   3.5251     0.2136  16.505  &lt; 2e-16 ***
+日常苛立ち1   1.5280     0.3257   4.691 3.97e-06 ***
+日常苛立ち3   2.5857     0.3469   7.453 7.94e-13 ***
+日常苛立ち6   4.2888     0.3720  11.528  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.32 on 333 degrees of freedom
+Multiple R-squared:  0.3056,    Adjusted R-squared:  0.2994 
+F-statistic: 48.85 on 3 and 333 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-</section></section><section id="rにおけるt検定" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="rにおけるt検定">Rにおけるt検定</h2>
-<p>　R Commanderにおけるt検定は実行コードを見ればわかるようにすべてのt検定を<code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>というRの標準関数で行っています。<code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>関数は引数の指定で様々なt検定に対応しているからです。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>t.test()関数の引数</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Default S3 method:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">x</span>, y <span class="op">=</span> <span class="cn">NULL</span>,            <span class="co"># 標本の指定</span></span>
-<span>       alternative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span><span class="op">)</span>,</span>
-<span>                               <span class="co"># 対立仮設の指定</span></span>
-<span>       mu <span class="op">=</span> <span class="fl">0</span>,                 <span class="co"># 平均値の（差の）指定</span></span>
-<span>       paired <span class="op">=</span> <span class="cn">FALSE</span>,         <span class="co"># 独立か対応かの指定</span></span>
-<span>       var.equal <span class="op">=</span> <span class="cn">FALSE</span>,      <span class="co"># 等分散か否かの指定</span></span>
-<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## S3 method for class 'formula'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">formula</span>,                <span class="co"># 標本の指定</span></span>
-<span>       <span class="va">data</span>,                   <span class="co"># データセット名の指定</span></span>
-<span>       <span class="va">subset</span>,                 <span class="co"># サブセットの指定</span></span>
-<span>       <span class="va">na.action</span>,              <span class="co"># NAへの対処方法</span></span>
-<span>       alternative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span><span class="op">)</span>,</span>
-<span>                               <span class="co"># 対立仮設の指定</span></span>
-<span>       mu <span class="op">=</span> <span class="fl">0</span>,                 <span class="co"># 平均値の（差の）指定</span></span>
-<span>       paired <span class="op">=</span> <span class="cn">FALSE</span>,         <span class="co"># 独立か対応かの指定</span></span>
-<span>       var.equal <span class="op">=</span> <span class="cn">FALSE</span>,      <span class="co"># 等分散か否かの指定</span></span>
-<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<details open="" class="code-fold"><summary>モデル - 信頼医区間</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/S.html">Confint</a></span><span class="op">(</span><span class="va">LinearModel.1</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>            Estimate     2.5 %   97.5 %
+(Intercept) 3.525073 3.1049506 3.945196
+日常苛立ち1 1.528018 0.8873007 2.168735
+日常苛立ち3 2.585738 1.9032632 3.268213
+日常苛立ち6 4.288765 3.5569210 5.020609</code></pre>
 </div>
-<p>　指定方法には二通りありますが下側の’formula’形式を使うとTidy data（整然データ）を変形させずに引数の指定だけで四通りのt検定に対応できますので覚えておいて損はないかと思います。</p>
-<table class="table">
-<thead><tr class="header">
-<th>t検定の種類</th>
-<th>formula</th>
-<th>paired</th>
-<th>var.equal</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>1標本のt検定</td>
-<td><code>value ~ 1</code></td>
-<td><code>FALSE</code></td>
-<td><code>FALSE</code></td>
-</tr>
-<tr class="even">
-<td>スチューデントのt検定<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
-</td>
-<td><code>value ~ group</code></td>
-<td><code>FALSE</code></td>
-<td><code>TRUE</code></td>
-</tr>
-<tr class="odd">
-<td>ウェルチのt検定<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>
-</td>
-<td><code>value ~ group</code></td>
-<td><code>FALSE</code></td>
-<td><code>FALSE</code></td>
-</tr>
-<tr class="even">
-<td>対応のあるt検定</td>
-<td><code>value ~ group</code></td>
-<td><code>TRUE</code></td>
-<td><code>FALSE</code></td>
-</tr>
-</tbody>
-</table>
-<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;スチューデントのt検定とは二標本間でデータの母分散が等しいと仮定できるときに用いる検定手法です</p></div><div id="fn7"><p><sup>7</sup>&nbsp;ウェルチのt検定とは二標本間でデータの母分散が等しいとは限らないときに用いる検定手法です</p></div></div><div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-対立仮設の指定方法
+<div class="cell">
+<details open="" class="code-fold"><summary>統計量 - モデルへの適合 - 線形モデル</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">LinearModel.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ストレス反応</span> <span class="op">~</span> <span class="va">ストレッサー得点</span> <span class="op">+</span><span class="va">健康統制感</span></span>
+<span>                    <span class="op">+</span><span class="va">日常苛立ち</span> <span class="op">+</span><span class="va">性別</span> <span class="op">+</span><span class="va">年齢コード</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">LinearModel.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = ストレス反応 ~ ストレッサー得点 + 
+    健康統制感 + 日常苛立ち + 性別 + 年齢コード, 
+    data = PatientStress)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.0228 -1.4035 -0.0337  1.5081  6.4263 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       1.249051   0.912855   1.368 0.172161    
+ストレッサー得点  0.076017   0.041277   1.842 0.066433 .  
+健康統制感        0.021266   0.009091   2.339 0.019919 *  
+日常苛立ち1       1.308106   0.312272   4.189 3.61e-05 ***
+日常苛立ち3       2.172647   0.339295   6.403 5.28e-10 ***
+日常苛立ち6       3.592491   0.379275   9.472  &lt; 2e-16 ***
+性別女            0.804334   0.252173   3.190 0.001563 ** 
+年齢コード2       0.082064   0.379132   0.216 0.828770    
+年齢コード3      -1.096353   0.310151  -3.535 0.000467 ***
+年齢コード4      -1.775304   0.394404  -4.501 9.41e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.186 on 327 degrees of freedom
+Multiple R-squared:  0.3947,    Adjusted R-squared:  0.3781 
+F-statistic: 23.69 on 9 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>　対立仮設（<code>alternative</code>オプション）は<code>"two.sided"</code>、<code>"less"</code>、<code>"greater"</code>のどれかを指定します。デフォルトは<code>"two.sided"</code>（両側検定）です。</p>
-<section id="標本のt検定の場合" class="level3"><h3 class="anchored" data-anchor-id="標本のt検定の場合">1標本のt検定の場合</h3>
-<p>　1標本のt検定の場合は標本の平均値（<span class="math inline">\(\mu\)</span>）と比較値（<span class="math inline">\(\mu_0\)</span>）に対する検定になります。</p>
-<table class="table">
-<thead><tr class="header">
-<th>対立仮設</th>
-<th>帰無仮設</th>
-<th>指定</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\mu \neq \mu_0\)</span></td>
-<td><span class="math inline">\(\mu = \mu_0\)</span></td>
-<td><code>"two.sided"</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\mu \lt  \mu_0\)</span></td>
-<td><span class="math inline">\(\mu \ge \mu_0\)</span></td>
-<td><code>"less"</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\mu \gt  \mu_0\)</span></td>
-<td><span class="math inline">\(\mu \le \mu_0\)</span></td>
-<td><code>"greater"</code></td>
-</tr>
-</tbody>
-</table></section><section id="独立サンプルt検定の場合" class="level3"><h3 class="anchored" data-anchor-id="独立サンプルt検定の場合">独立サンプルt検定の場合</h3>
-<p>　独立サンプルt検定の場合は各標本の平均値（<span class="math inline">\(\mu_x\)</span>と<span class="math inline">\(\mu_y\)</span>）に対する検定になります。</p>
-<table class="table">
-<thead><tr class="header">
-<th>対立仮設</th>
-<th>帰無仮設</th>
-<th>指定</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\mu_x \neq \mu_y\)</span></td>
-<td><span class="math inline">\(\mu_x =   \mu_y\)</span></td>
-<td><code>"two.sided"</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\mu_x \lt  \mu_y\)</span></td>
-<td><span class="math inline">\(\mu_x \ge \mu_y\)</span></td>
-<td><code>"less"</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\mu_x \gt  \mu_y\)</span></td>
-<td><span class="math inline">\(\mu_x \le \mu_y\)</span></td>
-<td><code>"greater"</code></td>
-</tr>
-</tbody>
-</table></section><section id="対応のあるt検定の場合" class="level3"><h3 class="anchored" data-anchor-id="対応のあるt検定の場合">対応のあるt検定の場合</h3>
-<p>　対応のあるt検定の場合は二標本の平均の差（<span class="math inline">\(\delta = \mu_x - \mu_y\)</span>）に対する検定になります。</p>
-<table class="table">
-<thead><tr class="header">
-<th>対立仮設</th>
-<th>帰無仮設</th>
-<th>指定</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\delta \neq 0\)</span></td>
-<td><span class="math inline">\(\delta =   0\)</span></td>
-<td><code>"two.sided"</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\delta \lt  0\)</span></td>
-<td><span class="math inline">\(\delta \ge 0\)</span></td>
-<td><code>"less"</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\delta \gt  0\)</span></td>
-<td><span class="math inline">\(\delta \le 0\)</span></td>
-<td><code>"greater"</code></td>
-</tr>
-</tbody>
-</table></section>
+</section></section><section id="モデル診断p197" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="モデル診断p197">
+<span class="header-section-number">10.3</span> モデル診断（P197）</h2>
+<details open="" class="code-fold"><summary>モデル - グラフ - 基本診断プロット</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">oldpar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>oma<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">3</span>,<span class="fl">0</span><span class="op">)</span>, mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">LinearModel.2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell quarto-layout-panel" data-layout-nrow="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img src="linearModel_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<p>以上</p>
+<div class="cell">
+<details open="" class="code-fold"><summary>モデル - グラフ - Influence plot</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/influencePlot.html">influencePlot</a></span><span class="op">(</span><span class="va">LinearModel.2</span>, id<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"noteworthy"</span>, n<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="linearModel_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      StudRes        Hat        CookD
+18  -3.330199 0.04048919 0.0453974131
+74   3.033107 0.03689499 0.0343805895
+141  0.159330 0.06877515 0.0001880478
+271 -1.788174 0.06809605 0.0232092634</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold"><summary>モデル - グラフ - Component+residual plots</summary><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/crPlots.html">crPlots</a></span><span class="op">(</span><span class="va">LinearModel.2</span>, smooth<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>span<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="linearModel_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="数値によるモデル診断" class="level3" data-number="10.3.1"><h3 data-number="10.3.1" class="anchored" data-anchor-id="数値によるモデル診断">
+<span class="header-section-number">10.3.1</span> 数値によるモデル診断</h3>
+<details open="" class="code-fold"><summary>モデル - 数値による診断 - 分散拡大要因</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/vif.html">vif</a></span><span class="op">(</span><span class="va">LinearModel.2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov2cor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">LinearModel.2</span><span class="op">)</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># Correlations of parameter estimates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell quarto-layout-panel" data-layout-nrow="2">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<pre><code>                     GVIF Df GVIF^(1/(2*Df))
+ストレッサー得点 1.114436  1        1.055669
+健康統制感       1.085463  1        1.041856
+日常苛立ち       1.209852  3        1.032259
+性別             1.024580  1        1.012215
+年齢コード       1.221009  3        1.033840</code></pre>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<pre><code>                 (Intercept) ストレッサー得点 健康統制感 日常苛立ち1
+(Intercept)            1.000           -0.278     -0.886      -0.132
+ストレッサー得点      -0.278            1.000     -0.041      -0.106
+健康統制感            -0.886           -0.041      1.000       0.001
+日常苛立ち1           -0.132           -0.106      0.001       1.000
+日常苛立ち3           -0.188           -0.132      0.071       0.425
+日常苛立ち6           -0.114           -0.264      0.047       0.403
+性別女                -0.186            0.058     -0.019      -0.022
+年齢コード2           -0.136            0.023     -0.002       0.100
+年齢コード3           -0.165            0.120     -0.042       0.119
+年齢コード4            0.076            0.044     -0.244       0.042
+                 日常苛立ち3 日常苛立ち6 性別女 年齢コード2 年齢コード3
+(Intercept)           -0.188      -0.114 -0.186      -0.136      -0.165
+ストレッサー得点      -0.132      -0.264  0.058       0.023       0.120
+健康統制感             0.071       0.047 -0.019      -0.002      -0.042
+日常苛立ち1            0.425       0.403 -0.022       0.100       0.119
+日常苛立ち3            1.000       0.412 -0.035       0.100       0.168
+日常苛立ち6            0.412       1.000 -0.070       0.122       0.166
+性別女                -0.035      -0.070  1.000       0.093       0.087
+年齢コード2            0.100       0.122  0.093       1.000       0.284
+年齢コード3            0.168       0.166  0.087       0.284       1.000
+年齢コード4            0.131       0.185  0.068       0.226       0.301
+                 年齢コード4
+(Intercept)            0.076
+ストレッサー得点       0.044
+健康統制感            -0.244
+日常苛立ち1            0.042
+日常苛立ち3            0.131
+日常苛立ち6            0.185
+性別女                 0.068
+年齢コード2            0.226
+年齢コード3            0.301
+年齢コード4            1.000</code></pre>
+</div>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold"><summary>モデル - 数値による診断 - ブルーシュ・ベーガンの分散の不均一性の検定</summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">lmtest</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">ストレス反応</span> <span class="op">~</span> <span class="va">ストレッサー得点</span> <span class="op">+</span> <span class="va">健康統制感</span> </span>
+<span>               <span class="op">+</span> <span class="va">日常苛立ち</span> <span class="op">+</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">年齢コード</span>,</span>
+<span>               varformula <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted.values</a></span><span class="op">(</span><span class="va">LinearModel.2</span><span class="op">)</span>,</span>
+<span>               studentize<span class="op">=</span><span class="cn">TRUE</span>, data<span class="op">=</span><span class="va">PatientStress</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  ストレス反応 ~ ストレッサー得点 + 健康統制感 +     日常苛立ち + 性別 + 年齢コード
+BP = 1.7599, df = 1, p-value = 0.1846</code></pre>
+</div>
+</div>
+</section><section id="複雑な線形モデルの回帰分析p209" class="level3" data-number="10.3.2"><h3 data-number="10.3.2" class="anchored" data-anchor-id="複雑な線形モデルの回帰分析p209">
+<span class="header-section-number">10.3.2</span> 複雑な線形モデルの回帰分析（P209）</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">演算子<code>*</code>の場合</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">演算子<code>:</code>の場合</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<details open="" class="code-fold"><summary>統計量 - モデルへの適合 - 線形モデル</summary><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">LinearModel.3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ストレス反応</span> <span class="op">~</span> <span class="va">ストレッサー得点</span> <span class="op">*</span> <span class="va">性別</span> <span class="op">+</span> </span>
+<span>                    <span class="va">健康統制感</span> <span class="op">+</span> <span class="va">日常苛立ち</span> <span class="op">+</span> <span class="va">年齢コード</span>,</span>
+<span>                    data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">LinearModel.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = ストレス反応 ~ ストレッサー得点 * 
+    性別 + 健康統制感 + 日常苛立ち + 年齢コード, 
+    data = PatientStress)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.0423 -1.3942 -0.0425  1.5039  6.4069 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)              1.168445   0.968560   1.206 0.228548    
+ストレッサー得点         0.090062   0.069412   1.297 0.195378    
+性別女                   0.960755   0.670401   1.433 0.152786    
+健康統制感               0.021024   0.009155   2.297 0.022280 *  
+日常苛立ち1              1.306828   0.312761   4.178 3.77e-05 ***
+日常苛立ち3              2.175033   0.339914   6.399 5.44e-10 ***
+日常苛立ち6              3.598807   0.380646   9.454  &lt; 2e-16 ***
+年齢コード2              0.082958   0.379693   0.218 0.827186    
+年齢コード3             -1.104739   0.312375  -3.537 0.000464 ***
+年齢コード4             -1.774085   0.395000  -4.491 9.84e-06 ***
+ストレッサー得点:性別女 -0.021415   0.085020  -0.252 0.801293    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.189 on 326 degrees of freedom
+Multiple R-squared:  0.3948,    Adjusted R-squared:  0.3763 
+F-statistic: 21.27 on 10 and 326 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<details open="" class="code-fold"><summary>統計量 - モデルへの適合 - 線形モデル</summary><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">LinearModel.3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ストレス反応</span> <span class="op">~</span> <span class="va">ストレッサー得点</span> <span class="op">+</span> <span class="va">性別</span> <span class="op">+</span> <span class="va">ストレッサー得点</span><span class="op">:</span><span class="va">性別</span> <span class="op">+</span> </span>
+<span>                    <span class="va">健康統制感</span> <span class="op">+</span> <span class="va">日常苛立ち</span> <span class="op">+</span> <span class="va">年齢コード</span>,</span>
+<span>                    data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">LinearModel.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = ストレス反応 ~ ストレッサー得点 + 
+    性別 + ストレッサー得点:性別 + 健康統制感 + 
+    日常苛立ち + 年齢コード, data = PatientStress)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.0423 -1.3942 -0.0425  1.5039  6.4069 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)              1.168445   0.968560   1.206 0.228548    
+ストレッサー得点         0.090062   0.069412   1.297 0.195378    
+性別女                   0.960755   0.670401   1.433 0.152786    
+健康統制感               0.021024   0.009155   2.297 0.022280 *  
+日常苛立ち1              1.306828   0.312761   4.178 3.77e-05 ***
+日常苛立ち3              2.175033   0.339914   6.399 5.44e-10 ***
+日常苛立ち6              3.598807   0.380646   9.454  &lt; 2e-16 ***
+年齢コード2              0.082958   0.379693   0.218 0.827186    
+年齢コード3             -1.104739   0.312375  -3.537 0.000464 ***
+年齢コード4             -1.774085   0.395000  -4.491 9.84e-06 ***
+ストレッサー得点:性別女 -0.021415   0.085020  -0.252 0.801293    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.189 on 326 degrees of freedom
+Multiple R-squared:  0.3948,    Adjusted R-squared:  0.3763 
+F-statistic: 21.27 on 10 and 326 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section><section id="モデルの選択p212" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="モデルの選択p212">
+<span class="header-section-number">10.4</span> モデルの選択（P212）</h2>
+<section id="分散分析によるモデルの比較p213" class="level3" data-number="10.4.1"><h3 data-number="10.4.1" class="anchored" data-anchor-id="分散分析によるモデルの比較p213">
+<span class="header-section-number">10.4.1</span> 分散分析によるモデルの比較（P213）</h3>
+</section><section id="aicによるモデル選択p215" class="level3" data-number="10.4.2"><h3 data-number="10.4.2" class="anchored" data-anchor-id="aicによるモデル選択p215">
+<span class="header-section-number">10.4.2</span> AICによるモデル選択（P215）</h3>
+</section></section><section id="解析結果の保存p219" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="解析結果の保存p219">
+<span class="header-section-number">10.5</span> 解析結果の保存（P219）</h2>
 <hr>
 
 
@@ -1438,13 +1248,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./linearModel.html" class="pagination-link" aria-label="回帰分析">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">回帰分析</span></span>
+      <a href="./ANOVA.html" class="pagination-link" aria-label="分散分析">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">分散分析</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./webR/webR.html" class="pagination-link" aria-label="Try boxplot()">
-        <span class="nav-page-text">Try boxplot()</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tips.html" class="pagination-link" aria-label="Tips">
+        <span class="nav-page-text">Tips</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
