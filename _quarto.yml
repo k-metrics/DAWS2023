@@ -38,6 +38,7 @@ book:
     - varTest.qmd
     - ANOVA.qmd
     - linearModel.qmd
+    - chiSquared.qmd
     - tips.qmd
     - webR/webR.qmd
 
