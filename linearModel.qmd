@@ -1,0 +1,178 @@
+> **※本ページの内容はテキストの第１０章に相当します**
+
+```{r setup, include=FALSE}
+source("./R/setup.R")
+```
+
+# 回帰分析
+　本章では回帰分析について学びます。Rcmdrで実行した場合のコードと出力結果のみを記載し、手順の記載は省略しますので詳細はテキストを参照してください。
+
+::: {.callout-note collapse="false"}
+## データの読み込み
+
+1.  Rcmdrのメニューから［データ］-［データセットのロード...］を実行する
+2.  ファイルダイアログで「`外来患者ストレス.RData`」ファイルを選択する
+3.  アクティブデータセットが**`PatientStress`**になっていることを確認する
+:::
+
+```{r, echo=FALSE}
+load("./SampleFiles/外来患者ストレス.RData")
+PatientStress %>% df_print()
+```
+
+## 回帰モデルとは何か（P173）
+
+## 回帰モデルの当てはめ（P179）
+
+
+### 線形回帰（P179）
+
+```{r}
+#| code-summary: "統計量 - モデルへの適合 - 線形回帰"
+
+RegModel.1 <- lm(ストレス反応~ストレッサー得点,
+                 data=PatientStress)
+summary(RegModel.1)
+```
+
+```{r}
+#| code-summary: "モデル - 信頼医区間"
+
+car::Confint(RegModel.1, level = 0.95)
+```
+
+::: {.callout-tip collapse="true"}
+## 相関
+```{r}
+#| code-summary: "グラフ - 散布図"
+#| fig-height: 7
+
+car::scatterplot(ストレス反応~ストレッサー得点, regLine=TRUE, smooth=FALSE,
+                 boxplots=FALSE, data=PatientStress)
+```
+
+:::
+
+
+```{r}
+#| code-summary: "統計量 - モデルへの適合 - 線形回帰"
+
+RegModel.2 <- lm(ストレス反応~ストレッサー得点+健康統制感,
+                 data=PatientStress)
+summary(RegModel.2)
+```
+
+```{r}
+#| code-summary: "統計量 - ブートストラップ信頼区間"
+#| fig-height: 7
+#| layout-nrow: 4
+
+.bs.samples <- car::Boot(RegModel.2, R=10000, method="case")
+RcmdrMisc::plotBoot(.bs.samples)
+confint(.bs.samples, level=0.95, type="bca")
+remove(.bs.samples)
+```
+
+
+### 線形モデル（P189）
+```{r}
+#| code-summary: "統計量 - モデルへの適合 - 線形モデル"
+
+LinearModel.1 <- lm(ストレス反応 ~ 日常苛立ち, data = PatientStress)
+summary(LinearModel.1)
+```
+
+```{r}
+#| code-summary: "モデル - 信頼医区間"
+
+car::Confint(LinearModel.1, level = 0.95)
+```
+
+```{r}
+#| code-summary: "統計量 - モデルへの適合 - 線形モデル"
+
+LinearModel.2 <- lm(ストレス反応 ~ ストレッサー得点 +健康統制感
+                    +日常苛立ち +性別 +年齢コード, data = PatientStress)
+summary(LinearModel.2)
+```
+
+
+## モデル診断（P197）
+```{r}
+#| code-summary: "モデル - グラフ - 基本診断プロット"
+#| fig-height: 7
+#| layout-nrow: 3
+
+oldpar <- par(oma=c(0,0,3,0), mfrow=c(2,2))
+plot(LinearModel.2)
+par(oldpar)
+```
+
+
+```{r}
+#| code-summary: "モデル - グラフ - Influence plot"
+#| fig-height: 7
+
+car::influencePlot(LinearModel.2, id=list(method="noteworthy", n=2))
+```
+
+
+```{r}
+#| code-summary: "モデル - グラフ - Component+residual plots"
+#| fig-height: 7
+
+car::crPlots(LinearModel.2, smooth=list(span=0.5))
+```
+
+### 数値によるモデル診断
+```{r}
+#| code-summary: "モデル - 数値による診断 - 分散拡大要因"
+#| layout-nrow: 2
+
+car::vif(LinearModel.2)
+round(cov2cor(vcov(LinearModel.2)), 3) # Correlations of parameter estimates
+```
+
+```{r}
+#| code-summary: "モデル - 数値による診断 - ブルーシュ・ベーガンの分散の不均一性の検定"
+
+lmtest::bptest(ストレス反応 ~ ストレッサー得点 + 健康統制感 
+               + 日常苛立ち + 性別 + 年齢コード,
+               varformula = ~ fitted.values(LinearModel.2),
+               studentize=TRUE, data=PatientStress)
+```
+
+### 複雑な線形モデルの回帰分析（P209）
+::: {.panel-tabset}
+## 演算子`*`の場合
+```{r}
+#| code-summary: "統計量 - モデルへの適合 - 線形モデル"
+
+LinearModel.3 <- lm(ストレス反応 ~ ストレッサー得点 * 性別 + 
+                    健康統制感 + 日常苛立ち + 年齢コード,
+                    data = PatientStress)
+summary(LinearModel.3)
+```
+
+## 演算子`:`の場合
+```{r}
+#| code-summary: "統計量 - モデルへの適合 - 線形モデル"
+
+LinearModel.3 <- lm(ストレス反応 ~ ストレッサー得点 + 性別 + ストレッサー得点:性別 + 
+                    健康統制感 + 日常苛立ち + 年齢コード,
+                    data = PatientStress)
+summary(LinearModel.3)
+```
+:::
+
+## モデルの選択（P212）
+
+### 分散分析によるモデルの比較（P213）
+
+### AICによるモデル選択（P215）
+
+## 解析結果の保存（P219）
+
+
+
+---
