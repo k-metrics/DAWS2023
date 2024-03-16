@@ -168,11 +168,43 @@ summary(LinearModel.3)
 ## モデルの選択（P212）
 
 ### 分散分析によるモデルの比較（P213）
+```{r}
+#| code-summary: "モデル - 仮設検定 - 2つのモデルを比較"
+
+anova(LinearModel.1, LinearModel.2)
+```
+
+```{r}
+#| code-summary: "モデル - 仮設検定 - 2つのモデルを比較"
+
+anova(LinearModel.2, LinearModel.3)
+```
 
 ### AICによるモデル選択（P215）
+```{r}
+#| code-summary: "モデル - 逐次モデル選択..."
+
+RcmdrMisc::stepwise(LinearModel.3, direction='backward/forward', criterion='AIC')
+```
 
 ## 解析結果の保存（P219）
+```{r}
+#| code-summary: "モデル - 計算結果をデータとして保存"
 
+PatientStress<- within(PatientStress, {
+  fitted.LinearModel.3 <- fitted(LinearModel.3)       # 予測値
+  residuals.LinearModel.3 <- residuals(LinearModel.3) # 残渣
+  rstudent.LinearModel.3 <- rstudent(LinearModel.3)   # スチューデント化残渣
+  hatvalues.LinearModel.3 <- hatvalues(LinearModel.3) # ハット地（てこ比）
+  cooks.distance.LinearModel.3 <- cooks.distance(LinearModel.3) # クックの距離
+  obsNumber <- 1:nrow(PatientStress)                  # インデックス番号
+})
+```
+
+保存結果はアクティブデータセットに追加されますので、必要に応じてデータセットを（`save()`関数を使用して）保存してください。
+```{r, echo=FALSE}
+PatientStress %>% df_print()
+```
 
 
 ---
