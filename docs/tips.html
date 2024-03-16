@@ -247,8 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li>
 <a href="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A" id="toc-対応のあるt検定" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A">対応のあるt検定</a>
   <ul class="collapse">
-<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E5%A4%89%E6%8F%9B" id="toc-データセットの変換" class="nav-link" data-scroll-target="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E5%A4%89%E6%8F%9B">データセットの変換</a></li>
-  <li><a href="#%E5%AF%BE%E5%BF%9C%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C" id="toc-対応あるt検定の実行" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C">対応あるt検定の実行</a></li>
+<li><a href="#%E5%AF%BE%E5%BF%9C%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C" id="toc-対応あるt検定の実行" class="nav-link" data-scroll-target="#%E5%AF%BE%E5%BF%9C%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A%E3%81%AE%E5%AE%9F%E8%A1%8C">対応あるt検定の実行</a></li>
   </ul>
 </li>
   <li><a href="#r%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bt%E6%A4%9C%E5%AE%9A" id="toc-rにおけるt検定" class="nav-link" data-scroll-target="#r%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bt%E6%A4%9C%E5%AE%9A">Rにおけるt検定</a></li>
@@ -320,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>R Commanderの<code>Boxplot()</code>関数は<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数のラッパー関数です。箱ひげ図自体の描画を<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が担い、外れ値の特定処理を<code>Boxplot()</code>関数が担っています。ですので<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が出力する箱ひげ図はR Commanderで外れ値の特定を”No”に設定した場合と同一の出力になります。なお、<code>Boxplot()</code>関数は返り値を持っていないため上記の方法は使えません。</p>
+<p>R Commanderの<code>Boxplot()</code>関数は<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数のラッパー関数です。箱ひげ図自体の描画を<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が担い、外れ値の特定処理を<code>Boxplot()</code>関数が担っています。ですので<code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>関数が出力する箱ひげ図はR Commanderで外れ値の特定を”No”に設定した場合と同一の出力になります。なお、<code>Boxplot()</code>関数は返り値を持っていないため<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>関数にかましても何も出力されません。</p>
 </div>
 </div>
 </div>
@@ -562,7 +561,7 @@ mean in group 1 mean in group 2
 </div>
 </div>
 </section></section><section id="対応のあるt検定" class="level2"><h2 class="anchored" data-anchor-id="対応のあるt検定">対応のあるt検定</h2>
-<p>　R Commanderで対応のあるt検定（関連のあるt検定、従属なt検定）を行うには、独立サンプルt検定で使ったデータセットとは異なり下記のような形式のデータセットが必要です。</p>
+<p>　R Commanderで対応のあるt検定（関連のあるt検定、従属なt検定）を行うには、独立サンプルt検定で使ったデータセットとは異なり下記のような形式（ワイド形式）のデータセットが必要です。</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -573,7 +572,18 @@ mean in group 1 mean in group 2
 </div>
 </div>
 </div>
-<section id="データセットの変換" class="level3"><h3 class="anchored" data-anchor-id="データセットの変換">データセットの変換</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ロングからワイド形式への変換
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>　R Commanderでこのような形式に変換する手順は下記の通りです。</p>
 <ol type="1">
 <li>アクティブデータセットを<code>sleep</code>データセットにする</li>
@@ -597,8 +607,61 @@ mean in group 1 mean in group 2
 <span>                                   varying<span class="op">=</span><span class="st">"extra"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="対応あるt検定の実行" class="level3"><h3 class="anchored" data-anchor-id="対応あるt検定の実行">対応あるt検定の実行</h3>
-<p>　データセットが作成できましたので、対応のあるt検定を下記の手順で実行します。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ワイドからロング形式への変換
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>　R Commanderで上記の逆変換（ワイド-&gt;ロング）を変換する手順は下記の通りです。</p>
+<ol type="1">
+<li>アクティブデータセットを<code>sleepWide</code>データセットにする</li>
+<li>［データ］-［アクティブデータセット］ー［データセットのワイドからロング形式への変換］を実行する</li>
+<li>開かれたダイアログで
+<ul>
+<li>［反復測定1因子］タブを選択する</li>
+<li>
+<code>Level-1</code>で<code>extra.1</code>を選択する</li>
+<li>
+<code>Level-2</code>で<code>extra.2</code>を選択する
+<ul>
+<li>
+<code>Level-1</code>ならびに<code>Level-2</code>が元の<code>group</code>の値になります</li>
+</ul>
+</li>
+<li>［Name for the within-subjects factor:］には任意の変数名を設定する
+<ul>
+<li>これが元の<code>group</code>に相当します</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ダイアログの［OK］ボタンをクリックする</li>
+<li>
+<code>sleepWide</code>データセットが<code>sleepWideLong</code>データセットに変換される</li>
+</ol>
+<p>　データセット名などは［オプション］タブで指定してください。</p>
+<div class="cell">
+<details open=""><summary>データ - アクティブデータセット - データセットのワイドからロング形式への変換</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sleepWideLong</span> <span class="op">&lt;-</span> <span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/reshapeW2L.html">reshapeW2L</a></span><span class="op">(</span><span class="va">sleepWide</span>, within<span class="op">=</span><span class="st">"trials"</span>,</span>
+<span>                                       levels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>trials<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Level-1"</span>, <span class="st">"Level-2"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                                       varying<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>response<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"extra.1"</span>,<span class="st">"extra.2"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                                       id<span class="op">=</span><span class="st">"id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+<section id="対応あるt検定の実行" class="level3"><h3 class="anchored" data-anchor-id="対応あるt検定の実行">対応あるt検定の実行</h3>
+<p>　ワイド形式のデータセットを準備し（ここでは上記のNoteの手順で作成した<code>sleepWide</code>データセットを利用します）。対応のあるt検定を下記の手順で実行します。この手順ではオプション指定を省略していますので、必要に応じてオプションを指定してください。</p>
 <ol type="1">
 <li>変換された<code>sleepWide</code>データセットをアクティブデータにする</li>
 <li>［統計量］-［平均］-［対応のあるt検定…］を実行する</li>
@@ -612,7 +675,7 @@ mean in group 1 mean in group 2
 <li>対応のあるt検定が実行される</li>
 </ol>
 <div class="cell">
-<details open=""><summary>統計量 - 平均 - 対応のあるt検定</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">sleepWide</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">extra.1</span>, <span class="va">extra.2</span>,</span>
+<details open=""><summary>統計量 - 平均 - 対応のあるt検定</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">sleepWide</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">extra.1</span>, <span class="va">extra.2</span>,</span>
 <span>                        alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
 <span>                        conf.level <span class="op">=</span> <span class="fl">.95</span>,</span>
 <span>                        paired<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -633,10 +696,10 @@ mean difference
 </section></section><section id="rにおけるt検定" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="rにおけるt検定">Rにおけるt検定</h2>
 <p>　R Commanderにおけるt検定は実行コードを見ればわかるようにすべてのt検定を<code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>というRの標準関数で行っています。<code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>関数は引数の指定で様々なt検定に対応しているからです。</p>
 <div class="cell">
-<details open=""><summary>t.test()関数の引数</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Default S3 method:</span></span>
+<details open=""><summary>t.test()関数の引数</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Default S3 method:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">x</span>, y <span class="op">=</span> <span class="cn">NULL</span>,            <span class="co"># 標本の指定</span></span>
 <span>       alternative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span><span class="op">)</span>,</span>
-<span>                               <span class="co"># 両側か片側かの指定</span></span>
+<span>                               <span class="co"># 対立仮設の指定</span></span>
 <span>       mu <span class="op">=</span> <span class="fl">0</span>,                 <span class="co"># 平均値の（差の）指定</span></span>
 <span>       paired <span class="op">=</span> <span class="cn">FALSE</span>,         <span class="co"># 独立か対応かの指定</span></span>
 <span>       var.equal <span class="op">=</span> <span class="cn">FALSE</span>,      <span class="co"># 等分散か否かの指定</span></span>
@@ -648,7 +711,7 @@ mean difference
 <span>       <span class="va">subset</span>,                 <span class="co"># サブセットの指定</span></span>
 <span>       <span class="va">na.action</span>,              <span class="co"># NAへの対処方法</span></span>
 <span>       alternative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span><span class="op">)</span>,</span>
-<span>                               <span class="co"># 両側か片側かの指定</span></span>
+<span>                               <span class="co"># 対立仮設の指定</span></span>
 <span>       mu <span class="op">=</span> <span class="fl">0</span>,                 <span class="co"># 平均値の（差の）指定</span></span>
 <span>       paired <span class="op">=</span> <span class="cn">FALSE</span>,         <span class="co"># 独立か対応かの指定</span></span>
 <span>       var.equal <span class="op">=</span> <span class="cn">FALSE</span>,      <span class="co"># 等分散か否かの指定</span></span>
@@ -665,7 +728,7 @@ mean difference
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>1標本t検定</td>
+<td>1標本のt検定</td>
 <td><code>value ~ 1</code></td>
 <td><code>FALSE</code></td>
 <td><code>FALSE</code></td>
@@ -692,7 +755,99 @@ mean difference
 </tr>
 </tbody>
 </table>
-<div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;スチューデントのt検定とは二標本間で等分散性があることを前提とした独立サンプルt検定です</p></li><li id="fn7"><p><sup>7</sup>&nbsp;ウェルチのt検定とは二標本間で等分散性がないことを前提とした独立サンプルt検定です</p></li></div><p>以上</p>
+<div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;スチューデントのt検定とは二標本間でデータの母分散が等しいと仮定できるときに用いる検定手法です</p></li><li id="fn7"><p><sup>7</sup>&nbsp;ウェルチのt検定とは二標本間でデータの母分散が等しいとは限らないときに用いる検定手法です</p></li></div><div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+対立仮設の指定方法
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>　対立仮設（<code>alternative</code>オプション）は<code>"two.sided"</code>、<code>"less"</code>、<code>"greater"</code>のどれかを指定します。デフォルトは<code>"two.sided"</code>（両側検定）です。</p>
+<section id="標本のt検定の場合" class="level3"><h3 class="anchored" data-anchor-id="標本のt検定の場合">1標本のt検定の場合</h3>
+<p>　1標本のt検定の場合は標本の平均値（<span class="math inline">\(\mu\)</span>）と比較値（<span class="math inline">\(\mu_0\)</span>）に対する検定になります。</p>
+<table class="table">
+<thead><tr class="header">
+<th>対立仮設</th>
+<th>帰無仮設</th>
+<th>指定</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mu \neq \mu_0\)</span></td>
+<td><span class="math inline">\(\mu = \mu_0\)</span></td>
+<td><code>"two.sided"</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu \lt \mu_0\)</span></td>
+<td><span class="math inline">\(\mu \ge \mu_0\)</span></td>
+<td><code>"less"</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mu \gt \mu_0\)</span></td>
+<td><span class="math inline">\(\mu \le \mu_0\)</span></td>
+<td><code>"greater"</code></td>
+</tr>
+</tbody>
+</table></section><section id="独立サンプルt検定の場合" class="level3"><h3 class="anchored" data-anchor-id="独立サンプルt検定の場合">独立サンプルt検定の場合</h3>
+<p>　独立サンプルt検定の場合は各標本の平均値（<span class="math inline">\(\mu_x\)</span>と<span class="math inline">\(\mu_y\)</span>）に対する検定になります。</p>
+<table class="table">
+<thead><tr class="header">
+<th>対立仮設</th>
+<th>帰無仮設</th>
+<th>指定</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mu_x \neq \mu_y\)</span></td>
+<td><span class="math inline">\(\mu_x = \mu_y\)</span></td>
+<td><code>"two.sided"</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu_x \lt \mu_y\)</span></td>
+<td><span class="math inline">\(\mu_x \ge \mu_y\)</span></td>
+<td><code>"less"</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mu_x \gt \mu_y\)</span></td>
+<td><span class="math inline">\(\mu_x \le \mu_y\)</span></td>
+<td><code>"greater"</code></td>
+</tr>
+</tbody>
+</table></section><section id="対応のあるt検定の場合" class="level3"><h3 class="anchored" data-anchor-id="対応のあるt検定の場合">対応のあるt検定の場合</h3>
+<p>　対応のあるt検定の場合は二標本の平均の差（<span class="math inline">\(\delta = \mu_x - \mu_y\)</span>）に対する検定になります。</p>
+<table class="table">
+<thead><tr class="header">
+<th>対立仮設</th>
+<th>帰無仮設</th>
+<th>指定</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\delta \neq 0\)</span></td>
+<td><span class="math inline">\(\delta = 0\)</span></td>
+<td><code>"two.sided"</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\delta \lt 0\)</span></td>
+<td><span class="math inline">\(\delta \ge 0\)</span></td>
+<td><code>"less"</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\delta \gt 0\)</span></td>
+<td><span class="math inline">\(\delta \le 0\)</span></td>
+<td><code>"greater"</code></td>
+</tr>
+</tbody>
+</table></section>
+</div>
+</div>
+</div>
+<p>以上</p>
 <hr>
 
 
