@@ -413,10 +413,10 @@ F-statistic: 11.27 on 2 and 334 DF,  p-value: 1.83e-05</code></pre>
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <pre><code>Bootstrap bca confidence intervals
 
-                       2.5 %     97.5 %
-(Intercept)       1.49965579 5.60175194
-ストレッサー得点  0.13331295 0.32183437
-健康統制感       -0.02227164 0.02224113</code></pre>
+                      2.5 %     97.5 %
+(Intercept)       1.4209193 5.58505414
+ストレッサー得点  0.1317427 0.32320132
+健康統制感       -0.0217321 0.02281559</code></pre>
 </div>
 </div>
 </div>
@@ -703,8 +703,62 @@ Model 2: ストレス反応 ~ ストレッサー得点 + 健康統制感 +
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+誤植
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>テキストのP214では<code>LinearModel.1</code>は<code>ストレス反応 ~ ストレッサー得点</code>になっておりP191から説明されている<code>LinearModel.1</code>（<code>ストレス反応 ~ 日常苛立ち</code>）とは異なっています。念のためにテキストP214と同様のモデル<code>LinearModel.1.1</code>を作成して比較します。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>モデル - 仮設検定 - 2つのモデルを比較</summary><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">LinearModel.2</span>, <span class="va">LinearModel.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>モデル - 仮設検定 - 2つのモデルを比較</summary><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">LinearModel.1.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">ストレス反応</span> <span class="op">~</span> <span class="va">ストレッサー得点</span>, data <span class="op">=</span> <span class="va">PatientStress</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">LinearModel.1.1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = ストレス反応 ~ ストレッサー得点, data = PatientStress)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.7497 -1.8334 -0.2208  1.7854  6.8829 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       3.55031    0.38024   9.337  &lt; 2e-16 ***
+ストレッサー得点  0.22853    0.04806   4.755 2.95e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.687 on 335 degrees of freedom
+Multiple R-squared:  0.06323,   Adjusted R-squared:  0.06044 
+F-statistic: 22.61 on 1 and 335 DF,  p-value: 2.949e-06</code></pre>
+</div>
+<details open="" class="code-fold"><summary>モデル - 仮設検定 - 2つのモデルを比較</summary><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">LinearModel.1.1</span>, <span class="va">LinearModel.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: ストレス反応 ~ ストレッサー得点
+Model 2: ストレス反応 ~ ストレッサー得点 + 健康統制感 + 
+    日常苛立ち + 性別 + 年齢コード
+  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+1    335 2417.9                                  
+2    327 1562.3  8    855.63 22.386 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>P214と同じ結果を得ることができました。このような誤植がおきる原因としては分析結果をコピペして貼り付けていることが考えられます。このような状態は分析再現性が確保できていない状態と言えます。R Commander単体では分析再現性を確保することは困難ですが、Rとしては分析再現性を確保するための仕組みが用意されています。</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold"><summary>モデル - 仮設検定 - 2つのモデルを比較</summary><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">LinearModel.2</span>, <span class="va">LinearModel.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -720,7 +774,7 @@ Model 2: ストレス反応 ~ ストレッサー得点 + 性別 + ストレッ�
 </section><section id="aicによるモデル選択p215" class="level3" data-number="10.4.2"><h3 data-number="10.4.2" class="anchored" data-anchor-id="aicによるモデル選択p215">
 <span class="header-section-number">10.4.2</span> AICによるモデル選択（P215）</h3>
 <div class="cell">
-<details open="" class="code-fold"><summary>モデル - 逐次モデル選択…</summary><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/stepwise.html">stepwise</a></span><span class="op">(</span><span class="va">LinearModel.3</span>, direction<span class="op">=</span><span class="st">'backward/forward'</span>, criterion<span class="op">=</span><span class="st">'AIC'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>モデル - 逐次モデル選択…</summary><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">RcmdrMisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RcmdrMisc/man/stepwise.html">stepwise</a></span><span class="op">(</span><span class="va">LinearModel.3</span>, direction<span class="op">=</span><span class="st">'backward/forward'</span>, criterion<span class="op">=</span><span class="st">'AIC'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>
 Direction:  backward/forward
@@ -769,7 +823,7 @@ Coefficients:
 </section></section><section id="解析結果の保存p219" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="解析結果の保存p219">
 <span class="header-section-number">10.5</span> 解析結果の保存（P219）</h2>
 <div class="cell">
-<details open="" class="code-fold"><summary>モデル - 計算結果をデータとして保存</summary><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">PatientStress</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">within</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="op">{</span></span>
+<details open="" class="code-fold"><summary>モデル - 計算結果をデータとして保存</summary><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">PatientStress</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">within</a></span><span class="op">(</span><span class="va">PatientStress</span>, <span class="op">{</span></span>
 <span>  <span class="va">fitted.LinearModel.3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">LinearModel.3</span><span class="op">)</span>       <span class="co"># 予測値</span></span>
 <span>  <span class="va">residuals.LinearModel.3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">LinearModel.3</span><span class="op">)</span> <span class="co"># 残渣</span></span>
 <span>  <span class="va">rstudent.LinearModel.3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">rstudent</a></span><span class="op">(</span><span class="va">LinearModel.3</span><span class="op">)</span>   <span class="co"># スチューデント化残渣</span></span>

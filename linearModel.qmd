@@ -174,6 +174,23 @@ summary(LinearModel.3)
 anova(LinearModel.1, LinearModel.2)
 ```
 
+::: {.callout-note collapse="true"}
+## 誤植
+テキストのP214では`LinearModel.1`は`ストレス反応 ~ ストレッサー得点`になっておりP191から説明されている`LinearModel.1`（`ストレス反応 ~ 日常苛立ち`）とは異なっています。念のためにテキストP214と同様のモデル`LinearModel.1.1`を作成して比較します。
+```{r}
+#| code-summary: "モデル - 仮設検定 - 2つのモデルを比較"
+
+LinearModel.1.1 <- lm(ストレス反応 ~ ストレッサー得点, data = PatientStress)
+summary(LinearModel.1.1)
+
+anova(LinearModel.1.1, LinearModel.2)
+```
+
+P214と同じ結果を得ることができました。このような誤植がおきる原因としては分析結果をコピペして貼り付けていることが考えられます。分析再現性が確保できていない状態と言えます。R Commander単体では分析再現性を確保することは困難ですが、Rとしては分析再現性を確保するための仕組みが用意されています。
+:::
+
+
+
 ```{r}
 #| code-summary: "モデル - 仮設検定 - 2つのモデルを比較"
 
