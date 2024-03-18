@@ -538,5 +538,35 @@
     "crumbs": [
       "Try boxplot()"
     ]
+  },
+  {
+    "objectID": "logisticReg.html",
+    "href": "logisticReg.html",
+    "title": "\n12  ロジスティック回帰分析\n",
+    "section": "",
+    "text": "12.1 ロジスティック回帰分析の考え方",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ロジスティック回帰分析</span>"
+    ]
+  },
+  {
+    "objectID": "logisticReg.html#モデルの当てはめ",
+    "href": "logisticReg.html#モデルの当てはめ",
+    "title": "\n12  ロジスティック回帰分析\n",
+    "section": "\n12.2 モデルの当てはめ",
+    "text": "12.2 モデルの当てはめ",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ロジスティック回帰分析</span>"
+    ]
+  },
+  {
+    "objectID": "logisticReg.html#モデル選択",
+    "href": "logisticReg.html#モデル選択",
+    "title": "\n12  ロジスティック回帰分析\n",
+    "section": "\n12.3 モデル選択",
+    "text": "12.3 モデル選択",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ロジスティック回帰分析</span>"
+    ]
   }
 ]

@@ -39,6 +39,7 @@ book:
     - ANOVA.qmd
     - linearModel.qmd
     - chiSquared.qmd
+    - logisticReg.qmd
     - tips.qmd
     - webR/webR.qmd
 
