@@ -23,9 +23,33 @@ load("./SampleFiles/外来患者ストレス.RData")
 PatientStress %>% df_print()
 ```
 
+　  
 
 ## 1標本における比率に関する検定
 
+```{r}
+#| code-summary: "統計量 - 比率 - 1標本比率の検定"
+
+local({
+  .Table <- xtabs(~ ノンコンプライアンス , data= PatientStress )
+  cat("\nFrequency counts (test is for first level):\n")
+  print(.Table)
+  prop.test(rbind(.Table), alternative='two.sided', p=.5, conf.level=.95, correct=TRUE)
+})
+```
+
+
 ## 2標本における比率に関する検定
+
+```{r}
+#| code-summary: "統計量 - 比率 - 2標本比率の検定"
+
+local({  .Table <- xtabs(~性別+ノンコンプライアンス, data=PatientStress)
+  cat("\nPercentage table:\n")
+  print(RcmdrMisc::rowPercents(.Table))
+  prop.test(.Table, alternative='two.sided', conf.level=.95, correct=TRUE)
+})
+```
+
 
 ---
