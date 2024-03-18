@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tips.html" rel="next">
+<link href="./chiSquared.html" rel="next">
 <link href="./ANOVA.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -224,6 +224,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./linearModel.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">回帰分析</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chiSquared.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比率に関する推定と検定</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -413,10 +419,10 @@ F-statistic: 11.27 on 2 and 334 DF,  p-value: 1.83e-05</code></pre>
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <pre><code>Bootstrap bca confidence intervals
 
-                      2.5 %     97.5 %
-(Intercept)       1.4209193 5.58505414
-ストレッサー得点  0.1317427 0.32320132
-健康統制感       -0.0217321 0.02281559</code></pre>
+                       2.5 %     97.5 %
+(Intercept)       1.48938620 5.56683615
+ストレッサー得点  0.13156950 0.32175031
+健康統制感       -0.02214134 0.02208612</code></pre>
 </div>
 </div>
 </div>
@@ -753,7 +759,7 @@ Model 2: ストレス反応 ~ ストレッサー得点 + 健康統制感 +
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<p>P214と同じ結果を得ることができました。このような誤植がおきる原因としては分析結果をコピペして貼り付けていることが考えられます。このような状態は分析再現性が確保できていない状態と言えます。R Commander単体では分析再現性を確保することは困難ですが、Rとしては分析再現性を確保するための仕組みが用意されています。</p>
+<p>P214と同じ結果を得ることができました。このような誤植がおきる原因としては分析結果をコピペして貼り付けていることが考えられます。分析再現性が確保できていない状態と言えます。R Commander単体では分析再現性を確保することは困難ですが、Rとしては分析再現性を確保するための仕組みが用意されています。</p>
 </div>
 </div>
 </div>
@@ -1404,8 +1410,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tips.html" class="pagination-link" aria-label="Tips">
-        <span class="nav-page-text">Tips</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chiSquared.html" class="pagination-link" aria-label="比率に関する推定と検定">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比率に関する推定と検定</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

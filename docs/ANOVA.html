@@ -253,6 +253,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./chiSquared.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比率に関する推定と検定</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./tips.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tips</span></a>
   </div>
@@ -368,9 +374,9 @@ Linear Hypotheses:
 壮年 - 青年 == 0   0.2815     2.2568   0.125  0.99928    
 中年 - 青年 == 0   1.6869     1.7996   0.937  0.77946    
 高年 - 青年 == 0  11.1256     2.2362   4.975  &lt; 0.001 ***
-中年 - 壮年 == 0   1.4054     2.5070   0.561  0.94188    
+中年 - 壮年 == 0   1.4054     2.5070   0.561  0.94189    
 高年 - 壮年 == 0  10.8441     2.8367   3.823  &lt; 0.001 ***
-高年 - 中年 == 0   9.4387     2.4885   3.793  0.00108 ** 
+高年 - 中年 == 0   9.4387     2.4885   3.793  0.00106 ** 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 (Adjusted p values reported -- single-step method)
@@ -383,18 +389,18 @@ Multiple Comparisons of Means: Tukey Contrasts
 
 Fit: aov(formula = 健康統制感 ~ 年齢区分, data = PatientStress)
 
-Quantile = 2.5679
+Quantile = 2.569
 95% family-wise confidence level
  
 
 Linear Hypotheses:
                  Estimate lwr     upr    
-壮年 - 青年 == 0  0.2815  -5.5137  6.0767
-中年 - 青年 == 0  1.6869  -2.9343  6.3080
-高年 - 青年 == 0 11.1256   5.3833 16.8679
-中年 - 壮年 == 0  1.4054  -5.0323  7.8430
-高年 - 壮年 == 0 10.8441   3.5597 18.1285
-高年 - 中年 == 0  9.4387   3.0486 15.8288
+壮年 - 青年 == 0  0.2815  -5.5162  6.0792
+中年 - 青年 == 0  1.6869  -2.9363  6.3100
+高年 - 青年 == 0 11.1256   5.3808 16.8704
+中年 - 壮年 == 0  1.4054  -5.0351  7.8458
+高年 - 壮年 == 0 10.8441   3.5565 18.1316
+高年 - 中年 == 0  9.4387   3.0459 15.8316
 
 青年 壮年 中年 高年 
  "a"  "a"  "a"  "b" </code></pre>
@@ -447,11 +453,11 @@ Fit: aov(formula = 健康統制感 ~ 年齢区分, data = PatientStress)
 Linear Hypotheses:
                  Estimate Std. Error t value Pr(&gt;|t|)    
 壮年 - 青年 == 0   0.2815     2.2568   0.125  0.99928    
-中年 - 青年 == 0   1.6869     1.7996   0.937  0.77945    
+中年 - 青年 == 0   1.6869     1.7996   0.937  0.77944    
 高年 - 青年 == 0  11.1256     2.2362   4.975  &lt; 0.001 ***
 中年 - 壮年 == 0   1.4054     2.5070   0.561  0.94189    
-高年 - 壮年 == 0  10.8441     2.8367   3.823  0.00101 ** 
-高年 - 中年 == 0   9.4387     2.4885   3.793  &lt; 0.001 ***
+高年 - 壮年 == 0  10.8441     2.8367   3.823  &lt; 0.001 ***
+高年 - 中年 == 0   9.4387     2.4885   3.793  0.00114 ** 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 (Adjusted p values reported -- single-step method)</code></pre>
@@ -472,18 +478,18 @@ Multiple Comparisons of Means: Tukey Contrasts
 
 Fit: aov(formula = 健康統制感 ~ 年齢区分, data = PatientStress)
 
-Quantile = 2.5693
+Quantile = 2.5689
 95% family-wise confidence level
  
 
 Linear Hypotheses:
                  Estimate lwr     upr    
-壮年 - 青年 == 0  0.2815  -5.5168  6.0799
-中年 - 青年 == 0  1.6869  -2.9368  6.3106
-高年 - 青年 == 0 11.1256   5.3801 16.8711
-中年 - 壮年 == 0  1.4054  -5.0358  7.8465
-高年 - 壮年 == 0 10.8441   3.5557 18.1324
-高年 - 中年 == 0  9.4387   3.0452 15.8323</code></pre>
+壮年 - 青年 == 0  0.2815  -5.5161  6.0791
+中年 - 青年 == 0  1.6869  -2.9362  6.3100
+高年 - 青年 == 0 11.1256   5.3809 16.8703
+中年 - 壮年 == 0  1.4054  -5.0349  7.8457
+高年 - 壮年 == 0 10.8441   3.5567 18.1315
+高年 - 中年 == 0  9.4387   3.0460 15.8315</code></pre>
 </div>
 </div>
 <p>この結果をプロットするとR Commanderが出力したグラフになります。</p>
